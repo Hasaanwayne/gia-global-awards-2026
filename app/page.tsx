@@ -124,97 +124,238 @@ export default function HomePage() {
             <Nav />
 
             {/* ═══════════════════════════════════════
-                HERO — Centered, tagline + countdown
+                HERO — Full-width premium awards ceremony
+                Left + right decorative panels fill empty space
             ═══════════════════════════════════════ */}
-            <section style={{ ...wrap, paddingTop: 108, paddingBottom: 112, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden", background: BK }}>
 
-                {/* Tagline — reduced letter-spacing per request */}
-                <AnimateIn delay={0}>
-                    <div className="pulse-subtle" style={{ color: Y, fontSize: 13, fontWeight: 700, letterSpacing: "0.20em", marginBottom: 30, textTransform: "uppercase", fontFamily: BODY }}>
-                        CELEBRATE.&nbsp; SHOWCASE.&nbsp; SPOTLIGHT.
+                {/* ── Background layers ── */}
+                {/* Radial glow from top-center */}
+                <div style={{ position: "absolute", top: "-10%", left: "50%", transform: "translateX(-50%)", width: 900, height: 600, background: "radial-gradient(ellipse, rgba(223,255,19,0.055) 0%, transparent 65%)", pointerEvents: "none" }} />
+                {/* Bottom radial glow */}
+                <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: 600, height: 300, background: "radial-gradient(ellipse, rgba(223,255,19,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
+                {/* Dot grid */}
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle, rgba(223,255,19,0.12) 1px, transparent 1px)", backgroundSize: "44px 44px", opacity: 0.12, pointerEvents: "none" }} />
+
+                {/* ── Floating particles (hardcoded to avoid SSR mismatch) ── */}
+                {[
+                    { x:"6%",  y:"18%", s:3,  dur:9,  del:0,   anim:"floatUp"   },
+                    { x:"11%", y:"58%", s:2,  dur:12, del:2,   anim:"floatDown" },
+                    { x:"4%",  y:"78%", s:4,  dur:7,  del:1,   anim:"floatUp"   },
+                    { x:"16%", y:"32%", s:1.5,dur:10, del:3,   anim:"floatDown" },
+                    { x:"14%", y:"88%", s:2.5,dur:8,  del:0.5, anim:"floatUp"   },
+                    { x:"88%", y:"22%", s:3,  dur:11, del:1.5, anim:"floatDown" },
+                    { x:"93%", y:"55%", s:2,  dur:9,  del:0,   anim:"floatUp"   },
+                    { x:"85%", y:"75%", s:4,  dur:13, del:2.5, anim:"floatDown" },
+                    { x:"96%", y:"38%", s:1.5,dur:8,  del:1,   anim:"floatUp"   },
+                    { x:"91%", y:"88%", s:2.5,dur:10, del:3,   anim:"floatDown" },
+                    { x:"50%", y:"5%",  s:2,  dur:14, del:0,   anim:"floatDown" },
+                    { x:"30%", y:"95%", s:1.5,dur:9,  del:4,   anim:"floatUp"   },
+                    { x:"70%", y:"92%", s:2,  dur:11, del:2,   anim:"floatUp"   },
+                ].map((p, i) => (
+                    <div key={i} style={{
+                        position: "absolute", left: p.x, top: p.y,
+                        width: p.s, height: p.s, borderRadius: "50%",
+                        background: Y, pointerEvents: "none",
+                        animation: `${p.anim} ${p.dur}s ease-in-out ${p.del}s infinite`,
+                    }} />
+                ))}
+
+                {/* ── LEFT decorative panel ── */}
+                <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 200, pointerEvents: "none", zIndex: 1 }}>
+                    {/* Vertical accent line */}
+                    <div className="line-glow" style={{ position: "absolute", left: 52, top: "8%", bottom: "8%", width: 1, background: `linear-gradient(180deg, transparent 0%, ${Y} 25%, ${Y} 75%, transparent 100%)`, boxShadow: `0 0 8px ${Y}40` }} />
+
+                    {/* Trophy SVG — award ceremony icon */}
+                    <svg width="120" height="144" viewBox="0 0 100 120" fill="none" stroke={Y} strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round"
+                        style={{ position: "absolute", left: 68, top: "22%", opacity: 0.07 }}>
+                        <path d="M28 12 H72 L64 58 Q50 72 36 58 Z" />
+                        <path d="M28 20 Q8 25 11 46 Q14 58 36 54" />
+                        <path d="M72 20 Q92 25 89 46 Q86 58 64 54" />
+                        <line x1="50" y1="72" x2="50" y2="93" />
+                        <path d="M34 93 Q50 100 66 93" />
+                        <rect x="28" y="96" width="44" height="12" rx="2" />
+                        <circle cx="50" cy="38" r="12" strokeDasharray="3 3" />
+                        <path d="M44 38l4 4 8-8" />
+                    </svg>
+
+                    {/* AWARD CEREMONY — rotated label */}
+                    <div style={{ position: "absolute", left: -32, top: "50%", transform: "translateY(-50%) rotate(-90deg)", whiteSpace: "nowrap", fontSize: 9, fontWeight: 700, letterSpacing: "0.42em", color: "rgba(223,255,19,0.3)", textTransform: "uppercase", fontFamily: BODY }}>
+                        AWARD CEREMONY &nbsp;·&nbsp; LONDON 2026
                     </div>
-                </AnimateIn>
 
-                <AnimateIn delay={80}>
-                    <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,10vw,124px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: 0, textTransform: "uppercase" }}>
-                        Global<br />Innovation<br />Awards 2026
-                    </h1>
-                </AnimateIn>
+                    {/* Star bursts */}
+                    <svg className="star-spin-slow" width="18" height="18" viewBox="0 0 24 24" style={{ position: "absolute", left: 28, top: "14%", opacity: 0.35 }}>
+                        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                    <svg className="star-spin-med" width="12" height="12" viewBox="0 0 24 24" style={{ position: "absolute", left: 80, top: "72%", opacity: 0.28 }}>
+                        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" style={{ position: "absolute", left: 44, top: "85%", opacity: 0.22 }}>
+                        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
 
-                <AnimateIn delay={160}>
-                    <p style={{ maxWidth: 600, fontSize: 18, lineHeight: 1.75, color: MUTED, marginTop: 32, fontFamily: BODY }}>
-                        The UK&apos;s premier awards programme celebrating innovators and founders who arrived on an innovation or talent visa &mdash; and built something extraordinary.
-                    </p>
-                </AnimateIn>
-
-                {/* CTAs with premium hover animation */}
-                <AnimateIn delay={240}>
-                    <div style={{ display: "flex", gap: 14, marginTop: 40, flexWrap: "wrap", justifyContent: "center" }}>
-                        <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer"
-                            className="btn-primary"
-                            style={{ background: Y, color: BK, padding: "15px 38px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
-                            Apply &amp; Nominate Now <IconArrowRight />
-                        </a>
-                        <a href="https://form.typeform.com/to/GIA2026nominate" target="_blank" rel="noopener noreferrer"
-                            className="btn-ghost"
-                            style={{ background: "transparent", color: W, border: "1px solid rgba(255,255,255,0.30)", padding: "15px 38px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
-                            Nominate Someone
-                        </a>
+                    {/* NOMINATIONS OPEN badge */}
+                    <div style={{ position: "absolute", left: 64, top: "9%", display: "flex", alignItems: "center", gap: 6 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: Y, boxShadow: `0 0 8px ${Y}` }} />
+                        <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.26em", color: "rgba(223,255,19,0.55)", textTransform: "uppercase", fontFamily: BODY, whiteSpace: "nowrap" }}>NOMINATIONS OPEN</span>
                     </div>
-                </AnimateIn>
 
-                {/* ── Premium countdown timer ── */}
-                <AnimateIn delay={320} style={{ width: "100%" }}>
-                    <div style={{ marginTop: 64 }}>
-                        <div style={{ fontSize: 10, letterSpacing: "0.38em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", marginBottom: 20, fontFamily: BODY }}>
-                            NOMINATIONS CLOSE IN
+                    {/* Horizontal tick marks */}
+                    {[35, 50, 65].map(pct => (
+                        <div key={pct} style={{ position: "absolute", left: 44, top: `${pct}%`, width: 16, height: 1, background: `${Y}40` }} />
+                    ))}
+                </div>
+
+                {/* ── RIGHT decorative panel ── */}
+                <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 200, pointerEvents: "none", zIndex: 1 }}>
+                    {/* Vertical accent line (mirrored) */}
+                    <div className="line-glow" style={{ position: "absolute", right: 52, top: "8%", bottom: "8%", width: 1, background: `linear-gradient(180deg, transparent 0%, ${Y} 25%, ${Y} 75%, transparent 100%)`, boxShadow: `0 0 8px ${Y}40`, animationDelay: "2s" }} />
+
+                    {/* Medal / Award circle SVG */}
+                    <svg width="110" height="110" viewBox="0 0 100 100" fill="none" stroke={Y} strokeWidth="0.8" strokeLinecap="round"
+                        style={{ position: "absolute", right: 68, top: "18%", opacity: 0.07 }}>
+                        <circle cx="50" cy="60" r="32" />
+                        <circle cx="50" cy="60" r="26" />
+                        <circle cx="50" cy="60" r="18" />
+                        <path d="M40 14 L50 4 L60 14 L52 22 L48 22 Z" />
+                        <line x1="48" y1="22" x2="46" y2="30" />
+                        <line x1="52" y1="22" x2="54" y2="30" />
+                        <path d="M46 30 Q50 34 54 30" />
+                        <path d="M44 55l4 5 8-10" />
+                    </svg>
+
+                    {/* Award stats — premium right panel */}
+                    <div style={{ position: "absolute", right: 64, top: "28%", display: "flex", flexDirection: "column", gap: 20 }}>
+                        {[
+                            { num: "11",     label: "Categories" },
+                            { num: "400+",   label: "Guests"     },
+                            { num: "Oct",    label: "London 2026"},
+                        ].map((s) => (
+                            <div key={s.label} style={{ textAlign: "right" }}>
+                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 26, color: W, lineHeight: 1, letterSpacing: "-0.01em", textShadow: `0 0 20px rgba(223,255,19,0.1)` }}>{s.num}</div>
+                                <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(255,255,255,0.28)", textTransform: "uppercase", fontFamily: BODY, marginTop: 3 }}>{s.label}</div>
+                                <div style={{ width: "100%", height: 1, background: `linear-gradient(90deg, transparent, ${Y}30)`, marginTop: 6 }} />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* GLOBAL INNOVATION AWARDS — rotated label */}
+                    <div style={{ position: "absolute", right: -40, top: "50%", transform: "translateY(-50%) rotate(90deg)", whiteSpace: "nowrap", fontSize: 9, fontWeight: 700, letterSpacing: "0.42em", color: "rgba(223,255,19,0.3)", textTransform: "uppercase", fontFamily: BODY }}>
+                        GLOBAL INNOVATION AWARDS &nbsp;·&nbsp; UK
+                    </div>
+
+                    {/* Star bursts */}
+                    <svg className="star-spin-med" width="18" height="18" viewBox="0 0 24 24" style={{ position: "absolute", right: 28, top: "12%", opacity: 0.35 }}>
+                        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                    <svg className="star-spin-slow" width="12" height="12" viewBox="0 0 24 24" style={{ position: "absolute", right: 76, top: "68%", opacity: 0.28 }}>
+                        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" style={{ position: "absolute", right: 44, top: "82%", opacity: 0.22 }}>
+                        <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+
+                    {/* Horizontal tick marks */}
+                    {[35, 50, 65].map(pct => (
+                        <div key={pct} style={{ position: "absolute", right: 44, top: `${pct}%`, width: 16, height: 1, background: `${Y}40` }} />
+                    ))}
+                </div>
+
+                {/* ── CENTER content ── */}
+                <div style={{ ...wrap, paddingTop: 108, paddingBottom: 108, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 2 }}>
+
+                    {/* Tagline */}
+                    <AnimateIn delay={0}>
+                        <div className="pulse-subtle" style={{ color: Y, fontSize: 13, fontWeight: 700, letterSpacing: "0.20em", marginBottom: 30, textTransform: "uppercase", fontFamily: BODY }}>
+                            CELEBRATE.&nbsp; SHOWCASE.&nbsp; SPOTLIGHT.
                         </div>
+                    </AnimateIn>
 
-                        {/* Timer container */}
-                        <div style={{ display: "inline-flex", alignItems: "stretch", background: "#080808", border: `1px solid ${BORDER}`, boxShadow: `0 0 60px rgba(223,255,19,0.04), inset 0 1px 0 rgba(255,255,255,0.04)` }}>
-                            {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([label, value], i) => (
-                                <React.Fragment key={label as string}>
-                                    <div style={{ padding: "28px 36px", textAlign: "center", minWidth: 100, position: "relative" }}>
-                                        {/* Top accent line */}
-                                        <div style={{ position: "absolute", top: 0, left: "20%", right: "20%", height: 2, background: `linear-gradient(90deg, transparent, ${Y}, transparent)` }} />
-                                        {/* Number */}
-                                        <div
-                                            key={label === "Secs" ? secKey : undefined}
-                                            className={label === "Secs" ? "digit-pop" : undefined}
-                                            style={{
-                                                fontFamily: HEAD, fontWeight: 900,
-                                                fontSize: 64, lineHeight: 1, color: W,
-                                                textShadow: `0 0 30px rgba(223,255,19,0.18), 0 0 60px rgba(223,255,19,0.08)`,
-                                                letterSpacing: "-0.02em",
-                                            }}
-                                        >
-                                            {String(value).padStart(2, "0")}
-                                        </div>
-                                        {/* Label */}
-                                        <div style={{ fontSize: 9, letterSpacing: "0.32em", color: Y, marginTop: 10, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>
-                                            {label}
-                                        </div>
-                                    </div>
-                                    {/* Blinking colon separator */}
-                                    {i < 3 && (
-                                        <div className="colon-blink" style={{ display: "flex", alignItems: "center", padding: "0 2px", fontFamily: HEAD, fontWeight: 900, fontSize: 40, color: Y, opacity: 0.7, userSelect: "none" }}>
-                                            :
-                                        </div>
-                                    )}
-                                </React.Fragment>
+                    {/* Main headline */}
+                    <AnimateIn delay={80}>
+                        <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,10vw,124px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: 0, textTransform: "uppercase" }}>
+                            Global<br />Innovation<br />Awards 2026
+                        </h1>
+                    </AnimateIn>
+
+                    {/* Decorative divider below headline */}
+                    <AnimateIn delay={140}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 28 }}>
+                            <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, transparent, ${Y}50)`, width: 80 }} />
+                            <svg width="14" height="14" viewBox="0 0 24 24" className="star-spin-slow" style={{ opacity: 0.7 }}>
+                                <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke={Y} strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                            <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${Y}50, transparent)`, width: 80 }} />
+                        </div>
+                    </AnimateIn>
+
+                    <AnimateIn delay={160}>
+                        <p style={{ maxWidth: 580, fontSize: 17, lineHeight: 1.8, color: MUTED, marginTop: 24, fontFamily: BODY }}>
+                            The UK&apos;s premier awards programme celebrating innovators and founders who arrived on an innovation or talent visa &mdash; and built something extraordinary.
+                        </p>
+                    </AnimateIn>
+
+                    {/* CTAs */}
+                    <AnimateIn delay={240}>
+                        <div style={{ display: "flex", gap: 14, marginTop: 36, flexWrap: "wrap", justifyContent: "center" }}>
+                            <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer"
+                                className="btn-primary"
+                                style={{ background: Y, color: BK, padding: "15px 38px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
+                                Apply &amp; Nominate Now <IconArrowRight />
+                            </a>
+                            <a href="https://form.typeform.com/to/GIA2026nominate" target="_blank" rel="noopener noreferrer"
+                                className="btn-ghost"
+                                style={{ background: "transparent", color: W, border: "1px solid rgba(255,255,255,0.30)", padding: "15px 38px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
+                                Nominate Someone
+                            </a>
+                        </div>
+                        {/* Trust badges */}
+                        <div style={{ display: "flex", gap: 28, marginTop: 22, justifyContent: "center", flexWrap: "wrap" }}>
+                            {["No Entry Fee", "Independent Jury", "UK-Wide Recognition"].map((item) => (
+                                <div key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: "rgba(255,255,255,0.36)", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: BODY }}>
+                                    <span style={{ color: Y, fontSize: 10 }}>✓</span> {item}
+                                </div>
                             ))}
                         </div>
+                    </AnimateIn>
 
-                        {/* Deadline line */}
-                        <div style={{ marginTop: 18, display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
-                            <div style={{ width: 32, height: 1, background: `linear-gradient(90deg, transparent, ${BORDER})` }} />
-                            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>
-                                Deadline: 15 July 2026 &nbsp;·&nbsp; Extended entries not permitted
-                            </span>
-                            <div style={{ width: 32, height: 1, background: `linear-gradient(90deg, ${BORDER}, transparent)` }} />
+                    {/* ── Premium countdown ── */}
+                    <AnimateIn delay={320} style={{ width: "100%" }}>
+                        <div style={{ marginTop: 56 }}>
+                            <div style={{ fontSize: 9, letterSpacing: "0.42em", color: "rgba(255,255,255,0.28)", textTransform: "uppercase", marginBottom: 18, fontFamily: BODY }}>
+                                NOMINATIONS CLOSE IN
+                            </div>
+                            <div style={{ display: "inline-flex", alignItems: "stretch", background: "#060606", border: `1px solid ${BORDER}`, boxShadow: `0 0 80px rgba(223,255,19,0.05), inset 0 1px 0 rgba(255,255,255,0.04)` }}>
+                                {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([label, value], i) => (
+                                    <React.Fragment key={label as string}>
+                                        <div style={{ padding: "26px 34px", textAlign: "center", minWidth: 96, position: "relative" }}>
+                                            <div style={{ position: "absolute", top: 0, left: "18%", right: "18%", height: 2, background: `linear-gradient(90deg, transparent, ${Y}, transparent)` }} />
+                                            <div
+                                                key={label === "Secs" ? secKey : undefined}
+                                                className={label === "Secs" ? "digit-pop" : undefined}
+                                                style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 60, lineHeight: 1, color: W, textShadow: `0 0 28px rgba(223,255,19,0.20)`, letterSpacing: "-0.02em" }}
+                                            >
+                                                {String(value).padStart(2, "0")}
+                                            </div>
+                                            <div style={{ fontSize: 9, letterSpacing: "0.32em", color: Y, marginTop: 10, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>{label}</div>
+                                        </div>
+                                        {i < 3 && (
+                                            <div className="colon-blink" style={{ display: "flex", alignItems: "center", padding: "0 2px", fontFamily: HEAD, fontWeight: 900, fontSize: 36, color: Y, opacity: 0.6, userSelect: "none" }}>:</div>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                            <div style={{ marginTop: 16, display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+                                <div style={{ width: 40, height: 1, background: `linear-gradient(90deg, transparent, ${BORDER})` }} />
+                                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>
+                                    Deadline: 15 July 2026 &nbsp;·&nbsp; Extended entries not permitted
+                                </span>
+                                <div style={{ width: 40, height: 1, background: `linear-gradient(90deg, ${BORDER}, transparent)` }} />
+                            </div>
                         </div>
-                    </div>
-                </AnimateIn>
+                    </AnimateIn>
+                </div>
             </section>
 
             {/* ═══════════════════════════════════════
@@ -257,22 +398,20 @@ export default function HomePage() {
                             </div>
                         </AnimateIn>
 
-                        {/* Right — London skyscrapers with Ken Burns motion */}
+                        {/* Right — London Big Ben with Ken Burns motion (no hover effect) */}
                         <AnimateIn from="right" delay={120}>
                             <div style={{ position: "relative", border: `1px solid ${BORDER}`, overflow: "hidden" }}>
                                 {/* Ken Burns motion wrapper */}
                                 <div style={{ overflow: "hidden", aspectRatio: "4/3" }}>
                                     <img
-                                        src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=1200"
-                                        alt="London Canary Wharf skyscrapers"
+                                        src="https://images.unsplash.com/photo-1513026705753-bc3fffca8bf4?auto=format&fit=crop&q=85&w=1400"
+                                        alt="Big Ben and Westminster Bridge London at night"
                                         className="ken-burns-city"
-                                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "grayscale(1)", transformOrigin: "center center" }}
-                                        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0)")}
-                                        onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(1)")}
+                                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "grayscale(0.25) brightness(0.9)", transformOrigin: "center center" }}
                                     />
                                 </div>
                                 {/* Gradient overlay */}
-                                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 45%)", pointerEvents: "none" }} />
+                                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 42%)", pointerEvents: "none" }} />
                                 {/* Stat card */}
                                 <div style={{ position: "absolute", bottom: 20, left: 18, right: 18, background: "rgba(0,0,0,0.92)", border: `1px solid ${BORDER}`, padding: "18px 22px" }}>
                                     <div style={{ color: Y, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>SUCCESS INSIGHT</div>
