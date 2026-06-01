@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 import { useState, useEffect } from "react"
 import React from "react"
 import Nav from "./components/Nav"
@@ -6,7 +6,7 @@ import Footer from "./components/Footer"
 import AnimateIn from "./components/AnimateIn"
 import { useBreakpoint } from "./hooks/useBreakpoint"
 
-/* ── Brand tokens (PDF non-negotiables) ── */
+/* â”€â”€ Brand tokens (PDF non-negotiables) â”€â”€ */
 const Y    = "#DFFF13"
 const BK   = "#000000"
 const W    = "#FFFFFF"
@@ -17,7 +17,7 @@ const HEAD   = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY   = "'General Sans','Inter',system-ui,sans-serif"
 const MAXW   = 1280
 
-/* ── Countdown ── */
+/* â”€â”€ Countdown â”€â”€ */
 const DEADLINE = new Date("2026-07-15T23:59:00")
 function useCountdown(target: Date) {
     const calc = () => {
@@ -38,7 +38,7 @@ function useCountdown(target: Date) {
     return time
 }
 
-/* ── Style helpers ── */
+/* â”€â”€ Style helpers â”€â”€ */
 const wrap: React.CSSProperties = { maxWidth: MAXW, margin: "0 auto", padding: "0 48px", boxSizing: "border-box" }
 // responsive wrap applied per-component via bpWrap(bp)
 
@@ -57,7 +57,7 @@ const h2Base: React.CSSProperties = {
     lineHeight: 1.0, margin: 0, color: W,
 }
 
-/* ── SVG Icons — BLACK stroke on Yellow boxes ── */
+/* â”€â”€ SVG Icons â€” BLACK stroke on Yellow boxes â”€â”€ */
 const IconAward = () => (
     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={BK} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="8" r="6" />
@@ -89,11 +89,11 @@ const IconCheck = () => (
     </svg>
 )
 
-/* ── Data ── */
+/* â”€â”€ Data â”€â”€ */
 const JUDGES = [
-    { name: "Dame Helena Vance", role: "Chair of Innovate UK",    img: "https://i.pravatar.cc/150?img=33", bio: "Vance has guided over £2.4B in venture-backed grants and innovation pathways across UK institutions. A former Global Talent recipient and one of the UK's most influential voices in the innovation ecosystem." },
+    { name: "Dame Helena Vance", role: "Chair of Innovate UK",    img: "https://i.pravatar.cc/150?img=33", bio: "Vance has guided over Â£2.4B in venture-backed grants and innovation pathways across UK institutions. A former Global Talent recipient and one of the UK's most influential voices in the innovation ecosystem." },
     { name: "Dr. Aris Thorne",   role: "GP, DeepTech Labs",       img: "https://i.pravatar.cc/150?img=11", bio: "Former Global Talent recipient, venture backer, and leading AI systems engineer from Oxford. Dr Thorne has invested in over 25 deeptech companies across the UK and Europe." },
-    { name: "Siddharth Patel",   role: "Co-Founder, Aegis AI",    img: "https://i.pravatar.cc/150?img=12", bio: "Innovator Founder alum. Successfully scaled his fintech venture to £80M valuation in London. Now a board advisor to multiple UK startups and a NEXUS founding supporter." },
+    { name: "Siddharth Patel",   role: "Co-Founder, Aegis AI",    img: "https://i.pravatar.cc/150?img=12", bio: "Innovator Founder alum. Successfully scaled his fintech venture to Â£80M valuation in London. Now a board advisor to multiple UK startups and a NEXUS founding supporter." },
     { name: "Chantal de Clercq", role: "Partner, Apex Ventures",  img: "https://i.pravatar.cc/150?img=47", bio: "Over 15 years backing early-stage enterprise SaaS and border-free technologies worldwide. Chantal sits on the boards of 8 UK-based startups and is a frequent speaker on immigrant founder journeys." },
 ]
 
@@ -104,8 +104,8 @@ const WHY_ENTER = [
 ]
 
 const MARQUEE_ITEMS = [
-    "INNOVATOR FOUNDER VISA","•","GLOBAL TALENT VISA","•","LEGACY INNOVATION ROUTES",
-    "INNOVATOR FOUNDER VISA","•","GLOBAL TALENT VISA","•","LEGACY INNOVATION ROUTES",
+    "INNOVATOR FOUNDER VISA","â€¢","GLOBAL TALENT VISA","â€¢","LEGACY INNOVATION ROUTES",
+    "INNOVATOR FOUNDER VISA","â€¢","GLOBAL TALENT VISA","â€¢","LEGACY INNOVATION ROUTES",
 ]
 
 export default function HomePage() {
@@ -132,10 +132,10 @@ export default function HomePage() {
         <div style={{ fontFamily: BODY, background: BK, color: W, width: "100%", overflowX: "hidden" }}>
             <Nav />
 
-            {/* ═══════════════════════════════════════
-                HERO — Two-column: text left, timer right
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                HERO â€” Two-column: text left, timer right
                 (stacks on mobile/tablet)
-            ═══════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <section style={{ position: "relative", minHeight: isSmall ? "auto" : "100vh", display: "flex", alignItems: "center", overflow: "hidden", background: BK }}>
 
                 {/* Subtle background glow */}
@@ -144,7 +144,7 @@ export default function HomePage() {
 
                 <div style={{ ...W_OBJ, display: "grid", gridTemplateColumns: isSmall ? "1fr" : "1.1fr 0.9fr", gap: isSmall ? 48 : 72, alignItems: "center", paddingTop: isSmall ? 80 : 100, paddingBottom: isSmall ? 80 : 100, position: "relative", zIndex: 1 }}>
 
-                    {/* ── LEFT — Text content ── */}
+                    {/* â”€â”€ LEFT â€” Text content â”€â”€ */}
                     <AnimateIn from={isSmall ? "up" : "left"}>
                         <div style={{ textAlign: isSmall ? "center" : "left" }}>
 
@@ -158,7 +158,7 @@ export default function HomePage() {
                                 Global<br />Innovation<br />Awards 2026
                             </h1>
 
-                            {/* Yellow accent rule — centered on mobile */}
+                            {/* Yellow accent rule â€” centered on mobile */}
                             <div style={{ width: 56, height: 3, background: Y, margin: isSmall ? "0 auto 28px" : "0 0 28px", boxShadow: `0 0 12px ${Y}60` }} />
 
                             {/* Subtitle */}
@@ -183,7 +183,7 @@ export default function HomePage() {
                         </div>
                     </AnimateIn>
 
-                    {/* ── RIGHT — Redesigned horizontal countdown ── */}
+                    {/* â”€â”€ RIGHT â€” Redesigned horizontal countdown â”€â”€ */}
                     <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
                         <div style={{ background: "#050505", border: `1px solid ${BORDER}`, boxShadow: "0 32px 80px rgba(0,0,0,0.55)" }}>
 
@@ -200,7 +200,7 @@ export default function HomePage() {
                                 </span>
                             </div>
 
-                            {/* ── 4-unit horizontal timer ── */}
+                            {/* â”€â”€ 4-unit horizontal timer â”€â”€ */}
                             <div style={{ display: "grid", gridTemplateColumns: "1fr 1px 1fr 1px 1fr 1px 1fr" }}>
                                 {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([label, value], i) => (
                                     <React.Fragment key={label as string}>
@@ -241,11 +241,11 @@ export default function HomePage() {
                                 <div style={{ width: 1, height: 32, background: BORDER }} />
                                 <div style={{ textAlign: "right" }}>
                                     <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>CEREMONY</div>
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: Y }}>OCT 2026 · LONDON</div>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: Y }}>OCT 2026 Â· LONDON</div>
                                 </div>
                             </div>
                             <div style={{ background: `${Y}10`, borderTop: `1px solid ${Y}20`, padding: "10px 24px", textAlign: "center" }}>
-                                <span style={{ fontSize: 9, color: Y, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>★ Extended entries not permitted</span>
+                                <span style={{ fontSize: 9, color: Y, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>â˜… Extended entries not permitted</span>
                             </div>
                         </div>
                     </AnimateIn>
@@ -253,15 +253,15 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 2 — WHO IS ELIGIBLE FOR NEXUS 2026?
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 2 â€” WHO IS ELIGIBLE FOR NEXUS 2026?
                 London skyscrapers image with Ken Burns motion
-            ═══════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}`, position: "relative", overflow: "hidden" }}>
                 <div style={W_OBJ}>
                     <div style={{ display: "grid", gridTemplateColumns: isSmall ? "1fr" : "5fr 7fr", gap: isSmall ? 40 : 64, alignItems: "center" }}>
 
-                        {/* Left — text */}
+                        {/* Left â€” text */}
                         <AnimateIn from="left">
                             <div>
                                 <span style={badge()}>ELIGIBILITY FRAMEWORK</span>
@@ -272,7 +272,7 @@ export default function HomePage() {
                                     NEXUS is the UK&apos;s first awards scheme designed specifically to spotlight the achievements of founders, technologists, and scientific leaders who moved to the UK under dedicated visa pathways.
                                 </p>
                                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.82, marginBottom: 32, fontFamily: BODY }}>
-                                    Whether you are a solo innovator raising a Seed round, a scientific co-founder commercialising research, or a scaling tech venture contributor — if your entrepreneurial journey started with a UK Visa, this stage is yours.
+                                    Whether you are a solo innovator raising a Seed round, a scientific co-founder commercialising research, or a scaling tech venture contributor â€” if your entrepreneurial journey started with a UK Visa, this stage is yours.
                                 </p>
                                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                                     {[
@@ -293,16 +293,16 @@ export default function HomePage() {
                             </div>
                         </AnimateIn>
 
-                        {/* Right — London Big Ben with Ken Burns motion (no hover effect) */}
+                        {/* Right â€” London Big Ben with Ken Burns motion (no hover effect) */}
                         <AnimateIn from="right" delay={120}>
                             <div style={{ position: "relative", border: `1px solid ${BORDER}`, overflow: "hidden" }}>
                                 {/* Ken Burns motion wrapper */}
                                 <div style={{ overflow: "hidden", aspectRatio: "4/3" }}>
                                     <img
-                                        src="https://images.unsplash.com/photo-1513026705753-bc3fffca8bf4?auto=format&fit=crop&q=85&w=1400"
-                                        alt="Big Ben and Westminster Bridge London at night"
+                                        src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=90&w=1400"
+                                        alt="Big Ben clock tower London aerial sky view"
                                         className="ken-burns-city"
-                                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "grayscale(0.25) brightness(0.9)", transformOrigin: "center center" }}
+                                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", objectPosition: "center top", filter: "brightness(0.88)", transformOrigin: "center center" }}
                                     />
                                 </div>
                                 {/* Gradient overlay */}
@@ -311,7 +311,7 @@ export default function HomePage() {
                                 <div style={{ position: "absolute", bottom: 20, left: 18, right: 18, background: "rgba(0,0,0,0.92)", border: `1px solid ${BORDER}`, padding: "18px 22px" }}>
                                     <div style={{ color: Y, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>SUCCESS INSIGHT</div>
                                     <p style={{ color: W, fontSize: 13, lineHeight: 1.65, margin: 0, fontFamily: BODY }}>
-                                        Visa-supported startups generated over <strong style={{ color: Y }}>£1.2B</strong> in UK economic value in 2025 alone. NEXUS ensures these stories are showcased nationwide.
+                                        Visa-supported startups generated over <strong style={{ color: Y }}>Â£1.2B</strong> in UK economic value in 2025 alone. NEXUS ensures these stories are showcased nationwide.
                                     </p>
                                 </div>
                             </div>
@@ -331,10 +331,10 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 3 — WHY ENTER THE NEXUS AWARDS?
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 3 â€” WHY ENTER THE NEXUS AWARDS?
                 3 cards with correct BLACK SVG icons on yellow
-            ═══════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <section style={{ background: BK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
                 <div style={W_OBJ}>
                     <AnimateIn>
@@ -378,10 +378,10 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 4 — MEET THE JUDGES
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 4 â€” MEET THE JUDGES
                 Circular photo frames, bio expand on click
-            ═══════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
                 <div style={W_OBJ}>
                     <AnimateIn>
@@ -408,7 +408,7 @@ export default function HomePage() {
                                     className="judge-card"
                                     style={{ background: BK, border: `1px solid ${BORDER}`, padding: isMobile ? "20px 14px" : "28px 24px", textAlign: "center", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
                                 >
-                                    {/* Circular photo — non-negotiable per PDF */}
+                                    {/* Circular photo â€” non-negotiable per PDF */}
                                     <div
                                         onClick={() => setActiveJudge(activeJudge === i ? null : i)}
                                         style={{
@@ -433,7 +433,7 @@ export default function HomePage() {
                                         <div>
                                             <p style={{ color: MUTED, fontSize: 12, lineHeight: 1.72, fontFamily: BODY, marginBottom: 12 }}>{j.bio}</p>
                                             <button onClick={() => setActiveJudge(null)} style={{ background: "none", border: `1px solid rgba(223,255,19,0.3)`, color: Y, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", padding: "6px 16px", fontFamily: BODY, transition: "background 0.2s" }}>
-                                                ✕ Close
+                                                âœ• Close
                                             </button>
                                         </div>
                                     ) : (
@@ -448,9 +448,9 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 5 — EXPLORE THE AWARD CATEGORIES
-            ═══════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 5 â€” EXPLORE THE AWARD CATEGORIES
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <section style={{ background: BK, padding: isMobile ? "56px 20px" : isTablet ? "64px 32px" : "80px 48px", borderTop: `1px solid ${BORDER}` }}>
                 <AnimateIn>
                     <div style={{ ...W_OBJ, background: DARK, border: `1px solid ${BORDER}`, padding: isSmall ? "40px 28px" : "64px 72px", display: "flex", alignItems: isSmall ? "flex-start" : "center", justifyContent: "space-between", gap: isSmall ? 28 : 48, position: "relative", overflow: "hidden", flexDirection: isSmall ? "column" : "row" }}>
@@ -461,7 +461,7 @@ export default function HomePage() {
                                 EXPLORE THE AWARD CATEGORIES
                             </h2>
                             <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>
-                                From Deeptech Pioneers to fintech innovators and Climate champions — find the exact category matching your industry or nominate a high-growth founder you back.
+                                From Deeptech Pioneers to fintech innovators and Climate champions â€” find the exact category matching your industry or nominate a high-growth founder you back.
                             </p>
                         </div>
                         <a href="/categories"
@@ -473,13 +473,13 @@ export default function HomePage() {
                 </AnimateIn>
             </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 6 — AWARDS EVENING
-                London aerial night — Ken Burns motion video effect
-            ═══════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 6 â€” AWARDS EVENING
+                London aerial night â€” Ken Burns motion video effect
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <section style={{ position: "relative", minHeight: 660, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
 
-                {/* ── Big Ben sky view — Ken Burns motion image ── */}
+                {/* â”€â”€ Big Ben sky view â€” Ken Burns motion image â”€â”€ */}
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden" }}>
                     <img
                         src="https://images.unsplash.com/photo-1513026705753-bc3fffca8bf4?auto=format&fit=crop&q=90&w=1800"
@@ -526,3 +526,4 @@ export default function HomePage() {
         </div>
     )
 }
+
