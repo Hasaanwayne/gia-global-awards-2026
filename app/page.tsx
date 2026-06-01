@@ -349,12 +349,12 @@ export default function HomePage() {
                         </div>
                     </AnimateIn>
 
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(3, 1fr)", gap: 20 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(3, 1fr)", gap: 20, alignItems: "stretch" }}>
                         {WHY_ENTER.map((card, i) => (
-                            <AnimateIn key={card.num} delay={i * 100}>
+                            <AnimateIn key={card.num} delay={i * 100} style={{ height: "100%" }}>
                                 <div
                                     className="card-hover"
-                                    style={{ background: "#0d0d0d", border: `1px solid ${BORDER}`, padding: "40px 36px 36px", display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 340 }}
+                                    style={{ background: "#0d0d0d", border: `1px solid ${BORDER}`, padding: "40px 36px 36px", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}
                                 >
                                     <div>
                                         {/* Electric Yellow icon box with BLACK SVG icon */}
@@ -401,21 +401,22 @@ export default function HomePage() {
                         </div>
                     </AnimateIn>
 
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gap: isSmall ? 16 : 28 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gap: isSmall ? 12 : 28, alignItems: "stretch" }}>
                         {JUDGES.map((j, i) => (
-                            <AnimateIn key={j.name} delay={i * 90}>
+                            <AnimateIn key={j.name} delay={i * 90} style={{ height: "100%" }}>
                                 <div
                                     className="judge-card"
-                                    style={{ background: BK, border: `1px solid ${BORDER}`, padding: "28px 24px", textAlign: "center" }}
+                                    style={{ background: BK, border: `1px solid ${BORDER}`, padding: isMobile ? "20px 14px" : "28px 24px", textAlign: "center", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
                                 >
                                     {/* Circular photo — non-negotiable per PDF */}
                                     <div
                                         onClick={() => setActiveJudge(activeJudge === i ? null : i)}
                                         style={{
-                                            width: 130, height: 130, borderRadius: "50%",
-                                            margin: "0 auto 18px",
+                                            width: isMobile ? 88 : 130, height: isMobile ? 88 : 130, borderRadius: "50%",
+                                            margin: "0 auto 14px",
                                             border: `2px solid ${activeJudge === i ? Y : "rgba(223,255,19,0.4)"}`,
                                             overflow: "hidden", cursor: "pointer",
+                                            flexShrink: 0,
                                             transition: "border-color 0.25s, transform 0.25s",
                                             transform: activeJudge === i ? "scale(1.06)" : "scale(1)",
                                         }}
@@ -425,8 +426,8 @@ export default function HomePage() {
                                             style={{ width: "100%", height: "100%", objectFit: "cover", filter: activeJudge === i ? "grayscale(0)" : "grayscale(1)", transition: "filter 0.4s, transform 0.35s", transform: activeJudge === i ? "scale(1.08)" : "scale(1)" }}
                                         />
                                     </div>
-                                    <h4 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 17, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 6, color: W, lineHeight: 1.1 }}>{j.name}</h4>
-                                    <div style={{ color: Y, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 14, fontFamily: BODY }}>{j.role}</div>
+                                    <h4 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 13 : 17, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 5, color: W, lineHeight: 1.15 }}>{j.name}</h4>
+                                    <div style={{ color: Y, fontSize: isMobile ? 9 : 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: isMobile ? 10 : 14, fontFamily: BODY, lineHeight: 1.4 }}>{j.role}</div>
 
                                     {activeJudge === i ? (
                                         <div>
