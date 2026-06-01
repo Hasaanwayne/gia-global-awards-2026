@@ -161,63 +161,41 @@ export default function HomePage() {
 
             {/* ══════════════════════════════════════════
                 SECTION 1 — HERO
-                Hero per PDF brief: Logo, tagline, headline,
-                two CTAs, deadline + live countdown timer
+                Centered layout: tagline, headline, two CTAs,
+                deadline + live countdown timer
             ══════════════════════════════════════════ */}
-            <section style={{ position: "relative", minHeight: "90vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "120px 48px", background: BK, overflow: "hidden" }}>
-                {/* Radial glow */}
-                <div style={{ position: "absolute", top: 0, right: 0, width: 600, height: 600, background: "radial-gradient(circle at top right, rgba(223,255,19,0.07), transparent 55%)", pointerEvents: "none" }} />
-
-                <div style={{ ...wrap, display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 64, alignItems: "center" }}>
-                    {/* Left — Headline + CTAs */}
-                    <div>
-                        {/* Tagline — spaced caps, Electric Yellow per PDF */}
-                        <div className="pulse-subtle" style={{ color: Y, fontSize: 13, fontWeight: 700, letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: 28, fontFamily: BODY }}>
-                            CELEBRATE &nbsp;·&nbsp; SHOWCASE &nbsp;·&nbsp; SPOTLIGHT
+            <section style={{ ...wrap, paddingTop: 112, paddingBottom: 120, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                {/* Tagline — spaced caps, Electric Yellow per PDF */}
+                <div className="pulse-subtle" style={{ color: Y, fontSize: 13, fontWeight: 700, letterSpacing: "0.52em", marginBottom: 32, textTransform: "uppercase", fontFamily: BODY }}>
+                    CELEBRATE.&nbsp;&nbsp;SHOWCASE.&nbsp;&nbsp;SPOTLIGHT.
+                </div>
+                {/* Main headline */}
+                <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,10vw,124px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: 0, textTransform: "uppercase" }}>
+                    Global<br />Innovation<br />Awards 2026
+                </h1>
+                <p style={{ maxWidth: 600, fontSize: 18, lineHeight: 1.75, color: MUTED, marginTop: 32, fontFamily: BODY }}>
+                    The UK&apos;s premier awards programme celebrating innovators and founders who arrived on an innovation or talent visa &mdash; and built something extraordinary.
+                </p>
+                {/* Two CTAs */}
+                <div style={{ display: "flex", gap: 14, marginTop: 40, flexWrap: "wrap", justifyContent: "center" }}>
+                    <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" style={btn}>
+                        Apply &amp; Nominate Now <IconArrowRight />
+                    </a>
+                    <a href="https://form.typeform.com/to/GIA2026nominate" target="_blank" rel="noopener noreferrer" style={btnGhost}>
+                        Nominate Someone
+                    </a>
+                </div>
+                {/* Deadline label + live countdown */}
+                <div style={{ marginTop: 60, fontSize: 11, letterSpacing: "0.22em", color: MUTED, textTransform: "uppercase", fontFamily: BODY }}>
+                    Nomination deadline &mdash; 15 July 2026
+                </div>
+                <div style={{ display: "flex", gap: 32, marginTop: 20, justifyContent: "center" }}>
+                    {[["Days", t.days], ["Hours", t.hours], ["Minutes", t.minutes], ["Seconds", t.seconds]].map(([l, v]) => (
+                        <div key={l as string} style={{ textAlign: "center", minWidth: 72 }}>
+                            <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 60, lineHeight: 1, color: W }}>{String(v).padStart(2, "0")}</div>
+                            <div style={{ fontSize: 10, letterSpacing: "0.24em", color: MUTED, marginTop: 8, textTransform: "uppercase", fontFamily: BODY }}>{l}</div>
                         </div>
-                        <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,8vw,110px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: "0 0 28px", textTransform: "uppercase" }}>
-                            THE UK&apos;S<br />PIONEERING<br /><span style={{ color: "transparent", WebkitTextStroke: `1px ${W}`, WebkitBackgroundClip: "text" }}>VISA FOUNDER</span><br />AWARDS
-                        </h1>
-                        <p style={{ fontSize: 18, lineHeight: 1.75, color: MUTED, maxWidth: 580, marginBottom: 40, fontFamily: BODY }}>
-                            Honouring exceptional global talent, legacy innovators, and visionary founders who arrived in the UK on talent pathways and built market-defining enterprises.
-                        </p>
-                        <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                            <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" style={btn}>
-                                Apply &amp; Nominate Now <IconArrowRight />
-                            </a>
-                            <a href="/about" style={btnGhost}>Explore Process</a>
-                        </div>
-                        <div style={{ display: "flex", gap: 28, marginTop: 40, paddingTop: 28, borderTop: `1px solid ${BORDER}`, flexWrap: "wrap" }}>
-                            {["No entry fee", "Independent jury", "UK-Wide Recognition"].map((item) => (
-                                <div key={item} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: MUTED, letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: BODY }}>
-                                    <span style={{ color: Y }}>✓</span> {item}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Right — Countdown card */}
-                    <div style={{ background: DARK, border: `1px solid ${BORDER}`, padding: 36, position: "relative" }}>
-                        <div style={{ position: "absolute", top: -12, left: 24, background: Y, color: BK, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", padding: "3px 12px", fontFamily: BODY }}>
-                            NOMINATIONS CLOSE
-                        </div>
-                        <p style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 13, letterSpacing: "0.3em", color: MUTED, textTransform: "uppercase", textAlign: "center", marginBottom: 20 }}>
-                            LIVE COUNTDOWN TO DEADLINE
-                        </p>
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, textAlign: "center" }}>
-                            {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([l, v]) => (
-                                <div key={l as string} style={{ background: BK, border: `1px solid ${BORDER}`, padding: "14px 8px" }}>
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 40, lineHeight: 1, color: Y }}>{String(v).padStart(2, "0")}</div>
-                                    <div style={{ fontSize: 10, color: MUTED, letterSpacing: "0.2em", textTransform: "uppercase", marginTop: 6, fontFamily: BODY }}>{l}</div>
-                                </div>
-                            ))}
-                        </div>
-                        <div style={{ borderTop: `1px solid ${BORDER}`, marginTop: 24, paddingTop: 20, textAlign: "center" }}>
-                            <div style={{ fontSize: 10, color: MUTED, letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 6, fontFamily: BODY }}>DEADLINE DATE</div>
-                            <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 24, letterSpacing: "0.06em" }}>15 JULY 2026</div>
-                            <div style={{ fontSize: 11, color: Y, marginTop: 6, letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: BODY }}>★ Extended entries not permitted</div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
 
