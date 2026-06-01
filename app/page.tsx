@@ -158,8 +158,8 @@ export default function HomePage() {
                                 Global<br />Innovation<br />Awards 2026
                             </h1>
 
-                            {/* Yellow accent rule */}
-                            <div style={{ width: 56, height: 3, background: Y, marginBottom: 28, boxShadow: `0 0 12px ${Y}60` }} />
+                            {/* Yellow accent rule — centered on mobile */}
+                            <div style={{ width: 56, height: 3, background: Y, margin: isSmall ? "0 auto 28px" : "0 0 28px", boxShadow: `0 0 12px ${Y}60` }} />
 
                             {/* Subtitle */}
                             <p style={{ fontSize: 17, lineHeight: 1.82, color: MUTED, margin: "0 0 36px", maxWidth: 520, fontFamily: BODY }}>
@@ -180,72 +180,72 @@ export default function HomePage() {
                                 </a>
                             </div>
 
-                            {/* Trust badges */}
-                            <div style={{ display: "flex", gap: 24, flexWrap: "wrap", paddingTop: 24, borderTop: `1px solid ${BORDER}`, justifyContent: isSmall ? "center" : "flex-start" }}>
-                                {["No Entry Fee", "Independent Jury", "UK-Wide Recognition"].map((item) => (
-                                    <div key={item} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "rgba(255,255,255,0.40)", letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: BODY }}>
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth="2.5" strokeLinecap="round"><path d="M20 6 9 17l-5-5"/></svg>
-                                        {item}
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </AnimateIn>
 
-                    {/* ── RIGHT — Premium countdown card ── */}
-                    <AnimateIn from="right" delay={120}>
-                        <div style={{ position: "relative" }}>
+                    {/* ── RIGHT — Redesigned horizontal countdown ── */}
+                    <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
+                        <div style={{ background: "#050505", border: `1px solid ${BORDER}`, boxShadow: "0 32px 80px rgba(0,0,0,0.55)" }}>
 
-                            {/* "NOMINATIONS CLOSE" label pill */}
-                            <div style={{ position: "absolute", top: -14, left: 28, background: Y, color: BK, fontSize: 9, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", fontFamily: BODY, zIndex: 1 }}>
-                                NOMINATIONS CLOSE
+                            {/* Card header */}
+                            <div style={{ padding: "20px 24px 18px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+                                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: Y, boxShadow: `0 0 8px ${Y}, 0 0 18px ${Y}70`, flexShrink: 0 }} />
+                                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.34em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", fontFamily: BODY }}>
+                                        LIVE COUNTDOWN
+                                    </span>
+                                </div>
+                                <span style={{ background: Y, color: BK, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", padding: "3px 10px", fontFamily: BODY }}>
+                                    NOMINATIONS CLOSE
+                                </span>
                             </div>
 
-                            {/* Main card */}
-                            <div style={{ background: "#080808", border: `1px solid ${BORDER}`, padding: "36px 32px 28px", boxShadow: `0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(223,255,19,0.05)` }}>
-
-                                {/* Live label */}
-                                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
-                                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: Y, boxShadow: `0 0 8px ${Y}, 0 0 16px ${Y}60` }} />
-                                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.36em", color: "rgba(255,255,255,0.40)", textTransform: "uppercase", fontFamily: BODY }}>LIVE COUNTDOWN TO DEADLINE</span>
-                                </div>
-
-                                {/* 2×2 countdown grid */}
-                                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3, background: BORDER }}>
-                                    {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([label, value], i) => (
-                                        <div key={label as string} style={{ background: "#080808", padding: "22px 16px", textAlign: "center", position: "relative" }}>
-                                            {/* Top accent line on each cell */}
-                                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: (label === "Secs") ? `linear-gradient(90deg, transparent, ${Y}, transparent)` : `linear-gradient(90deg, transparent, ${Y}55, transparent)` }} />
+                            {/* ── 4-unit horizontal timer ── */}
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1px 1fr 1px 1fr 1px 1fr" }}>
+                                {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([label, value], i) => (
+                                    <React.Fragment key={label as string}>
+                                        <div style={{ padding: "28px 12px 22px", textAlign: "center", position: "relative" }}>
+                                            {/* Full-width yellow top accent */}
+                                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${Y}${i === 3 ? "ff" : "88"}, transparent)` }} />
+                                            {/* Number */}
                                             <div
-                                                key={label === "Secs" ? secKey : `${label}-${value}`}
+                                                key={label === "Secs" ? secKey : undefined}
                                                 className={label === "Secs" ? "digit-pop" : undefined}
-                                                style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 56, lineHeight: 1, color: W, letterSpacing: "-0.02em", textShadow: `0 0 24px rgba(223,255,19,0.18)` }}
+                                                style={{
+                                                    fontFamily: HEAD, fontWeight: 900,
+                                                    fontSize: "clamp(44px,5vw,66px)",
+                                                    lineHeight: 1, color: W,
+                                                    letterSpacing: "-0.02em",
+                                                    textShadow: `0 0 30px rgba(223,255,19,0.15)`,
+                                                }}
                                             >
                                                 {String(value).padStart(2, "0")}
                                             </div>
-                                            <div style={{ fontSize: 9, letterSpacing: "0.30em", color: Y, marginTop: 8, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>
+                                            {/* Label */}
+                                            <div style={{ fontSize: 9, letterSpacing: "0.3em", color: Y, marginTop: 10, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>
                                                 {label}
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
+                                        {/* Thin vertical divider between units */}
+                                        {i < 3 && <div style={{ background: BORDER, alignSelf: "stretch" }} />}
+                                    </React.Fragment>
+                                ))}
+                            </div>
 
-                                {/* Deadline info */}
-                                <div style={{ marginTop: 20, paddingTop: 18, borderTop: `1px solid ${BORDER}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <div>
-                                        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.30)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 4, fontFamily: BODY }}>DEADLINE DATE</div>
-                                        <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 20, letterSpacing: "0.04em", color: W }}>15 JULY 2026</div>
-                                    </div>
-                                    <div style={{ textAlign: "right" }}>
-                                        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.30)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 4, fontFamily: BODY }}>CEREMONY</div>
-                                        <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 20, letterSpacing: "0.04em", color: Y }}>OCT 2026</div>
-                                    </div>
+                            {/* Card footer */}
+                            <div style={{ borderTop: `1px solid ${BORDER}`, padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                <div>
+                                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>DEADLINE</div>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: W }}>15 JULY 2026</div>
                                 </div>
-
-                                {/* No extension note */}
-                                <div style={{ marginTop: 14, fontSize: 10, color: Y, letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: BODY, textAlign: "center" }}>
-                                    ★ Extended entries not permitted
+                                <div style={{ width: 1, height: 32, background: BORDER }} />
+                                <div style={{ textAlign: "right" }}>
+                                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>CEREMONY</div>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: Y }}>OCT 2026 · LONDON</div>
                                 </div>
+                            </div>
+                            <div style={{ background: `${Y}10`, borderTop: `1px solid ${Y}20`, padding: "10px 24px", textAlign: "center" }}>
+                                <span style={{ fontSize: 9, color: Y, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>★ Extended entries not permitted</span>
                             </div>
                         </div>
                     </AnimateIn>
@@ -478,20 +478,31 @@ export default function HomePage() {
             ═══════════════════════════════════════ */}
             <section style={{ position: "relative", minHeight: 660, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
 
-                {/* Ken Burns motion on London aerial night image */}
+                {/* ── Looping London drone video (Tower Bridge + London Eye aerial) ── */}
+                {/* Fallback image shown while video loads or if unsupported */}
                 <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+                    {/* Static fallback — London aerial night */}
                     <img
                         src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=85&w=1800"
                         alt="London aerial night"
                         className="ken-burns-evening"
-                        style={{ width: "100%", height: "100%", objectFit: "cover", transformOrigin: "center center", filter: "brightness(0.38) grayscale(0.1)" }}
+                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transformOrigin: "center center", filter: "brightness(0.38)" }}
                     />
+                    {/* Autoplay looping drone video — London Bridge + London Eye */}
+                    <video
+                        autoPlay muted loop playsInline
+                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.42)" }}
+                    >
+                        {/* Primary: Pexels London aerial footage */}
+                        <source src="https://videos.pexels.com/video-files/2795749/2795749-hd_1280_720_25fps.mp4" type="video/mp4" />
+                        {/* Backup: Mixkit London aerial twilight */}
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-the-city-of-london-at-sunset-40455-large.mp4" type="video/mp4" />
+                    </video>
                 </div>
 
-                {/* Overlays */}
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.72) 100%)" }} />
-                {/* Subtle vignette */}
-                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 100%)" }} />
+                {/* Gradient overlays */}
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.70) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.42) 100%)" }} />
 
                 {/* Content */}
                 <AnimateIn style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "100px 48px", width: "100%" }}>
