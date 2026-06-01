@@ -478,13 +478,13 @@ export default function HomePage() {
             ═══════════════════════════════════════ */}
             <section style={{ position: "relative", minHeight: 660, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
 
-                {/* ── Big Ben sky/aerial view — Ken Burns motion image ── */}
-                <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+                {/* ── Big Ben sky view — Ken Burns motion image ── */}
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden" }}>
                     <img
-                        src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=90&w=1800"
-                        alt="Big Ben aerial sky view London"
+                        src="https://images.unsplash.com/photo-1513026705753-bc3fffca8bf4?auto=format&fit=crop&q=90&w=1800"
+                        alt="Big Ben Westminster London night sky view"
                         className="ken-burns-evening"
-                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", transformOrigin: "center center", filter: "brightness(0.42) saturate(0.9)" }}
+                        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", transformOrigin: "center center", filter: "brightness(0.50)" }}
                     />
                 </div>
 
