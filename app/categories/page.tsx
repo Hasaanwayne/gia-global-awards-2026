@@ -1,12 +1,18 @@
 "use client"
 import { useState } from "react"
 import React from "react"
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 
 const YELLOW = "#DFFF13"
 const BLACK = "#000000"
 const WHITE = "#FFFFFF"
+const MUTED = "rgba(255,255,255,0.58)"
+const BORDER = "rgba(255,255,255,0.08)"
+const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
+const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
-const categories = [
+const CATEGORIES = [
     { id: 1, name: "Best Deep Tech Innovation", icon: "⚡", description: "Recognising the most groundbreaking deep technology innovation by a visa-route founder.", criteria: ["Technological novelty and depth", "Commercial viability", "UK market impact", "Team capability"] },
     { id: 2, name: "Best FinTech Founder", icon: "💳", description: "Celebrating the founder who has built the most impactful financial technology company.", criteria: ["Revenue growth", "User adoption", "Regulatory navigation", "Innovation in finance"] },
     { id: 3, name: "Best HealthTech Innovation", icon: "🏥", description: "Honouring the most significant health technology innovation improving patient outcomes.", criteria: ["Clinical impact", "Scalability", "NHS or private sector adoption", "Patient safety"] },
@@ -20,109 +26,86 @@ const categories = [
     { id: 11, name: "Legacy Innovation Award", icon: "🏆", description: "A special award recognising a founder from a Legacy Innovation Route who built something truly significant for the UK.", criteria: ["Historical contribution", "Lasting impact", "Industry influence", "UK legacy"], isLegacy: true },
 ]
 
-const S: Record<string, React.CSSProperties> = {
-    page: { fontFamily: "'General Sans', 'Inter', sans-serif", background: BLACK, color: WHITE, width: "100%", overflowX: "hidden" },
-    nav: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 60px", background: BLACK, position: "sticky", top: 0, zIndex: 100, borderBottom: "1px solid #1a1a1a" },
-    logo: { fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif", fontWeight: 700, fontSize: 20, color: YELLOW, letterSpacing: 2, textDecoration: "none" },
-    navLinks: { display: "flex", gap: 32, alignItems: "center" },
-    navLink: { color: WHITE, textDecoration: "none", fontSize: 14, letterSpacing: 1, textTransform: "uppercase" },
-    ctaBtn: { background: YELLOW, color: BLACK, border: "none", padding: "12px 28px", fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 14, letterSpacing: 2, textTransform: "uppercase", cursor: "pointer", textDecoration: "none", display: "inline-block" },
-    hero: { background: BLACK, padding: "80px 60px 60px", textAlign: "center", borderBottom: "1px solid #1a1a1a" },
-    eyebrow: { color: YELLOW, fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif", fontSize: 13, letterSpacing: 6, textTransform: "uppercase", marginBottom: 20 },
-    pageTitle: { fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif", fontWeight: 700, fontSize: 72, lineHeight: 1, letterSpacing: -1, marginBottom: 20, textTransform: "uppercase" },
-    pageSub: { color: "#aaaaaa", fontSize: 18, maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.6 },
-    grid: { padding: "60px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))", gap: 24, maxWidth: 1400, margin: "0 auto" },
-    card: { background: "#0a0a0a", border: "1px solid #222", overflow: "hidden", transition: "border-color 0.2s" },
-    cardHeader: { padding: "32px 32px 24px", cursor: "pointer" },
-    cardIcon: { fontSize: 32, marginBottom: 16, display: "block" },
-    categoryLabel: { color: YELLOW, fontSize: 11, letterSpacing: 4, textTransform: "uppercase", marginBottom: 8 },
-    cardName: { fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif", fontWeight: 700, fontSize: 26, lineHeight: 1.1, marginBottom: 12, textTransform: "uppercase" },
-    cardDescription: { color: "#aaaaaa", fontSize: 15, lineHeight: 1.6 },
-    expandToggle: { display: "flex", alignItems: "center", gap: 8, marginTop: 20, color: YELLOW, fontSize: 13, letterSpacing: 2, textTransform: "uppercase", cursor: "pointer", background: "none", border: "none", padding: 0 },
-    expandedContent: { borderTop: "1px solid #222", padding: "24px 32px 32px", background: "#050505" },
-    criteriaTitle: { fontSize: 11, letterSpacing: 4, textTransform: "uppercase", color: "#666", marginBottom: 16 },
-    criteriaList: { listStyle: "none", padding: 0, margin: "0 0 24px" },
-    criteriaItem: { padding: "8px 0", borderBottom: "1px solid #1a1a1a", fontSize: 14, color: "#cccccc", display: "flex", alignItems: "center", gap: 8 },
-    nominateBtn: { background: YELLOW, color: BLACK, border: "none", padding: "12px 24px", fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 13, letterSpacing: 2, textTransform: "uppercase", cursor: "pointer", textDecoration: "none", display: "inline-block", width: "100%", textAlign: "center" },
-    footer: { background: "#050505", borderTop: "1px solid #1a1a1a", padding: "60px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40 },
-    footerTitle: { fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: 2, textTransform: "uppercase", color: YELLOW, marginBottom: 16 },
-    footerText: { color: "#666", fontSize: 14, lineHeight: 1.8 },
-}
-
-const footerLinks = { color: "#666", display: "block", marginBottom: 8, textDecoration: "none" }
-
 export default function CategoriesPage() {
-    const [expandedCard, setExpandedCard] = useState<number | null>(null)
+    const [expanded, setExpanded] = useState<number | null>(null)
 
     return (
-        <div style={S.page}>
-            <nav style={S.nav}>
-                <a href="/" style={S.logo}>GLOBAL INNOVATION AWARDS</a>
-                <div style={S.navLinks}>
-                    <a href="/" style={S.navLink}>Home</a>
-                    <a href="/categories" style={{ ...S.navLink, color: YELLOW }}>Categories</a>
-                    <a href="/about" style={S.navLink}>About</a>
-                    <a href="/tickets" style={S.navLink}>Tickets</a>
-                    <a href="/faqs" style={S.navLink}>FAQs</a>
-                    <a href="#" style={S.ctaBtn}>Nominate</a>
-                </div>
-            </nav>
+        <div style={{ fontFamily: BODY, background: BLACK, color: WHITE, width: "100%", overflowX: "hidden" }}>
+            <Nav />
 
-            <div style={S.hero}>
-                <p style={S.eyebrow}>The Awards</p>
-                <h1 style={S.pageTitle}>Award Categories</h1>
-                <p style={S.pageSub}>Eleven awards recognising the innovators, founders and builders who came to the UK and built something significant.</p>
-                <a href="#" style={S.ctaBtn}>Submit a Nomination</a>
+            {/* Hero */}
+            <div style={{ background: BLACK, padding: "88px 48px 64px", textAlign: "center", borderBottom: `1px solid ${BORDER}` }}>
+                <div style={{ color: YELLOW, fontSize: 11, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: 16, fontFamily: BODY }}>The Awards</div>
+                <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(48px,9vw,80px)", lineHeight: 0.95, letterSpacing: "-0.01em", margin: "0 0 20px", textTransform: "uppercase" }}>
+                    Award Categories 2026
+                </h1>
+                <p style={{ color: MUTED, fontSize: 18, maxWidth: 600, margin: "0 auto 36px", lineHeight: 1.7, fontFamily: BODY }}>
+                    Eleven awards recognising the innovators, founders and builders who came to the UK and built something significant.
+                </p>
+                <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" style={{ background: YELLOW, color: BLACK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
+                    Submit a Nomination
+                </a>
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, marginTop: 24 }}>
+                    <div style={{ width: 8, height: 8, background: YELLOW, borderRadius: "50%" }} />
+                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Applications Open until 15 July 2026</p>
+                </div>
             </div>
 
-            <div style={S.grid}>
-                {categories.map((cat) => (
-                    <div key={cat.id} style={{ ...S.card, ...(cat.isLegacy ? { border: `1px solid ${YELLOW}` } : {}) }}>
-                        <div style={S.cardHeader} onClick={() => setExpandedCard(expandedCard === cat.id ? null : cat.id)}>
-                            <span style={S.cardIcon}>{cat.icon}</span>
-                            <p style={S.categoryLabel}>{cat.isLegacy ? "Special Award" : `Category ${cat.id}`}</p>
-                            <h3 style={S.cardName}>{cat.name}</h3>
-                            <p style={S.cardDescription}>{cat.description}</p>
-                            <button style={S.expandToggle}>
-                                <span>{expandedCard === cat.id ? "− Hide Criteria" : "+ View Criteria"}</span>
-                            </button>
-                        </div>
-                        {expandedCard === cat.id && (
-                            <div style={S.expandedContent}>
-                                <p style={S.criteriaTitle}>Judging Criteria</p>
-                                <ul style={S.criteriaList}>
-                                    {cat.criteria.map((c, i) => (
-                                        <li key={i} style={S.criteriaItem}><span style={{ color: YELLOW }}>→</span>{c}</li>
-                                    ))}
-                                </ul>
-                                <a href="#" style={S.nominateBtn}>Nominate for This Category</a>
+            {/* Category Cards — expandable accordion per brief */}
+            <div style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 48px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {CATEGORIES.map((cat) => (
+                        <div key={cat.id} style={{ background: "#0a0a0a", border: `1px solid ${expanded === cat.id ? YELLOW : (cat.isLegacy ? "rgba(223,255,19,0.3)" : BORDER)}`, transition: "border-color 0.2s" }}>
+                            {/* Card Header */}
+                            <div
+                                style={{ padding: "28px 32px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}
+                                onClick={() => setExpanded(expanded === cat.id ? null : cat.id)}
+                            >
+                                <div style={{ display: "flex", alignItems: "center", gap: 24, flex: 1 }}>
+                                    <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 32, color: expanded === cat.id ? YELLOW : "rgba(223,255,19,0.25)", minWidth: 48, transition: "color 0.2s" }}>
+                                        {String(cat.id).padStart(2, "0")}
+                                    </span>
+                                    <div>
+                                        <div style={{ fontSize: 10, color: cat.isLegacy ? YELLOW : MUTED, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 4, fontFamily: BODY }}>
+                                            {cat.isLegacy ? "✦ Special Award" : "Category"}
+                                        </div>
+                                        <h3 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 22, textTransform: "uppercase", margin: 0, lineHeight: 1.1 }}>{cat.name}</h3>
+                                    </div>
+                                </div>
+                                <div style={{ color: YELLOW, fontSize: 22, transition: "transform 0.2s", transform: expanded === cat.id ? "rotate(180deg)" : "rotate(0deg)" }}>▾</div>
                             </div>
-                        )}
-                    </div>
-                ))}
+
+                            {/* Expanded Content */}
+                            {expanded === cat.id && (
+                                <div style={{ borderTop: `1px solid ${BORDER}`, padding: "28px 32px 32px", background: "rgba(0,0,0,0.4)" }}>
+                                    <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
+                                        <div>
+                                            <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, marginBottom: 24, fontFamily: BODY }}>{cat.description}</p>
+                                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", color: YELLOW, textTransform: "uppercase", marginBottom: 14, fontFamily: BODY }}>Judging Criteria</div>
+                                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                                                {cat.criteria.map((c, i) => (
+                                                    <li key={i} style={{ padding: "10px 0", borderBottom: `1px solid ${BORDER}`, fontSize: 14, color: "#ccc", display: "flex", alignItems: "center", gap: 10, fontFamily: BODY }}>
+                                                        <span style={{ color: YELLOW, fontSize: 12 }}>→</span> {c}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div style={{ background: "#0d0d0d", border: `1px solid ${BORDER}`, padding: "24px 28px", minWidth: 220, textAlign: "center" }}>
+                                            <div style={{ fontSize: 10, color: MUTED, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 10, fontFamily: BODY }}>Status</div>
+                                            <div style={{ color: WHITE, fontWeight: 700, fontSize: 15, marginBottom: 20, fontFamily: BODY }}>OPEN FOR NOMINATIONS</div>
+                                            <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" style={{ background: YELLOW, color: BLACK, display: "block", textAlign: "center", padding: "12px 20px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none" }}>
+                                                Nominate &rarr;
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
             </div>
 
-            <footer style={S.footer}>
-                <div>
-                    <p style={S.footerTitle}>Global Innovation Awards</p>
-                    <p style={S.footerText}>The UK&apos;s first awards celebrating innovators who built something significant after arriving under an innovation or talent visa route.</p>
-                </div>
-                <div>
-                    <p style={S.footerTitle}>Navigate</p>
-                    <p style={S.footerText}>
-                        <a href="/" style={footerLinks}>Home</a>
-                        <a href="/categories" style={footerLinks}>Categories</a>
-                        <a href="/about" style={footerLinks}>About</a>
-                        <a href="/tickets" style={footerLinks}>Tickets</a>
-                        <a href="/faqs" style={{ ...footerLinks, marginBottom: 0 }}>FAQs</a>
-                    </p>
-                </div>
-                <div>
-                    <p style={S.footerTitle}>Contact</p>
-                    <p style={S.footerText}>hello@globalinnovatorawards.com</p>
-                    <p style={{ ...S.footerText, marginTop: 8 }}>&copy; 2026 Global Innovation Awards. All rights reserved.</p>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

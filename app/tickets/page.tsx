@@ -1,118 +1,106 @@
 "use client"
 import React from "react"
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 
 const YELLOW = "#DFFF13"
 const BLACK = "#000000"
 const WHITE = "#FFFFFF"
+const MUTED = "rgba(255,255,255,0.58)"
+const BORDER = "rgba(255,255,255,0.08)"
+const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
+const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
-const S: Record<string, React.CSSProperties> = {
-    page: { fontFamily: "'General Sans','Inter',sans-serif", background: BLACK, color: WHITE, width: "100%", overflowX: "hidden" },
-    nav: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 60px", background: BLACK, position: "sticky", top: 0, zIndex: 100, borderBottom: "1px solid #1a1a1a" },
-    logo: { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontWeight: 700, fontSize: 20, color: YELLOW, letterSpacing: 2, textDecoration: "none" },
-    navLinks: { display: "flex", gap: 32, alignItems: "center" },
-    navLink: { color: WHITE, textDecoration: "none", fontSize: 14, letterSpacing: 1, textTransform: "uppercase" },
-    ctaBtn: { background: YELLOW, color: BLACK, border: "none", padding: "12px 28px", fontFamily: "'General Sans',sans-serif", fontWeight: 700, fontSize: 14, letterSpacing: 2, textTransform: "uppercase", cursor: "pointer", textDecoration: "none", display: "inline-block" },
-    hero: { background: BLACK, padding: "120px 60px 100px", textAlign: "center", borderBottom: "1px solid #1a1a1a", minHeight: "70vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" },
-    eyebrow: { color: YELLOW, fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontSize: 13, letterSpacing: 6, textTransform: "uppercase", marginBottom: 24 },
-    pageTitle: { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontWeight: 700, fontSize: 80, lineHeight: 1, letterSpacing: -2, marginBottom: 24, textTransform: "uppercase", maxWidth: 900 },
-    dateLine: { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontSize: 28, letterSpacing: 4, color: YELLOW, textTransform: "uppercase", marginBottom: 40 },
-    comingSoonBadge: { display: "inline-block", border: "2px solid #DFFF13", color: YELLOW, padding: "10px 32px", fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: 6, textTransform: "uppercase", marginBottom: 40 },
-    body: { color: "#aaaaaa", fontSize: 18, lineHeight: 1.8, maxWidth: 680, textAlign: "center", margin: "0 auto 40px" },
-    notifySection: { padding: "80px 60px", background: "#050505", textAlign: "center" },
-    sectionTitle: { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontWeight: 700, fontSize: 48, textTransform: "uppercase", marginBottom: 20 },
-    emailForm: { display: "flex", gap: 0, maxWidth: 500, margin: "0 auto", height: 52 },
-    emailInput: { flex: 1, background: "#111", border: "1px solid #333", borderRight: "none", color: WHITE, padding: "0 20px", fontSize: 14, outline: "none", fontFamily: "'General Sans',sans-serif" },
-    submitBtn: { background: YELLOW, color: BLACK, border: "none", padding: "0 28px", fontFamily: "'General Sans',sans-serif", fontWeight: 700, fontSize: 14, letterSpacing: 2, textTransform: "uppercase", cursor: "pointer" },
-    eventSection: { padding: "80px 60px", maxWidth: 1200, margin: "0 auto" },
-    detailsGrid: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginTop: 60 },
-    detailCard: { background: "#0a0a0a", border: "1px solid #1a1a1a", padding: 40 },
-    detailIcon: { fontSize: 32, marginBottom: 16, display: "block" },
-    detailLabel: { color: YELLOW, fontSize: 11, letterSpacing: 4, textTransform: "uppercase", marginBottom: 8 },
-    detailValue: { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontWeight: 700, fontSize: 24, textTransform: "uppercase" },
-    footer: { background: "#050505", borderTop: "1px solid #1a1a1a", padding: "60px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40, marginTop: 80 },
-    footerTitle: { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: 2, textTransform: "uppercase", color: YELLOW, marginBottom: 16 },
-    footerText: { color: "#666", fontSize: 14, lineHeight: 1.8 },
-}
-
-const footerLinks = { color: "#666", display: "block", marginBottom: 8, textDecoration: "none" }
-
-const eventDetails = [
-    { icon: "📅", label: "When", value: "October 2026" },
-    { icon: "📍", label: "Where", value: "London, UK" },
-    { icon: "🎭", label: "What", value: "Gala Dinner + Awards" },
-    { icon: "👥", label: "Who", value: "Founders, Investors, Press" },
-    { icon: "🏆", label: "How Many", value: "11 Categories" },
-    { icon: "✨", label: "Vibe", value: "Premium - Inspiring" },
+const EVENT_DETAILS = [
+    { icon: "📅", label: "Date", value: "October 2026" },
+    { icon: "📍", label: "Location", value: "Central London" },
+    { icon: "🎭", label: "Format", value: "Gala Dinner + Awards" },
+    { icon: "👥", label: "Audience", value: "Founders, Investors & Press" },
+    { icon: "🏆", label: "Categories", value: "11 Awards" },
+    { icon: "✨", label: "Experience", value: "Premium & Inspiring" },
 ]
 
 export default function TicketsPage() {
     return (
-        <div style={S.page}>
-            <nav style={S.nav}>
-                <a href="/" style={S.logo}>GLOBAL INNOVATION AWARDS</a>
-                <div style={S.navLinks}>
-                    <a href="/" style={S.navLink}>Home</a>
-                    <a href="/categories" style={S.navLink}>Categories</a>
-                    <a href="/about" style={S.navLink}>About</a>
-                    <a href="/tickets" style={{ ...S.navLink, color: YELLOW }}>Tickets</a>
-                    <a href="/faqs" style={S.navLink}>FAQs</a>
-                    <a href="#" style={S.ctaBtn}>Nominate</a>
+        <div style={{ fontFamily: BODY, background: BLACK, color: WHITE, width: "100%", overflowX: "hidden" }}>
+            <Nav />
+
+            {/* Hero — Full height with London photo background */}
+            <section style={{ position: "relative", minHeight: "72vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", borderBottom: `1px solid ${BORDER}` }}>
+                <div style={{
+                    position: "absolute", inset: 0,
+                    backgroundImage: "url(https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1600)",
+                    backgroundSize: "cover", backgroundPosition: "center 40%",
+                    filter: "brightness(0.28) grayscale(0.15)",
+                }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.75) 100%)" }} />
+                <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "100px 40px" }}>
+                    <div style={{ color: YELLOW, fontSize: 11, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: 20, fontFamily: BODY }}>Gala Ceremony Passes</div>
+                    <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,10vw,100px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: "0 0 20px", textTransform: "uppercase" }}>
+                        Get Your Tickets
+                    </h1>
+                    <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 24, letterSpacing: "0.16em", color: YELLOW, textTransform: "uppercase", marginBottom: 32 }}>
+                        October 2026 &middot; London
+                    </div>
+                    <div style={{ display: "inline-block", border: `2px solid ${YELLOW}`, color: YELLOW, padding: "10px 32px", fontFamily: HEAD, fontWeight: 700, fontSize: 16, letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 32 }}>
+                        Tickets Available from July 2026
+                    </div>
+                    <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 17, lineHeight: 1.75, maxWidth: 600, margin: "0 auto 40px", fontFamily: BODY }}>
+                        Join 400+ founders, investors, accelerator heads and innovation pioneers for an unforgettable evening celebrating the UK&apos;s most remarkable immigrant innovators.
+                    </p>
+                    <a href="#notify" style={{ background: YELLOW, color: BLACK, padding: "15px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
+                        Notify Me When Tickets Open
+                    </a>
                 </div>
-            </nav>
+            </section>
 
-            <div style={S.hero}>
-                <p style={S.eyebrow}>Awards Evening - October 2026 - London</p>
-                <h1 style={S.pageTitle}>Get Your Tickets</h1>
-                <p style={S.dateLine}>October 2026 - London</p>
-                <div style={S.comingSoonBadge}>Tickets Available from July 2026</div>
-                <p style={S.body}>Join us for a premium awards evening celebrating the founders and innovators who came to the UK and built something extraordinary.</p>
-                <a href="#notify" style={S.ctaBtn}>Notify Me When Tickets Open</a>
-            </div>
-
-            <div style={S.eventSection}>
-                <p style={{ color: YELLOW, fontSize: 12, letterSpacing: 5, textTransform: "uppercase", textAlign: "center", marginBottom: 16 }}>Event Details</p>
-                <h2 style={{ ...S.sectionTitle, textAlign: "center" }}>A Night to Remember</h2>
-                <div style={S.detailsGrid}>
-                    {eventDetails.map((d) => (
-                        <div key={d.label} style={S.detailCard}>
-                            <span style={S.detailIcon}>{d.icon}</span>
-                            <p style={S.detailLabel}>{d.label}</p>
-                            <p style={S.detailValue}>{d.value}</p>
+            {/* Event Details Grid */}
+            <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+                <div style={{ textAlign: "center", marginBottom: 56 }}>
+                    <div style={{ color: YELLOW, fontSize: 11, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: 14, fontFamily: BODY }}>Event Details</div>
+                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(36px,6vw,52px)", textTransform: "uppercase", margin: 0 }}>A Night to Remember</h2>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                    {EVENT_DETAILS.map((d) => (
+                        <div key={d.label} style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: 36 }}>
+                            <span style={{ fontSize: 28, marginBottom: 14, display: "block" }}>{d.icon}</span>
+                            <div style={{ color: YELLOW, fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>{d.label}</div>
+                            <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 22, textTransform: "uppercase" }}>{d.value}</div>
                         </div>
                     ))}
                 </div>
-            </div>
+            </section>
 
-            <div id="notify" style={S.notifySection}>
-                <p style={{ color: YELLOW, fontSize: 12, letterSpacing: 5, textTransform: "uppercase", marginBottom: 16 }}>Stay Informed</p>
-                <h2 style={S.sectionTitle}>Get Notified When Tickets Open</h2>
-                <p style={{ color: "#aaaaaa", fontSize: 16, lineHeight: 1.7, maxWidth: 500, margin: "0 auto 40px" }}>Tickets go on sale in July 2026. Enter your email to be first to know.</p>
-                <div style={S.emailForm}>
-                    <input type="email" placeholder="Your email address" style={S.emailInput} />
-                    <button style={S.submitBtn}>Notify Me</button>
-                </div>
-            </div>
-
-            <footer style={S.footer}>
-                <div>
-                    <p style={S.footerTitle}>Global Innovation Awards</p>
-                    <p style={S.footerText}>The UK&apos;s first awards celebrating immigrant innovators.</p>
-                </div>
-                <div>
-                    <p style={S.footerTitle}>Navigate</p>
-                    <p style={S.footerText}>
-                        <a href="/" style={footerLinks}>Home</a>
-                        <a href="/categories" style={footerLinks}>Categories</a>
-                        <a href="/about" style={footerLinks}>About</a>
-                        <a href="/tickets" style={footerLinks}>Tickets</a>
-                        <a href="/faqs" style={{ ...footerLinks, marginBottom: 0 }}>FAQs</a>
+            {/* Ticket Tailor embed placeholder + Notify form */}
+            <section id="notify" style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: "80px 48px", textAlign: "center" }}>
+                <div style={{ maxWidth: 600, margin: "0 auto" }}>
+                    <div style={{ color: YELLOW, fontSize: 11, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: 14, fontFamily: BODY }}>Stay Informed</div>
+                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(32px,6vw,48px)", textTransform: "uppercase", margin: "0 0 20px" }}>Get Notified When Tickets Open</h2>
+                    <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, marginBottom: 36, fontFamily: BODY }}>
+                        Tickets go on sale in July 2026. Register below to be first to know — nominees receive priority allocated seating.
                     </p>
+                    {/* Ticket Tailor embed will replace this form in July 2026 */}
+                    <div style={{ display: "flex", gap: 0, maxWidth: 460, margin: "0 auto", height: 50 }}>
+                        <input
+                            type="email"
+                            placeholder="Your professional email"
+                            style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: WHITE, padding: "0 18px", fontSize: 13, outline: "none", fontFamily: BODY }}
+                        />
+                        <button style={{ background: YELLOW, color: BLACK, border: "none", padding: "0 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>
+                            Notify Me
+                        </button>
+                    </div>
+                    <p style={{ fontSize: 11, color: MUTED, marginTop: 14, fontFamily: BODY }}>★ Current nominees receive priority allocated guest seating</p>
+
+                    {/* Ticket Tailor embed placeholder */}
+                    <div style={{ marginTop: 56, padding: "40px", border: `1px dashed rgba(223,255,19,0.2)`, background: "rgba(223,255,19,0.02)", textAlign: "center" }}>
+                        <div style={{ color: YELLOW, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 10, fontFamily: BODY }}>Coming July 2026</div>
+                        <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, margin: 0, fontFamily: BODY }}>Ticket Tailor purchase widget will be embedded here when tickets open in July. General admission tickets grant full access to the awards hall, panel sessions, networking banquet and drinks reception.</p>
+                    </div>
                 </div>
-                <div>
-                    <p style={S.footerTitle}>Contact</p>
-                    <p style={S.footerText}>hello@globalinnovatorawards.com</p>
-                </div>
-            </footer>
+            </section>
+
+            <Footer />
         </div>
     )
 }
