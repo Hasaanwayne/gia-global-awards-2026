@@ -17,12 +17,11 @@ body {
   box-sizing: border-box;
 }
 
-/* Marquee animation for the eligibility routes slider */
+/* ── Marquee ── */
 @keyframes marquee {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
-
 .marquee-track {
   display: flex;
   gap: 48px;
@@ -30,17 +29,148 @@ body {
   white-space: nowrap;
   will-change: transform;
 }
+.marquee-track:hover { animation-play-state: paused; }
 
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Pulse subtle animation for tagline */
+/* ── Tagline pulse ── */
 @keyframes pulseSubtle {
-  0%, 100% { opacity: 0.9; }
+  0%, 100% { opacity: 0.88; }
   50%       { opacity: 1; }
 }
+.pulse-subtle { animation: pulseSubtle 3.5s ease-in-out infinite; }
 
-.pulse-subtle {
-  animation: pulseSubtle 3s ease-in-out infinite;
+/* ── Countdown digit flip ── */
+@keyframes digitPop {
+  0%   { transform: translateY(-6px); opacity: 0.4; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+.digit-pop { animation: digitPop 0.22s cubic-bezier(0.34,1.56,0.64,1); }
+
+/* ── Colon blink ── */
+@keyframes colonBlink {
+  0%, 49%  { opacity: 1; }
+  50%, 100% { opacity: 0.15; }
+}
+.colon-blink { animation: colonBlink 1s step-end infinite; }
+
+/* ── Ken Burns — London skyscrapers (eligibility image) ── */
+@keyframes kenBurnsCity {
+  0%   { transform: scale(1.0)  translate(0%,    0%);   }
+  25%  { transform: scale(1.10) translate(-1.5%, -1%);  }
+  50%  { transform: scale(1.14) translate(1%,   -2%);   }
+  75%  { transform: scale(1.10) translate(-0.5%, 1.5%); }
+  100% { transform: scale(1.0)  translate(0%,    0%);   }
+}
+.ken-burns-city {
+  animation: kenBurnsCity 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Ken Burns — London aerial night (awards evening) ── */
+@keyframes kenBurnsEvening {
+  0%   { transform: scale(1.0)  translate(0%,   0%);   }
+  33%  { transform: scale(1.12) translate(-2%,  -1%);  }
+  66%  { transform: scale(1.08) translate(2%,    1%);  }
+  100% { transform: scale(1.0)  translate(0%,   0%);   }
+}
+.ken-burns-evening {
+  animation: kenBurnsEvening 25s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Section entrance (used by AnimateIn component) ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* ── Premium CTA button ── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease,
+              background 0.2s ease !important;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: skewX(-15deg);
+  transition: left 0s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(223,255,19,0.45), 0 2px 8px rgba(223,255,19,0.2);
+}
+.btn-primary:hover::after {
+  left: 150%;
+  transition: left 0.5s ease;
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(223,255,19,0.25);
+}
+
+/* ── Ghost button ── */
+.btn-ghost {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, color 0.25s ease,
+              background 0.25s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease !important;
+}
+.btn-ghost:hover {
+  border-color: #DFFF13 !important;
+  color: #DFFF13 !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(223,255,19,0.15);
+}
+.btn-ghost:active { transform: scale(0.98); }
+
+/* ── Nav link hover ── */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease, opacity 0.2s ease !important;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: #DFFF13;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* ── Card lift on hover ── */
+.card-hover {
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease !important;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(223,255,19,0.25);
+  border-color: rgba(223,255,19,0.35) !important;
+}
+
+/* ── Judge card ── */
+.judge-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.judge-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(223,255,19,0.2);
+  border-color: rgba(223,255,19,0.3) !important;
 }

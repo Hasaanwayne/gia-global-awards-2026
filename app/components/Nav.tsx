@@ -42,7 +42,7 @@ export default function Nav() {
                     const isActive = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href)
                     return (
                         <li key={l.href}>
-                            <a href={l.href} style={{
+                            <a href={l.href} className={`nav-link${isActive ? " active" : ""}`} style={{
                                 color: isActive ? YELLOW : WHITE,
                                 textDecoration: "none",
                                 fontSize: 12,
@@ -51,9 +51,7 @@ export default function Nav() {
                                 textTransform: "uppercase",
                                 opacity: isActive ? 1 : 0.75,
                                 fontFamily: BODY,
-                                borderBottom: isActive ? `1px solid ${YELLOW}` : "1px solid transparent",
                                 paddingBottom: 2,
-                                transition: "all 0.15s ease",
                             }}>{l.label}</a>
                         </li>
                     )
@@ -65,6 +63,7 @@ export default function Nav() {
                 href="https://form.typeform.com/to/GIA2026"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="btn-primary"
                 style={{
                     background: YELLOW, color: BLACK,
                     padding: "11px 28px",
@@ -74,7 +73,6 @@ export default function Nav() {
                     textTransform: "uppercase",
                     textDecoration: "none",
                     display: "inline-block",
-                    transition: "background 0.15s ease",
                 }}
             >
                 Apply Now
