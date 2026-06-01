@@ -478,26 +478,14 @@ export default function HomePage() {
             ═══════════════════════════════════════ */}
             <section style={{ position: "relative", minHeight: 660, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
 
-                {/* ── Looping London drone video (Tower Bridge + London Eye aerial) ── */}
-                {/* Fallback image shown while video loads or if unsupported */}
+                {/* ── Big Ben sky/aerial view — Ken Burns motion image ── */}
                 <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-                    {/* Static fallback — London aerial night */}
                     <img
-                        src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=85&w=1800"
-                        alt="London aerial night"
+                        src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=90&w=1800"
+                        alt="Big Ben aerial sky view London"
                         className="ken-burns-evening"
-                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transformOrigin: "center center", filter: "brightness(0.38)" }}
+                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", transformOrigin: "center center", filter: "brightness(0.42) saturate(0.9)" }}
                     />
-                    {/* Autoplay looping drone video — London Bridge + London Eye */}
-                    <video
-                        autoPlay muted loop playsInline
-                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.42)" }}
-                    >
-                        {/* Primary: Pexels London aerial footage */}
-                        <source src="https://videos.pexels.com/video-files/2795749/2795749-hd_1280_720_25fps.mp4" type="video/mp4" />
-                        {/* Backup: Mixkit London aerial twilight */}
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-the-city-of-london-at-sunset-40455-large.mp4" type="video/mp4" />
-                    </video>
                 </div>
 
                 {/* Gradient overlays */}
