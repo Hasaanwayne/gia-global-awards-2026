@@ -292,39 +292,71 @@ export default function HomePage() {
             <section style={{ background: BK, padding: "96px 48px", borderTop: `1px solid ${BORDER}` }}>
                 <div style={wrap}>
                     {/* Header */}
-                    <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
+                    <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 56px" }}>
                         <span style={badge()}>AWARDS IMPACT</span>
-                        <h2 style={{ ...sectionH2, fontSize: "clamp(34px,5vw,60px)", marginBottom: 20 }}>
+                        <h2 style={{ ...sectionH2, fontSize: "clamp(40px,5.5vw,72px)", marginBottom: 20 }}>
                             WHY ENTER THE NEXUS AWARDS?
                         </h2>
-                        <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.75, fontFamily: BODY }}>
+                        <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.75, fontFamily: BODY, maxWidth: 620, margin: "0 auto" }}>
                             Winning or placing as a finalist at the UK&apos;s premier talent visa awards unlocks significant commercial, operational, and PR leverage for your venture.
                         </p>
                     </div>
 
-                    {/* 3 cards */}
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                    {/* 3 cards — matching screenshot layout */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
                         {WHY_ENTER.map((card) => (
-                            <div key={card.num} style={{
-                                background: DARK, border: `1px solid ${BORDER}`,
-                                padding: 36, display: "flex", flexDirection: "column",
-                                justifyContent: "space-between",
-                                transition: "border-color 0.25s",
-                            }}
-                                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(223,255,19,0.4)")}
+                            <div
+                                key={card.num}
+                                style={{
+                                    background: "#0d0d0d",
+                                    border: `1px solid ${BORDER}`,
+                                    padding: "40px 36px 36px",
+                                    display: "flex", flexDirection: "column",
+                                    justifyContent: "space-between",
+                                    minHeight: 340,
+                                    transition: "border-color 0.25s",
+                                    cursor: "default",
+                                }}
+                                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(223,255,19,0.35)")}
                                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = BORDER)}
                             >
                                 <div>
-                                    {/* Icon box */}
-                                    <div style={{ width: 48, height: 48, background: Y, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}>
+                                    {/* Electric Yellow icon box — matches screenshot */}
+                                    <div style={{
+                                        width: 56, height: 56,
+                                        background: Y,
+                                        display: "flex", alignItems: "center", justifyContent: "center",
+                                        marginBottom: 28,
+                                        flexShrink: 0,
+                                    }}>
                                         <card.Icon />
                                     </div>
-                                    <h3 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 22, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 14, color: W }}>
+                                    {/* Card title — bold, uppercase, white */}
+                                    <h3 style={{
+                                        fontFamily: HEAD, fontWeight: 900,
+                                        fontSize: 24, textTransform: "uppercase",
+                                        letterSpacing: "0.03em", marginBottom: 16,
+                                        color: W, lineHeight: 1.1,
+                                    }}>
                                         {card.title}
                                     </h3>
-                                    <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>{card.body}</p>
+                                    {/* Body text */}
+                                    <p style={{
+                                        color: "rgba(255,255,255,0.55)",
+                                        fontSize: 14, lineHeight: 1.8,
+                                        margin: 0, fontFamily: BODY,
+                                    }}>
+                                        {card.body}
+                                    </p>
                                 </div>
-                                <div style={{ color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", marginTop: 28, display: "flex", alignItems: "center", gap: 6, fontFamily: BODY }}>
+                                {/* Footer — Electric Yellow "01 / PROVE TRUST →" */}
+                                <div style={{
+                                    color: Y, fontSize: 12, fontWeight: 700,
+                                    letterSpacing: "0.16em", textTransform: "uppercase",
+                                    marginTop: 32,
+                                    display: "flex", alignItems: "center", gap: 6,
+                                    fontFamily: BODY,
+                                }}>
                                     {card.num} / {card.cta} <IconArrowRight />
                                 </div>
                             </div>
