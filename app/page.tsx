@@ -4,18 +4,21 @@ import React from "react"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 
-const YELLOW = "#DFFF13"
-const BLACK = "#000000"
-const WHITE = "#FFFFFF"
-const PANEL = "#0D0D0D"
-const BORDER = "rgba(255,255,255,0.08)"
+/* ── Brand tokens (PDF non-negotiables) ── */
+const Y = "#DFFF13"   // Electric Yellow — CTAs, accents, eligibility bar
+const BK = "#000000"  // Pitch Black — dominant background
+const W = "#FFFFFF"   // Pure White — text on dark
+const DARK = "#0D0D0D"
+const PANEL = "#151515"
+const BORDER = "#222222"
 const MUTED = "rgba(255,255,255,0.60)"
-const DEADLINE = new Date("2026-07-15T23:59:00")
-const MAXW = 1200
-const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
-const BODY = "'General Sans','Inter',system-ui,sans-serif"
+const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"   // Neutral Face Bold fallback per PDF
+const BODY = "'General Sans','Inter',system-ui,sans-serif"    // Body font per PDF
+const MAXW = 1280
 
 /* ── Countdown hook ── */
+const DEADLINE = new Date("2026-07-15T23:59:00")
+
 function useCountdown(target: Date) {
     const calc = () => {
         const diff = target.getTime() - Date.now()
@@ -35,214 +38,451 @@ function useCountdown(target: Date) {
     return time
 }
 
-/* ── Icon components ── */
-function Icon({ name }: { name: string }) {
-    const c = { width: 30, height: 30, viewBox: "0 0 24 24", fill: "none", stroke: YELLOW, strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
-    if (name === "credibility") return <svg {...c}><circle cx="12" cy="8" r="5" /><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5" /></svg>
-    if (name === "profile") return <svg {...c}><path d="M3 11l18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 0 1-5.8-1" /></svg>
-    return <svg {...c}><path d="M8 13l3 3 5-6" /><circle cx="12" cy="12" r="9" /></svg>
+/* ── Reusable style helpers ── */
+const wrap: React.CSSProperties = { maxWidth: MAXW, margin: "0 auto", padding: "0 48px", boxSizing: "border-box" }
+const badge = (extra?: React.CSSProperties): React.CSSProperties => ({
+    display: "inline-block",
+    background: "rgba(223,255,19,0.08)",
+    border: "1px solid rgba(223,255,19,0.2)",
+    color: Y, fontSize: 11, fontWeight: 700,
+    letterSpacing: "0.28em", textTransform: "uppercase",
+    padding: "4px 12px", marginBottom: 20, fontFamily: BODY,
+    ...extra,
+})
+const sectionH2: React.CSSProperties = {
+    fontFamily: HEAD, fontWeight: 900, textTransform: "uppercase",
+    lineHeight: 1.0, margin: 0, color: W,
+}
+const btn: React.CSSProperties = {
+    background: Y, color: BK, border: "none",
+    padding: "14px 36px", fontSize: 13, fontWeight: 700,
+    letterSpacing: "0.1em", textTransform: "uppercase",
+    cursor: "pointer", textDecoration: "none",
+    display: "inline-flex", alignItems: "center", gap: 8,
+    fontFamily: BODY,
+}
+const btnGhost: React.CSSProperties = {
+    background: "transparent", color: W,
+    border: "1px solid rgba(255,255,255,0.35)",
+    padding: "14px 36px", fontSize: 13, fontWeight: 700,
+    letterSpacing: "0.1em", textTransform: "uppercase",
+    cursor: "pointer", textDecoration: "none",
+    display: "inline-flex", alignItems: "center", gap: 8,
+    fontFamily: BODY,
 }
 
-/* ── Judges data ── */
+/* ── SVG Icons (Lucide-style) ── */
+const IconAward = () => (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+    </svg>
+)
+const IconUsers = () => (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+)
+const IconMegaphone = () => (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+    </svg>
+)
+const IconCheck = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={BK} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 6 9 17l-5-5" />
+    </svg>
+)
+const IconArrowRight = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+)
+
+/* ── Judge data (from NEXUS website) ── */
 const JUDGES = [
-    { n: "Dr Amara Osei", r: "Investor & GP", o: "Adaverse Fund", bio: "Dr Amara Osei is a leading venture capital investor specialising in African and diaspora-founded deep tech. A former Global Talent Visa recipient, she has backed 40+ startups across the UK and West Africa." },
-    { n: "Priya Mehta", r: "Chief Innovation Officer", o: "Innovate UK", bio: "Priya leads innovation strategy at Innovate UK, having overseen £500M+ in grants to high-growth startups. She arrived in the UK under the Tier 1 Exceptional Talent route and is a passionate advocate for immigrant founders." },
-    { n: "James Okafor", r: "Partner", o: "Notion Capital", bio: "James is a partner at Notion Capital, one of Europe's leading B2B SaaS-focused VCs. He has backed over 30 companies and is a mentor on multiple UK accelerator programmes." },
-    { n: "Keiko Yamamoto", r: "Founder & CEO", o: "Hoshi Robotics", bio: "Keiko founded Hoshi Robotics after arriving in the UK on the Global Talent Visa. The company now employs 120 people and is one of the UK's fastest-growing robotics companies." },
-    { n: "Marcus Adebayo", r: "Director", o: "UKRI", bio: "Marcus directs international talent programmes at UKRI, working across government to attract and retain the world's best researchers and innovators in the United Kingdom." },
-    { n: "Sofia Marchetti", r: "Co-founder", o: "Cleo AI", bio: "Sofia is a co-founder at Cleo AI, the UK's leading AI-powered financial wellbeing app with 7M+ users. She arrived in the UK under the Innovator Visa route and is an advocate for founder diversity." },
+    {
+        name: "Dame Helena Vance", role: "Chair of Innovate UK",
+        img: "https://i.pravatar.cc/150?img=33",
+        bio: "Vance has guided over £2.4B in venture-backed grants and innovation pathways across UK institutions. A former Global Talent recipient and one of the UK's most influential voices in the innovation ecosystem.",
+    },
+    {
+        name: "Dr. Aris Thorne", role: "GP, DeepTech Labs",
+        img: "https://i.pravatar.cc/150?img=11",
+        bio: "Former Global Talent recipient, venture backer, and leading AI systems engineer from Oxford. Dr Thorne has invested in over 25 deeptech companies across the UK and Europe.",
+    },
+    {
+        name: "Siddharth Patel", role: "Co-Founder, Aegis AI",
+        img: "https://i.pravatar.cc/150?img=12",
+        bio: "Innovator Founder alum. Successfully scaled his fintech venture to £80M valuation in London. Siddharth is now a board advisor to multiple UK startups and a NEXUS founding supporter.",
+    },
+    {
+        name: "Chantal de Clercq", role: "Partner, Apex Ventures",
+        img: "https://i.pravatar.cc/150?img=47",
+        bio: "Over 15 years backing early-stage enterprise SaaS and border-free technologies worldwide. Chantal sits on the boards of 8 UK-based startups and is a frequent speaker on immigrant founder journeys.",
+    },
 ]
 
-/* ── Why Enter data ── */
-const REASONS = [
-    { ic: "credibility", t: "Build Credibility", d: "Demonstrate to investors, partners and customers that your work has been independently recognised by an expert jury. An award carries real weight." },
-    { ic: "profile", t: "Raise Your Profile", d: "Benefit from PR support, media coverage and social amplification through our partner networks. Winners and finalists gain significant national visibility." },
-    { ic: "community", t: "Join the Community", d: "Become part of an exclusive alumni network of the UK's most impactful immigrant innovators. Connect, collaborate and grow together." },
+/* ── Why Enter cards ── */
+const WHY_ENTER = [
+    {
+        Icon: IconAward, num: "01",
+        title: "Credibility & Accreditation",
+        body: "Signal to customers, institutional investors, and talent that your venture has been thoroughly vetted and approved by an expert judging panel.",
+        cta: "Prove Trust",
+    },
+    {
+        Icon: IconUsers, num: "02",
+        title: "Unrivalled Networking",
+        body: "Connect immediately with fellow innovators, top-tier venture capital funds, policy makers, and representatives from government innovation departments during our flagship evening.",
+        cta: "Scale Connections",
+    },
+    {
+        Icon: IconMegaphone, num: "03",
+        title: "National Press & Coverage",
+        body: "Gain immediate exposure across mainstream tech channels, innovation blogs, national news publications, and our extensive partner ecosystem.",
+        cta: "Command Spotlight",
+    },
 ]
 
-const wrap: React.CSSProperties = { width: "100%", maxWidth: MAXW, margin: "0 auto", padding: "0 40px", boxSizing: "border-box" }
-const btn: React.CSSProperties = { background: YELLOW, color: BLACK, border: "none", padding: "14px 32px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer", textDecoration: "none", display: "inline-block", fontFamily: BODY }
-const btnGhost: React.CSSProperties = { background: "transparent", color: WHITE, border: `1px solid rgba(255,255,255,0.4)`, padding: "14px 32px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer", textDecoration: "none", display: "inline-block", fontFamily: BODY }
-const kicker: React.CSSProperties = { color: YELLOW, fontSize: 11, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: 16, fontFamily: BODY }
-const h2style: React.CSSProperties = { fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(36px,5vw,66px)", lineHeight: 1.0, letterSpacing: "-0.01em", margin: 0, textTransform: "uppercase" }
+/* ── Marquee items ── */
+const MARQUEE_ITEMS = [
+    "INNOVATOR FOUNDER VISA", "•", "GLOBAL TALENT VISA", "•", "LEGACY INNOVATION ROUTES",
+    "INNOVATOR FOUNDER VISA", "•", "GLOBAL TALENT VISA", "•", "LEGACY INNOVATION ROUTES",
+]
 
 export default function HomePage() {
     const t = useCountdown(DEADLINE)
     const [activeJudge, setActiveJudge] = useState<number | null>(null)
 
     return (
-        <div style={{ fontFamily: BODY, background: BLACK, color: WHITE, width: "100%", overflowX: "hidden", margin: 0 }}>
+        <div style={{ fontFamily: BODY, background: BK, color: W, width: "100%", overflowX: "hidden" }}>
             <Nav />
 
-            {/* ── HERO ── */}
-            <section style={{ ...wrap, paddingTop: 112, paddingBottom: 120, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                {/* Tagline — spaced caps, Electric Yellow per brief */}
-                <div style={{ color: YELLOW, fontSize: 13, fontWeight: 700, letterSpacing: "0.52em", marginBottom: 32, textTransform: "uppercase", fontFamily: BODY }}>
-                    CELEBRATE.&nbsp;&nbsp;SHOWCASE.&nbsp;&nbsp;SPOTLIGHT.
-                </div>
-                {/* Main headline */}
-                <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,10vw,124px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: 0, textTransform: "uppercase" }}>
-                    Global<br />Innovation<br />Awards 2026
-                </h1>
-                <p style={{ maxWidth: 600, fontSize: 18, lineHeight: 1.7, color: MUTED, marginTop: 32, fontFamily: BODY }}>
-                    The UK&apos;s premier awards programme celebrating innovators and founders who arrived on an innovation or talent visa &mdash; and built something extraordinary.
-                </p>
-                {/* Two CTAs */}
-                <div style={{ display: "flex", gap: 14, marginTop: 40, flexWrap: "wrap", justifyContent: "center" }}>
-                    <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" style={btn}>Apply Now</a>
-                    <a href="https://form.typeform.com/to/GIA2026nominate" target="_blank" rel="noopener noreferrer" style={btnGhost}>Nominate Someone</a>
-                </div>
-                {/* Deadline + Countdown */}
-                <div style={{ marginTop: 60, fontSize: 11, letterSpacing: "0.2em", color: MUTED, textTransform: "uppercase", fontFamily: BODY }}>
-                    Nomination deadline &mdash; 15 July 2026
-                </div>
-                <div style={{ display: "flex", gap: 32, marginTop: 20, justifyContent: "center" }}>
-                    {[["Days", t.days], ["Hours", t.hours], ["Minutes", t.minutes], ["Seconds", t.seconds]].map(([l, v]) => (
-                        <div key={l as string} style={{ textAlign: "center", minWidth: 72 }}>
-                            <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 60, lineHeight: 1, color: WHITE }}>{String(v).padStart(2, "0")}</div>
-                            <div style={{ fontSize: 10, letterSpacing: "0.24em", color: MUTED, marginTop: 8, textTransform: "uppercase", fontFamily: BODY }}>{l}</div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+            {/* ══════════════════════════════════════════
+                SECTION 1 — HERO
+                Hero per PDF brief: Logo, tagline, headline,
+                two CTAs, deadline + live countdown timer
+            ══════════════════════════════════════════ */}
+            <section style={{ position: "relative", minHeight: "90vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "120px 48px", background: BK, overflow: "hidden" }}>
+                {/* Radial glow */}
+                <div style={{ position: "absolute", top: 0, right: 0, width: 600, height: 600, background: "radial-gradient(circle at top right, rgba(223,255,19,0.07), transparent 55%)", pointerEvents: "none" }} />
 
-            {/* ── WHO IT'S FOR ── */}
-            <section style={{ ...wrap, paddingTop: 96, paddingBottom: 96, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 64, alignItems: "center" }}>
-                <div>
-                    <div style={kicker}>Who It&apos;s For</div>
-                    <h2 style={h2style}>Built for founders who came, built, and changed things.</h2>
-                    <p style={{ fontSize: 17, lineHeight: 1.8, color: MUTED, marginTop: 24 }}>
-                        You arrived in the UK under an Innovation Visa, Global Talent Visa, or one of the legacy routes. You took a risk. You built a team, raised funding, won customers &mdash; and created something that matters. <strong style={{ color: WHITE }}>These awards are for you.</strong>
-                    </p>
-                    <p style={{ fontSize: 17, lineHeight: 1.8, color: MUTED, marginTop: 16 }}>
-                        To be eligible, at least one founder must have arrived in the UK under an eligible visa route. Your company must be UK-registered and operating. No entry fee.
-                    </p>
-                </div>
-                {/* Photography placeholder — replace with real founder photography */}
-                <div style={{ aspectRatio: "4 / 5", background: "linear-gradient(145deg,#181818,#0a0a0a)", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-                    <div style={{ textAlign: "center" }}>
-                        <div style={{ fontSize: 28, marginBottom: 12, opacity: 0.3 }}>📸</div>
-                        <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", fontFamily: BODY }}>Founder Photography</span>
+                <div style={{ ...wrap, display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 64, alignItems: "center" }}>
+                    {/* Left — Headline + CTAs */}
+                    <div>
+                        {/* Tagline — spaced caps, Electric Yellow per PDF */}
+                        <div className="pulse-subtle" style={{ color: Y, fontSize: 13, fontWeight: 700, letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: 28, fontFamily: BODY }}>
+                            CELEBRATE &nbsp;·&nbsp; SHOWCASE &nbsp;·&nbsp; SPOTLIGHT
+                        </div>
+                        <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,8vw,110px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: "0 0 28px", textTransform: "uppercase" }}>
+                            THE UK&apos;S<br />PIONEERING<br /><span style={{ color: "transparent", WebkitTextStroke: `1px ${W}`, WebkitBackgroundClip: "text" }}>VISA FOUNDER</span><br />AWARDS
+                        </h1>
+                        <p style={{ fontSize: 18, lineHeight: 1.75, color: MUTED, maxWidth: 580, marginBottom: 40, fontFamily: BODY }}>
+                            Honouring exceptional global talent, legacy innovators, and visionary founders who arrived in the UK on talent pathways and built market-defining enterprises.
+                        </p>
+                        <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                            <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" style={btn}>
+                                Apply &amp; Nominate Now <IconArrowRight />
+                            </a>
+                            <a href="/about" style={btnGhost}>Explore Process</a>
+                        </div>
+                        <div style={{ display: "flex", gap: 28, marginTop: 40, paddingTop: 28, borderTop: `1px solid ${BORDER}`, flexWrap: "wrap" }}>
+                            {["No entry fee", "Independent jury", "UK-Wide Recognition"].map((item) => (
+                                <div key={item} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: MUTED, letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: BODY }}>
+                                    <span style={{ color: Y }}>✓</span> {item}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Right — Countdown card */}
+                    <div style={{ background: DARK, border: `1px solid ${BORDER}`, padding: 36, position: "relative" }}>
+                        <div style={{ position: "absolute", top: -12, left: 24, background: Y, color: BK, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", padding: "3px 12px", fontFamily: BODY }}>
+                            NOMINATIONS CLOSE
+                        </div>
+                        <p style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 13, letterSpacing: "0.3em", color: MUTED, textTransform: "uppercase", textAlign: "center", marginBottom: 20 }}>
+                            LIVE COUNTDOWN TO DEADLINE
+                        </p>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, textAlign: "center" }}>
+                            {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([l, v]) => (
+                                <div key={l as string} style={{ background: BK, border: `1px solid ${BORDER}`, padding: "14px 8px" }}>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 40, lineHeight: 1, color: Y }}>{String(v).padStart(2, "0")}</div>
+                                    <div style={{ fontSize: 10, color: MUTED, letterSpacing: "0.2em", textTransform: "uppercase", marginTop: 6, fontFamily: BODY }}>{l}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <div style={{ borderTop: `1px solid ${BORDER}`, marginTop: 24, paddingTop: 20, textAlign: "center" }}>
+                            <div style={{ fontSize: 10, color: MUTED, letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 6, fontFamily: BODY }}>DEADLINE DATE</div>
+                            <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 24, letterSpacing: "0.06em" }}>15 JULY 2026</div>
+                            <div style={{ fontSize: 11, color: Y, marginTop: 6, letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: BODY }}>★ Extended entries not permitted</div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* ── ELECTRIC YELLOW ELIGIBILITY BAR ── */}
-            <div style={{ background: YELLOW, color: BLACK, textAlign: "center", padding: "22px 40px", fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(14px,2.2vw,22px)", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-                INNOVATOR FOUNDER VISA &nbsp;|&nbsp; GLOBAL TALENT VISA &nbsp;|&nbsp; LEGACY INNOVATION ROUTES
-            </div>
-
-            {/* ── WHY ENTER ── */}
-            <section style={{ ...wrap, paddingTop: 100, paddingBottom: 100, textAlign: "center" }}>
-                <div style={kicker}>Why Enter</div>
-                <h2 style={h2style}>Three Reasons to Enter</h2>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginTop: 56, textAlign: "left" }}>
-                    {REASONS.map((r) => (
-                        <div key={r.t} style={{ background: PANEL, border: `1px solid ${BORDER}`, padding: "40px 32px" }}>
-                            <Icon name={r.ic} />
-                            <h3 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 22, letterSpacing: "0.02em", textTransform: "uppercase", color: YELLOW, margin: "20px 0 10px" }}>{r.t}</h3>
-                            <p style={{ fontSize: 15, lineHeight: 1.7, color: MUTED, margin: 0 }}>{r.d}</p>
+            {/* ══════════════════════════════════════════
+                SECTION 2 — WHO IS ELIGIBLE FOR NEXUS 2026?
+                Ported from nexus-global-awards.vercel.app
+                Two-column layout + image overlay + marquee
+            ══════════════════════════════════════════ */}
+            <section style={{ background: DARK, padding: "96px 48px", borderTop: `1px solid ${BORDER}`, position: "relative", overflow: "hidden" }}>
+                <div style={wrap}>
+                    <div style={{ display: "grid", gridTemplateColumns: "5fr 7fr", gap: 64, alignItems: "center" }}>
+                        {/* Left — Eligibility text */}
+                        <div>
+                            <span style={badge()}>ELIGIBILITY FRAMEWORK</span>
+                            <h2 style={{ ...sectionH2, fontSize: "clamp(32px,4.5vw,52px)", marginBottom: 24 }}>
+                                WHO IS ELIGIBLE FOR NEXUS 2026?
+                            </h2>
+                            <p style={{ color: "rgba(255,255,255,0.80)", fontSize: 16, lineHeight: 1.8, marginBottom: 16, fontFamily: BODY }}>
+                                NEXUS is the UK&apos;s first awards scheme designed specifically to spotlight the achievements of founders, technologists, and scientific leaders who moved to the UK under dedicated visa pathways.
+                            </p>
+                            <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.8, marginBottom: 32, fontFamily: BODY }}>
+                                Whether you are a solo innovator raising a Seed round, a scientific co-founder commercialising research, or a scaling tech venture contributor — if your entrepreneurial journey started with a UK Visa, this stage is yours.
+                            </p>
+                            {/* Eligibility checklist */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                                {[
+                                    {
+                                        title: "UK Registered Entities",
+                                        body: "Registered active business with Companies House, incorporated within the last 7 years.",
+                                    },
+                                    {
+                                        title: "Eligible Visa Backing",
+                                        body: "At least one key founder/co-founder must have held or currently holds an Innovator, Global Talent, or equivalent tier-1 legacy visa.",
+                                    },
+                                ].map((item) => (
+                                    <div key={item.title} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                                        <span style={{ background: Y, borderRadius: "50%", width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+                                            <IconCheck />
+                                        </span>
+                                        <div>
+                                            <div style={{ color: W, fontWeight: 700, fontSize: 14, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4, fontFamily: BODY }}>{item.title}</div>
+                                            <div style={{ color: MUTED, fontSize: 13, lineHeight: 1.6, fontFamily: BODY }}>{item.body}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    ))}
+
+                        {/* Right — Image with overlay card */}
+                        <div style={{ position: "relative", border: `1px solid ${BORDER}`, overflow: "hidden" }}>
+                            <img
+                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200"
+                                alt="Diverse group of innovative young tech founders collaborating"
+                                style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block", filter: "grayscale(1)", transition: "filter 0.5s" }}
+                                onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(1)")}
+                            />
+                            {/* Gradient overlay */}
+                            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%)", pointerEvents: "none" }} />
+                            {/* Stat card */}
+                            <div style={{ position: "absolute", bottom: 24, left: 20, right: 20, background: "rgba(0,0,0,0.92)", border: `1px solid ${BORDER}`, padding: "20px 24px" }}>
+                                <div style={{ color: Y, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>SUCCESS INSIGHT</div>
+                                <p style={{ color: W, fontSize: 13, lineHeight: 1.65, margin: 0, fontFamily: BODY }}>
+                                    Visa-supported startups generated over <strong style={{ color: Y }}>£1.2B</strong> in UK economic value in 2025 alone. NEXUS ensures these stories are showcased nationwide.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── Animated marquee slider (Electric Yellow bar) ── */}
+                <div style={{ marginTop: 80, background: Y, padding: "18px 0", overflow: "hidden", borderTop: `2px solid ${BK}`, borderBottom: `2px solid ${BK}` }}>
+                    <div className="marquee-track">
+                        {MARQUEE_ITEMS.map((item, i) => (
+                            <span key={i} style={{
+                                color: BK,
+                                fontFamily: HEAD, fontWeight: 900,
+                                fontSize: "clamp(16px,2.2vw,28px)",
+                                letterSpacing: "0.18em", textTransform: "uppercase",
+                                flexShrink: 0,
+                            }}>
+                                {item}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* ── JUDGES ── */}
-            <section style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "96px 40px" }}>
-                <div style={{ maxWidth: MAXW, margin: "0 auto", textAlign: "center" }}>
-                    <div style={kicker}>The Panel</div>
-                    <h2 style={h2style}>Meet the Judges</h2>
-                    <p style={{ fontSize: 16, color: MUTED, marginTop: 16, fontFamily: BODY }}>An independent panel of investors, founders and innovation leaders.</p>
+            {/* ══════════════════════════════════════════
+                SECTION 3 — WHY ENTER THE NEXUS AWARDS?
+                Ported from nexus-global-awards.vercel.app
+                3-column dark section with icons + cards
+            ══════════════════════════════════════════ */}
+            <section style={{ background: BK, padding: "96px 48px", borderTop: `1px solid ${BORDER}` }}>
+                <div style={wrap}>
+                    {/* Header */}
+                    <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
+                        <span style={badge()}>AWARDS IMPACT</span>
+                        <h2 style={{ ...sectionH2, fontSize: "clamp(34px,5vw,60px)", marginBottom: 20 }}>
+                            WHY ENTER THE NEXUS AWARDS?
+                        </h2>
+                        <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.75, fontFamily: BODY }}>
+                            Winning or placing as a finalist at the UK&apos;s premier talent visa awards unlocks significant commercial, operational, and PR leverage for your venture.
+                        </p>
+                    </div>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "56px 32px", marginTop: 60 }}>
-                        {JUDGES.map((j, i) => (
-                            <div key={j.n} style={{ textAlign: "center" }}>
-                                {/* Circular photo frame — non-negotiable per brief */}
-                                <div
-                                    onClick={() => setActiveJudge(activeJudge === i ? null : i)}
-                                    style={{
-                                        width: 148, height: 148, borderRadius: "50%",
-                                        margin: "0 auto",
-                                        background: "linear-gradient(145deg,#1e1e1e,#0c0c0c)",
-                                        border: `2px solid ${activeJudge === i ? YELLOW : "rgba(255,255,255,0.12)"}`,
-                                        display: "flex", alignItems: "center", justifyContent: "center",
-                                        cursor: "pointer", transition: "border-color 0.2s, transform 0.2s",
-                                        transform: activeJudge === i ? "scale(1.04)" : "scale(1)",
-                                    }}
-                                >
-                                    <svg width="52" height="52" viewBox="0 0 24 24" fill="rgba(255,255,255,0.22)">
-                                        <circle cx="12" cy="8" r="4" />
-                                        <path d="M4 20c0-4 4-6 8-6s8 2 8 6z" />
-                                    </svg>
+                    {/* 3 cards */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                        {WHY_ENTER.map((card) => (
+                            <div key={card.num} style={{
+                                background: DARK, border: `1px solid ${BORDER}`,
+                                padding: 36, display: "flex", flexDirection: "column",
+                                justifyContent: "space-between",
+                                transition: "border-color 0.25s",
+                            }}
+                                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(223,255,19,0.4)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.borderColor = BORDER)}
+                            >
+                                <div>
+                                    {/* Icon box */}
+                                    <div style={{ width: 48, height: 48, background: Y, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}>
+                                        <card.Icon />
+                                    </div>
+                                    <h3 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 22, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 14, color: W }}>
+                                        {card.title}
+                                    </h3>
+                                    <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>{card.body}</p>
                                 </div>
-                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 19, letterSpacing: "0.02em", textTransform: "uppercase", marginTop: 18 }}>{j.n}</div>
-                                <div style={{ fontSize: 13, color: MUTED, marginTop: 4 }}>{j.r}</div>
-                                <div style={{ fontSize: 13, color: YELLOW, fontWeight: 600, marginTop: 2 }}>{j.o}</div>
+                                <div style={{ color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", marginTop: 28, display: "flex", alignItems: "center", gap: 6, fontFamily: BODY }}>
+                                    {card.num} / {card.cta} <IconArrowRight />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                                {/* Bio expand — click to show per brief */}
-                                {activeJudge === i && (
-                                    <div style={{
-                                        marginTop: 16, padding: "16px 20px",
-                                        background: "#0a0a0a", border: `1px solid ${BORDER}`,
-                                        fontSize: 13, color: MUTED, lineHeight: 1.7,
-                                        textAlign: "left", fontFamily: BODY,
-                                    }}>
-                                        {j.bio}
-                                        <button onClick={() => setActiveJudge(null)} style={{ display: "block", background: "none", border: "none", color: YELLOW, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", marginTop: 12, padding: 0, fontFamily: BODY }}>
+            {/* ══════════════════════════════════════════
+                SECTION 4 — MEET THE JUDGES
+                Ported from nexus-global-awards.vercel.app
+                Grid of circular photo frames, bio expand
+                Circular judge photos = non-negotiable per PDF
+            ══════════════════════════════════════════ */}
+            <section style={{ background: DARK, padding: "96px 48px", borderTop: `1px solid ${BORDER}` }}>
+                <div style={wrap}>
+                    {/* Header row */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, flexWrap: "wrap", gap: 24 }}>
+                        <div>
+                            <span style={badge()}>INDEPENDENT JURY</span>
+                            <h2 style={{ ...sectionH2, fontSize: "clamp(34px,5vw,60px)" }}>MEET THE JUDGES</h2>
+                            <p style={{ color: MUTED, fontSize: 15, marginTop: 10, fontFamily: BODY }}>
+                                Leading investors, policy architects, and former visa founders assessing candidates objectively.
+                            </p>
+                        </div>
+                        <a href="/about" style={{ ...btnGhost, padding: "11px 24px", fontSize: 12 }}>
+                            LEARN ABOUT JUDGING PROTOCOL
+                        </a>
+                    </div>
+
+                    {/* 4-column judge grid */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+                        {JUDGES.map((j, i) => (
+                            <div key={j.name} style={{ background: BK, border: `1px solid ${BORDER}`, padding: 28, textAlign: "center", position: "relative", transition: "border-color 0.25s" }}
+                                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(223,255,19,0.3)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.borderColor = BORDER)}
+                            >
+                                {/* Circular photo — non-negotiable per PDF brief */}
+                                <div style={{
+                                    width: 130, height: 130, borderRadius: "50%",
+                                    margin: "0 auto 20px",
+                                    border: `2px solid ${activeJudge === i ? Y : "rgba(223,255,19,0.4)"}`,
+                                    overflow: "hidden",
+                                    cursor: "pointer",
+                                    transition: "border-color 0.2s, transform 0.2s",
+                                    transform: activeJudge === i ? "scale(1.05)" : "scale(1)",
+                                }}
+                                    onClick={() => setActiveJudge(activeJudge === i ? null : i)}
+                                >
+                                    <img
+                                        src={j.img}
+                                        alt={j.name}
+                                        style={{
+                                            width: "100%", height: "100%", objectFit: "cover",
+                                            filter: activeJudge === i ? "grayscale(0)" : "grayscale(1)",
+                                            transition: "filter 0.4s, transform 0.4s",
+                                            transform: activeJudge === i ? "scale(1.08)" : "scale(1)",
+                                        }}
+                                    />
+                                </div>
+
+                                <h4 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 6, color: W }}>{j.name}</h4>
+                                <div style={{ color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 14, fontFamily: BODY }}>{j.role}</div>
+
+                                {/* Bio expand on click — per PDF brief */}
+                                {activeJudge === i ? (
+                                    <div>
+                                        <p style={{ color: MUTED, fontSize: 12, lineHeight: 1.7, fontFamily: BODY, marginBottom: 12 }}>{j.bio}</p>
+                                        <button onClick={() => setActiveJudge(null)} style={{ background: "none", border: `1px solid rgba(223,255,19,0.3)`, color: Y, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", padding: "6px 16px", fontFamily: BODY }}>
                                             ✕ Close
                                         </button>
                                     </div>
-                                )}
-                                {activeJudge !== i && (
-                                    <button onClick={() => setActiveJudge(i)} style={{ background: "none", border: "none", color: YELLOW, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", marginTop: 10, padding: 0, fontFamily: BODY }}>
-                                        + View Bio
+                                ) : (
+                                    <button onClick={() => setActiveJudge(i)} style={{ background: "none", border: "none", color: Y, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", padding: 0, fontFamily: BODY, textDecoration: "underline", textUnderlineOffset: 4 }}>
+                                        Read Bio
                                     </button>
                                 )}
                             </div>
                         ))}
                     </div>
-                    <div style={{ fontSize: 12, color: MUTED, marginTop: 48, letterSpacing: "0.08em", fontFamily: BODY }}>Additional judges announced from July 2026</div>
                 </div>
             </section>
 
-            {/* ── CATEGORIES CTA ── */}
-            <section style={{ ...wrap, paddingTop: 80, paddingBottom: 80, textAlign: "center" }}>
-                <div style={kicker}>Award Categories</div>
-                <h2 style={{ ...h2style, fontSize: "clamp(32px,4.8vw,58px)" }}>
-                    10 Categories <span style={{ color: YELLOW }}>+ Legacy Award</span>
-                </h2>
-                <p style={{ maxWidth: 560, margin: "20px auto 0", fontSize: 17, lineHeight: 1.7, color: MUTED, fontFamily: BODY }}>
-                    From DeepTech to CleanTech, FinTech to Creative Economy &mdash; find the category that reflects your journey and your impact.
-                </p>
-                <a href="/categories" style={{ ...btn, marginTop: 36 }}>See All Categories &rarr;</a>
+            {/* ══════════════════════════════════════════
+                SECTION 5 — EXPLORE THE AWARD CATEGORIES
+                Ported from nexus-global-awards.vercel.app
+                Dark CTA banner linking to categories page
+            ══════════════════════════════════════════ */}
+            <section style={{ background: BK, padding: "80px 48px", borderTop: `1px solid ${BORDER}` }}>
+                <div style={{ ...wrap, background: DARK, border: `1px solid ${BORDER}`, padding: "64px 72px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 48, position: "relative", overflow: "hidden", flexWrap: "wrap" }}>
+                    {/* Subtle glow */}
+                    <div style={{ position: "absolute", bottom: 0, left: 0, width: 400, height: 300, background: "radial-gradient(circle at bottom left, rgba(223,255,19,0.05), transparent 60%)", pointerEvents: "none" }} />
+                    <div style={{ maxWidth: 680, position: "relative" }}>
+                        <span style={badge()}>10 DISCIPLINE CATEGORIES</span>
+                        <h2 style={{ ...sectionH2, fontSize: "clamp(30px,4vw,52px)", marginBottom: 16 }}>
+                            EXPLORE THE AWARD CATEGORIES
+                        </h2>
+                        <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>
+                            From Deeptech Pioneers to fintech innovators and Climate champions — find the exact category matching your industry or nominate a high-growth founder you back.
+                        </p>
+                    </div>
+                    <a href="/categories" style={{ ...btn, flexShrink: 0, boxShadow: `0 4px 24px rgba(223,255,19,0.22)` }}>
+                        SEE ALL CATEGORIES <IconArrowRight />
+                    </a>
+                </div>
             </section>
 
-            {/* ── AWARDS EVENING — Full-width London aerial nighttime photography ── */}
+            {/* ══════════════════════════════════════════
+                SECTION 6 — AWARDS EVENING
+                Full-width London aerial nighttime photography
+                per PDF brief
+            ══════════════════════════════════════════ */}
             <section style={{ position: "relative", minHeight: 640, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
                 {/* London aerial nighttime photo */}
                 <div style={{
                     position: "absolute", inset: 0,
                     backgroundImage: "url(https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1600)",
-                    backgroundSize: "cover", backgroundPosition: "center 40%",
-                    filter: "brightness(0.38) grayscale(0.2)",
+                    backgroundSize: "cover", backgroundPosition: "center 38%",
+                    filter: "brightness(0.35) grayscale(0.15)",
                 }} />
-                {/* Dark gradient overlay */}
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.65) 100%)" }} />
-                {/* Content */}
-                <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "100px 40px" }}>
-                    <div style={{ color: YELLOW, fontSize: 11, fontWeight: 700, letterSpacing: "0.38em", textTransform: "uppercase", marginBottom: 18, fontFamily: BODY }}>
-                        Exclusive Gala Ceremony
-                    </div>
-                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,9vw,100px)", lineHeight: 0.93, letterSpacing: "-0.01em", margin: "0 0 16px", textTransform: "uppercase" }}>
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.7) 100%)" }} />
+                <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "100px 48px" }}>
+                    <span style={badge({ display: "inline-block", marginBottom: 20 })}>EXCLUSIVE GALA CEREMONY</span>
+                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,9vw,100px)", lineHeight: 0.93, margin: "0 0 14px", textTransform: "uppercase" }}>
                         Awards Evening
                     </h2>
-                    <div style={{ fontSize: 20, letterSpacing: "0.18em", color: WHITE, textTransform: "uppercase", marginBottom: 28, fontFamily: HEAD, fontWeight: 700 }}>
-                        October 2026 &middot; London
+                    <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 22, letterSpacing: "0.2em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>
+                        OCTOBER 2026 &middot; CENTRAL LONDON
                     </div>
-                    <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)", fontFamily: BODY }}>
-                        An unforgettable evening celebrating the UK&apos;s most remarkable immigrant innovators. Drinks, dinner, awards — and a community that has your back.
+                    <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.78)", fontFamily: BODY }}>
+                        An elite gathering of global trailblazers, early-stage sponsors, government stakeholders, and national media. Tickets are strictly limited.
                     </p>
-                    <a href="/tickets" style={btn}>Get Tickets</a>
+                    <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+                        <a href="/tickets" style={btn}>GET TICKETS</a>
+                        <a href="/faqs" style={btnGhost}>EVENT FAQS</a>
+                    </div>
                 </div>
             </section>
 
