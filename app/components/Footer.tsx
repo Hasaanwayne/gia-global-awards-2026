@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import React from "react"
+import { useBreakpoint } from "../hooks/useBreakpoint"
 
 const YELLOW = "#DFFF13"
 const BLACK = "#000000"
@@ -25,6 +26,11 @@ const legalLinks = ["Privacy Policy", "Terms & Conditions", "Cookie Settings"]
 export default function Footer() {
     const [email, setEmail] = useState("")
     const [submitted, setSubmitted] = useState(false)
+    const bp = useBreakpoint()
+    const isMobile = bp === "mobile"
+    const isTablet = bp === "tablet"
+    const hPad = isMobile ? "48px 20px 32px" : isTablet ? "64px 32px 32px" : "72px 48px 40px"
+    const gridCols = isMobile ? "1fr" : isTablet ? "1fr 1fr" : "1.8fr 0.8fr 0.8fr 1.2fr"
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -33,9 +39,9 @@ export default function Footer() {
     }
 
     return (
-        <footer style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: "72px 48px 40px", fontFamily: BODY }}>
+        <footer style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: hPad, fontFamily: BODY }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1.8fr 0.8fr 0.8fr 1.2fr", gap: 48, paddingBottom: 56, borderBottom: `1px solid ${BORDER}` }}>
+                <div style={{ display: "grid", gridTemplateColumns: gridCols, gap: isMobile ? 36 : 48, paddingBottom: 48, borderBottom: `1px solid ${BORDER}` }}>
 
                     {/* Brand Column */}
                     <div>

@@ -4,6 +4,7 @@ import React from "react"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import AnimateIn from "./components/AnimateIn"
+import { useBreakpoint } from "./hooks/useBreakpoint"
 
 /* ── Brand tokens (PDF non-negotiables) ── */
 const Y    = "#DFFF13"
@@ -39,6 +40,7 @@ function useCountdown(target: Date) {
 
 /* ── Style helpers ── */
 const wrap: React.CSSProperties = { maxWidth: MAXW, margin: "0 auto", padding: "0 48px", boxSizing: "border-box" }
+// responsive wrap applied per-component via bpWrap(bp)
 
 const badge = (extra?: React.CSSProperties): React.CSSProperties => ({
     display: "inline-block",
@@ -111,6 +113,13 @@ export default function HomePage() {
     const [activeJudge, setActiveJudge] = useState<number | null>(null)
     const [prevSec, setPrevSec] = useState(t.seconds)
     const [secKey, setSecKey] = useState(0)
+    const bp = useBreakpoint()
+    const isMobile  = bp === "mobile"
+    const isTablet  = bp === "tablet"
+    const isSmall   = isMobile || isTablet
+    const hPad      = isMobile ? "0 20px" : isTablet ? "0 32px" : "0 48px"
+    const W_OBJ: React.CSSProperties = { maxWidth: MAXW, margin: "0 auto", padding: hPad, boxSizing: "border-box" }
+    const secPad    = isMobile ? "72px 20px" : isTablet ? "80px 32px" : "96px 48px"
 
     useEffect(() => {
         if (t.seconds !== prevSec) {
@@ -125,18 +134,19 @@ export default function HomePage() {
 
             {/* ═══════════════════════════════════════
                 HERO — Two-column: text left, timer right
+                (stacks on mobile/tablet)
             ═══════════════════════════════════════ */}
-            <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden", background: BK }}>
+            <section style={{ position: "relative", minHeight: isSmall ? "auto" : "100vh", display: "flex", alignItems: "center", overflow: "hidden", background: BK }}>
 
                 {/* Subtle background glow */}
                 <div style={{ position: "absolute", top: "30%", left: "25%", width: 600, height: 500, background: "radial-gradient(ellipse, rgba(223,255,19,0.045) 0%, transparent 65%)", pointerEvents: "none" }} />
                 <div style={{ position: "absolute", top: "20%", right: "10%", width: 400, height: 400, background: "radial-gradient(ellipse, rgba(223,255,19,0.025) 0%, transparent 60%)", pointerEvents: "none" }} />
 
-                <div style={{ ...wrap, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72, alignItems: "center", paddingTop: 100, paddingBottom: 100, position: "relative", zIndex: 1 }}>
+                <div style={{ ...W_OBJ, display: "grid", gridTemplateColumns: isSmall ? "1fr" : "1.1fr 0.9fr", gap: isSmall ? 48 : 72, alignItems: "center", paddingTop: isSmall ? 80 : 100, paddingBottom: isSmall ? 80 : 100, position: "relative", zIndex: 1 }}>
 
                     {/* ── LEFT — Text content ── */}
-                    <AnimateIn from="left">
-                        <div style={{ textAlign: "left" }}>
+                    <AnimateIn from={isSmall ? "up" : "left"}>
+                        <div style={{ textAlign: isSmall ? "center" : "left" }}>
 
                             {/* Tagline */}
                             <div className="pulse-subtle" style={{ color: Y, fontSize: 12, fontWeight: 700, letterSpacing: "0.20em", marginBottom: 28, textTransform: "uppercase", fontFamily: BODY }}>
@@ -157,7 +167,7 @@ export default function HomePage() {
                             </p>
 
                             {/* CTAs */}
-                            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28 }}>
+                            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, justifyContent: isSmall ? "center" : "flex-start" }}>
                                 <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer"
                                     className="btn-primary"
                                     style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
@@ -171,7 +181,7 @@ export default function HomePage() {
                             </div>
 
                             {/* Trust badges */}
-                            <div style={{ display: "flex", gap: 24, flexWrap: "wrap", paddingTop: 24, borderTop: `1px solid ${BORDER}` }}>
+                            <div style={{ display: "flex", gap: 24, flexWrap: "wrap", paddingTop: 24, borderTop: `1px solid ${BORDER}`, justifyContent: isSmall ? "center" : "flex-start" }}>
                                 {["No Entry Fee", "Independent Jury", "UK-Wide Recognition"].map((item) => (
                                     <div key={item} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "rgba(255,255,255,0.40)", letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: BODY }}>
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth="2.5" strokeLinecap="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -247,9 +257,9 @@ export default function HomePage() {
                 SECTION 2 — WHO IS ELIGIBLE FOR NEXUS 2026?
                 London skyscrapers image with Ken Burns motion
             ═══════════════════════════════════════ */}
-            <section style={{ background: DARK, padding: "96px 48px", borderTop: `1px solid ${BORDER}`, position: "relative", overflow: "hidden" }}>
-                <div style={wrap}>
-                    <div style={{ display: "grid", gridTemplateColumns: "5fr 7fr", gap: 64, alignItems: "center" }}>
+            <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}`, position: "relative", overflow: "hidden" }}>
+                <div style={W_OBJ}>
+                    <div style={{ display: "grid", gridTemplateColumns: isSmall ? "1fr" : "5fr 7fr", gap: isSmall ? 40 : 64, alignItems: "center" }}>
 
                         {/* Left — text */}
                         <AnimateIn from="left">
@@ -310,7 +320,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Animated marquee slider */}
-                <div style={{ marginTop: 80, background: Y, padding: "18px 0", overflow: "hidden", borderTop: `2px solid ${BK}`, borderBottom: `2px solid ${BK}` }}>
+                <div style={{ marginTop: isSmall ? 48 : 80, background: Y, padding: "16px 0", overflow: "hidden", borderTop: `2px solid ${BK}`, borderBottom: `2px solid ${BK}` }}>
                     <div className="marquee-track">
                         {MARQUEE_ITEMS.map((item, i) => (
                             <span key={i} style={{ color: BK, fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(16px,2.2vw,28px)", letterSpacing: "0.18em", textTransform: "uppercase", flexShrink: 0 }}>
@@ -325,8 +335,8 @@ export default function HomePage() {
                 SECTION 3 — WHY ENTER THE NEXUS AWARDS?
                 3 cards with correct BLACK SVG icons on yellow
             ═══════════════════════════════════════ */}
-            <section style={{ background: BK, padding: "96px 48px", borderTop: `1px solid ${BORDER}` }}>
-                <div style={wrap}>
+            <section style={{ background: BK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
+                <div style={W_OBJ}>
                     <AnimateIn>
                         <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 56px" }}>
                             <span style={badge()}>AWARDS IMPACT</span>
@@ -339,7 +349,7 @@ export default function HomePage() {
                         </div>
                     </AnimateIn>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(3, 1fr)", gap: 20 }}>
                         {WHY_ENTER.map((card, i) => (
                             <AnimateIn key={card.num} delay={i * 100}>
                                 <div
@@ -372,10 +382,10 @@ export default function HomePage() {
                 SECTION 4 — MEET THE JUDGES
                 Circular photo frames, bio expand on click
             ═══════════════════════════════════════ */}
-            <section style={{ background: DARK, padding: "96px 48px", borderTop: `1px solid ${BORDER}` }}>
-                <div style={wrap}>
+            <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
+                <div style={W_OBJ}>
                     <AnimateIn>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, flexWrap: "wrap", gap: 24 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: isSmall ? "flex-start" : "flex-end", marginBottom: isSmall ? 40 : 64, flexWrap: "wrap", gap: 24 }}>
                             <div>
                                 <span style={badge()}>INDEPENDENT JURY</span>
                                 <h2 style={{ ...h2Base, fontSize: "clamp(34px,5vw,60px)" }}>MEET THE JUDGES</h2>
@@ -391,7 +401,7 @@ export default function HomePage() {
                         </div>
                     </AnimateIn>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 28 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gap: isSmall ? 16 : 28 }}>
                         {JUDGES.map((j, i) => (
                             <AnimateIn key={j.name} delay={i * 90}>
                                 <div
@@ -440,9 +450,9 @@ export default function HomePage() {
             {/* ═══════════════════════════════════════
                 SECTION 5 — EXPLORE THE AWARD CATEGORIES
             ═══════════════════════════════════════ */}
-            <section style={{ background: BK, padding: "80px 48px", borderTop: `1px solid ${BORDER}` }}>
+            <section style={{ background: BK, padding: isMobile ? "56px 20px" : isTablet ? "64px 32px" : "80px 48px", borderTop: `1px solid ${BORDER}` }}>
                 <AnimateIn>
-                    <div style={{ ...wrap, background: DARK, border: `1px solid ${BORDER}`, padding: "64px 72px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 48, position: "relative", overflow: "hidden", flexWrap: "wrap" }}>
+                    <div style={{ ...W_OBJ, background: DARK, border: `1px solid ${BORDER}`, padding: isSmall ? "40px 28px" : "64px 72px", display: "flex", alignItems: isSmall ? "flex-start" : "center", justifyContent: "space-between", gap: isSmall ? 28 : 48, position: "relative", overflow: "hidden", flexDirection: isSmall ? "column" : "row" }}>
                         <div style={{ position: "absolute", bottom: 0, left: 0, width: 400, height: 280, background: "radial-gradient(circle at bottom left, rgba(223,255,19,0.05), transparent 65%)", pointerEvents: "none" }} />
                         <div style={{ maxWidth: 680, position: "relative" }}>
                             <span style={badge()}>10 DISCIPLINE CATEGORIES</span>
