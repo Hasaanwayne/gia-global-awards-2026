@@ -5,17 +5,11 @@ import Script from "next/script";
 /**
  * Intercom Messenger — loads Fin / FinAgent on the site.
  *
- * Replace the placeholder below with your Intercom App ID (Workspace ID),
- * found in Intercom under Settings → Installation. It looks like "abcd1234".
+ * INTERCOM_APP_ID is the Intercom Workspace ID (Settings → Installation).
  */
-const INTERCOM_APP_ID = "YOUR_INTERCOM_APP_ID";
+const INTERCOM_APP_ID = "hmpb359b";
 
 export default function IntercomMessenger() {
-    // Don't load the widget until a real App ID is set.
-    if (!INTERCOM_APP_ID || INTERCOM_APP_ID === "YOUR_INTERCOM_APP_ID") {
-        return null;
-    }
-
     return (
         <>
             {/* Boot Intercom once the page is interactive. */}
