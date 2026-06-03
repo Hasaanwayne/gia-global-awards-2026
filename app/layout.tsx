@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CookieBanner from "./components/CookieBanner";
+import IntercomMessenger from "./components/IntercomMessenger";
 
 export const metadata: Metadata = {
     title: "Global Innovation Awards 2026 | NEXUS",
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body style={{ margin: 0, padding: 0, background: "#000", color: "#fff", fontFamily: "'General Sans','Inter',system-ui,sans-serif" }}>
                 {children}
                 <CookieBanner />
+                <IntercomMessenger />
             </body>
         </html>
     );
