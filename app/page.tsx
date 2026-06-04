@@ -269,9 +269,7 @@ export default function HomePage() {
 
         <div style={{ fontFamily: BODY, background: BK, color: W, width: "100%", overflowX: "hidden" }}>
 
-            <Nav />
-
-            {/* Announcement ticker — running banner above the hero */}
+            {/* Announcement ticker — running banner above the nav */}
             <div style={{ background: Y, padding: "10px 0", overflow: "hidden", borderBottom: `2px solid ${BK}` }}>
                 <div className="marquee-track">
                     {HERO_TICKER.map((item, i) => (
@@ -279,6 +277,8 @@ export default function HomePage() {
                     ))}
                 </div>
             </div>
+
+            <Nav />
 
 
 
