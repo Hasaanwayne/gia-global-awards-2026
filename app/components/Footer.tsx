@@ -8,13 +8,12 @@ const BLACK = "#000000"
 const WHITE = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.48)"
 const BORDER = "rgba(255,255,255,0.08)"
-const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
 const socialLinks = [
-    { label: "X / Twitter", href: "https://x.com/nexusglobalawards", icon: "𝕏" },
-    { label: "LinkedIn", href: "https://linkedin.com/company/nexus-global-awards", icon: "in" },
-    { label: "Instagram", href: "https://instagram.com/nexusglobalawards", icon: "◎" },
+    { label: "X / Twitter", href: "https://x.com/globalinnovatorawards", icon: "𝕏" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/global-innovator-awards", icon: "in" },
+    { label: "Instagram", href: "https://instagram.com/globalinnovatorawards", icon: "◎" },
 ]
 
 const navLinks = [
@@ -45,8 +44,7 @@ export default function Footer() {
 
                     {/* Brand Column */}
                     <div>
-                        <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 24, color: YELLOW, letterSpacing: "0.05em", marginBottom: 4, textTransform: "uppercase" }}>NEXUS</div>
-                        <div style={{ fontSize: 8, letterSpacing: "0.3em", color: MUTED, marginBottom: 20, fontWeight: 700, textTransform: "uppercase" }}>GLOBAL INNOVATION AWARDS 2026</div>
+                        <img src="/gia-logo.png" alt="Global Innovator Awards" style={{ height: 88, width: "auto", display: "block", marginBottom: 22 }} />
                         <p style={{ fontSize: 14, lineHeight: 1.75, color: MUTED, maxWidth: 300, marginBottom: 28, margin: "0 0 28px" }}>
                             The UK&apos;s first awards programme celebrating innovators and founders who arrived under an innovation or talent visa route — and built something extraordinary.
                         </p>
@@ -132,7 +130,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div style={{ paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-                    <span style={{ fontSize: 12, color: MUTED }}>&copy; 2026 NEXUS Global Innovation Awards. All rights reserved.</span>
+                    <span style={{ fontSize: 12, color: MUTED }}>&copy; 2026 Global Innovator Awards. All rights reserved.</span>
                     <span style={{ fontSize: 12, color: MUTED }}>globalinnovatorawards.com</span>
                 </div>
             </div>

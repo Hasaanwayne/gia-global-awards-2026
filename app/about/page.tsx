@@ -52,7 +52,7 @@ export default function AboutPage() {
                             <div>
                                 <div style={badge}>Why We Created This</div>
                                 <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Built by Immigrants. Recognised by the UK.</h2>
-                                <p style={bodyText}>The Global Innovation Awards were created to shine a light on the founders, builders and innovators who arrived in the UK under an innovation or talent visa route &mdash; and built something truly significant.</p>
+                                <p style={bodyText}>The Global Innovator Awards were created to shine a light on the founders, builders and innovators who arrived in the UK under an innovation or talent visa route &mdash; and built something truly significant.</p>
                                 <p style={bodyText}>The UK&apos;s visa innovation routes &mdash; the Global Talent Visa, Innovator Founder Visa, and their predecessors &mdash; have brought exceptional people to these shores. Many have founded companies now reshaping industries. Yet their stories are rarely told together.</p>
                                 <p style={{ ...bodyText, marginBottom: 0 }}>This is Year 1. We are starting a movement.</p>
                             </div>
@@ -122,12 +122,12 @@ export default function AboutPage() {
                 </div>
             </div>
 
-            {/* NEXUS */}
+            {/* About the Awards */}
             <div style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: secPad, textAlign: "center" }}>
                 <div style={{ maxWidth: 720, margin: "0 auto", padding: hPad }}>
-                    <div style={badge}>About NEXUS</div>
-                    <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 20 }}>Powered by NEXUS</h2>
-                    <p style={{ ...bodyText, marginBottom: 36 }}>NEXUS is the community and platform for global talent building in the UK. We connect founders, investors and the people who support them.</p>
+                    <div style={badge}>About the Awards</div>
+                    <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 20 }}>Powered by Global Innovator Awards</h2>
+                    <p style={{ ...bodyText, marginBottom: 36 }}>The Global Innovator Awards is the recognition platform for global talent building in the UK. We connect founders, investors and the people who support them.</p>
                     <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
                         style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
                         Submit a Nomination

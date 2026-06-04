@@ -4,24 +4,24 @@ import CookieBanner from "./components/CookieBanner";
 import IntercomMessenger from "./components/IntercomMessenger";
 
 export const metadata: Metadata = {
-    title: "Global Innovation Awards 2026 | NEXUS",
+    title: "Global Innovator Awards 2026",
     description: "The UK's first awards for innovators who came under an innovation or talent visa route and built something significant. Apply or nominate by 15 July 2026.",
     openGraph: {
-        title: "Global Innovation Awards 2026 | NEXUS",
+        title: "Global Innovator Awards 2026",
         description: "The UK's first awards for innovators who came under an innovation or talent visa route and built something significant.",
         url: "https://globalinnovatorawards.com",
-        siteName: "NEXUS Global Innovation Awards",
+        siteName: "Global Innovator Awards",
         images: [{
             url: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80",
             width: 1200, height: 630,
-            alt: "Global Innovation Awards 2026 – London Awards Evening",
+            alt: "Global Innovator Awards 2026 – London Awards Evening",
         }],
         type: "website",
         locale: "en_GB",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Global Innovation Awards 2026 | NEXUS",
+        title: "Global Innovator Awards 2026",
         description: "The UK's first awards for innovators who came under an innovation or talent visa route.",
         images: ["https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80"],
     },

@@ -7,9 +7,7 @@ import { useBreakpoint } from "../hooks/useBreakpoint"
 const Y     = "#DFFF13"
 const BK    = "#000000"
 const W     = "#FFFFFF"
-const MUTED = "rgba(255,255,255,0.45)"
 const BORDER = "rgba(255,255,255,0.08)"
-const HEAD  = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY  = "'General Sans','Inter',system-ui,sans-serif"
 
 const LINKS = [
@@ -39,14 +37,9 @@ export default function Nav() {
                 WebkitBackdropFilter: "blur(16px)",
                 borderBottom: `1px solid ${BORDER}`,
             }}>
-                {/* NEXUS logo */}
-                <a href="/" style={{ textDecoration: "none" }}>
-                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: bp === "mobile" ? 22 : 26, color: Y, letterSpacing: "0.05em", lineHeight: 1 }}>NEXUS</div>
-                    {bp === "desktop" && (
-                        <div style={{ fontSize: 8, letterSpacing: "0.3em", color: MUTED, marginTop: 3, fontWeight: 700, textTransform: "uppercase", fontFamily: BODY }}>
-                            GLOBAL INNOVATION AWARDS 2026
-                        </div>
-                    )}
+                {/* GIA logo */}
+                <a href="/" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }} aria-label="Global Innovator Awards — home">
+                    <img src="/gia-mark.png" alt="Global Innovator Awards" style={{ height: bp === "mobile" ? 32 : 40, width: "auto", display: "block" }} />
                 </a>
 
                 {/* Desktop nav links */}

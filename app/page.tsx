@@ -182,13 +182,20 @@ const IconCheck = () => (
 
 /* ── Data ── */
 
+const SHOW_JUDGES = false // Hidden until all 8 judges are confirmed (end of June)
+
+const HERO_TICKER = [
+    "APPLICATIONS NOW OPEN","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE 15 JULY 2026","•",
+    "APPLICATIONS NOW OPEN","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE 15 JULY 2026","•",
+]
+
 const JUDGES = [
 
     { name: "Dame Helena Vance", role: "Chair of Innovate UK",    img: "https://i.pravatar.cc/150?img=33", bio: "Vance has guided over £2.4B in venture-backed grants and innovation pathways across UK institutions. A former Global Talent recipient and one of the UK's most influential voices in the innovation ecosystem." },
 
     { name: "Dr. Aris Thorne",   role: "GP, DeepTech Labs",       img: "https://i.pravatar.cc/150?img=11", bio: "Former Global Talent recipient, venture backer, and leading AI systems engineer from Oxford. Dr Thorne has invested in over 25 deeptech companies across the UK and Europe." },
 
-    { name: "Siddharth Patel",   role: "Co-Founder, Aegis AI",    img: "https://i.pravatar.cc/150?img=12", bio: "Innovator Founder alum. Successfully scaled his fintech venture to £80M valuation in London. Now a board advisor to multiple UK startups and a NEXUS founding supporter." },
+    { name: "Siddharth Patel",   role: "Co-Founder, Aegis AI",    img: "https://i.pravatar.cc/150?img=12", bio: "Innovator Founder alum. Successfully scaled his fintech venture to £80M valuation in London. Now a board advisor to multiple UK startups and a Global Innovator Awards founding supporter." },
 
     { name: "Chantal de Clercq", role: "Partner, Apex Ventures",  img: "https://i.pravatar.cc/150?img=47", bio: "Over 15 years backing early-stage enterprise SaaS and border-free technologies worldwide. Chantal sits on the boards of 8 UK-based startups and is a frequent speaker on immigrant founder journeys." },
 
@@ -198,11 +205,11 @@ const JUDGES = [
 
 const WHY_ENTER = [
 
-    { Icon: IconAward,     num: "01", title: "Credibility & Accreditation", cta: "Prove Trust",       body: "Signal to customers, institutional investors, and talent that your venture has been thoroughly vetted and approved by an expert judging panel." },
+    { Icon: IconAward,     num: "01", title: "Credibility & Accreditation", cta: "Prove Trust",       body: "Being selected by an independent panel of industry judges sends a clear signal to customers, investors and partners — that your work stands up to scrutiny." },
 
-    { Icon: IconUsers,     num: "02", title: "Unrivalled Networking",       cta: "Scale Connections", body: "Connect immediately with fellow innovators, top-tier venture capital funds, policy makers, and representatives from government innovation departments during our flagship evening." },
+    { Icon: IconUsers,     num: "02", title: "Unrivalled Networking",       cta: "Scale Connections", body: "Spend an evening in a room with fellow innovators, leading venture capital investors, policymakers and government representatives. The connections you make here don't happen anywhere else." },
 
-    { Icon: IconMegaphone, num: "03", title: "National Press & Coverage",   cta: "Command Spotlight", body: "Gain immediate exposure across mainstream tech channels, innovation blogs, national news publications, and our extensive partner ecosystem." },
+    { Icon: IconMegaphone, num: "03", title: "National Press & Coverage",   cta: "Command Spotlight", body: "Winners and finalists are featured across our media partner network, reaching mainstream tech channels, innovation publications and our wider partner ecosystem. Each category winner is also featured on a podcast, spotlighting their success." },
 
 ]
 
@@ -264,6 +271,15 @@ export default function HomePage() {
 
             <Nav />
 
+            {/* Announcement ticker — running banner above the hero */}
+            <div style={{ background: Y, padding: "10px 0", overflow: "hidden", borderBottom: `2px solid ${BK}` }}>
+                <div className="marquee-track">
+                    {HERO_TICKER.map((item, i) => (
+                        <span key={i} style={{ color: BK, fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", flexShrink: 0 }}>{item}</span>
+                    ))}
+                </div>
+            </div>
+
 
 
             {/* ═══════════════════════════════════════
@@ -312,7 +328,7 @@ export default function HomePage() {
 
                             <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(48px,7vw,100px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: "0 0 28px", textTransform: "uppercase" }}>
 
-                                Global<br />Innovation<br />Awards 2026
+                                Global<br />Innovator<br />Awards 2026
 
                             </h1>
 
@@ -328,7 +344,7 @@ export default function HomePage() {
 
                             <p style={{ fontSize: 17, lineHeight: 1.82, color: MUTED, margin: "0 0 36px", maxWidth: 520, fontFamily: BODY }}>
 
-                                Honouring exceptional global talent, legacy innovators, and visionary founders who arrived in the UK on talent pathways and built market-defining enterprises.
+                                Recognising the founders, innovators and exceptional talent who chose the UK, and are delivering on their ambition.
 
                             </p>
 
@@ -510,7 +526,7 @@ export default function HomePage() {
 
             {/* ═══════════════════════════════════════
 
-                SECTION 2 — WHO IS ELIGIBLE FOR NEXUS 2026?
+                SECTION 2 — ELIGIBILITY
 
                 London skyscrapers image with Ken Burns motion
 
@@ -534,19 +550,19 @@ export default function HomePage() {
 
                                 <h2 style={{ ...h2Base, fontSize: "clamp(30px,4vw,50px)", marginBottom: 24 }}>
 
-                                    WHO IS ELIGIBLE FOR NEXUS 2026?
+                                    ELIGIBILITY
 
                                 </h2>
 
                                 <p style={{ color: "rgba(255,255,255,0.78)", fontSize: 16, lineHeight: 1.82, marginBottom: 16, fontFamily: BODY }}>
 
-                                    NEXUS is the UK&apos;s first awards scheme designed specifically to spotlight the achievements of founders, technologists, and scientific leaders who moved to the UK under dedicated visa pathways.
+                                    The Global Innovator Awards is the UK&apos;s first awards programme dedicated to recognising the achievements of founders, innovators, and exceptional talent who came to the UK under a qualifying innovation or talent route.
 
                                 </p>
 
                                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.82, marginBottom: 32, fontFamily: BODY }}>
 
-                                    Whether you are a solo innovator raising a Seed round, a scientific co-founder commercialising research, or a scaling tech venture contributor — if your entrepreneurial journey started with a UK Visa, this stage is yours.
+                                    Whether you are building a business from the ground up, launching a deep science venture, or bringing exceptional creative or technical expertise to a UK organisation, you belong in this room.
 
                                 </p>
 
@@ -554,9 +570,9 @@ export default function HomePage() {
 
                                     {[
 
-                                        { title: "UK Registered Entities", body: "Registered active business with Companies House, incorporated within the last 7 years." },
+                                        { title: "Free to Enter", body: "Entry is free. Both self-nomination and third-party nomination are accepted across all 10 categories." },
 
-                                        { title: "Eligible Visa Backing",   body: "At least one key founder/co-founder must have held or currently holds an Innovator, Global Talent, or equivalent tier-1 legacy visa." },
+                                        { title: "Qualifying Route",   body: "At least one founder, co-founder or named individual must hold, or have previously held, an Innovator Founder Visa, Global Talent Visa, or an equivalent legacy innovation or talent route." },
 
                                     ].map((item) => (
 
@@ -624,7 +640,7 @@ export default function HomePage() {
 
                                     <p style={{ color: W, fontSize: 13, lineHeight: 1.65, margin: 0, fontFamily: BODY }}>
 
-                                        Visa-supported startups generated over <strong style={{ color: Y }}>£1.2B</strong> in UK economic value in 2025 alone. NEXUS ensures these stories are showcased nationwide.
+                                        Visa-supported startups generated over <strong style={{ color: Y }}>£1.2B</strong> in UK economic value in 2025 alone. The Global Innovator Awards ensures these stories are showcased nationwide.
 
                                     </p>
 
@@ -666,7 +682,7 @@ export default function HomePage() {
 
             {/* ═══════════════════════════════════════
 
-                SECTION 3 — WHY ENTER THE NEXUS AWARDS?
+                SECTION 3 — WHY ENTER THE GLOBAL INNOVATOR AWARDS?
 
                 3 cards with correct BLACK SVG icons on yellow
 
@@ -684,13 +700,13 @@ export default function HomePage() {
 
                             <h2 style={{ ...h2Base, fontSize: "clamp(40px,5.5vw,72px)", marginBottom: 20 }}>
 
-                                WHY ENTER THE NEXUS AWARDS?
+                                WHY ENTER THE GLOBAL INNOVATOR AWARDS?
 
                             </h2>
 
                             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.75, fontFamily: BODY, maxWidth: 620, margin: "0 auto" }}>
 
-                                Winning or placing as a finalist at the UK&apos;s premier talent visa awards unlocks significant commercial, operational, and PR leverage for your venture.
+                                Being shortlisted or winning puts you in front of the people, press and organisations that matter, and tells the world you&apos;ve earned your place here.
 
                             </p>
 
@@ -766,6 +782,7 @@ export default function HomePage() {
 
             ═══════════════════════════════════════ */}
 
+            {SHOW_JUDGES && (
             <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
 
                 <div style={W_OBJ}>
@@ -898,6 +915,8 @@ export default function HomePage() {
 
 
 
+            )}
+
             {/* ═══════════════════════════════════════
 
                 SECTION 5 — EXPLORE THE AWARD CATEGORIES
@@ -924,7 +943,7 @@ export default function HomePage() {
 
                             <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>
 
-                                From Deeptech Pioneers to fintech innovators and Climate champions — find the exact category matching your industry or nominate a high-growth founder you back.
+                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders — find the category that fits and nominate yourself or someone who deserves to be in the room.
 
                             </p>
 
@@ -994,11 +1013,11 @@ export default function HomePage() {
 
                     <div>
 
-                        <span style={{ ...badge({ marginBottom: 20 }) }}>EXCLUSIVE GALA CEREMONY</span>
+                        <span style={{ ...badge({ marginBottom: 20 }) }}>AWARDS EVENING</span>
 
                         <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,9vw,104px)", lineHeight: 0.92, margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "-0.01em" }}>
 
-                            Awards Evening
+                            One Evening. Ten Winners.
 
                         </h2>
 
@@ -1010,7 +1029,7 @@ export default function HomePage() {
 
                         <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
 
-                            An elite gathering of global trailblazers, early-stage sponsors, government stakeholders, and national media. Tickets are strictly limited.
+                            250+ innovators, investors, judges, government representatives and press. A keynote address, dinner, and ten winners announced. Tickets are limited.
 
                         </p>
 
