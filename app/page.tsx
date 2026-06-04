@@ -658,7 +658,7 @@ export default function HomePage() {
 
                 {/* Animated marquee slider */}
 
-                <div style={{ marginTop: isSmall ? 48 : 80, background: Y, padding: "16px 0", overflow: "hidden", borderTop: `2px solid ${BK}`, borderBottom: `2px solid ${BK}` }}>
+                <div style={{ marginTop: isSmall ? 48 : 80, width: "100vw", position: "relative", left: "50%", right: "50%", marginLeft: "-50vw", marginRight: "-50vw", background: Y, padding: "16px 0", overflow: "hidden", borderTop: `2px solid ${BK}`, borderBottom: `2px solid ${BK}` }}>
 
                     <div className="marquee-track">
 
