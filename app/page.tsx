@@ -205,11 +205,11 @@ const JUDGES = [
 
 const WHY_ENTER = [
 
-    { Icon: IconAward,     num: "01", title: "Credibility & Accreditation", cta: "Prove Trust",       body: "Being selected by an independent panel of industry judges sends a clear signal to customers, investors and partners — that your work stands up to scrutiny." },
+    { Icon: IconAward,     num: "01", title: "Credibility & Accreditation", cta: "Prove Trust",       body: "Being selected by an independent panel of industry judges sends a clear signal, to customers, investors and partners — that your work stands up to scrutiny." },
 
     { Icon: IconUsers,     num: "02", title: "Unrivalled Networking",       cta: "Scale Connections", body: "Spend an evening in a room with fellow innovators, leading venture capital investors, policymakers and government representatives. The connections you make here don't happen anywhere else." },
 
-    { Icon: IconMegaphone, num: "03", title: "National Press & Coverage",   cta: "Command Spotlight", body: "Winners and finalists are featured across our media partner network, reaching mainstream tech channels, innovation publications and our wider partner ecosystem. Each category winner is also featured on a podcast, spotlighting their success." },
+    { Icon: IconMegaphone, num: "03", title: "National Press & Coverage",   cta: "Command Spotlight", body: "Winners and finalists are featured across our media partner network, reaching mainstream tech channels, innovation publications and our wider partner ecosystem. Additionally, each category winner will be featured on a podcast, spotlighting their success." },
 
 ]
 
@@ -562,7 +562,7 @@ export default function HomePage() {
 
                                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.82, marginBottom: 32, fontFamily: BODY }}>
 
-                                    Whether you are building a business from the ground up, launching a deep science venture, or bringing exceptional creative or technical expertise to a UK organisation, you belong in this room.
+                                    Whether you are building a business from the ground up, launching a deep science venture, bringing exceptional creative or technical expertise to a UK organisation, you belong in this room.
 
                                 </p>
 
@@ -1017,7 +1017,7 @@ export default function HomePage() {
 
                         <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,9vw,104px)", lineHeight: 0.92, margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "-0.01em" }}>
 
-                            One Evening. Ten Winners.
+                            Awards Evening
 
                         </h2>
 
@@ -1029,7 +1029,7 @@ export default function HomePage() {
 
                         <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
 
-                            250+ innovators, investors, judges, government representatives and press. A keynote address, dinner, and ten winners announced. Tickets are limited.
+                            One evening. 250+ innovators, investors, judges, government representatives and press. A keynote address, dinner, and ten winners announced. Tickets are limited.
 
                         </p>
 

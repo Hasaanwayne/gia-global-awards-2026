@@ -12,7 +12,7 @@ const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
 const FAQS = [
-    { q: "Who is eligible for a Global Innovator Award?", a: "You must have founded or co-founded a UK-based company and arrived in the UK under: Global Talent Visa, Innovator Founder Visa, Innovator Visa (legacy), Startup Visa (legacy), Tier 1 Exceptional Talent, or Tier 1 Entrepreneur." },
+    { q: "Who is eligible for a Global Innovation Award?", a: "You must have founded or co-founded a UK-based company and arrived in the UK under: Global Talent Visa, Innovator Founder Visa, Innovator Visa (legacy), Startup Visa (legacy), Tier 1 Exceptional Talent, or Tier 1 Entrepreneur." },
     { q: "Can I nominate someone else?", a: "Yes. Anyone can nominate a founder — including self-nomination. Colleagues, investors, mentors, advisors and the public are all welcome to nominate." },
     { q: "What is the nomination deadline?", a: "Nominations open 15 May 2026 and close 15 July 2026 at 23:59 BST. No nominations accepted after the deadline." },
     { q: "How are nominees judged?", a: "An independent panel of judges assesses nominees against published criteria for each category. Judges include investors, founders and innovation leaders." },
@@ -24,7 +24,7 @@ const FAQS = [
     { q: "What happens if I win?", a: "Winners receive a trophy and public recognition at the Awards Evening in London in October 2026, plus media coverage through our partner network." },
     { q: "When and where is the Awards Evening?", a: "October 2026 in London. Exact venue and date announced September 2026. Tickets on sale July 2026." },
     { q: "Can sponsors influence the judging?", a: "No. Sponsors and judges operate entirely separately with no contact. All judging is fully independent." },
-    { q: "Who runs the Global Innovator Awards?", a: "The Global Innovator Awards is the flagship recognition programme for founders who arrived in the UK on an innovation or talent visa route." },
+    { q: "How is NEXUS involved?", a: "NEXUS organises the Global Innovation Awards as its flagship recognition programme for founders who arrived on an innovation or talent visa route." },
     { q: "What does the nomination form ask for?", a: "Nominee name and company, visa route used, award category, description of their innovation, and why they deserve to win." },
     { q: "I have a question not covered here. How do I get in touch?", a: "Email us at hello@globalinnovatorawards.com. We aim to respond within 2 business days." },
 ]

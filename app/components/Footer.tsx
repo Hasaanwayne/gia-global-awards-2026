@@ -46,7 +46,7 @@ export default function Footer() {
                     <div>
                         <img src="/gia-logo.png" alt="Global Innovator Awards" style={{ height: 88, width: "auto", display: "block", marginBottom: 22 }} />
                         <p style={{ fontSize: 14, lineHeight: 1.75, color: MUTED, maxWidth: 300, marginBottom: 28, margin: "0 0 28px" }}>
-                            The UK&apos;s first awards programme celebrating innovators and founders who arrived under an innovation or talent visa route — and built something extraordinary.
+                            The UK&apos;s first awards programme recognising innovators and exceptional talent who chose the UK, and are delivering on their ambition.
                         </p>
                         {/* Social Icons */}
                         <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
