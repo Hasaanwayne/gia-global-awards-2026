@@ -1013,7 +1013,7 @@ export default function HomePage() {
 
                     <div>
 
-                        <span style={{ ...badge({ marginBottom: 20 }) }}>AWARDS EVENING</span>
+                        <span style={{ ...badge({ marginBottom: 20 }) }}>EXCLUSIVE GALA CEREMONY</span>
 
                         <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(52px,9vw,104px)", lineHeight: 0.92, margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "-0.01em" }}>
 
