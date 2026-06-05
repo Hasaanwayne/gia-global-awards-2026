@@ -13,7 +13,7 @@ const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
 const FAQS = [
     { q: "Who is eligible for a Global Innovation Award?", a: "You must have founded or co-founded a UK-based company and arrived in the UK under: Global Talent Visa, Innovator Founder Visa, Innovator Visa (legacy), Startup Visa (legacy), Tier 1 Exceptional Talent, or Tier 1 Entrepreneur." },
-    { q: "Can I nominate someone else?", a: "Yes. Anyone can nominate a founder — including self-nomination. Colleagues, investors, mentors, advisors and the public are all welcome to nominate." },
+    { q: "Can I nominate someone else?", a: "Yes. Anyone can nominate a founder, including self-nomination. Colleagues, investors, mentors, advisors and the public are all welcome to nominate." },
     { q: "What is the nomination deadline?", a: "Nominations open 15 May 2026 and close 15 July 2026 at 23:59 BST. No nominations accepted after the deadline." },
     { q: "How are nominees judged?", a: "An independent panel of judges assesses nominees against published criteria for each category. Judges include investors, founders and innovation leaders." },
     { q: "When is the shortlist announced?", a: "Five finalists per category are announced on 20 August 2026. Finalists are notified directly and profiles published on this site." },

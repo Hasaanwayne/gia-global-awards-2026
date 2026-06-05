@@ -17,7 +17,7 @@ const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 
 const imagePlaceholder: React.CSSProperties = { background: "#111", aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center", color: "#333", fontSize: 13, letterSpacing: "0.14em", fontFamily: BODY, textTransform: "uppercase" }
 
 const steps = [
-    { num: "01", title: "Open Nominations",   body: "Nominations open on 15 May 2026 and close on 15 July 2026. Anyone can nominate a founder — including self-nomination." },
+    { num: "01", title: "Open Nominations",   body: "Nominations open on 15 May 2026 and close on 15 July 2026. Anyone can nominate a founder, including self-nomination." },
     { num: "02", title: "Judging & Shortlist", body: "Our independent panel reviews all nominations. A shortlist of five finalists per category is announced on 20 August 2026." },
     { num: "03", title: "Awards Evening",      body: "Winners are announced at a premium in-person Awards Evening in London in October 2026." },
     { num: "04", title: "Media & Legacy",      body: "Winners and finalists receive significant media coverage. Their stories become part of the permanent record of immigrant innovation in the UK." },
@@ -52,8 +52,8 @@ export default function AboutPage() {
                             <div>
                                 <div style={badge}>Why We Created This</div>
                                 <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Built by Immigrants. Recognised by the UK.</h2>
-                                <p style={bodyText}>The Global Innovation Awards were created to shine a light on the founders, builders and innovators who arrived in the UK under an innovation or talent visa route &mdash; and built something truly significant.</p>
-                                <p style={bodyText}>The UK&apos;s visa innovation routes &mdash; the Global Talent Visa, Innovator Founder Visa, and their predecessors &mdash; have brought exceptional people to these shores. Many have founded companies now reshaping industries. Yet their stories are rarely told together.</p>
+                                <p style={bodyText}>The Global Innovation Awards were created to shine a light on the founders, builders and innovators who arrived in the UK under an innovation or talent visa route, and built something truly significant.</p>
+                                <p style={bodyText}>The UK&apos;s visa innovation routes, the Global Talent Visa, Innovator Founder Visa, and their predecessors, have brought exceptional people to these shores. Many have founded companies now reshaping industries. Yet their stories are rarely told together.</p>
                                 <p style={{ ...bodyText, marginBottom: 0 }}>This is Year 1. We are starting a movement.</p>
                             </div>
                         </AnimateIn>
@@ -89,8 +89,8 @@ export default function AboutPage() {
                                 <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Eligibility</h2>
                                 <p style={bodyText}>To be eligible, you must have founded or co-founded a UK-based company and arrived in the UK under one of the following visa routes:</p>
                                 <ul style={{ color: MUTED, fontSize: 15, lineHeight: 2.1, paddingLeft: 20, fontFamily: BODY }}>
-                                    {["Global Talent Visa — Tech Nation, UKRI, or Royal Academy", "Innovator Founder Visa — Current route", "Innovator Visa — Previous route (closed 2023)", "Startup Visa — Legacy route", "Tier 1 Exceptional Talent — Legacy route", "Tier 1 Entrepreneur — Legacy route"].map((item) => (
-                                        <li key={item}><strong style={{ color: W }}>{item.split("—")[0]}</strong>{item.includes("—") ? `— ${item.split("—")[1]}` : ""}</li>
+                                    {["Global Talent Visa, Tech Nation, UKRI, or Royal Academy", "Innovator Founder Visa, Current route", "Innovator Visa, Previous route (closed 2023)", "Startup Visa, Legacy route", "Tier 1 Exceptional Talent, Legacy route", "Tier 1 Entrepreneur, Legacy route"].map((item) => (
+                                        <li key={item}><strong style={{ color: W }}>{item.split(",")[0]}</strong>{item.includes(",") ? `,${item.slice(item.indexOf(",") + 1)}` : ""}</li>
                                     ))}
                                 </ul>
                             </div>

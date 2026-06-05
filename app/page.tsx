@@ -205,7 +205,7 @@ const JUDGES = [
 
 const WHY_ENTER = [
 
-    { Icon: IconAward,     num: "01", title: "Credibility & Accreditation", cta: "Prove Trust",       body: "Being selected by an independent panel of industry judges sends a clear signal, to customers, investors and partners — that your work stands up to scrutiny." },
+    { Icon: IconAward,     num: "01", title: "Credibility & Accreditation", cta: "Prove Trust",       body: "Being selected by an independent panel of industry judges sends a clear signal, to customers, investors and partners, that your work stands up to scrutiny." },
 
     { Icon: IconUsers,     num: "02", title: "Unrivalled Networking",       cta: "Scale Connections", body: "Spend an evening in a room with fellow innovators, leading venture capital investors, policymakers and government representatives. The connections you make here don't happen anywhere else." },
 
@@ -943,7 +943,7 @@ export default function HomePage() {
 
                             <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>
 
-                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders — find the category that fits and nominate yourself or someone who deserves to be in the room.
+                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders, find the category that fits and nominate yourself or someone who deserves to be in the room.
 
                             </p>
 
