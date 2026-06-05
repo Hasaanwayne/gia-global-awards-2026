@@ -67,7 +67,7 @@ export default function Nav() {
                         <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer"
                             className="btn-primary"
                             style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                            Apply Now
+                            NOMINATE | APPLY NOW
                         </a>
                     )}
 
@@ -131,7 +131,7 @@ export default function Nav() {
                             textTransform: "uppercase", textDecoration: "none",
                         }}
                     >
-                        Apply Now
+                        NOMINATE | APPLY NOW
                     </a>
                 </div>
             )}

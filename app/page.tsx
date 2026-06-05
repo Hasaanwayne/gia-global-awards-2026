@@ -360,7 +360,7 @@ export default function HomePage() {
 
                                     style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
 
-                                    Apply &amp; Nominate Now <IconArrowRight />
+                                    NOMINATE | APPLY NOW <IconArrowRight />
 
                                 </a>
 
@@ -1029,7 +1029,7 @@ export default function HomePage() {
 
                         <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
 
-                            One evening. 250+ innovators, investors, judges, government representatives and press. A keynote address, dinner, and ten winners announced. Tickets are limited.
+                            250 founders, investors and press. One night. Ten winners.
 
                         </p>
 

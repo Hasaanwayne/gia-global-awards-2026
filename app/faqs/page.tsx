@@ -17,7 +17,7 @@ const FAQS = [
     { q: "What is the nomination deadline?", a: "Nominations open 15 May 2026 and close 15 July 2026 at 23:59 BST. No nominations accepted after the deadline." },
     { q: "How are nominees judged?", a: "An independent panel of judges assesses nominees against published criteria for each category. Judges include investors, founders and innovation leaders." },
     { q: "When is the shortlist announced?", a: "Five finalists per category are announced on 20 August 2026. Finalists are notified directly and profiles published on this site." },
-    { q: "How many categories are there?", a: "11 awards total: 10 open categories (Deep Tech, FinTech, HealthTech, CleanTech, EdTech, and more) plus one special Legacy Innovation Award." },
+    { q: "How many categories are there?", a: "11 awards total: 10 open categories (Deep Tech, FinTech, HealthTech, CleanTech, EdTech, and more) plus one special Pioneer Award." },
     { q: "Do I need to be the sole founder?", a: "No. Co-founders are eligible. At least one co-founder must have arrived under an eligible visa route." },
     { q: "My company is based outside the UK. Can I still apply?", a: "Your primary company must be incorporated and operating in the UK. Purely overseas companies are not eligible." },
     { q: "My visa was from 2015. Am I still eligible?", a: "Yes. There is no cap on how long ago you arrived. If you came on an eligible route and built something significant, you are eligible." },
@@ -79,7 +79,7 @@ export default function FAQsPage() {
                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto 32px", fontFamily: BODY }}>Nominations are open until 15 July 2026. No entry fee required.</p>
                 <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
                     style={{ background: Y, color: BK, padding: "14px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                    Submit a Nomination
+                    NOMINATE | APPLY NOW
                 </a>
             </div>
 

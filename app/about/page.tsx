@@ -130,7 +130,7 @@ export default function AboutPage() {
                     <p style={{ ...bodyText, marginBottom: 36 }}>NEXUS is the community and platform for global talent building in the UK. We connect founders, investors and the people who support them.</p>
                     <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
                         style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                        Submit a Nomination
+                        NOMINATE | APPLY NOW
                     </a>
                 </div>
             </div>
