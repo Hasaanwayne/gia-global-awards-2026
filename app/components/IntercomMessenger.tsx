@@ -15,7 +15,7 @@ import Script from "next/script";
  *   Background colour : #000000
  *   Action colour     : #DFFF13
  */
-const INTERCOM_APP_ID = "hmpb359b";
+const INTERCOM_APP_ID = "ctce6jyb";
 
 declare global {
     interface Window {
