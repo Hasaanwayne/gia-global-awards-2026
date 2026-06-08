@@ -20,7 +20,10 @@ const navLinks = [
     ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Tickets", "/tickets"], ["FAQs", "/faqs"],
 ]
 
-const legalLinks = ["Privacy Policy", "Terms & Conditions", "Cookie Settings"]
+const legalLinks: [string, string][] = [
+    ["Privacy & Cookies", "/privacy"],
+    ["Terms & Conditions", "/terms"],
+]
 
 export default function Footer() {
     const [email, setEmail] = useState("")
@@ -75,8 +78,8 @@ export default function Footer() {
                     {/* Legal + Contact */}
                     <div>
                         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", color: WHITE, textTransform: "uppercase", marginBottom: 20 }}>Legal</div>
-                        {legalLinks.map((l) => (
-                            <a key={l} href="#" style={{ display: "block", fontSize: 14, color: MUTED, textDecoration: "none", marginBottom: 12 }}>{l}</a>
+                        {legalLinks.map(([l, h]) => (
+                            <a key={l} href={h} style={{ display: "block", fontSize: 14, color: MUTED, textDecoration: "none", marginBottom: 12 }}>{l}</a>
                         ))}
                         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", color: WHITE, textTransform: "uppercase", marginBottom: 16, marginTop: 28 }}>Contact</div>
                         <a href="mailto:hello@globalinnovatorawards.com" style={{ display: "block", fontSize: 13, color: YELLOW, textDecoration: "none", lineHeight: 1.5 }}>

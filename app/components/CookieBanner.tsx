@@ -42,7 +42,7 @@ export default function CookieBanner() {
         }}>
             <p style={{ fontSize: 13, color: MUTED, margin: 0, lineHeight: 1.65, maxWidth: 680 }}>
                 We use cookies to improve your experience and analyse site traffic. By clicking <strong style={{ color: "#fff" }}>Accept All</strong>, you consent to our use of cookies per our{" "}
-                <a href="#" style={{ color: YELLOW, textDecoration: "none" }}>Privacy Policy</a>
+                <a href="/privacy" style={{ color: YELLOW, textDecoration: "none" }}>Privacy &amp; Cookies</a>
                 . You can manage preferences at any time.
             </p>
             <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
