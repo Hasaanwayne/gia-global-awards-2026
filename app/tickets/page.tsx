@@ -10,13 +10,40 @@ const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
 const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
+const IconUsers = () => (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" />
+        <path d="M2.5 19c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5" />
+        <path d="M16.5 5.2a3 3 0 0 1 0 5.8" />
+        <path d="M18 19c0-2.4-.8-4.2-2.3-5.4" />
+    </svg>
+)
+const IconTrophy = () => (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
+        <path d="M7 6H4.5v1.2A3 3 0 0 0 7.5 10M17 6h2.5v1.2A3 3 0 0 1 16.5 10" />
+        <path d="M12 14v3M9 20h6M9.5 20l.8-3M14.5 20l-.8-3" />
+    </svg>
+)
+const IconBowtie = () => (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M11 12 3.5 8v8L11 12z" />
+        <path d="M13 12 20.5 8v8L13 12z" />
+        <rect x="10.4" y="9.6" width="3.2" height="4.8" rx="1" />
+    </svg>
+)
+const IconDinner = () => (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M6 3v7M4 3v3.5A2 2 0 0 0 6 8.5M8 3v3.5A2 2 0 0 1 6 8.5M6 10v11" />
+        <path d="M17 3c-1.7 0-3 2.2-3 5s1.3 4 3 4 3-1.2 3-4-1.3-5-3-5zM17 12v9" />
+    </svg>
+)
+
 const EVENT_DETAILS = [
-    { icon: "📅", label: "Date",       value: "October 2026" },
-    { icon: "📍", label: "Location",   value: "Central London" },
-    { icon: "🎭", label: "Format",     value: "Gala Dinner + Awards" },
-    { icon: "👥", label: "Audience",   value: "Founders, Investors & Press" },
-    { icon: "🏆", label: "Categories", value: "11 Awards" },
-    { icon: "✨", label: "Experience", value: "Premium & Inspiring" },
+    { Icon: IconUsers,  label: "Audience",   value: "Founders, Innovators, Investors & Media" },
+    { Icon: IconTrophy, label: "Categories", value: "10 + Pioneer Award" },
+    { Icon: IconBowtie, label: "Dress Code", value: "Black Tie & Evening Wear" },
+    { Icon: IconDinner, label: "Format",     value: "Dinner, Awards & Keynote Speaker" },
 ]
 
 export default function TicketsPage() {
@@ -41,7 +68,7 @@ export default function TicketsPage() {
                     <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 18 : 24, letterSpacing: "0.16em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>October 2026 &middot; London</div>
                     <div style={{ display: "inline-block", border: `2px solid ${Y}`, color: Y, padding: "9px 28px", fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 13 : 16, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 28 }}>Tickets Available from July 2026</div>
                     <p style={{ color: "rgba(255,255,255,0.75)", fontSize: isSmall ? 15 : 17, lineHeight: 1.75, maxWidth: 560, margin: "0 auto 36px", fontFamily: BODY }}>
-                        Join 400+ founders, investors and innovation pioneers for an unforgettable evening celebrating the UK&apos;s most remarkable immigrant innovators.
+                        This is the room you want to be in. Join 300+ founders, investors, judges and the people powering the ecosystem, for a celebration of UK innovation.
                     </p>
                     <a href="#notify" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
                         Notify Me When Tickets Open
@@ -58,13 +85,13 @@ export default function TicketsPage() {
                             <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(32px,6vw,52px)", textTransform: "uppercase", margin: 0 }}>A Night to Remember</h2>
                         </div>
                     </AnimateIn>
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr 1fr" : "repeat(3, 1fr)", gap: isSmall ? 14 : 24 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gridAutoRows: "1fr", gap: isSmall ? 14 : 24 }}>
                         {EVENT_DETAILS.map((d, i) => (
-                            <AnimateIn key={d.label} delay={i * 60}>
-                                <div className="card-hover" style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: isSmall ? "24px 18px" : 36 }}>
-                                    <span style={{ fontSize: isSmall ? 24 : 28, marginBottom: 12, display: "block" }}>{d.icon}</span>
-                                    <div style={{ color: Y, fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 6, fontFamily: BODY }}>{d.label}</div>
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isSmall ? 17 : 22, textTransform: "uppercase" }}>{d.value}</div>
+                            <AnimateIn key={d.label} delay={i * 60} style={{ height: "100%" }}>
+                                <div className="card-hover" style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: isSmall ? "24px 18px" : 32, height: "100%", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+                                    <div style={{ marginBottom: 16, height: 30, display: "flex", alignItems: "center" }}><d.Icon /></div>
+                                    <div style={{ color: Y, fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>{d.label}</div>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isSmall ? 17 : 21, textTransform: "uppercase", lineHeight: 1.15 }}>{d.value}</div>
                                 </div>
                             </AnimateIn>
                         ))}
@@ -77,12 +104,11 @@ export default function TicketsPage() {
                 <div style={{ maxWidth: 600, margin: "0 auto" }}>
                     <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 16, fontFamily: BODY }}>Stay Informed</div>
                     <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(28px,6vw,46px)", textTransform: "uppercase", margin: "0 0 16px" }}>Get Notified When Tickets Open</h2>
-                    <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, marginBottom: 32, fontFamily: BODY, padding: hPad }}>Tickets go on sale in July 2026. Enter your email to be first to know, nominees receive priority allocated seating.</p>
+                    <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, marginBottom: 32, fontFamily: BODY, padding: hPad }}>Tickets go on sale soon. Register now for early bird sale tickets.</p>
                     <div style={{ display: "flex", gap: 0, maxWidth: 440, margin: "0 auto", height: 50 }}>
                         <input type="email" placeholder="Your professional email" style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: W, padding: "0 16px", fontSize: 13, outline: "none", fontFamily: BODY, minWidth: 0 }} />
                         <button className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
                     </div>
-                    <p style={{ fontSize: 11, color: MUTED, marginTop: 12, fontFamily: BODY }}>★ Current nominees receive priority allocated guest seating</p>
 
                     {/* Ticket Tailor placeholder */}
                     <div style={{ marginTop: 48, padding: isSmall ? "28px 20px" : "36px", border: "1px dashed rgba(223,255,19,0.2)", background: "rgba(223,255,19,0.02)", textAlign: "center" }}>

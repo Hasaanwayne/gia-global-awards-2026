@@ -17,10 +17,10 @@ const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 
 const imagePlaceholder: React.CSSProperties = { background: "#111", aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center", color: "#333", fontSize: 13, letterSpacing: "0.14em", fontFamily: BODY, textTransform: "uppercase" }
 
 const steps = [
-    { num: "01", title: "Open Nominations",   body: "Nominations open on 15 May 2026 and close on 15 July 2026. Anyone can nominate a founder, including self-nomination." },
-    { num: "02", title: "Judging & Shortlist", body: "Our independent panel reviews all nominations. A shortlist of five finalists per category is announced on 20 August 2026." },
-    { num: "03", title: "Awards Evening",      body: "Winners are announced at a premium in-person Awards Evening in London in October 2026." },
-    { num: "04", title: "Media & Legacy",      body: "Winners and finalists receive significant media coverage. Their stories become part of the permanent record of immigrant innovation in the UK." },
+    { num: "01", title: "Open Nominations",    body: "Nominations open on 15 June 2026 and close on 15 July 2026. Entry is free. You can nominate yourself or someone else, both are equally welcome." },
+    { num: "02", title: "Judging & Shortlist", body: "All nominations are reviewed by our independent judge panel. Ten finalists per category are announced on 20 August 2026." },
+    { num: "03", title: "Awards Evening",      body: "Winners are announced at the Global Innovator Awards evening in Central London in October 2026." },
+    { num: "04", title: "Media & Recognition", body: "Winners and finalists receive coverage across our media partner network. Your story reaches the investors, partners and press that matter." },
 ]
 
 export default function AboutPage() {
@@ -52,9 +52,9 @@ export default function AboutPage() {
                             <div>
                                 <div style={badge}>Why We Created This</div>
                                 <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Built by Immigrants. Recognised by the UK.</h2>
-                                <p style={bodyText}>The Global Innovation Awards were created to shine a light on the founders, builders and innovators who arrived in the UK under an innovation or talent visa route, and built something truly significant.</p>
-                                <p style={bodyText}>The UK&apos;s visa innovation routes, the Global Talent Visa, Innovator Founder Visa, and their predecessors, have brought exceptional people to these shores. Many have founded companies now reshaping industries. Yet their stories are rarely told together.</p>
-                                <p style={{ ...bodyText, marginBottom: 0 }}>This is Year 1. We are starting a movement.</p>
+                                <p style={bodyText}>The Global Innovator Awards exist to make you visible. If you made a deliberate decision to come to the UK and are building, creating or contributing something significant here, these awards have been created for you.</p>
+                                <p style={bodyText}>You are actively shaping UK industries, research and culture. You may be mid-journey, still building, still proving yourself. Recognition at this stage is not ceremonial. It signals credibility to investors, partners and the wider market at exactly the moment it matters most.</p>
+                                <p style={{ ...bodyText, marginBottom: 0 }}>This is Year 1. Your moment to be seen.</p>
                             </div>
                         </AnimateIn>
                         <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
@@ -87,9 +87,9 @@ export default function AboutPage() {
                             <div>
                                 <div style={badge}>Who Can Apply</div>
                                 <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Eligibility</h2>
-                                <p style={bodyText}>To be eligible, you must have founded or co-founded a UK-based company and arrived in the UK under one of the following visa routes:</p>
+                                <p style={bodyText}>These awards are open to founders, innovators and exceptional talent who made an active decision to come to the UK under one of the following qualifying routes:</p>
                                 <ul style={{ color: MUTED, fontSize: 15, lineHeight: 2.1, paddingLeft: 20, fontFamily: BODY }}>
-                                    {["Global Talent Visa, Tech Nation, UKRI, or Royal Academy", "Innovator Founder Visa, Current route", "Innovator Visa, Previous route (closed 2023)", "Startup Visa, Legacy route", "Tier 1 Exceptional Talent, Legacy route", "Tier 1 Entrepreneur, Legacy route"].map((item) => (
+                                    {["Global Talent Visa, Current route", "Innovator Founder Visa, Current route", "Innovator Visa, Previous route (closed 2023)", "Start-up Visa, Legacy route", "Tier 1 Exceptional Talent, Legacy route", "Tier 1 Entrepreneur, Legacy route"].map((item) => (
                                         <li key={item}><strong style={{ color: W }}>{item.split(",")[0]}</strong>{item.includes(",") ? `,${item.slice(item.indexOf(",") + 1)}` : ""}</li>
                                     ))}
                                 </ul>
@@ -127,7 +127,9 @@ export default function AboutPage() {
                 <div style={{ maxWidth: 720, margin: "0 auto", padding: hPad }}>
                     <div style={badge}>About NEXUS</div>
                     <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 20 }}>Powered by NEXUS</h2>
-                    <p style={{ ...bodyText, marginBottom: 36 }}>NEXUS is the community and platform for global talent building in the UK. We connect founders, investors and the people who support them.</p>
+                    <p style={bodyText}>NEXUS is a UK innovation hub connecting frontier technology companies, incubators, science parks and scale-ups across global markets. We work at the intersection of international ambition and UK opportunity, helping founders and innovators establish, grow and scale in the UK.</p>
+                    <p style={bodyText}>We have been supporting founders on innovation and talent routes for 8+ years, from the Tier 1 Entrepreneur Visa through to the current Innovator Founder Visa, where NEXUS is an active consortium partner under UK Endorsing Services.</p>
+                    <p style={{ ...bodyText, marginBottom: 36 }}>The Global Innovator Awards was created because we know this community exists, we work with them every day, and we believe their achievements deserve a dedicated stage.</p>
                     <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
                         style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
                         NOMINATE | APPLY NOW
