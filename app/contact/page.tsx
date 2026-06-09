@@ -111,7 +111,7 @@ export default function ContactPage() {
                                 <label htmlFor="c-reason" style={fieldLabel}>Reason for Enquiry</label>
                                 <select id="c-reason" value={reason} onChange={(e) => setReason(e.target.value)} required
                                     style={{ ...fieldBase, appearance: "none", WebkitAppearance: "none", color: W, cursor: "pointer" }}>
-                                    <option value="" disabled>Select an option</option>
+                                    <option value="" hidden>Select an option</option>
                                     {REASONS.map((r) => (
                                         <option key={r} value={r} style={{ color: BK }}>{r}</option>
                                     ))}
