@@ -16,6 +16,7 @@ const REASONS = [
     "Sponsorship opportunities",
     "Partnerships and community collaborations",
     "Media and press enquiries",
+    "Group / Table Bookings",
     "Other",
 ]
 
