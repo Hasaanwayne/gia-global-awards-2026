@@ -113,7 +113,7 @@ export default function ContactPage() {
                                     style={{ ...fieldBase, appearance: "none", WebkitAppearance: "none", color: W, cursor: "pointer" }}>
                                     <option value="" hidden>Select an option</option>
                                     {REASONS.map((r) => (
-                                        <option key={r} value={r} style={{ color: BK }}>{r}</option>
+                                        <option key={r} value={r} style={{ color: W, background: "#111" }}>{r}</option>
                                     ))}
                                 </select>
                             </div>
