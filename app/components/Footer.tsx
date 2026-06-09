@@ -17,7 +17,7 @@ const socialLinks = [
 ]
 
 const navLinks = [
-    ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Tickets", "/tickets"], ["FAQs", "/faqs"],
+    ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Tickets", "/tickets"], ["FAQs", "/faqs"], ["Contact", "/contact"],
 ]
 
 const legalLinks: [string, string][] = [

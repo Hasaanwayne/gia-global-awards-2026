@@ -16,6 +16,7 @@ const LINKS = [
     { label: "About",      href: "/about" },
     { label: "Tickets",    href: "/tickets" },
     { label: "FAQs",       href: "/faqs" },
+    { label: "Contact",    href: "/contact" },
 ]
 
 export default function Nav() {
