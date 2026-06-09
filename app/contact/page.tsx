@@ -110,7 +110,7 @@ export default function ContactPage() {
                             <div style={{ marginBottom: 22 }}>
                                 <label htmlFor="c-reason" style={fieldLabel}>Reason for Enquiry</label>
                                 <select id="c-reason" value={reason} onChange={(e) => setReason(e.target.value)} required
-                                    style={{ ...fieldBase, appearance: "none", WebkitAppearance: "none", color: reason ? W : MUTED, cursor: "pointer" }}>
+                                    style={{ ...fieldBase, appearance: "none", WebkitAppearance: "none", color: W, cursor: "pointer" }}>
                                     <option value="" disabled>Select an option</option>
                                     {REASONS.map((r) => (
                                         <option key={r} value={r} style={{ color: BK }}>{r}</option>
@@ -131,8 +131,8 @@ export default function ContactPage() {
                                 <div style={{ color: "#ff6b6b", fontSize: 13, marginBottom: 18, fontFamily: BODY }}>{error}</div>
                             )}
 
-                            <button type="submit" disabled={!valid} className="btn-primary"
-                                style={{ background: valid ? Y : "rgba(223,255,19,0.3)", color: BK, border: "none", padding: "15px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", cursor: valid ? "pointer" : "not-allowed", width: isSmall ? "100%" : "auto" }}>
+                            <button type="submit" className="btn-primary"
+                                style={{ background: Y, color: BK, border: "none", padding: "15px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", width: isSmall ? "100%" : "auto" }}>
                                 Send Enquiry
                             </button>
                         </form>
