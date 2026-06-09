@@ -11,6 +11,7 @@ const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
 const CONTACT_EMAIL = "grace@nexuscreativehq.com"
+const WEB3FORMS_ACCESS_KEY = "f784cc6f-a401-4855-a38d-2d71644c1c04"
 const MAX_WORDS = 75
 const REASONS = [
     "Sponsorship opportunities",
@@ -34,6 +35,7 @@ export default function ContactPage() {
     const [reason, setReason] = useState("")
     const [message, setMessage] = useState("")
     const [submitted, setSubmitted] = useState(false)
+    const [sending, setSending] = useState(false)
     const [error, setError] = useState("")
 
     const words = wordCount(message)
@@ -48,26 +50,33 @@ export default function ContactPage() {
             return
         }
         setError("")
-        const subject = `Global Innovator Awards enquiry: ${reason}`
-        const body = `Name: ${name}\nEmail: ${email}\nReason for enquiry: ${reason}\n\nMessage:\n${message}`
-        const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT
-        if (endpoint) {
-            // Server-side delivery (e.g. Formspree) when configured
-            fetch(endpoint, {
-                method: "POST",
-                headers: { "Content-Type": "application/json", Accept: "application/json" },
-                body: JSON.stringify({ name, email, reason, message, _subject: subject }),
+        setSending(true)
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: `Global Innovator Awards enquiry: ${reason}`,
+                from_name: "Global Innovator Awards Website",
+                name,
+                email,
+                reason,
+                message,
+            }),
+        })
+            .then((r) => r.json())
+            .then((data) => {
+                if (data.success) {
+                    setSubmitted(true)
+                } else {
+                    setSending(false)
+                    setError("Something went wrong sending your enquiry. Please email us directly at " + CONTACT_EMAIL + ".")
+                }
             })
-                .then((r) => {
-                    if (r.ok) setSubmitted(true)
-                    else setError("Something went wrong sending your enquiry. Please email us directly at " + CONTACT_EMAIL + ".")
-                })
-                .catch(() => setError("Something went wrong sending your enquiry. Please email us directly at " + CONTACT_EMAIL + "."))
-        } else {
-            // Fallback: open the visitor's email client addressed to the team
-            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-            setSubmitted(true)
-        }
+            .catch(() => {
+                setSending(false)
+                setError("Something went wrong sending your enquiry. Please email us directly at " + CONTACT_EMAIL + ".")
+            })
     }
 
     return (
@@ -131,9 +140,9 @@ export default function ContactPage() {
                                 <div style={{ color: "#ff6b6b", fontSize: 13, marginBottom: 18, fontFamily: BODY }}>{error}</div>
                             )}
 
-                            <button type="submit" className="btn-primary"
-                                style={{ background: Y, color: BK, border: "none", padding: "15px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", width: isSmall ? "100%" : "auto" }}>
-                                Send Enquiry
+                            <button type="submit" disabled={sending} className="btn-primary"
+                                style={{ background: Y, color: BK, border: "none", padding: "15px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", cursor: sending ? "wait" : "pointer", width: isSmall ? "100%" : "auto", opacity: sending ? 0.7 : 1 }}>
+                                {sending ? "Sending…" : "Send Enquiry"}
                             </button>
                         </form>
                     )}
