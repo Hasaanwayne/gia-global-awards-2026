@@ -14,7 +14,7 @@ const BODY = "'General Sans','Inter',system-ui,sans-serif"
 const CATEGORIES = [
     { id: 1,  displayNum: "01", name: "Founder of the Year",              icon: "👑", description: "The flagship award for any individual on a qualifying route who has launched and is actively operating a UK-based business.", criteria: ["Innovation and originality of the business model", "Demonstrable UK economic, social or sector impact", "Growth trajectory and evidence of traction", "Contribution to the wider UK innovation ecosystem"] },
     { id: 2,  displayNum: "02", name: "Tech & Deep Science Innovation",   icon: "🔬", description: "For founders and teams in AI, biotech, climate tech, quantum, robotics or any deep science or engineering field with a functioning product, prototype or peer-reviewed research output.", criteria: ["Technical innovation and originality", "Commercial or research validation", "UK R&D footprint and talent", "Potential for significant societal or economic impact"] },
-    { id: 3,  displayNum: "03", name: "Global Talent Award",              icon: "🌍", description: "For Global Talent Visa holders who have made an exceptional contribution to UK innovation, culture, science, technology or business, as an employee, researcher, artist, designer or independent expert.", criteria: ["Exceptional skill or expertise recognised by a UK endorsing body", "Measurable contribution to a UK organisation or project", "International reputation or peer recognition", "Evidence of knowledge or skills transfer to UK teams"] },
+    { id: 3,  displayNum: "03", name: "Global Talent Award",              icon: "🌍", description: "For Global Talent Visa holders who have made an exceptional contribution to UK innovation, culture, science, technology or business, whether as a founder, employee, researcher, creative or independent expert.", criteria: ["Exceptional skill or expertise recognised by a UK endorsing body", "Measurable contribution to a UK organisation or project", "International reputation or peer recognition", "Evidence of knowledge or skills transfer to UK teams"] },
     { id: 4,  displayNum: "04", name: "Scale-Up of the Year",            icon: "📈", description: "For a UK business founded or co-founded by someone on a qualifying route that has achieved significant scale in the last 12–24 months.", criteria: ["Revenue or user growth year on year", "UK team growth and quality of hiring", "Market expansion or new product lines", "Fundraising milestone or path to profitability"] },
     { id: 5,  displayNum: "05", name: "Co-Founding Team of the Year",     icon: "🤝", description: "For a UK-based company co-founded by two or more individuals on qualifying routes who were all active within three months of formation.", criteria: ["Complementarity of the founding team's skills and perspectives", "Evidence the co-founding dynamic drove the company's success", "Business performance and growth trajectory", "Founding story and culture built around the partnership"] },
     { id: 6,  displayNum: "06", name: "Rising Star",                      icon: "🌟", description: "For an individual on a qualifying route, aged 35 or under, who has launched a UK business within the last three years. Pre-revenue businesses eligible and encouraged.", criteria: ["Originality and ambition of the business idea", "Speed of progress relative to time and available resources", "Founder mindset: resilience, adaptability, clarity under pressure", "Early signals of traction or market interest"] },
@@ -47,13 +47,13 @@ export default function CategoriesPage() {
                 <p style={{ color: MUTED, fontSize: isSmall ? 16 : 18, maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.7, fontFamily: BODY }}>
                     Ten categories, plus one special Pioneer Award, recognising the founders, innovators and exceptional talent who chose the UK and are delivering on their ambition.
                 </p>
-                <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
+                <a aria-disabled="true" className="btn-primary"
                     style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                    NOMINATE | APPLY NOW
+                    NOMINATIONS 15.06.26
                 </a>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, marginTop: 20 }}>
                     <div style={{ width: 8, height: 8, background: Y, borderRadius: "50%" }} />
-                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Applications Open until 15 July 2026</p>
+                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Applications Opening 15 June 2026</p>
                 </div>
             </div>
 
@@ -98,10 +98,10 @@ export default function CategoriesPage() {
                                                 </div>
                                                 <div style={{ background: "#0d0d0d", border: `1px solid ${BORDER}`, padding: "20px 24px", minWidth: isSmall ? "auto" : 200, textAlign: "center" }}>
                                                     <div style={{ fontSize: 9, color: MUTED, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>Status</div>
-                                                    <div style={{ color: W, fontWeight: 700, fontSize: 14, marginBottom: 16, fontFamily: BODY }}>OPEN FOR NOMINATIONS</div>
-                                                    <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
+                                                    <div style={{ color: W, fontWeight: 700, fontSize: 14, marginBottom: 16, fontFamily: BODY }}>OPENS 15 JUNE 2026</div>
+                                                    <a aria-disabled="true" className="btn-primary"
                                                         style={{ background: Y, color: BK, display: "block", textAlign: "center", padding: "11px 16px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none" }}>
-                                                        NOMINATE | APPLY NOW
+                                                        NOMINATIONS 15.06.26
                                                     </a>
                                                 </div>
                                             </div>

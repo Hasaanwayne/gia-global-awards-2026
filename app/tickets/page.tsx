@@ -9,6 +9,7 @@ const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
 const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
+const SHOW_TICKET_WIDGET = false // Hidden until the ticket platform (Ticket Tailor) is integrated
 
 const IconUsers = () => (
     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -110,11 +111,13 @@ export default function TicketsPage() {
                         <button className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
                     </div>
 
-                    {/* Ticket Tailor placeholder */}
-                    <div style={{ marginTop: 48, padding: isSmall ? "28px 20px" : "36px", border: "1px dashed rgba(223,255,19,0.2)", background: "rgba(223,255,19,0.02)", textAlign: "center" }}>
-                        <div style={{ color: Y, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 10, fontFamily: BODY }}>Coming July 2026</div>
-                        <p style={{ color: MUTED, fontSize: 13, lineHeight: 1.7, margin: 0, fontFamily: BODY }}>Ticket Tailor purchase widget will be embedded here when tickets open in July. General admission tickets grant full access to the awards hall, panel sessions, networking banquet and drinks reception.</p>
-                    </div>
+                    {/* Ticket Tailor placeholder - hidden until the ticket platform is integrated */}
+                    {SHOW_TICKET_WIDGET && (
+                        <div style={{ marginTop: 48, padding: isSmall ? "28px 20px" : "36px", border: "1px dashed rgba(223,255,19,0.2)", background: "rgba(223,255,19,0.02)", textAlign: "center" }}>
+                            <div style={{ color: Y, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 10, fontFamily: BODY }}>Coming July 2026</div>
+                            <p style={{ color: MUTED, fontSize: 13, lineHeight: 1.7, margin: 0, fontFamily: BODY }}>Ticket Tailor purchase widget will be embedded here when tickets open in July. General admission tickets grant full access to the awards hall, panel sessions, networking banquet and drinks reception.</p>
+                        </div>
+                    )}
                 </div>
             </section>
 

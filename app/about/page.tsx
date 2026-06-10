@@ -14,7 +14,6 @@ const MAXW = 1280
 const badge: React.CSSProperties = { display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 20, fontFamily: BODY }
 const sectionTitle: React.CSSProperties = { fontFamily: HEAD, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.0, margin: 0, color: W }
 const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 1.82, marginBottom: 20, fontFamily: BODY }
-const imagePlaceholder: React.CSSProperties = { background: "#111", aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center", color: "#333", fontSize: 13, letterSpacing: "0.14em", fontFamily: BODY, textTransform: "uppercase" }
 
 const steps = [
     { num: "01", title: "Open Nominations",    body: "Nominations open on 15 June 2026 and close on 15 July 2026. Entry is free. You can nominate yourself or someone else, both are equally welcome." },
@@ -50,15 +49,17 @@ export default function AboutPage() {
                     <div style={{ display: "grid", gridTemplateColumns: isSmall ? "1fr" : "1fr 1fr", gap: isSmall ? 40 : 72, alignItems: "center" }}>
                         <AnimateIn from={isSmall ? "up" : "left"}>
                             <div>
-                                <div style={badge}>Why We Created This</div>
-                                <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Built by Immigrants. Recognised by the UK.</h2>
+                                <div style={badge}>Celebrate. Showcase. Spotlight</div>
+                                <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Why We Created This</h2>
                                 <p style={bodyText}>The Global Innovator Awards exist to make you visible. If you made a deliberate decision to come to the UK and are building, creating or contributing something significant here, these awards have been created for you.</p>
                                 <p style={bodyText}>You are actively shaping UK industries, research and culture. You may be mid-journey, still building, still proving yourself. Recognition at this stage is not ceremonial. It signals credibility to investors, partners and the wider market at exactly the moment it matters most.</p>
                                 <p style={{ ...bodyText, marginBottom: 0 }}>This is Year 1. Your moment to be seen.</p>
                             </div>
                         </AnimateIn>
                         <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
-                            <div style={imagePlaceholder}>[ Founder Photography ]</div>
+                            <div style={{ aspectRatio: "4/3", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+                                <img src="/london-bigben.jpg" alt="Big Ben and a London street with light trails at night" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                            </div>
                         </AnimateIn>
                     </div>
                 </div>
@@ -81,7 +82,9 @@ export default function AboutPage() {
                 <div style={W_OBJ}>
                     <div style={{ display: "grid", gridTemplateColumns: isSmall ? "1fr" : "1fr 1fr", gap: isSmall ? 40 : 72, alignItems: "center" }}>
                         <AnimateIn from={isSmall ? "up" : "left"}>
-                            <div style={imagePlaceholder}>[ Eligibility Illustration ]</div>
+                            <div style={{ aspectRatio: "4/3", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+                                <img src="/london-skyline.jpg" alt="City of London skyline at dusk" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                            </div>
                         </AnimateIn>
                         <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
                             <div>
@@ -130,10 +133,11 @@ export default function AboutPage() {
                     <p style={bodyText}>NEXUS is a UK innovation hub connecting frontier technology companies, incubators, science parks and scale-ups across global markets. We work at the intersection of international ambition and UK opportunity, helping founders and innovators establish, grow and scale in the UK.</p>
                     <p style={bodyText}>We have been supporting founders on innovation and talent routes for 8+ years, from the Tier 1 Entrepreneur Visa through to the current Innovator Founder Visa, where NEXUS is an active consortium partner under UK Endorsing Services.</p>
                     <p style={{ ...bodyText, marginBottom: 36 }}>The Global Innovator Awards was created because we know this community exists, we work with them every day, and we believe their achievements deserve a dedicated stage.</p>
-                    <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer" className="btn-primary"
-                        style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                        NOMINATE | APPLY NOW
-                    </a>
+                    <span
+                        aria-disabled="true"
+                        style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", display: "inline-block", cursor: "default" }}>
+                        NOMINATIONS 15.06.26
+                    </span>
                 </div>
             </div>
 

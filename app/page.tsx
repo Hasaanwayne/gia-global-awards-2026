@@ -38,7 +38,7 @@ const MAXW   = 1280
 
 /* ── Countdown ── */
 
-const DEADLINE = new Date("2026-07-15T23:59:00")
+const DEADLINE = new Date("2026-06-15T10:00:00+01:00")
 
 function useCountdown(target: Date) {
 
@@ -185,8 +185,8 @@ const IconCheck = () => (
 const SHOW_JUDGES = false // Hidden until all 8 judges are confirmed (end of June)
 
 const HERO_TICKER = [
-    "APPLICATIONS NOW OPEN","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE 15 JULY 2026","•",
-    "APPLICATIONS NOW OPEN","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE 15 JULY 2026","•",
+    "NOMINATIONS OPEN 15 JUNE 2026","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE 15 JULY 2026","•",
+    "NOMINATIONS OPEN 15 JUNE 2026","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE 15 JULY 2026","•",
 ]
 
 const JUDGES = [
@@ -354,15 +354,13 @@ export default function HomePage() {
 
                             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, justifyContent: isSmall ? "center" : "flex-start" }}>
 
-                                <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer"
+                                <span
+                                    aria-disabled="true"
+                                    style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY, cursor: "default" }}>
 
-                                    className="btn-primary"
+                                    NOMINATIONS 15.06.26
 
-                                    style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
-
-                                    NOMINATE | APPLY NOW <IconArrowRight />
-
-                                </a>
+                                </span>
 
                                 <a href="/about"
 
@@ -410,7 +408,7 @@ export default function HomePage() {
 
                                 <span style={{ background: Y, color: BK, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", padding: "3px 10px", fontFamily: BODY }}>
 
-                                    NOMINATIONS CLOSE
+                                    NOMINATIONS OPEN
 
                                 </span>
 
@@ -488,9 +486,9 @@ export default function HomePage() {
 
                                 <div>
 
-                                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>DEADLINE</div>
+                                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>LAUNCHING</div>
 
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: W }}>15 JULY 2026</div>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: W }}>15 JUNE 2026</div>
 
                                 </div>
 
@@ -508,7 +506,7 @@ export default function HomePage() {
 
                             <div style={{ background: `${Y}10`, borderTop: `1px solid ${Y}20`, padding: "10px 24px", textAlign: "center" }}>
 
-                                <span style={{ fontSize: 9, color: Y, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>★ Extended entries not permitted</span>
+                                <span style={{ fontSize: 9, color: Y, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>★ Free to enter · nominations open 15 June</span>
 
                             </div>
 
@@ -616,9 +614,9 @@ export default function HomePage() {
 
                                     <img
 
-                                        src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=90&w=1400"
+                                        src="/london-bigben.jpg"
 
-                                        alt="Big Ben clock tower London aerial sky view"
+                                        alt="Big Ben and a London street with light trails at night"
 
                                         className="ken-burns-city"
 
@@ -640,7 +638,7 @@ export default function HomePage() {
 
                                     <p style={{ color: W, fontSize: 13, lineHeight: 1.65, margin: 0, fontFamily: BODY }}>
 
-                                        Visa-supported startups generated over <strong style={{ color: Y }}>£1.2B</strong> in UK economic value in 2025 alone. The Global Innovator Awards ensures these stories are showcased nationwide.
+                                        Visa-supported startups contribute to the over <strong style={{ color: Y }}>$1.2 trillion</strong> valuation of the UK innovation ecosystem. The Global Innovator Awards ensures these stories are recognised.
 
                                     </p>
 
@@ -985,9 +983,9 @@ export default function HomePage() {
 
                     <img
 
-                        src="https://images.unsplash.com/photo-1513026705753-bc3fffca8bf4?auto=format&fit=crop&q=90&w=1800"
+                        src="/london-skyline.jpg"
 
-                        alt="Big Ben Westminster London night sky view"
+                        alt="City of London skyline at dusk"
 
                         className="ken-burns-evening"
 
@@ -1029,7 +1027,7 @@ export default function HomePage() {
 
                         <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
 
-                            250 founders, investors and press. One night. Ten winners.
+                            300 founders, investors and press. One night. Ten winners.
 
                         </p>
 

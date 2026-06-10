@@ -65,11 +65,11 @@ export default function Nav() {
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     {/* CTA — desktop only */}
                     {!isMobile && (
-                        <a href="https://form.typeform.com/to/GIA2026" target="_blank" rel="noopener noreferrer"
-                            className="btn-primary"
-                            style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                            NOMINATE | APPLY NOW
-                        </a>
+                        <span
+                            aria-disabled="true"
+                            style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", display: "inline-block", cursor: "default" }}>
+                            NOMINATIONS 15.06.26
+                        </span>
                     )}
 
                     {/* Hamburger — tablet + mobile */}
@@ -119,21 +119,19 @@ export default function Nav() {
                             </a>
                         )
                     })}
-                    <a
-                        href="https://form.typeform.com/to/GIA2026"
-                        target="_blank" rel="noopener noreferrer"
-                        onClick={() => setOpen(false)}
+                    <span
+                        aria-disabled="true"
                         style={{
                             display: "block", marginTop: 20,
                             background: Y, color: BK,
                             padding: "15px 24px", textAlign: "center",
                             fontFamily: BODY, fontWeight: 700,
                             fontSize: 13, letterSpacing: "0.1em",
-                            textTransform: "uppercase", textDecoration: "none",
+                            textTransform: "uppercase", cursor: "default",
                         }}
                     >
-                        NOMINATE | APPLY NOW
-                    </a>
+                        NOMINATIONS 15.06.26
+                    </span>
                 </div>
             )}
         </>
