@@ -4,13 +4,13 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
+import { subscribeToMailchimp, isMailchimpSuccess, cleanMailchimpMsg } from "../lib/mailchimp"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
 const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 const SHOW_TICKET_WIDGET = false // Hidden until the ticket platform (Ticket Tailor) is integrated
-const WEB3FORMS_ACCESS_KEY = "f784cc6f-a401-4855-a38d-2d71644c1c04"
 
 const IconUsers = () => (
     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -58,18 +58,16 @@ export default function TicketsPage() {
 
     const [email, setEmail] = useState("")
     const [notified, setNotified] = useState(false)
+    const [notifyError, setNotifyError] = useState("")
     const handleNotify = (e: React.FormEvent) => {
         e.preventDefault()
-        fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({
-                access_key: WEB3FORMS_ACCESS_KEY,
-                subject: "Global Innovator Awards: Tickets waitlist signup",
-                from_name: "Global Innovator Awards Website",
-                email,
-            }),
-        }).finally(() => setNotified(true))
+        setNotifyError("")
+        subscribeToMailchimp(email)
+            .then((data) => {
+                if (isMailchimpSuccess(data)) setNotified(true)
+                else setNotifyError(cleanMailchimpMsg(data.msg))
+            })
+            .catch(() => setNotifyError("Something went wrong. Please try again."))
     }
 
     return (
@@ -128,10 +126,13 @@ export default function TicketsPage() {
                             <span>✓</span><span>You&apos;re on the early bird list!</span>
                         </div>
                     ) : (
-                        <form onSubmit={handleNotify} style={{ display: "flex", gap: 0, maxWidth: 440, margin: "0 auto", height: 50 }}>
-                            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your professional email" style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: W, padding: "0 16px", fontSize: 13, outline: "none", fontFamily: BODY, minWidth: 0 }} />
-                            <button type="submit" className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
-                        </form>
+                        <>
+                            <form onSubmit={handleNotify} style={{ display: "flex", gap: 0, maxWidth: 440, margin: "0 auto", height: 50 }}>
+                                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your professional email" style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: W, padding: "0 16px", fontSize: 13, outline: "none", fontFamily: BODY, minWidth: 0 }} />
+                                <button type="submit" className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
+                            </form>
+                            {notifyError && <p style={{ color: "#ff6b6b", fontSize: 12, marginTop: 12, fontFamily: BODY }}>{notifyError}</p>}
+                        </>
                     )}
 
                     {/* Ticket Tailor placeholder - hidden until the ticket platform is integrated */}

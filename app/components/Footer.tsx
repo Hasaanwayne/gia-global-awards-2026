@@ -2,6 +2,7 @@
 import { useState } from "react"
 import React from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
+import { subscribeToMailchimp, isMailchimpSuccess, cleanMailchimpMsg } from "../lib/mailchimp"
 
 const YELLOW = "#DFFF13"
 const BLACK = "#000000"
@@ -9,7 +10,6 @@ const WHITE = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.48)"
 const BORDER = "rgba(255,255,255,0.08)"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
-const WEB3FORMS_ACCESS_KEY = "f784cc6f-a401-4855-a38d-2d71644c1c04"
 
 const socialLinks = [
     {
@@ -46,6 +46,7 @@ const legalLinks: [string, string][] = [
 export default function Footer() {
     const [email, setEmail] = useState("")
     const [submitted, setSubmitted] = useState(false)
+    const [error, setError] = useState("")
     const bp = useBreakpoint()
     const isMobile = bp === "mobile"
     const isTablet = bp === "tablet"
@@ -54,16 +55,13 @@ export default function Footer() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({
-                access_key: WEB3FORMS_ACCESS_KEY,
-                subject: "Global Innovator Awards: Newsletter signup",
-                from_name: "Global Innovator Awards Website",
-                email,
-            }),
-        }).finally(() => setSubmitted(true))
+        setError("")
+        subscribeToMailchimp(email)
+            .then((data) => {
+                if (isMailchimpSuccess(data)) setSubmitted(true)
+                else setError(cleanMailchimpMsg(data.msg))
+            })
+            .catch(() => setError("Something went wrong. Please try again."))
     }
 
     return (
@@ -148,6 +146,7 @@ export default function Footer() {
                                 <p style={{ fontSize: 11, color: MUTED, marginTop: 8, lineHeight: 1.5 }}>
                                     No spam. Unsubscribe anytime. GDPR compliant.
                                 </p>
+                                {error && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 8, lineHeight: 1.5 }}>{error}</p>}
                             </form>
                         )}
                     </div>
