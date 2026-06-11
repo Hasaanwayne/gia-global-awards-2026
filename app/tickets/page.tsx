@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
@@ -10,6 +10,7 @@ const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
 const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 const SHOW_TICKET_WIDGET = false // Hidden until the ticket platform (Ticket Tailor) is integrated
+const WEB3FORMS_ACCESS_KEY = "f784cc6f-a401-4855-a38d-2d71644c1c04"
 
 const IconUsers = () => (
     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -54,6 +55,22 @@ export default function TicketsPage() {
     const isSmall  = isMobile || isTablet
     const hPad     = isMobile ? "0 20px" : isTablet ? "0 32px" : "0 48px"
     const W_OBJ: React.CSSProperties = { maxWidth: 1100, margin: "0 auto", padding: hPad, boxSizing: "border-box" }
+
+    const [email, setEmail] = useState("")
+    const [notified, setNotified] = useState(false)
+    const handleNotify = (e: React.FormEvent) => {
+        e.preventDefault()
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: "Global Innovator Awards: Tickets waitlist signup",
+                from_name: "Global Innovator Awards Website",
+                email,
+            }),
+        }).finally(() => setNotified(true))
+    }
 
     return (
         <div style={{ fontFamily: BODY, background: BK, color: W, width: "100%", overflowX: "hidden" }}>
@@ -106,10 +123,16 @@ export default function TicketsPage() {
                     <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 16, fontFamily: BODY }}>Stay Informed</div>
                     <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(28px,6vw,46px)", textTransform: "uppercase", margin: "0 0 16px" }}>Get Notified When Tickets Open</h2>
                     <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, marginBottom: 32, fontFamily: BODY, padding: hPad }}>Tickets go on sale soon. Register now for early bird sale tickets.</p>
-                    <div style={{ display: "flex", gap: 0, maxWidth: 440, margin: "0 auto", height: 50 }}>
-                        <input type="email" placeholder="Your professional email" style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: W, padding: "0 16px", fontSize: 13, outline: "none", fontFamily: BODY, minWidth: 0 }} />
-                        <button className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
-                    </div>
+                    {notified ? (
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, color: Y, fontSize: 15, fontWeight: 600, fontFamily: BODY }}>
+                            <span>✓</span><span>You&apos;re on the early bird list!</span>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleNotify} style={{ display: "flex", gap: 0, maxWidth: 440, margin: "0 auto", height: 50 }}>
+                            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your professional email" style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: W, padding: "0 16px", fontSize: 13, outline: "none", fontFamily: BODY, minWidth: 0 }} />
+                            <button type="submit" className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
+                        </form>
+                    )}
 
                     {/* Ticket Tailor placeholder - hidden until the ticket platform is integrated */}
                     {SHOW_TICKET_WIDGET && (

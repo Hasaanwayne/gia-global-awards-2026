@@ -9,6 +9,7 @@ const WHITE = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.48)"
 const BORDER = "rgba(255,255,255,0.08)"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
+const WEB3FORMS_ACCESS_KEY = "f784cc6f-a401-4855-a38d-2d71644c1c04"
 
 const socialLinks = [
     {
@@ -53,8 +54,16 @@ export default function Footer() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        // TODO: Connect to Mailchimp API endpoint
-        setSubmitted(true)
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: "Global Innovator Awards: Newsletter signup",
+                from_name: "Global Innovator Awards Website",
+                email,
+            }),
+        }).finally(() => setSubmitted(true))
     }
 
     return (
