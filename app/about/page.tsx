@@ -58,7 +58,7 @@ export default function AboutPage() {
                         </AnimateIn>
                         <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
                             <div style={{ aspectRatio: "4/3", overflow: "hidden", border: `1px solid ${BORDER}` }}>
-                                <img src="/london-bigben.jpg" alt="Big Ben and a London street with light trails at night" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                                <img src="/about-team.jpg" alt="A diverse group of founders and innovators sitting together" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                             </div>
                         </AnimateIn>
                     </div>
