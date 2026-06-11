@@ -11,8 +11,26 @@ const BORDER = "rgba(255,255,255,0.08)"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
 const socialLinks = [
-    { label: "LinkedIn", href: "https://www.linkedin.com/showcase/global-innovator-awards/", icon: "in" },
-    { label: "Instagram", href: "https://www.instagram.com/globalinnovatorawards", icon: "◎" },
+    {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/showcase/global-innovator-awards/",
+        icon: (
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3 9h4v12H3V9Zm6.5 0h3.84v1.64h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V21h-4v-5.47c0-1.3-.02-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.88V21h-4V9Z" />
+            </svg>
+        ),
+    },
+    {
+        label: "Instagram",
+        href: "https://www.instagram.com/globalinnovatorawards",
+        icon: (
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4.2" />
+                <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
+            </svg>
+        ),
+    },
 ]
 
 const navLinks = [
