@@ -65,16 +65,25 @@ export default function AboutPage() {
                 </div>
             </div>
 
-            {/* Yellow bar */}
-            <div style={{ background: Y, padding: "18px 20px", overflow: "hidden" }}>
-                <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap" }}>
-                    {["INNOVATOR FOUNDER VISA", "GLOBAL TALENT VISA", "LEGACY INNOVATION ROUTES"].map((t, i) => (
-                        <React.Fragment key={t}>
-                            {i > 0 && !isMobile && <span style={{ color: BK, fontFamily: HEAD, fontWeight: 900, fontSize: 18 }}>|</span>}
-                            <span style={{ color: BK, fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 14 : 18, letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center" }}>{t}</span>
-                        </React.Fragment>
-                    ))}
-                </div>
+            {/* Visa routes bar — static on desktop/tablet, sliding marquee on mobile */}
+            <div style={{ background: Y, padding: "18px 0", overflow: "hidden" }}>
+                {isMobile ? (
+                    <div className="marquee-track" style={{ gap: 26 }}>
+                        {["INNOVATOR FOUNDER VISA", "|", "GLOBAL TALENT VISA", "|", "LEGACY INNOVATION ROUTES", "|",
+                          "INNOVATOR FOUNDER VISA", "|", "GLOBAL TALENT VISA", "|", "LEGACY INNOVATION ROUTES", "|"].map((t, i) => (
+                            <span key={i} style={{ color: BK, fontFamily: HEAD, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", textTransform: "uppercase", flexShrink: 0 }}>{t}</span>
+                        ))}
+                    </div>
+                ) : (
+                    <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", padding: "0 20px" }}>
+                        {["INNOVATOR FOUNDER VISA", "GLOBAL TALENT VISA", "LEGACY INNOVATION ROUTES"].map((t, i) => (
+                            <React.Fragment key={t}>
+                                {i > 0 && <span style={{ color: BK, fontFamily: HEAD, fontWeight: 900, fontSize: 18 }}>|</span>}
+                                <span style={{ color: BK, fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center" }}>{t}</span>
+                            </React.Fragment>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {/* Eligibility */}
