@@ -704,7 +704,7 @@ export default function HomePage() {
 
                             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.75, fontFamily: BODY, maxWidth: 620, margin: "0 auto" }}>
 
-                                Being shortlisted or winning puts you in front of the people, press and organisations that matter, and tells the world you&apos;ve earned your place here.
+                                Being shortlisted or winning puts you in front of the people, press and organisations that matter.
 
                             </p>
 
