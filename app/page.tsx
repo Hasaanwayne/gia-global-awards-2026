@@ -228,13 +228,26 @@ const MARQUEE_ITEMS = [
 
 export default function HomePage() {
 
-    const t = useCountdown(DEADLINE)
-
     const [activeJudge, setActiveJudge] = useState<number | null>(null)
 
-    const [prevSec, setPrevSec] = useState(t.seconds)
+    const [count, setCount] = useState(2)
 
-    const [secKey, setSecKey] = useState(0)
+    const [celebrate, setCelebrate] = useState(false)
+
+    const fireCelebration = async () => {
+        try {
+            const confetti = (await import("canvas-confetti")).default
+            const colors = ["#DFFF13", "#FFFFFF"]
+            const steps = 10
+            for (let i = 0; i < steps; i++) {
+                setTimeout(() => {
+                    confetti({ particleCount: 48, angle: 90, spread: 78, startVelocity: 60, origin: { x: (i + 0.5) / steps, y: 1.05 }, colors, scalar: 1.05, ticks: 240 })
+                }, i * 110)
+            }
+        } catch {
+            // confetti is non-critical
+        }
+    }
 
     const bp = useBreakpoint()
 
@@ -253,16 +266,20 @@ export default function HomePage() {
 
 
     useEffect(() => {
-
-        if (t.seconds !== prevSec) {
-
-            setPrevSec(t.seconds)
-
-            setSecKey(k => k + 1)
-
-        }
-
-    }, [t.seconds])
+        let n = 2
+        const id = setInterval(() => {
+            n -= 1
+            if (n <= 0) {
+                clearInterval(id)
+                setCount(0)
+                setCelebrate(true)
+                fireCelebration()
+            } else {
+                setCount(n)
+            }
+        }, 1000)
+        return () => clearInterval(id)
+    }, [])
 
 
 
@@ -417,98 +434,26 @@ export default function HomePage() {
 
 
 
-                            {/* ── 4-unit horizontal timer ── */}
-
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1px 1fr 1px 1fr 1px 1fr" }}>
-
-                                {[["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]].map(([label, value], i) => (
-
-                                    <React.Fragment key={label as string}>
-
-                                        <div style={{ padding: "28px 12px 22px", textAlign: "center", position: "relative" }}>
-
-                                            {/* Full-width yellow top accent */}
-
-                                            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${Y}${i === 3 ? "ff" : "88"}, transparent)` }} />
-
-                                            {/* Number */}
-
-                                            <div
-
-                                                key={label === "Secs" ? secKey : undefined}
-
-                                                className={label === "Secs" ? "digit-pop" : undefined}
-
-                                                style={{
-
-                                                    fontFamily: HEAD, fontWeight: 900,
-
-                                                    fontSize: "clamp(44px,5vw,66px)",
-
-                                                    lineHeight: 1, color: W,
-
-                                                    letterSpacing: "-0.02em",
-
-                                                    textShadow: `0 0 30px rgba(223,255,19,0.15)`,
-
-                                                }}
-
-                                            >
-
-                                                {String(value).padStart(2, "0")}
-
-                                            </div>
-
-                                            {/* Label */}
-
-                                            <div style={{ fontSize: 9, letterSpacing: "0.3em", color: Y, marginTop: 10, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>
-
-                                                {label}
-
-                                            </div>
-
-                                        </div>
-
-                                        {/* Thin vertical divider between units */}
-
-                                        {i < 3 && <div style={{ background: BORDER, alignSelf: "stretch" }} />}
-
-                                    </React.Fragment>
-
-                                ))}
-
-                            </div>
-
-
-
-                            {/* Card footer */}
-
-                            <div style={{ borderTop: `1px solid ${BORDER}`, padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-
-                                <div>
-
-                                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>LAUNCHING</div>
-
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: W }}>15 JUNE 2026</div>
-
+                            {/* Countdown -> celebration */}
+                            {!celebrate ? (
+                                <div style={{ padding: "48px 24px 44px", textAlign: "center" }}>
+                                    <div style={{ fontSize: 10, letterSpacing: "0.3em", color: Y, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700, marginBottom: 16 }}>Nominations open in</div>
+                                    <div key={count} className="digit-pop" style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(96px,17vw,160px)", lineHeight: 1, color: W, letterSpacing: "-0.03em", textShadow: "0 0 50px rgba(223,255,19,0.3)" }}>{count}</div>
+                                    <div style={{ fontSize: 9, letterSpacing: "0.3em", color: "rgba(255,255,255,0.35)", marginTop: 14, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>Seconds</div>
                                 </div>
-
-                                <div style={{ width: 1, height: 32, background: BORDER }} />
-
-                                <div style={{ textAlign: "right" }}>
-
-                                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 3, fontFamily: BODY }}>CEREMONY</div>
-
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 18, letterSpacing: "0.04em", color: Y }}>OCT 2026 · LONDON</div>
-
+                            ) : (
+                                <div style={{ padding: "44px 28px 40px", textAlign: "center" }}>
+                                    <div style={{ fontSize: 34, marginBottom: 10 }}>🎉</div>
+                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>The Time Is Up!</div>
+                                    <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Nominations are now open. Put yourself, or someone exceptional, forward.</p>
+                                    <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>NOMINATE | APPLY NOW <IconArrowRight /></a>
                                 </div>
+                            )}
 
-                            </div>
-
-                            <div style={{ background: `${Y}10`, borderTop: `1px solid ${Y}20`, padding: "10px 24px", textAlign: "center" }}>
-
-                                <span style={{ fontSize: 9, color: Y, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: BODY }}>★ Free to enter · nominations open 15 June</span>
-
+                            {/* Card footer - ceremony */}
+                            <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "14px 24px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10 }}>
+                                <span style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", fontFamily: BODY }}>Ceremony</span>
+                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 16, letterSpacing: "0.04em", color: Y }}>OCT 2026 · LONDON</span>
                             </div>
 
                         </div>
