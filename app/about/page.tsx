@@ -4,6 +4,7 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
+import { NOMINATE_URL } from "../lib/links"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
@@ -142,11 +143,10 @@ export default function AboutPage() {
                     <p style={bodyText}>NEXUS is a UK innovation hub connecting frontier technology companies, incubators, science parks and scale-ups across global markets. We work at the intersection of international ambition and UK opportunity, helping founders and innovators establish, grow and scale in the UK.</p>
                     <p style={bodyText}>We have been supporting founders on innovation and talent routes for 8+ years, from the Tier 1 Entrepreneur Visa through to the current Innovator Founder Visa, where NEXUS is an active consortium partner under UK Endorsing Services.</p>
                     <p style={{ ...bodyText, marginBottom: 36 }}>The Global Innovator Awards was created because we know this community exists, we work with them every day, and we believe their achievements deserve a dedicated stage.</p>
-                    <span
-                        aria-disabled="true"
-                        style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", display: "inline-block", cursor: "default" }}>
-                        NOMINATIONS 15.06.26
-                    </span>
+                    <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                        style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
+                        NOMINATE | APPLY NOW
+                    </a>
                 </div>
             </div>
 

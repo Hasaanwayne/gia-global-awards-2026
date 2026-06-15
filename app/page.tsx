@@ -9,6 +9,7 @@ import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 
 import AnimateIn from "./components/AnimateIn"
+import { NOMINATE_URL } from "./lib/links"
 
 import { useBreakpoint } from "./hooks/useBreakpoint"
 
@@ -354,13 +355,13 @@ export default function HomePage() {
 
                             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, justifyContent: isSmall ? "center" : "flex-start" }}>
 
-                                <span
-                                    aria-disabled="true"
-                                    style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY, cursor: "default" }}>
+                                <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer"
+                                    className="btn-primary"
+                                    style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
 
-                                    NOMINATIONS 15.06.26
+                                    NOMINATE | APPLY NOW <IconArrowRight />
 
-                                </span>
+                                </a>
 
                                 <a href="/about"
 

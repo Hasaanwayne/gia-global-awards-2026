@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 import React from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
+import { NOMINATE_URL } from "../lib/links"
 
 const Y     = "#DFFF13"
 const BK    = "#000000"
@@ -65,11 +66,11 @@ export default function Nav() {
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     {/* CTA — desktop only */}
                     {!isMobile && (
-                        <span
-                            aria-disabled="true"
-                            style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", display: "inline-block", cursor: "default" }}>
-                            NOMINATIONS 15.06.26
-                        </span>
+                        <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer"
+                            className="btn-primary"
+                            style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
+                            NOMINATE | APPLY NOW
+                        </a>
                     )}
 
                     {/* Hamburger — tablet + mobile */}
@@ -119,19 +120,21 @@ export default function Nav() {
                             </a>
                         )
                     })}
-                    <span
-                        aria-disabled="true"
+                    <a
+                        href={NOMINATE_URL}
+                        target="_blank" rel="noopener noreferrer"
+                        onClick={() => setOpen(false)}
                         style={{
                             display: "block", marginTop: 20,
                             background: Y, color: BK,
                             padding: "15px 24px", textAlign: "center",
                             fontFamily: BODY, fontWeight: 700,
                             fontSize: 13, letterSpacing: "0.1em",
-                            textTransform: "uppercase", cursor: "default",
+                            textTransform: "uppercase", textDecoration: "none",
                         }}
                     >
-                        NOMINATIONS 15.06.26
-                    </span>
+                        NOMINATE | APPLY NOW
+                    </a>
                 </div>
             )}
         </>
