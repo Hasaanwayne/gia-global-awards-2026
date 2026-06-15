@@ -421,7 +421,7 @@ export default function HomePage() {
                             {/* Celebration */}
                             <div style={{ padding: "44px 28px 40px", textAlign: "center" }}>
                                 <div style={{ fontSize: 34, marginBottom: 10 }}>🎉</div>
-                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>Nominations Are Now Live</div>
+                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>Nominations Are<br />Now Live</div>
                                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Put yourself, or someone exceptional, forward.</p>
                                 <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>NOMINATE | APPLY NOW <IconArrowRight /></a>
                             </div>
