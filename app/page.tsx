@@ -230,10 +230,6 @@ export default function HomePage() {
 
     const [activeJudge, setActiveJudge] = useState<number | null>(null)
 
-    const [count, setCount] = useState(2)
-
-    const [celebrate, setCelebrate] = useState(false)
-
     const fireCelebration = async () => {
         try {
             const confetti = (await import("canvas-confetti")).default
@@ -266,19 +262,7 @@ export default function HomePage() {
 
 
     useEffect(() => {
-        let n = 2
-        const id = setInterval(() => {
-            n -= 1
-            if (n <= 0) {
-                clearInterval(id)
-                setCount(0)
-                setCelebrate(true)
-                fireCelebration()
-            } else {
-                setCount(n)
-            }
-        }, 1000)
-        return () => clearInterval(id)
+        fireCelebration()
     }, [])
 
 
@@ -418,7 +402,7 @@ export default function HomePage() {
 
                                     <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.34em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", fontFamily: BODY }}>
 
-                                        LIVE COUNTDOWN
+                                        NOW LIVE
 
                                     </span>
 
@@ -434,21 +418,13 @@ export default function HomePage() {
 
 
 
-                            {/* Countdown -> celebration */}
-                            {!celebrate ? (
-                                <div style={{ padding: "48px 24px 44px", textAlign: "center" }}>
-                                    <div style={{ fontSize: 10, letterSpacing: "0.3em", color: Y, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700, marginBottom: 16 }}>Nominations open in</div>
-                                    <div key={count} className="digit-pop" style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(96px,17vw,160px)", lineHeight: 1, color: W, letterSpacing: "-0.03em", textShadow: "0 0 50px rgba(223,255,19,0.3)" }}>{count}</div>
-                                    <div style={{ fontSize: 9, letterSpacing: "0.3em", color: "rgba(255,255,255,0.35)", marginTop: 14, textTransform: "uppercase", fontFamily: BODY, fontWeight: 700 }}>Seconds</div>
-                                </div>
-                            ) : (
-                                <div style={{ padding: "44px 28px 40px", textAlign: "center" }}>
-                                    <div style={{ fontSize: 34, marginBottom: 10 }}>🎉</div>
-                                    <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>The Time Is Up!</div>
-                                    <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Nominations are now open. Put yourself, or someone exceptional, forward.</p>
-                                    <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>NOMINATE | APPLY NOW <IconArrowRight /></a>
-                                </div>
-                            )}
+                            {/* Celebration */}
+                            <div style={{ padding: "44px 28px 40px", textAlign: "center" }}>
+                                <div style={{ fontSize: 34, marginBottom: 10 }}>🎉</div>
+                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>Nominations Are Now Live</div>
+                                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Put yourself, or someone exceptional, forward.</p>
+                                <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>NOMINATE | APPLY NOW <IconArrowRight /></a>
+                            </div>
 
                             {/* Card footer - ceremony */}
                             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "14px 24px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10 }}>
