@@ -17,7 +17,7 @@ const sectionTitle: React.CSSProperties = { fontFamily: HEAD, fontWeight: 900, t
 const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 1.82, marginBottom: 20, fontFamily: BODY }
 
 const steps = [
-    { num: "01", title: "Open Nominations",    body: "Nominations open on 15 June 2026 and close on 15 July 2026. Entry is free. You can nominate yourself or someone else, both are equally welcome." },
+    { num: "01", title: "Open Nominations",    body: "Nominations are open now and close on 15 July 2026. Entry is free. You can nominate yourself or someone else, both are equally welcome." },
     { num: "02", title: "Judging & Shortlist", body: "All nominations are reviewed by our independent judge panel. Ten finalists per category are announced on 20 August 2026." },
     { num: "03", title: "Awards Evening",      body: "Winners are announced at the Global Innovator Awards evening in Central London in October 2026." },
     { num: "04", title: "Media & Recognition", body: "Winners and finalists receive coverage across our media partner network. Your story reaches the investors, partners and press that matter." },

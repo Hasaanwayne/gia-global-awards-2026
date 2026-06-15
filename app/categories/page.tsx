@@ -54,7 +54,7 @@ export default function CategoriesPage() {
                 </a>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, marginTop: 20 }}>
                     <div style={{ width: 8, height: 8, background: Y, borderRadius: "50%" }} />
-                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Applications Opening 15 June 2026</p>
+                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Applications are open now</p>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@ export default function CategoriesPage() {
                                                 </div>
                                                 <div style={{ background: "#0d0d0d", border: `1px solid ${BORDER}`, padding: "20px 24px", minWidth: isSmall ? "auto" : 200, textAlign: "center" }}>
                                                     <div style={{ fontSize: 9, color: MUTED, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>Status</div>
-                                                    <div style={{ color: W, fontWeight: 700, fontSize: 14, marginBottom: 16, fontFamily: BODY }}>OPENS 15 JUNE 2026</div>
+                                                    <div style={{ color: W, fontWeight: 700, fontSize: 14, marginBottom: 16, fontFamily: BODY }}>OPEN NOW</div>
                                                     <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary"
                                                         style={{ background: Y, color: BK, display: "block", textAlign: "center", padding: "11px 16px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none" }}>
                                                         NOMINATE | APPLY NOW
