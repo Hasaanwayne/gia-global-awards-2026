@@ -4,8 +4,8 @@ import CookieBanner from "./components/CookieBanner";
 import IntercomMessenger from "./components/IntercomMessenger";
 
 export const metadata: Metadata = {
-    title: "Global Innovator Awards 2026",
-    description: "The UK's first awards for innovators who came under an innovation or talent visa route and built something significant. Apply or nominate by 15 July 2026.",
+    title: "Global Innovator Awards 2026 | UK Innovation Awards",
+    description: "The UK's first awards for founders, innovators and talent who came to the UK on an innovation or talent visa. Free to enter, nominations now open.",
     openGraph: {
         title: "Global Innovator Awards 2026",
         description: "The UK's first awards for innovators who came under an innovation or talent visa route and built something significant.",
@@ -39,6 +39,47 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 {/* General Sans — body font per brief */}
                 <link rel="preconnect" href="https://api.fontshare.com" />
                 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+                {/* Structured data (schema.org) */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@graph": [
+                                {
+                                    "@type": "Organization",
+                                    name: "Global Innovator Awards",
+                                    url: "https://globalinnovatorawards.com",
+                                    logo: "https://globalinnovatorawards.com/gia-logo.png",
+                                    sameAs: [
+                                        "https://www.linkedin.com/showcase/global-innovator-awards/",
+                                        "https://www.instagram.com/globalinnovatorawards",
+                                    ],
+                                },
+                                {
+                                    "@type": "WebSite",
+                                    name: "Global Innovator Awards 2026",
+                                    url: "https://globalinnovatorawards.com",
+                                },
+                                {
+                                    "@type": "Event",
+                                    name: "Global Innovator Awards 2026",
+                                    startDate: "2026-10",
+                                    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                                    eventStatus: "https://schema.org/EventScheduled",
+                                    location: {
+                                        "@type": "Place",
+                                        name: "Central London",
+                                        address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
+                                    },
+                                    image: "https://globalinnovatorawards.com/gia-logo.png",
+                                    description: "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa.",
+                                    organizer: { "@type": "Organization", name: "NEXUS Creative HQ Ltd", url: "https://globalinnovatorawards.com" },
+                                },
+                            ],
+                        }),
+                    }}
+                />
                 {/* Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID */}
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
                 <script dangerouslySetInnerHTML={{
