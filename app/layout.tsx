@@ -26,6 +26,7 @@ export const metadata: Metadata = {
         images: ["https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80"],
     },
     metadataBase: new URL("https://globalinnovatorawards.com"),
+    verification: { google: "Qjyj11u0iKN-9Ar3rRaNfTDaMR3gh5kkiHOEprJFt9Q" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -80,10 +81,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                         }),
                     }}
                 />
-                {/* Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID */}
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+                {/* Google Analytics 4 */}
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZZGT7LZ1J" />
                 <script dangerouslySetInnerHTML={{
-                    __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');`
+                    __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XZZGT7LZ1J');`
                 }} />
             </head>
             <body style={{ margin: 0, padding: 0, background: "#000", color: "#fff", fontFamily: "'General Sans','Inter',system-ui,sans-serif" }}>
