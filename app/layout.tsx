@@ -88,6 +88,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 }} />
             </head>
             <body style={{ margin: 0, padding: 0, background: "#000", color: "#fff", fontFamily: "'General Sans','Inter',system-ui,sans-serif" }}>
+                {/* Endorsement bar */}
+                <div style={{ background: "#050505", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "8px 16px", display: "flex", alignItems: "center", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>Endorsed by</span>
+                    <img src="/endorsed-gep-great.jpg" alt="Endorsed by the Global Entrepreneur Programme, GREAT Britain & Northern Ireland" style={{ height: 30, width: "auto", display: "block", borderRadius: 3 }} />
+                </div>
                 {children}
                 <CookieBanner />
                 <IntercomMessenger />
