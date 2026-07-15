@@ -44,9 +44,10 @@ const sections: LegalSection[] = [
             { ul: [
                 "Nominations may be submitted by the nominee themselves (self-nomination) or by a third party on behalf of a nominee.",
                 "Where a third party submits a nomination on behalf of another individual, NEXUS will contact the nominee directly and promptly to inform them of the nomination, explain the process, and invite them to participate or withdraw.",
+                "By submitting a nomination on behalf of another person, organisation or business, you confirm that, to the best of your knowledge, the information provided is accurate and that you have the necessary authority to provide that information to NEXUS for the purposes of administering the Awards.",
                 "By submitting a nomination, you confirm that all information provided is accurate, truthful and complete to the best of your knowledge. Submitting false or misleading information may result in disqualification.",
                 "Nominations must be submitted via the official Typeform nomination form on the Website during the open nominations period. Nominations submitted by any other means will not be accepted.",
-                "The nominations window opens on 15 June 2026 and closes on 15 July 2026. NEXUS reserves the right to close nominations early if required and will not accept late submissions under any circumstances.",
+                "The nominations window opens on 15th June 2026 and closes August 2026. NEXUS reserves the right to close nominations early if required and will not accept late submissions under any circumstances.",
                 "Submission of a nomination does not guarantee longlisting, shortlisting or any other form of recognition.",
                 "NEXUS reserves the right to reject any nomination at its discretion, including on grounds of ineligibility, incomplete information, or conduct inconsistent with the values of the Awards.",
             ] },
@@ -58,10 +59,10 @@ const sections: LegalSection[] = [
             { ul: [
                 "The Awards operate a two-stage entry process. Stage one is an open nominations period. Stage two is a full submission, open only to longlisted nominees.",
                 "Following the close of nominations, NEXUS will conduct an internal triage to select up to 30 longlisted nominees per category. This is an eligibility and quality triage, not a judging step. NEXUS's decisions on longlisting are final.",
-                "Longlisted nominees will be notified by 17 July 2026 and invited to complete a full submission via a unique link. The stage two deadline is 31 July 2026. No extensions will be granted.",
+                "Longlisted nominees will be notified one week after the nominations close and invited to complete a full submission via a unique link. The stage two deadline is 31st August 2026. No extensions will be granted.",
                 "Stage two submissions are reviewed by an independent judge panel. Each judge is allocated one category and ranks their top ten nominees in order. Aggregate rankings determine the ten publicly announced finalists per category.",
                 "The winner in each category is determined by the highest aggregate score. Winner identities are held confidentially by the NEXUS awards team and are not disclosed to judges, sponsors or any other party prior to the awards evening.",
-                "The shortlist of ten finalists per category will be announced publicly on or around 20 August 2026.",
+                "The shortlist of ten finalists per category will be announced publicly September 2026.",
             ] },
         ],
     },
@@ -72,8 +73,7 @@ const sections: LegalSection[] = [
                 "The Awards are judged by an independent panel selected by NEXUS. Judges are appointed on the basis of their expertise and relevance to their assigned category.",
                 "All judges are required to declare any conflict of interest before receiving submissions. A judge with a direct financial interest in a nominee will be recused from assessing that nominee.",
                 "Judges assess submissions independently and do not discuss rankings with one another. Scoring is asynchronous.",
-                "All submission content is treated as confidential by judges and is not shared with any third party.",
-                "NEXUS's decisions in relation to judging, shortlisting and winner selection are final. No correspondence will be entered into regarding judging outcomes.",
+                "All submission content is treated as confidential by judges and is not shared with any third party. Judges may only use submission materials for the purpose of assessing entries and determining award outcomes. NEXUS's decisions in relation to judging, shortlisting and winner selection are final. No correspondence will be entered into regarding judging outcomes.",
                 "In the event of a tied aggregate score at the top position, the NEXUS awards director will make the final determination using stage two supporting documents.",
             ] },
         ],
@@ -82,11 +82,12 @@ const sections: LegalSection[] = [
         heading: "7. Finalists and Winners",
         blocks: [
             { ul: [
-                "Being announced as a finalist or winner constitutes permission for NEXUS to use the individual's name, company name and category in connection with the Awards, including on the Website, in press releases, on social media and in event materials.",
+                "Being announced as a finalist or winner authorises NEXUS to publish and use the finalist's or winner's name, company name, category, business name, approved logo, professional biography, approved photographs and award status in connection with the administration, reporting and promotion of the Awards, including on the Website, social media channels, press releases, event materials and future awards marketing.",
                 "NEXUS will not publish submission content or detailed personal information about finalists or winners without their prior written consent.",
                 "Finalists and winners may be asked to provide a short biography, photograph and quote for use in awards communications. Participation in this is voluntary but encouraged.",
                 "Winners will receive a physical trophy presented at the awards evening. Trophies are non-transferable and have no cash value.",
                 "NEXUS reserves the right to withdraw a finalist or winner status at any time if it is established that eligibility criteria were not met, or that information provided was materially inaccurate or misleading.",
+                "NEXUS reserves the right to withdraw, suspend or revoke a nomination, finalist position or award where it reasonably considers that continued participation may bring the Awards, NEXUS, its judges, sponsors or partners into disrepute.",
             ] },
         ],
     },
@@ -101,6 +102,7 @@ const sections: LegalSection[] = [
                 "Finalists receive a unique discount code granting a reduced ticket price. This code is for the finalist's personal use only and may not be shared or transferred.",
                 "NEXUS reserves the right to refuse entry to any person whose behaviour at the event is disruptive, abusive or inconsistent with the values of the Awards, without liability for the cost of the ticket.",
                 "NEXUS reserves the right to change the date, venue or format of the awards evening. In the event of a significant change, ticket holders will be notified and offered a refund if they are unable to attend the revised event.",
+                "NEXUS and its authorised representatives may photograph, record or film the awards evening and associated events. By attending the awards evening, attendees acknowledge that they may appear in photographs, audio recordings or video footage which may be used by NEXUS for promotional, marketing, reporting, event administration and archival purposes in connection with the Awards.",
             ] },
         ],
     },
@@ -110,7 +112,7 @@ const sections: LegalSection[] = [
             { ul: [
                 "All content on the Website, including text, design, graphics, logos and copy, is the property of NEXUS Creative HQ Ltd or its licensors and is protected by copyright and other intellectual property rights.",
                 "You may not reproduce, distribute, modify or use any content from the Website for commercial purposes without our prior written consent.",
-                "By submitting a nomination or stage two entry, you confirm that the content you provide is your own or that you have the right to submit it, and that it does not infringe the intellectual property rights of any third party.",
+                "By submitting a nomination or stage two entry, you grant NEXUS a non-exclusive, worldwide, royalty-free licence to use, reproduce, store, display and communicate nomination materials, photographs, logos, biographies and related submission content solely for the purposes of administering, judging, operating, promoting and reporting on the Awards. NEXUS will not use detailed submission content for unrelated commercial purposes without the relevant participant's consent.",
                 "You grant NEXUS a non-exclusive, royalty-free licence to use nomination and submission content solely for the purposes of administering and promoting the Awards. This licence does not extend to commercial use or publication of submission content without your consent.",
             ] },
         ],
@@ -128,6 +130,8 @@ const sections: LegalSection[] = [
                 "Harvesting or collecting data about other users or nominees without consent",
             ] },
             { p: "NEXUS reserves the right to disqualify any entrant and remove any content that breaches these standards, without prior notice." },
+            { p: "Verification: NEXUS reserves the right to request evidence supporting any information contained within a nomination or submission. Entrants remain responsible for ensuring that all information submitted is accurate, truthful, complete and capable of verification. Failure to provide reasonable supporting evidence when requested may result in rejection or disqualification." },
+            { p: "Improper influence: offering gifts, incentives, hospitality or other benefits to judges, organisers or representatives of NEXUS with the intention of influencing the Awards process is prohibited and may result in disqualification." },
         ],
     },
     {
@@ -155,6 +159,7 @@ const sections: LegalSection[] = [
         blocks: [
             { ul: [
                 "Nothing in these Terms and Conditions limits or excludes liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot be excluded or limited by law.",
+                "NEXUS shall not be liable for any delay, interruption, postponement, modification or cancellation of the Awards or any related event arising from circumstances beyond its reasonable control, including acts of God, epidemic or pandemic, governmental action, war, civil unrest, industrial disputes, venue unavailability, utility failure or technological failure.",
                 "To the maximum extent permitted by law, NEXUS accepts no liability for any indirect, special or consequential loss or damage arising from use of the Website or participation in the Awards, including loss of business, revenue, reputation or data.",
                 "NEXUS's total liability to you in connection with the Awards or the Website shall not exceed the amount paid by you for a ticket to the awards evening, or £100, whichever is greater.",
             ] },

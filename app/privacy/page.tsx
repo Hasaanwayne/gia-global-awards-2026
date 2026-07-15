@@ -47,6 +47,12 @@ const sections: LegalSection[] = [
         ],
     },
     {
+        heading: "3a. Information Provided by Third Parties",
+        blocks: [
+            { p: "In some cases, nominations may be submitted by individuals, organisations or businesses on behalf of another person, team, project or organisation. Where this occurs, we may receive personal data about nominees from the individual submitting the nomination. This may include contact details, professional information, biographical information, details of achievements, business information and supporting materials relevant to the awards process. We process this information for the purposes of administering, assessing and operating the Global Innovator Awards programme." },
+        ],
+    },
+    {
         heading: "4. How We Use Personal Data",
         blocks: [
             { p: "We use the personal data we collect for the following purposes:" },
@@ -58,6 +64,8 @@ const sections: LegalSection[] = [
                 "Responding to enquiries and providing support",
                 "Improving our website and understanding how visitors use it",
                 "Meeting our legal and regulatory obligations",
+                "Publicity: where an individual or organisation is shortlisted, selected as a finalist or announced as a winner, we may publish and use relevant information including names, company names, biographies, approved photographs, logos and award outcomes for the purposes of administering and promoting the Awards.",
+                "Event photography: we may collect and use photographs, video recordings and audio recordings captured during awards events for promotional, reporting, event administration and archival purposes.",
             ] },
         ],
     },
@@ -116,7 +124,7 @@ const sections: LegalSection[] = [
         blocks: [
             { p: "We retain personal data only for as long as necessary for the purposes for which it was collected, including:" },
             { ul: [
-                "Nomination and judging records: retained for the duration of the awards cycle and for a reasonable period thereafter for legitimate business records and potential future reference",
+                "Nomination and judging records: retained for up to three years following the conclusion of the relevant awards cycle unless a longer retention period is required by law or for the establishment, exercise or defence of legal claims.",
                 "Event registration data: retained for the period required to administer the event and meet any legal obligations",
                 "Marketing and communications data: retained until you unsubscribe or request deletion",
                 "Legal and financial records: retained for the period required by applicable law",
@@ -144,6 +152,7 @@ const sections: LegalSection[] = [
                 "Right to data portability: you can ask us to provide your data in a commonly used, machine-readable format where applicable",
                 "Right to withdraw consent: where processing is based on consent, you can withdraw it at any time without affecting the lawfulness of prior processing",
             ] },
+            { p: "We do not undertake automated decision-making or profiling that produces legal effects or similarly significant effects in relation to individuals." },
             { p: "To exercise any of these rights, please contact us using the details in Section 13 below. We will respond within one calendar month." },
         ],
     },
