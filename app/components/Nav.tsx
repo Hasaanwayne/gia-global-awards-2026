@@ -41,7 +41,7 @@ export default function Nav() {
             }}>
                 {/* GIA logo */}
                 <a href="/" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }} aria-label="Global Innovator Awards — home">
-                    <img src="/gia-logo.png" alt="Global Innovator Awards" style={{ height: bp === "mobile" ? 36 : 46, width: "auto", display: "block" }} />
+                    <img src="/gia-logo.webp" alt="Global Innovator Awards" style={{ height: bp === "mobile" ? 36 : 46, width: "auto", display: "block" }} />
                 </a>
 
                 {/* Desktop nav links */}

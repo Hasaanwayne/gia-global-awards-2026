@@ -402,7 +402,7 @@ export default function HomePage() {
 
                                     <div style={{ width: 7, height: 7, borderRadius: "50%", background: Y, boxShadow: `0 0 8px ${Y}, 0 0 18px ${Y}70`, flexShrink: 0 }} />
 
-                                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.34em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", fontFamily: BODY }}>
+                                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.34em", color: "rgba(255,255,255,0.62)", textTransform: "uppercase", fontFamily: BODY }}>
 
                                         NOW LIVE
 
@@ -429,7 +429,7 @@ export default function HomePage() {
 
                             {/* Card footer - ceremony */}
                             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "14px 24px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10 }}>
-                                <span style={{ fontSize: 8, color: "rgba(255,255,255,0.25)", letterSpacing: "0.24em", textTransform: "uppercase", fontFamily: BODY }}>Ceremony</span>
+                                <span style={{ fontSize: 8, color: "rgba(255,255,255,0.62)", letterSpacing: "0.24em", textTransform: "uppercase", fontFamily: BODY }}>Ceremony</span>
                                 <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 16, letterSpacing: "0.04em", color: Y }}>OCT 2026 · LONDON</span>
                             </div>
 
@@ -537,7 +537,7 @@ export default function HomePage() {
 
                                     <img
 
-                                        src="/london-bigben.jpg"
+                                        src="/london-bigben.webp"
 
                                         alt="Big Ben and a London street with light trails at night"
 
@@ -906,7 +906,7 @@ export default function HomePage() {
 
                     <img
 
-                        src="/london-skyline.jpg"
+                        src="/london-skyline.webp"
 
                         alt="City of London skyline at dusk"
 

@@ -33,13 +33,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en">
             <head>
-                {/* Barlow Condensed — headline font (Neutral Face Bold fallback per brief) */}
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
-                {/* General Sans — body font per brief */}
-                <link rel="preconnect" href="https://api.fontshare.com" />
-                <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+                {/* Self-hosted fonts — preload the critical weights (defined in globals.css) */}
+                <link rel="preload" href="/fonts/GeneralSans-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+                <link rel="preload" href="/fonts/GeneralSans-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+                <link rel="preload" href="/fonts/BarlowCondensed-900.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
                 {/* Structured data (schema.org) */}
                 <script
                     type="application/ld+json"
@@ -51,7 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                                     "@type": "Organization",
                                     name: "Global Innovator Awards",
                                     url: "https://globalinnovatorawards.com",
-                                    logo: "https://globalinnovatorawards.com/gia-logo.png",
+                                    logo: "https://globalinnovatorawards.com/gia-logo.webp",
                                     sameAs: [
                                         "https://www.linkedin.com/showcase/global-innovator-awards/",
                                         "https://www.instagram.com/globalinnovatorawards",
@@ -73,7 +70,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                                         name: "Central London",
                                         address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
                                     },
-                                    image: "https://globalinnovatorawards.com/gia-logo.png",
+                                    image: "https://globalinnovatorawards.com/gia-logo.webp",
                                     description: "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa.",
                                     organizer: { "@type": "Organization", name: "NEXUS Creative HQ Ltd", url: "https://globalinnovatorawards.com" },
                                 },
@@ -91,9 +88,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 {/* Endorsement bar */}
                 <div style={{ background: "#050505", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "8px 16px", display: "flex", alignItems: "center", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>Endorsed by</span>
-                    <img src="/endorsed-gep-great.jpg" alt="Endorsed by the Global Entrepreneur Programme, GREAT Britain & Northern Ireland" style={{ height: 30, width: "auto", display: "block", borderRadius: 3 }} />
+                    <img src="/endorsed-gep-great.webp" alt="Endorsed by the Global Entrepreneur Programme, GREAT Britain & Northern Ireland" style={{ height: 30, width: "auto", display: "block", borderRadius: 3 }} />
                 </div>
-                {children}
+                <main>{children}</main>
                 <CookieBanner />
                 <IntercomMessenger />
             </body>

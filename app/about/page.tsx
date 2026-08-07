@@ -59,7 +59,7 @@ export default function AboutPage() {
                         </AnimateIn>
                         <AnimateIn from={isSmall ? "up" : "right"} delay={120}>
                             <div style={{ aspectRatio: "4/3", overflow: "hidden", border: `1px solid ${BORDER}` }}>
-                                <img src="/about-gala.jpg" alt="Global Innovator Awards evening in a London ballroom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                                <img src="/about-gala.webp" alt="Global Innovator Awards evening in a London ballroom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                             </div>
                         </AnimateIn>
                     </div>
@@ -93,7 +93,7 @@ export default function AboutPage() {
                     <div style={{ display: "grid", gridTemplateColumns: isSmall ? "1fr" : "1fr 1fr", gap: isSmall ? 40 : 72, alignItems: "center" }}>
                         <AnimateIn from={isSmall ? "up" : "left"}>
                             <div style={{ aspectRatio: "4/3", overflow: "hidden", border: `1px solid ${BORDER}` }}>
-                                <img src="/london-skyline.jpg" alt="City of London skyline at dusk" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                                <img src="/london-skyline.webp" alt="City of London skyline at dusk" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                             </div>
                         </AnimateIn>
                         <AnimateIn from={isSmall ? "up" : "right"} delay={120}>

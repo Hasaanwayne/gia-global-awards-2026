@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* ── Self-hosted fonts (no render-blocking third-party requests) ── */
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url('/fonts/BarlowCondensed-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url('/fonts/BarlowCondensed-800.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url('/fonts/BarlowCondensed-900.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+
 :root {
   --background: #000000;
   --foreground: #ffffff;

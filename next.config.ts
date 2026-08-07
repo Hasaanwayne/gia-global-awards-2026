@@ -24,9 +24,17 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
 ];
 
+const longCache = [
+  { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+];
+
 const nextConfig: NextConfig = {
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/fonts/:path*", headers: longCache },
+      { source: "/:all*(woff2|webp|png|jpg|jpeg|gif|svg|ico)", headers: longCache },
+    ];
   },
 };
 
