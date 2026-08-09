@@ -192,13 +192,13 @@ const HERO_TICKER = [
 
 const JUDGES = [
 
-    { name: "Vanessa Fu", role: "Co-CEO of Pall Mall Investments International", linkedin: "https://uk.linkedin.com/in/vanessa-fu-04617231", bio: "With more than 20 years of experience working between the UK and China, Vanessa brings a powerful cross-border perspective on international business, investment and innovation. After beginning her career in corporate law in Beijing, Vanessa joined London & Partners, where she helped attract Chinese investment into London. She later moved into financial services, advising entrepreneurs, investors and businesses on UK and international opportunities, with a particular focus on strengthening commercial links between the UK and Asia. In 2020, Vanessa co-founded Pall Mall Investments International, one of the UK's legacy endorsing bodies for the Innovator Founder visa. Through the firm, she has assessed and mentored hundreds of international entrepreneurs, supporting them to establish, invest and scale in the UK. As a judge, Vanessa will bring her commercial expertise, international outlook and deep understanding of what it takes to build an innovative, viable and impactful business." },
+    { name: "Vanessa Fu", role: "Co-CEO of Pall Mall Investments International", img: "/judges/vanessa-fu.webp", linkedin: "https://uk.linkedin.com/in/vanessa-fu-04617231", bio: "With more than 20 years of experience working between the UK and China, Vanessa brings a powerful cross-border perspective on international business, investment and innovation. After beginning her career in corporate law in Beijing, Vanessa joined London & Partners, where she helped attract Chinese investment into London. She later moved into financial services, advising entrepreneurs, investors and businesses on UK and international opportunities, with a particular focus on strengthening commercial links between the UK and Asia. In 2020, Vanessa co-founded Pall Mall Investments International, one of the UK's legacy endorsing bodies for the Innovator Founder visa. Through the firm, she has assessed and mentored hundreds of international entrepreneurs, supporting them to establish, invest and scale in the UK. As a judge, Vanessa will bring her commercial expertise, international outlook and deep understanding of what it takes to build an innovative, viable and impactful business." },
 
-    { name: "Nathan March", role: "Innovation Ecosystems Manager, Barclays Innovation Banking", linkedin: "https://www.linkedin.com/in/nathanjmarch", bio: "Nathan builds and strengthens relationships across investor networks, universities and spinouts, technology clusters, professional services and government-backed organisations. With a background spanning banking, the public sector and academia, he brings extensive experience in strategic partnership development, business growth and building the ecosystems that enable innovative companies to grow and scale sustainably. Nathan's work is grounded in collaboration: connecting ambitious businesses with the partners, opportunities and expertise that can help turn innovation into measurable commercial and economic impact. His understanding of what growing businesses need and the networks required to support them will bring an important perspective to this year's judging panel." },
+    { name: "Nathan March", role: "Innovation Ecosystems Manager, Barclays Innovation Banking", img: "/judges/nathan-march.webp", linkedin: "https://www.linkedin.com/in/nathanjmarch", bio: "Nathan builds and strengthens relationships across investor networks, universities and spinouts, technology clusters, professional services and government-backed organisations. With a background spanning banking, the public sector and academia, he brings extensive experience in strategic partnership development, business growth and building the ecosystems that enable innovative companies to grow and scale sustainably. Nathan's work is grounded in collaboration: connecting ambitious businesses with the partners, opportunities and expertise that can help turn innovation into measurable commercial and economic impact. His understanding of what growing businesses need and the networks required to support them will bring an important perspective to this year's judging panel." },
 
-    { name: "Alexandra Leader", role: "Head of SME Delivery, City of London Corporation", linkedin: "https://www.linkedin.com/in/alexmleader", bio: "Alex is a senior leader with over 20 years' experience working across both the public and private sectors, where she's built a reputation for bringing people together and turning ideas into action. She currently leads the SME Strategy at the City of London Corporation, where she focuses on supporting business growth, strengthening partnerships, and helping shape a thriving business ecosystem in the City. Throughout her career, Alex has been passionate about creating meaningful connections, whether that is with business leaders, policymakers, or entrepreneurs, and turning those relationships into real, positive outcomes. She is known for her collaborative style and her ability to navigate complex environments while keeping people at the heart of what she does. Alongside her strategic role, Alex is a strong advocate for women in business and inclusive economic growth and plays an active part in the City's Business and Investment Unit." },
+    { name: "Alexandra Leader", role: "Head of SME Delivery, City of London Corporation", img: "/judges/alexandra-leader.webp", linkedin: "https://www.linkedin.com/in/alexmleader", bio: "Alex is a senior leader with over 20 years' experience working across both the public and private sectors, where she's built a reputation for bringing people together and turning ideas into action. She currently leads the SME Strategy at the City of London Corporation, where she focuses on supporting business growth, strengthening partnerships, and helping shape a thriving business ecosystem in the City. Throughout her career, Alex has been passionate about creating meaningful connections, whether that is with business leaders, policymakers, or entrepreneurs, and turning those relationships into real, positive outcomes. She is known for her collaborative style and her ability to navigate complex environments while keeping people at the heart of what she does. Alongside her strategic role, Alex is a strong advocate for women in business and inclusive economic growth and plays an active part in the City's Business and Investment Unit." },
 
-    { name: "Afua Basoah", role: "Co-Founder and General Partner, Fern Capital Group", linkedin: "https://www.linkedin.com/in/afua-basoah-dphil-frsa-4b58a722", bio: "Afua is a health strategist, investor and ecosystem builder whose career sits at the intersection of healthcare, capital and innovation. As Co-Founder and General Partner of Fern Capital Group, she backs early-stage women's health companies across the UK, Europe and Africa, supporting founders building solutions in one of healthcare's fastest-growing and most underserved sectors. With more than 20 years of experience spanning venture capital, life sciences, commercialisation and growth strategy, Afua brings a unique perspective on identifying innovation with the potential to create lasting impact. Her work advising pharmaceutical, biotech and health organisations, alongside her commitment to advancing inclusive innovation, makes her an outstanding addition to our judging panel." },
+    { name: "Afua Basoah", role: "Co-Founder and General Partner, Fern Capital Group", img: "/judges/afua-basoah.webp", linkedin: "https://www.linkedin.com/in/afua-basoah-dphil-frsa-4b58a722", bio: "Afua is a health strategist, investor and ecosystem builder whose career sits at the intersection of healthcare, capital and innovation. As Co-Founder and General Partner of Fern Capital Group, she backs early-stage women's health companies across the UK, Europe and Africa, supporting founders building solutions in one of healthcare's fastest-growing and most underserved sectors. With more than 20 years of experience spanning venture capital, life sciences, commercialisation and growth strategy, Afua brings a unique perspective on identifying innovation with the potential to create lasting impact. Her work advising pharmaceutical, biotech and health organisations, alongside her commitment to advancing inclusive innovation, makes her an outstanding addition to our judging panel." },
 
 ]
 
@@ -794,7 +794,7 @@ export default function HomePage() {
 
                                 >
 
-                                    {/* Initials avatar — swap for a headshot when supplied */}
+                                    {/* Circular photo, falls back to initials if none supplied */}
 
                                     <div
 
@@ -822,11 +822,25 @@ export default function HomePage() {
 
                                     >
 
-                                        <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 26 : 38, color: activeJudge === i ? Y : "rgba(223,255,19,0.55)", transition: "color 0.25s" }}>
+                                        {j.img ? (
 
-                                            {judgeInitials(j.name)}
+                                            <img
 
-                                        </span>
+                                                src={j.img} alt={j.name}
+
+                                                style={{ width: "100%", height: "100%", objectFit: "cover", filter: activeJudge === i ? "grayscale(0)" : "grayscale(1)", transition: "filter 0.4s, transform 0.35s", transform: activeJudge === i ? "scale(1.08)" : "scale(1)" }}
+
+                                            />
+
+                                        ) : (
+
+                                            <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 26 : 38, color: activeJudge === i ? Y : "rgba(223,255,19,0.55)", transition: "color 0.25s" }}>
+
+                                                {judgeInitials(j.name)}
+
+                                            </span>
+
+                                        )}
 
                                     </div>
 
