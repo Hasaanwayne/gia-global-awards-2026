@@ -28,7 +28,7 @@ const sections: LegalSection[] = [
         heading: "3. Eligibility",
         blocks: [
             { ul: [
-                "To be eligible for consideration in any competitive category, the nominee must hold, or have previously held, one of the following qualifying routes: Innovator Founder Visa; Global Talent Visa; Innovator Visa (closed 2023); Start-up Visa; Tier 1 Exceptional Talent; or Tier 1 Entrepreneur.",
+                "To be eligible for consideration in any competitive category, the nominee must hold, or have previously held, one of the following qualifying routes: Innovator Founder Visa; Graduate Visa; Global Talent Visa; Innovator Visa (closed 2023); Start-up Visa; Tier 1 Exceptional Talent; or Tier 1 Entrepreneur.",
                 "The Global Talent Award category is restricted to current or former holders of the Global Talent Visa (Exceptional Promise or Exceptional Talent endorsement) who are not founders.",
                 "The UK SME Global Expansion Award is open to UK-headquartered businesses with fewer than 250 employees where at least one founder or co-founder holds or has held a qualifying route. The business must demonstrate active trading in at least one overseas market.",
                 "The Pioneer Award is a nomination-only honorary award and is not open for self-entry. Nominations are accepted only from endorsing bodies, partners or judges. NEXUS reserves the right to conduct due diligence on all Pioneer Award nominations.",
@@ -59,7 +59,7 @@ const sections: LegalSection[] = [
             { ul: [
                 "The Awards operate a two-stage entry process. Stage one is an open nominations period. Stage two is a full submission, open only to longlisted nominees.",
                 "Following the close of nominations, NEXUS will conduct an internal triage to select up to 30 longlisted nominees per category. This is an eligibility and quality triage, not a judging step. NEXUS's decisions on longlisting are final.",
-                "Longlisted nominees will be notified one week after the nominations close and invited to complete a full submission via a unique link. The stage two deadline is 31st August 2026. No extensions will be granted.",
+                "Longlisted nominees will be notified one week after the nominations close and invited to complete a full submission via a unique link. The stage two deadline is at the end of August. No extensions will be granted.",
                 "Stage two submissions are reviewed by an independent judge panel. Each judge is allocated one category and ranks their top ten nominees in order. Aggregate rankings determine the ten publicly announced finalists per category.",
                 "The winner in each category is determined by the highest aggregate score. Winner identities are held confidentially by the NEXUS awards team and are not disclosed to judges, sponsors or any other party prior to the awards evening.",
                 "The shortlist of ten finalists per category will be announced publicly September 2026.",

@@ -81,10 +81,10 @@ export default function TicketsPage() {
                 <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: isSmall ? "80px 24px" : "100px 40px" }}>
                     <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 20, fontFamily: BODY }}>Gala Ceremony Passes</div>
                     <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(44px,10vw,100px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: "0 0 18px", textTransform: "uppercase" }}>Get Your Tickets</h1>
-                    <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 18 : 24, letterSpacing: "0.16em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>October 2026 &middot; London</div>
-                    <div style={{ display: "inline-block", border: `2px solid ${Y}`, color: Y, padding: "9px 28px", fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 13 : 16, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 28 }}>Tickets Available from July 2026</div>
+                    <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 18 : 24, letterSpacing: "0.16em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>16 November 2026 &middot; London</div>
+                    <div style={{ display: "inline-block", border: `2px solid ${Y}`, color: Y, padding: "9px 28px", fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 13 : 16, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 28 }}>Tickets Available from August 2026</div>
                     <p style={{ color: "rgba(255,255,255,0.75)", fontSize: isSmall ? 15 : 17, lineHeight: 1.75, maxWidth: 560, margin: "0 auto 36px", fontFamily: BODY }}>
-                        This is the room you want to be in. Join 300+ founders, investors, judges and the people powering the ecosystem, for a celebration of UK innovation.
+                        This is the room you want to be in. Join 150+ founders, investors, judges and the people powering the ecosystem, for a celebration of UK innovation.
                     </p>
                     <a href="#notify" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
                         Notify Me When Tickets Open

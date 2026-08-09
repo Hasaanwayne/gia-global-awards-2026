@@ -183,24 +183,26 @@ const IconCheck = () => (
 
 /* ── Data ── */
 
-const SHOW_JUDGES = false // Hidden until all 8 judges are confirmed (end of June)
+const SHOW_JUDGES = true // First 4 confirmed judges live; more to be announced (targeting 10-12 total)
 
 const HERO_TICKER = [
-    "NOMINATIONS OPEN NOW","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
-    "NOMINATIONS OPEN NOW","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — OCTOBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
+    "NOMINATIONS OPEN NOW","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — 16 NOVEMBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
+    "NOMINATIONS OPEN NOW","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — 16 NOVEMBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
 ]
 
 const JUDGES = [
 
-    { name: "Dame Helena Vance", role: "Chair of Innovate UK",    img: "https://i.pravatar.cc/150?img=33", bio: "Vance has guided over £2.4B in venture-backed grants and innovation pathways across UK institutions. A former Global Talent recipient and one of the UK's most influential voices in the innovation ecosystem." },
+    { name: "Vanessa Fu", role: "Co-CEO of Pall Mall Investments International", linkedin: "https://uk.linkedin.com/in/vanessa-fu-04617231", bio: "With more than 20 years of experience working between the UK and China, Vanessa brings a powerful cross-border perspective on international business, investment and innovation. After beginning her career in corporate law in Beijing, Vanessa joined London & Partners, where she helped attract Chinese investment into London. She later moved into financial services, advising entrepreneurs, investors and businesses on UK and international opportunities, with a particular focus on strengthening commercial links between the UK and Asia. In 2020, Vanessa co-founded Pall Mall Investments International, one of the UK's legacy endorsing bodies for the Innovator Founder visa. Through the firm, she has assessed and mentored hundreds of international entrepreneurs, supporting them to establish, invest and scale in the UK. As a judge, Vanessa will bring her commercial expertise, international outlook and deep understanding of what it takes to build an innovative, viable and impactful business." },
 
-    { name: "Dr. Aris Thorne",   role: "GP, DeepTech Labs",       img: "https://i.pravatar.cc/150?img=11", bio: "Former Global Talent recipient, venture backer, and leading AI systems engineer from Oxford. Dr Thorne has invested in over 25 deeptech companies across the UK and Europe." },
+    { name: "Nathan March", role: "Innovation Ecosystems Manager, Barclays Innovation Banking", linkedin: "https://www.linkedin.com/in/nathanjmarch", bio: "Nathan builds and strengthens relationships across investor networks, universities and spinouts, technology clusters, professional services and government-backed organisations. With a background spanning banking, the public sector and academia, he brings extensive experience in strategic partnership development, business growth and building the ecosystems that enable innovative companies to grow and scale sustainably. Nathan's work is grounded in collaboration: connecting ambitious businesses with the partners, opportunities and expertise that can help turn innovation into measurable commercial and economic impact. His understanding of what growing businesses need and the networks required to support them will bring an important perspective to this year's judging panel." },
 
-    { name: "Siddharth Patel",   role: "Co-Founder, Aegis AI",    img: "https://i.pravatar.cc/150?img=12", bio: "Innovator Founder alum. Successfully scaled his fintech venture to £80M valuation in London. Now a board advisor to multiple UK startups and a Global Innovator Awards founding supporter." },
+    { name: "Alexandra Leader", role: "Head of SME Delivery, City of London Corporation", linkedin: "https://www.linkedin.com/in/alexmleader", bio: "Alex is a senior leader with over 20 years' experience working across both the public and private sectors, where she's built a reputation for bringing people together and turning ideas into action. She currently leads the SME Strategy at the City of London Corporation, where she focuses on supporting business growth, strengthening partnerships, and helping shape a thriving business ecosystem in the City. Throughout her career, Alex has been passionate about creating meaningful connections, whether that is with business leaders, policymakers, or entrepreneurs, and turning those relationships into real, positive outcomes. She is known for her collaborative style and her ability to navigate complex environments while keeping people at the heart of what she does. Alongside her strategic role, Alex is a strong advocate for women in business and inclusive economic growth and plays an active part in the City's Business and Investment Unit." },
 
-    { name: "Chantal de Clercq", role: "Partner, Apex Ventures",  img: "https://i.pravatar.cc/150?img=47", bio: "Over 15 years backing early-stage enterprise SaaS and border-free technologies worldwide. Chantal sits on the boards of 8 UK-based startups and is a frequent speaker on immigrant founder journeys." },
+    { name: "Afua Basoah", role: "Co-Founder and General Partner, Fern Capital Group", linkedin: "https://www.linkedin.com/in/afua-basoah-dphil-frsa-4b58a722", bio: "Afua is a health strategist, investor and ecosystem builder whose career sits at the intersection of healthcare, capital and innovation. As Co-Founder and General Partner of Fern Capital Group, she backs early-stage women's health companies across the UK, Europe and Africa, supporting founders building solutions in one of healthcare's fastest-growing and most underserved sectors. With more than 20 years of experience spanning venture capital, life sciences, commercialisation and growth strategy, Afua brings a unique perspective on identifying innovation with the potential to create lasting impact. Her work advising pharmaceutical, biotech and health organisations, alongside her commitment to advancing inclusive innovation, makes her an outstanding addition to our judging panel." },
 
 ]
+
+const judgeInitials = (name: string) => name.split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase()
 
 
 
@@ -430,7 +432,7 @@ export default function HomePage() {
                             {/* Card footer - ceremony */}
                             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "14px 24px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10 }}>
                                 <span style={{ fontSize: 8, color: "rgba(255,255,255,0.62)", letterSpacing: "0.24em", textTransform: "uppercase", fontFamily: BODY }}>Ceremony</span>
-                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 16, letterSpacing: "0.04em", color: Y }}>OCT 2026 · LONDON</span>
+                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 16, letterSpacing: "0.04em", color: Y }}>16 NOV 2026 · LONDON</span>
                             </div>
 
                         </div>
@@ -493,7 +495,7 @@ export default function HomePage() {
 
                                         { title: "Free to Enter", body: "Entry is free. Both self-nomination and third-party nomination are accepted across all 10 categories." },
 
-                                        { title: "Qualifying Route",   body: "At least one founder, co-founder or named individual must hold, or have previously held, an Innovator Founder Visa, Global Talent Visa, or an equivalent legacy innovation or talent route." },
+                                        { title: "Qualifying Route",   body: "At least one founder, co-founder or named individual must hold, or have previously held, an Innovator Founder Visa, Global Talent Visa, Graduate Visa or an equivalent legacy innovation or talent route." },
 
                                     ].map((item) => (
 
@@ -697,149 +699,6 @@ export default function HomePage() {
 
             {/* ═══════════════════════════════════════
 
-                SECTION 4 — MEET THE JUDGES
-
-                Circular photo frames, bio expand on click
-
-            ═══════════════════════════════════════ */}
-
-            {SHOW_JUDGES && (
-            <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
-
-                <div style={W_OBJ}>
-
-                    <AnimateIn>
-
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: isSmall ? "flex-start" : "flex-end", marginBottom: isSmall ? 40 : 64, flexWrap: "wrap", gap: 24 }}>
-
-                            <div>
-
-                                <span style={badge()}>INDEPENDENT JURY</span>
-
-                                <h2 style={{ ...h2Base, fontSize: "clamp(34px,5vw,60px)" }}>MEET THE JUDGES</h2>
-
-                                <p style={{ color: MUTED, fontSize: 15, marginTop: 10, fontFamily: BODY }}>
-
-                                    Leading investors, policy architects, and former visa founders assessing candidates objectively.
-
-                                </p>
-
-                            </div>
-
-                            <a href="/about"
-
-                                className="btn-ghost"
-
-                                style={{ background: "transparent", color: W, border: "1px solid rgba(255,255,255,0.25)", padding: "11px 22px", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block", fontFamily: BODY }}>
-
-                                LEARN ABOUT JUDGING PROTOCOL
-
-                            </a>
-
-                        </div>
-
-                    </AnimateIn>
-
-
-
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gap: isSmall ? 12 : 28, alignItems: "stretch" }}>
-
-                        {JUDGES.map((j, i) => (
-
-                            <AnimateIn key={j.name} delay={i * 90} style={{ height: "100%" }}>
-
-                                <div
-
-                                    className="judge-card"
-
-                                    style={{ background: BK, border: `1px solid ${BORDER}`, padding: isMobile ? "20px 14px" : "28px 24px", textAlign: "center", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
-
-                                >
-
-                                    {/* Circular photo — non-negotiable per PDF */}
-
-                                    <div
-
-                                        onClick={() => setActiveJudge(activeJudge === i ? null : i)}
-
-                                        style={{
-
-                                            width: isMobile ? 88 : 130, height: isMobile ? 88 : 130, borderRadius: "50%",
-
-                                            margin: "0 auto 14px",
-
-                                            border: `2px solid ${activeJudge === i ? Y : "rgba(223,255,19,0.4)"}`,
-
-                                            overflow: "hidden", cursor: "pointer",
-
-                                            flexShrink: 0,
-
-                                            transition: "border-color 0.25s, transform 0.25s",
-
-                                            transform: activeJudge === i ? "scale(1.06)" : "scale(1)",
-
-                                        }}
-
-                                    >
-
-                                        <img
-
-                                            src={j.img} alt={j.name}
-
-                                            style={{ width: "100%", height: "100%", objectFit: "cover", filter: activeJudge === i ? "grayscale(0)" : "grayscale(1)", transition: "filter 0.4s, transform 0.35s", transform: activeJudge === i ? "scale(1.08)" : "scale(1)" }}
-
-                                        />
-
-                                    </div>
-
-                                    <h4 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 13 : 17, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 5, color: W, lineHeight: 1.15 }}>{j.name}</h4>
-
-                                    <div style={{ color: Y, fontSize: isMobile ? 9 : 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: isMobile ? 10 : 14, fontFamily: BODY, lineHeight: 1.4 }}>{j.role}</div>
-
-
-
-                                    {activeJudge === i ? (
-
-                                        <div>
-
-                                            <p style={{ color: MUTED, fontSize: 12, lineHeight: 1.72, fontFamily: BODY, marginBottom: 12 }}>{j.bio}</p>
-
-                                            <button onClick={() => setActiveJudge(null)} style={{ background: "none", border: `1px solid rgba(223,255,19,0.3)`, color: Y, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", padding: "6px 16px", fontFamily: BODY, transition: "background 0.2s" }}>
-
-                                                ✕ Close
-
-                                            </button>
-
-                                        </div>
-
-                                    ) : (
-
-                                        <button onClick={() => setActiveJudge(i)} style={{ background: "none", border: "none", color: Y, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", padding: 0, fontFamily: BODY, textDecoration: "underline", textUnderlineOffset: 4 }}>
-
-                                            Read Bio
-
-                                        </button>
-
-                                    )}
-
-                                </div>
-
-                            </AnimateIn>
-
-                        ))}
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            )}
-
-            {/* ═══════════════════════════════════════
-
                 SECTION 5 — EXPLORE THE AWARD CATEGORIES
 
             ═══════════════════════════════════════ */}
@@ -887,6 +746,147 @@ export default function HomePage() {
             </section>
 
 
+
+            {/* ═══════════════════════════════════════
+
+                SECTION 5b — MEET THE JUDGES
+
+                Initials avatar, bio expand on click
+
+            ═══════════════════════════════════════ */}
+
+            {SHOW_JUDGES && (
+            <section style={{ background: DARK, padding: secPad, borderTop: `1px solid ${BORDER}` }}>
+
+                <div style={W_OBJ}>
+
+                    <AnimateIn>
+
+                        <div style={{ marginBottom: isSmall ? 40 : 56 }}>
+
+                            <span style={badge()}>INDEPENDENT JURY</span>
+
+                            <h2 style={{ ...h2Base, fontSize: "clamp(34px,5vw,60px)", marginBottom: 12 }}>MEET THE JUDGES</h2>
+
+                            <p style={{ color: MUTED, fontSize: 15, maxWidth: 640, fontFamily: BODY, lineHeight: 1.7 }}>
+
+                                Leading investors, ecosystem builders and industry leaders assessing candidates objectively. More judges will be announced soon, we expect a panel of 10 to 12 in total.
+
+                            </p>
+
+                        </div>
+
+                    </AnimateIn>
+
+
+
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gap: isSmall ? 12 : 28, alignItems: "stretch" }}>
+
+                        {JUDGES.map((j, i) => (
+
+                            <AnimateIn key={j.name} delay={i * 90} style={{ height: "100%" }}>
+
+                                <div
+
+                                    className="judge-card"
+
+                                    style={{ background: BK, border: `1px solid ${BORDER}`, padding: isMobile ? "20px 14px" : "28px 24px", textAlign: "center", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
+
+                                >
+
+                                    {/* Initials avatar — swap for a headshot when supplied */}
+
+                                    <div
+
+                                        onClick={() => setActiveJudge(activeJudge === i ? null : i)}
+
+                                        style={{
+
+                                            width: isMobile ? 88 : 130, height: isMobile ? 88 : 130, borderRadius: "50%",
+
+                                            margin: "0 auto 14px",
+
+                                            border: `2px solid ${activeJudge === i ? Y : "rgba(223,255,19,0.4)"}`,
+
+                                            overflow: "hidden", cursor: "pointer", flexShrink: 0,
+
+                                            display: "flex", alignItems: "center", justifyContent: "center",
+
+                                            background: "rgba(223,255,19,0.06)",
+
+                                            transition: "border-color 0.25s, transform 0.25s, background 0.25s",
+
+                                            transform: activeJudge === i ? "scale(1.06)" : "scale(1)",
+
+                                        }}
+
+                                    >
+
+                                        <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 26 : 38, color: activeJudge === i ? Y : "rgba(223,255,19,0.55)", transition: "color 0.25s" }}>
+
+                                            {judgeInitials(j.name)}
+
+                                        </span>
+
+                                    </div>
+
+                                    <h4 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isMobile ? 13 : 17, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: 5, color: W, lineHeight: 1.15 }}>{j.name}</h4>
+
+                                    <div style={{ color: Y, fontSize: isMobile ? 9 : 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: isMobile ? 10 : 14, fontFamily: BODY, lineHeight: 1.4 }}>{j.role}</div>
+
+
+
+                                    {activeJudge === i ? (
+
+                                        <div>
+
+                                            <p style={{ color: MUTED, fontSize: 12, lineHeight: 1.72, fontFamily: BODY, marginBottom: 12, textAlign: "left" }}>{j.bio}</p>
+
+                                            <a href={j.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", color: Y, fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: BODY, textDecoration: "underline", textUnderlineOffset: 4, marginBottom: 12 }}>
+
+                                                View LinkedIn
+
+                                            </a>
+
+                                            <br />
+
+                                            <button onClick={() => setActiveJudge(null)} style={{ background: "none", border: `1px solid rgba(223,255,19,0.3)`, color: Y, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", padding: "6px 16px", fontFamily: BODY, transition: "background 0.2s" }}>
+
+                                                ✕ Close
+
+                                            </button>
+
+                                        </div>
+
+                                    ) : (
+
+                                        <button onClick={() => setActiveJudge(i)} style={{ background: "none", border: "none", color: Y, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", padding: 0, fontFamily: BODY, textDecoration: "underline", textUnderlineOffset: 4 }}>
+
+                                            Read Bio
+
+                                        </button>
+
+                                    )}
+
+                                </div>
+
+                            </AnimateIn>
+
+                        ))}
+
+                    </div>
+
+                    <p style={{ textAlign: "center", color: MUTED, fontSize: 13, marginTop: isSmall ? 32 : 44, fontFamily: BODY }}>
+
+                        More judges to be announced soon.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+            )}
 
             {/* ═══════════════════════════════════════
 
@@ -944,13 +944,13 @@ export default function HomePage() {
 
                         <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 22, letterSpacing: "0.22em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>
 
-                            OCTOBER 2026 &middot; CENTRAL LONDON
+                            16 NOVEMBER 2026 &middot; CENTRAL LONDON
 
                         </div>
 
                         <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
 
-                            300 founders, investors and press. One night. Ten winners.
+                            150 innovators, investors and press. One night. Ten winners.
 
                         </p>
 

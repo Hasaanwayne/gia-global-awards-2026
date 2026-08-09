@@ -19,7 +19,7 @@ const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 
 const steps = [
     { num: "01", title: "Open Nominations",    body: "Nominations are open now and close in August 2026. Entry is free. You can nominate yourself or someone else, both are equally welcome." },
     { num: "02", title: "Judging & Shortlist", body: "All nominations are reviewed by our independent judge panel. Ten finalists per category are announced at the end of August." },
-    { num: "03", title: "Awards Evening",      body: "Winners are announced at the Global Innovator Awards evening in Central London in October 2026." },
+    { num: "03", title: "Awards Evening",      body: "Winners are announced at the Global Innovator Awards evening in Central London on 16 November 2026." },
     { num: "04", title: "Media & Recognition", body: "Winners and finalists receive coverage across our media partner network. Your story reaches the investors, partners and press that matter." },
 ]
 
@@ -102,7 +102,7 @@ export default function AboutPage() {
                                 <h2 style={{ ...sectionTitle, fontSize: "clamp(28px,4vw,46px)", marginBottom: 24 }}>Eligibility</h2>
                                 <p style={bodyText}>These awards are open to founders, innovators and exceptional talent who made an active decision to come to the UK under one of the following qualifying routes:</p>
                                 <ul style={{ color: MUTED, fontSize: 15, lineHeight: 2.1, paddingLeft: 20, fontFamily: BODY }}>
-                                    {["Global Talent Visa, Current route", "Innovator Founder Visa, Current route", "Innovator Visa, Previous route (closed 2023)", "Start-up Visa, Legacy route", "Tier 1 Exceptional Talent, Legacy route", "Tier 1 Entrepreneur, Legacy route"].map((item) => (
+                                    {["Global Talent Visa, Current route", "Innovator Founder Visa, Current route", "Graduate Visa, Current route", "Innovator Visa, Previous route (closed 2023)", "Start-up Visa, Legacy route", "Tier 1 Exceptional Talent, Legacy route", "Tier 1 Entrepreneur, Legacy route"].map((item) => (
                                         <li key={item}><strong style={{ color: W }}>{item.split(",")[0]}</strong>{item.includes(",") ? `,${item.slice(item.indexOf(",") + 1)}` : ""}</li>
                                     ))}
                                 </ul>
