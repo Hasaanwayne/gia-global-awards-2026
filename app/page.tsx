@@ -770,7 +770,7 @@ export default function HomePage() {
 
                             <p style={{ color: MUTED, fontSize: 15, maxWidth: 640, fontFamily: BODY, lineHeight: 1.7 }}>
 
-                                Leading investors, ecosystem builders and industry leaders assessing candidates objectively. More judges will be announced soon, we expect a panel of 10 to 12 in total.
+                                Leading investors, ecosystem builders and industry leaders assessing candidates objectively.
 
                             </p>
 
