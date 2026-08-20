@@ -2,7 +2,7 @@ import LegalPage, { LegalSection } from "../components/LegalPage"
 import { buildMetadata } from "../lib/seo"
 
 export const metadata = buildMetadata({
-    title: "Privacy & Cookies | Global Innovator Awards 2026",
+    title: "Privacy & Cookies | Global Innovator Awards",
     description:
         "How NEXUS Creative HQ Ltd collects, uses and protects personal data for the Global Innovator Awards, including cookies, data retention and your UK GDPR rights.",
     path: "/privacy",

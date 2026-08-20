@@ -4,10 +4,10 @@ import CookieBanner from "./components/CookieBanner";
 import IntercomMessenger from "./components/IntercomMessenger";
 
 export const metadata: Metadata = {
-    title: "Global Innovator Awards 2026 | UK Innovation Awards",
+    title: "Global Innovator Awards | UK Innovation Awards",
     description: "The UK's first awards for founders, innovators and talent who came to the UK on an innovation or talent visa. Free to enter, nominations now open.",
     openGraph: {
-        title: "Global Innovator Awards 2026",
+        title: "Global Innovator Awards",
         description: "The UK's first awards for innovators who came under an innovation or talent visa route and built something significant.",
         url: "https://globalinnovatorawards.com",
         siteName: "Global Innovator Awards",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Global Innovator Awards 2026",
+        title: "Global Innovator Awards",
         description: "The UK's first awards for innovators who came under an innovation or talent visa route.",
         images: ["https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80"],
     },

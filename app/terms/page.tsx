@@ -2,7 +2,7 @@ import LegalPage, { LegalSection } from "../components/LegalPage"
 import { buildMetadata } from "../lib/seo"
 
 export const metadata = buildMetadata({
-    title: "Terms and Conditions | Global Innovator Awards 2026",
+    title: "Terms and Conditions | Global Innovator Awards",
     description:
         "Terms and Conditions governing use of the Global Innovator Awards website, nominations, judging, event tickets and participation in the Awards 2026.",
     path: "/terms",
