@@ -1,10 +1,12 @@
-import type { Metadata } from "next"
 import LegalPage, { LegalSection } from "../components/LegalPage"
+import { buildMetadata } from "../lib/seo"
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
     title: "Terms and Conditions | Global Innovator Awards 2026",
-    description: "Terms and Conditions governing use of the Global Innovator Awards website and participation in the Global Innovator Awards 2026.",
-}
+    description:
+        "Terms and Conditions governing use of the Global Innovator Awards website, nominations, judging, event tickets and participation in the Awards 2026.",
+    path: "/terms",
+})
 
 const sections: LegalSection[] = [
     {
