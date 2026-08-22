@@ -62,7 +62,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                                 {
                                     "@type": "Event",
                                     name: "Global Innovator Awards 2026",
-                                    startDate: "2026-10",
+                                    startDate: "2026-11-16",
                                     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
                                     eventStatus: "https://schema.org/EventScheduled",
                                     location: {
