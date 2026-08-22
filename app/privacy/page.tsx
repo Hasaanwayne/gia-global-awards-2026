@@ -1,10 +1,13 @@
 import LegalPage, { LegalSection } from "../components/LegalPage"
-import { buildMetadata } from "../lib/seo"
+import JsonLd from "../components/JsonLd"
+import { buildMetadata, breadcrumbSchema, pageSchema } from "../lib/seo"
+
+const description =
+    "How NEXUS Creative HQ Ltd collects, uses and protects personal data for the Global Innovator Awards, including cookies, data retention and your UK GDPR rights."
 
 export const metadata = buildMetadata({
     title: "Privacy & Cookies | Global Innovator Awards",
-    description:
-        "How NEXUS Creative HQ Ltd collects, uses and protects personal data for the Global Innovator Awards, including cookies, data retention and your UK GDPR rights.",
+    description,
     path: "/privacy",
 })
 
@@ -185,5 +188,15 @@ const sections: LegalSection[] = [
 ]
 
 export default function PrivacyPage() {
-    return <LegalPage title="Privacy & Cookies" effectiveDate="Effective 5th June 2026" sections={sections} />
+    return (
+        <>
+            <JsonLd
+                data={[
+                    pageSchema({ name: "Privacy & Cookies", description, path: "/privacy" }),
+                    breadcrumbSchema([{ name: "Privacy & Cookies", path: "/privacy" }]),
+                ]}
+            />
+            <LegalPage title="Privacy & Cookies" effectiveDate="Effective 5th June 2026" sections={sections} />
+        </>
+    )
 }

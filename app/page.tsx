@@ -1,4 +1,5 @@
-import { buildMetadata } from "./lib/seo"
+import { buildMetadata, eventSchema } from "./lib/seo"
+import JsonLd from "./components/JsonLd"
 import HomeClient from "./HomeClient"
 
 export const metadata = buildMetadata({
@@ -9,5 +10,10 @@ export const metadata = buildMetadata({
 })
 
 export default function Page() {
-    return <HomeClient />
+    return (
+        <>
+            <JsonLd data={eventSchema} />
+            <HomeClient />
+        </>
+    )
 }

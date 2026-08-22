@@ -37,7 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="preload" href="/fonts/GeneralSans-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
                 <link rel="preload" href="/fonts/GeneralSans-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
                 <link rel="preload" href="/fonts/BarlowCondensed-900.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-                {/* Structured data (schema.org) */}
+                {/* Site-wide structured data. Page-specific schema lives on each route. */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -56,23 +56,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                                 },
                                 {
                                     "@type": "WebSite",
-                                    name: "Global Innovator Awards 2026",
+                                    name: "Global Innovator Awards",
                                     url: "https://globalinnovatorawards.com",
-                                },
-                                {
-                                    "@type": "Event",
-                                    name: "Global Innovator Awards 2026",
-                                    startDate: "2026-11-16",
-                                    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-                                    eventStatus: "https://schema.org/EventScheduled",
-                                    location: {
-                                        "@type": "Place",
-                                        name: "Central London",
-                                        address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
-                                    },
-                                    image: "https://globalinnovatorawards.com/gia-logo.webp",
-                                    description: "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa.",
-                                    organizer: { "@type": "Organization", name: "NEXUS Creative HQ Ltd", url: "https://globalinnovatorawards.com" },
                                 },
                             ],
                         }),

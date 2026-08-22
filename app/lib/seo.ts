@@ -16,6 +16,67 @@ const OG_IMAGE = {
  * (Next.js replaces the whole `openGraph` object per route rather than
  * deep-merging it, so those shared fields must be repeated here.)
  */
+/** Breadcrumb trail; Home is prepended automatically. */
+export function breadcrumbSchema(trail: { name: string; path: string }[]) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [{ name: "Home", path: "/" }, ...trail].map((item, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: item.name,
+            item: `${SITE_URL}${item.path === "/" ? "" : item.path}`,
+        })),
+    }
+}
+
+/** A basic WebPage/AboutPage/ContactPage node for a route. */
+export function pageSchema({
+    type = "WebPage",
+    name,
+    description,
+    path,
+}: {
+    type?: string
+    name: string
+    description: string
+    path: string
+}) {
+    return {
+        "@context": "https://schema.org",
+        "@type": type,
+        name,
+        description,
+        url: `${SITE_URL}${path === "/" ? "" : path}`,
+        isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+        publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    }
+}
+
+/** The awards evening. Used on the pages that actually describe the event. */
+export const eventSchema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: "Global Innovator Awards 2026",
+    startDate: "2026-11-16",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    url: `${SITE_URL}/tickets`,
+    image: `${SITE_URL}/gia-logo.webp`,
+    description:
+        "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa. An evening of 150 innovators, investors and press, with ten winners announced.",
+    location: {
+        "@type": "Place",
+        name: "Central London",
+        address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
+    },
+    organizer: {
+        "@type": "Organization",
+        name: "NEXUS Creative HQ Ltd",
+        url: SITE_URL,
+    },
+}
+
 export function buildMetadata({
     title,
     description,

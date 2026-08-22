@@ -1,10 +1,13 @@
 import LegalPage, { LegalSection } from "../components/LegalPage"
-import { buildMetadata } from "../lib/seo"
+import JsonLd from "../components/JsonLd"
+import { buildMetadata, breadcrumbSchema, pageSchema } from "../lib/seo"
+
+const description =
+    "Terms and Conditions governing use of the Global Innovator Awards website, nominations, judging, event tickets and participation in the Awards 2026."
 
 export const metadata = buildMetadata({
     title: "Terms and Conditions | Global Innovator Awards",
-    description:
-        "Terms and Conditions governing use of the Global Innovator Awards website, nominations, judging, event tickets and participation in the Awards 2026.",
+    description,
     path: "/terms",
 })
 
@@ -205,5 +208,15 @@ const sections: LegalSection[] = [
 ]
 
 export default function TermsPage() {
-    return <LegalPage title="Terms and Conditions" effectiveDate="Effective date: 5th June 2026" sections={sections} />
+    return (
+        <>
+            <JsonLd
+                data={[
+                    pageSchema({ name: "Terms and Conditions", description, path: "/terms" }),
+                    breadcrumbSchema([{ name: "Terms and Conditions", path: "/terms" }]),
+                ]}
+            />
+            <LegalPage title="Terms and Conditions" effectiveDate="Effective date: 5th June 2026" sections={sections} />
+        </>
+    )
 }
