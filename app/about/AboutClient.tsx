@@ -4,7 +4,6 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
-import { NOMINATE_URL } from "../lib/links"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
@@ -17,7 +16,7 @@ const sectionTitle: React.CSSProperties = { fontFamily: HEAD, fontWeight: 900, t
 const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 1.82, marginBottom: 20, fontFamily: BODY }
 
 const steps = [
-    { num: "01", title: "Open Nominations",    body: "Nominations are open now and close in August 2026. Entry is free. You can nominate yourself or someone else, both are equally welcome." },
+    { num: "01", title: "Open Nominations",    body: "Nominations are now closed. Judging is underway." },
     { num: "02", title: "Judging & Shortlist", body: "All nominations are reviewed by our independent judge panel. Ten finalists per category are announced at the end of August." },
     { num: "03", title: "Awards Evening",      body: "Winners are announced at the Global Innovator Awards evening in Central London on 16 November 2026." },
     { num: "04", title: "Media & Recognition", body: "Winners and finalists receive coverage across our media partner network. Your story reaches the investors, partners and press that matter." },
@@ -143,9 +142,9 @@ export default function AboutPage() {
                     <p style={bodyText}>NEXUS is a UK innovation hub connecting frontier technology companies, incubators, science parks and scale-ups across global markets. We work at the intersection of international ambition and UK opportunity, helping founders and innovators establish, grow and scale in the UK.</p>
                     <p style={bodyText}>We have been supporting founders on innovation and talent routes for 8+ years, from the Tier 1 Entrepreneur Visa through to the current Innovator Founder Visa, where NEXUS is an active consortium partner under UK Endorsing Services.</p>
                     <p style={{ ...bodyText, marginBottom: 36 }}>The Global Innovator Awards was created because we know this community exists, we work with them every day, and we believe their achievements deserve a dedicated stage.</p>
-                    <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                    <a href="/tickets" className="btn-primary"
                         style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                        NOMINATE | APPLY NOW
+                        GET TICKETS
                     </a>
                 </div>
             </div>

@@ -9,7 +9,6 @@ import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 
 import AnimateIn from "./components/AnimateIn"
-import { NOMINATE_URL } from "./lib/links"
 
 import { useBreakpoint } from "./hooks/useBreakpoint"
 
@@ -186,8 +185,8 @@ const IconCheck = () => (
 const SHOW_JUDGES = true // First 4 confirmed judges live; more to be announced (targeting 10-12 total)
 
 const HERO_TICKER = [
-    "NOMINATIONS OPEN NOW","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — 16 NOVEMBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
-    "NOMINATIONS OPEN NOW","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — 16 NOVEMBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
+    "NOMINATIONS CLOSED. FINALISTS ANNOUNCED SOON.","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — 16 NOVEMBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
+    "NOMINATIONS CLOSED. FINALISTS ANNOUNCED SOON.","•","FREE TO ENTER","•","10 AWARD CATEGORIES","•","AWARDS EVENING — 16 NOVEMBER 2026, CENTRAL LONDON","•","ENTRY DEADLINE AUGUST 2026","•",
 ]
 
 const JUDGES = [
@@ -199,6 +198,12 @@ const JUDGES = [
     { name: "Alexandra Leader", role: "Head of SME Delivery, City of London Corporation", img: "/judges/alexandra-leader.webp", linkedin: "https://www.linkedin.com/in/alexmleader", bio: "Alex is a senior leader with over 20 years' experience working across both the public and private sectors, where she's built a reputation for bringing people together and turning ideas into action. She currently leads the SME Strategy at the City of London Corporation, where she focuses on supporting business growth, strengthening partnerships, and helping shape a thriving business ecosystem in the City. Throughout her career, Alex has been passionate about creating meaningful connections, whether that is with business leaders, policymakers, or entrepreneurs, and turning those relationships into real, positive outcomes. She is known for her collaborative style and her ability to navigate complex environments while keeping people at the heart of what she does. Alongside her strategic role, Alex is a strong advocate for women in business and inclusive economic growth and plays an active part in the City's Business and Investment Unit." },
 
     { name: "Afua Basoah", role: "Co-Founder and General Partner, Fern Capital Group", img: "/judges/afua-basoah.webp", linkedin: "https://www.linkedin.com/in/afua-basoah-dphil-frsa-4b58a722", bio: "Afua is a health strategist, investor and ecosystem builder whose career sits at the intersection of healthcare, capital and innovation. As Co-Founder and General Partner of Fern Capital Group, she backs early-stage women's health companies across the UK, Europe and Africa, supporting founders building solutions in one of healthcare's fastest-growing and most underserved sectors. With more than 20 years of experience spanning venture capital, life sciences, commercialisation and growth strategy, Afua brings a unique perspective on identifying innovation with the potential to create lasting impact. Her work advising pharmaceutical, biotech and health organisations, alongside her commitment to advancing inclusive innovation, makes her an outstanding addition to our judging panel." },
+
+    { name: "Winn Faria", role: "Knowledge Transfer Manager, Innovate UK Business Connect", img: "/judges/winn-faria.webp", linkedin: "https://www.linkedin.com/in/winn-faria-1391141/", bio: "Winn works across businesses, innovators and wider ecosystem stakeholders to support growth, collaboration and the adoption of emerging technologies. His experience spans AI, distributed ledger technology (DLT), emerging and cross-cutting technologies, giving him a broad view of how innovation moves from an idea or technical capability towards commercial opportunity and wider adoption. Through his work, Winn connects organisations with the expertise, networks and opportunities that can help accelerate innovation and commercial success while working closely with the founders, scale-ups and technology-driven businesses navigating that journey. His perspective on entrepreneurship, emerging technology and innovation-led growth, both within the UK and internationally, will bring valuable insight to this year's judging panel." },
+
+    { name: "Abi Bowman", role: "Interim Director of Partnerships, Enterprise & Commercialisation, CoSTAR National R&D Lab", img: "/judges/abi-bowman.webp", linkedin: "https://www.linkedin.com/in/abi-bowman-53950812/", bio: "Abi works at the intersection of creative technology, innovation and commercial strategy. She is currently Interim Director of Partnerships, Enterprise & Commercialisation at the CoSTAR National Lab (R&D), the UK's first national R&D infrastructure for the creative industries, backed by £75.6 million in UKRI investment and based at Pinewood Studios. With a career spanning Foundry, Disguise and executive roles across the UK, Europe, the US and APAC, Abi has extensive experience translating cutting-edge research into commercial opportunities and building collaborations across academia, industry and investment. She is also a Strategic Advisor to the Parliamentary Knowledge Foundation's Creative Industries Programme and has been an expert assessor for institutional funding in immersive technology, virtual production and AI for nearly a decade. Abi's understanding of emerging technology, commercialisation and cross-sector collaboration will bring a valuable perspective to the judging process." },
+
+    { name: "Ruth Weir", role: "Head of Entrepreneurship, UCL Innovation and Enterprise", img: "/judges/ruth-weir.webp", linkedin: "https://www.linkedin.com/in/ruthweir/", bio: "Ruth Weir is a neuroscientist turned entrepreneurship leader who heads UCL's extracurricular entrepreneurship programmes. She helps aspiring founders test ideas, build ventures and develop the confidence to create impact. A firm believer in learning through experimentation, she's equally at home discussing brain science, business models or triathlon training plans." },
 
 ]
 
@@ -358,11 +363,11 @@ export default function HomePage() {
 
                             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, justifyContent: isSmall ? "center" : "flex-start" }}>
 
-                                <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer"
+                                <a href="/tickets"
                                     className="btn-primary"
                                     style={{ background: Y, color: BK, padding: "15px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>
 
-                                    NOMINATE | APPLY NOW <IconArrowRight />
+                                    GET TICKETS <IconArrowRight />
 
                                 </a>
 
@@ -396,23 +401,11 @@ export default function HomePage() {
 
                             {/* Card header */}
 
-                            <div style={{ padding: "20px 24px 18px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-
-                                <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-
-                                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: Y, boxShadow: `0 0 8px ${Y}, 0 0 18px ${Y}70`, flexShrink: 0 }} />
-
-                                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.34em", color: "rgba(255,255,255,0.62)", textTransform: "uppercase", fontFamily: BODY }}>
-
-                                        NOW LIVE
-
-                                    </span>
-
-                                </div>
+                            <div style={{ padding: "20px 24px 18px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
 
                                 <span style={{ background: Y, color: BK, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", padding: "3px 10px", fontFamily: BODY }}>
 
-                                    NOMINATIONS OPEN
+                                    NOMINATIONS CLOSED
 
                                 </span>
 
@@ -420,11 +413,11 @@ export default function HomePage() {
 
 
 
-                            {/* Celebration */}
+                            {/* Status */}
                             <div style={{ padding: "44px 28px 40px", textAlign: "center" }}>
-                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>Nominations Are<br />Now Live</div>
-                                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Put yourself, or someone exceptional, forward.</p>
-                                <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>NOMINATE | APPLY NOW <IconArrowRight /></a>
+                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>Nominations<br />Closed</div>
+                                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Judging is underway. Finalists announced soon.</p>
+                                <a href="/tickets" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>GET TICKETS <IconArrowRight /></a>
                             </div>
 
                             {/* Card footer - ceremony */}

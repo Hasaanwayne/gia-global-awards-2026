@@ -5,7 +5,6 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
-import { NOMINATE_URL } from "../lib/links"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
@@ -36,13 +35,13 @@ export default function CategoriesPage() {
                 <p style={{ color: MUTED, fontSize: isSmall ? 16 : 18, maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.7, fontFamily: BODY }}>
                     Ten categories, plus one special Pioneer Award, recognising the founders, innovators and exceptional talent who chose the UK and are delivering on their ambition.
                 </p>
-                <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                <a href="/tickets" className="btn-primary"
                     style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                    NOMINATE | APPLY NOW
+                    GET TICKETS
                 </a>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, marginTop: 20 }}>
                     <div style={{ width: 8, height: 8, background: Y, borderRadius: "50%" }} />
-                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Applications are open now</p>
+                    <p style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: "0.18em", margin: 0, fontFamily: BODY }}>Nominations are now closed</p>
                 </div>
             </div>
 
@@ -87,10 +86,10 @@ export default function CategoriesPage() {
                                                 </div>
                                                 <div style={{ background: "#0d0d0d", border: `1px solid ${BORDER}`, padding: "20px 24px", minWidth: isSmall ? "auto" : 200, textAlign: "center" }}>
                                                     <div style={{ fontSize: 9, color: MUTED, letterSpacing: "0.28em", textTransform: "uppercase", marginBottom: 8, fontFamily: BODY }}>Status</div>
-                                                    <div style={{ color: W, fontWeight: 700, fontSize: 14, marginBottom: 16, fontFamily: BODY }}>OPEN NOW</div>
-                                                    <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                                                    <div style={{ color: W, fontWeight: 700, fontSize: 14, marginBottom: 16, fontFamily: BODY }}>CLOSED</div>
+                                                    <a href="/tickets" className="btn-primary"
                                                         style={{ background: Y, color: BK, display: "block", textAlign: "center", padding: "11px 16px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none" }}>
-                                                        NOMINATE | APPLY NOW
+                                                        GET TICKETS
                                                     </a>
                                                 </div>
                                             </div>

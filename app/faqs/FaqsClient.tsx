@@ -5,7 +5,6 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
-import { NOMINATE_URL } from "../lib/links"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
@@ -63,11 +62,11 @@ export default function FAQsPage() {
 
             {/* CTA */}
             <div style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: isSmall ? "64px 20px" : "80px 48px", textAlign: "center" }}>
-                <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(32px,6vw,52px)", textTransform: "uppercase", margin: "0 0 16px" }}>Ready to Nominate?</h2>
-                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto 32px", fontFamily: BODY }}>Nominations are open now. Free to enter.</p>
-                <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(32px,6vw,52px)", textTransform: "uppercase", margin: "0 0 16px" }}>Nominations Now Closed</h2>
+                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto 32px", fontFamily: BODY }}>Awards Gala &ndash; 16th November 2026</p>
+                <a href="/tickets" className="btn-primary"
                     style={{ background: Y, color: BK, padding: "14px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                    NOMINATE | APPLY NOW
+                    GET TICKETS
                 </a>
             </div>
 

@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 import React from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
-import { NOMINATE_URL } from "../lib/links"
 
 const Y     = "#DFFF13"
 const BK    = "#000000"
@@ -66,10 +65,10 @@ export default function Nav() {
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     {/* CTA — desktop only */}
                     {!isMobile && (
-                        <a href={NOMINATE_URL} target="_blank" rel="noopener noreferrer"
+                        <a href="/tickets"
                             className="btn-primary"
                             style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                            NOMINATE | APPLY NOW
+                            GET TICKETS
                         </a>
                     )}
 
@@ -121,8 +120,7 @@ export default function Nav() {
                         )
                     })}
                     <a
-                        href={NOMINATE_URL}
-                        target="_blank" rel="noopener noreferrer"
+                        href="/tickets"
                         onClick={() => setOpen(false)}
                         style={{
                             display: "block", marginTop: 20,
@@ -133,7 +131,7 @@ export default function Nav() {
                             textTransform: "uppercase", textDecoration: "none",
                         }}
                     >
-                        NOMINATE | APPLY NOW
+                        GET TICKETS
                     </a>
                 </div>
             )}
