@@ -17,7 +17,7 @@ const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 
 
 const steps = [
     { num: "01", title: "Open Nominations",    body: "Nominations are now closed. Judging is underway." },
-    { num: "02", title: "Judging & Shortlist", body: "All nominations are reviewed by our independent judge panel. Ten finalists per category are announced at the end of August." },
+    { num: "02", title: "Judging & Shortlist", body: "All nominations are reviewed by our independent judge panel. Ten finalists per category are announced at the end of September." },
     { num: "03", title: "Awards Evening",      body: "Winners are announced at the Global Innovator Awards evening in Central London on 16 November 2026." },
     { num: "04", title: "Media & Recognition", body: "Winners and finalists receive coverage across our media partner network. Your story reaches the investors, partners and press that matter." },
 ]
