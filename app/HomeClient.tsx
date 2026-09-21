@@ -205,6 +205,12 @@ const JUDGES = [
 
     { name: "Ruth Weir", role: "Head of Entrepreneurship, UCL Innovation and Enterprise", img: "/judges/ruth-weir.webp", linkedin: "https://www.linkedin.com/in/ruthweir/", bio: "Ruth Weir is a neuroscientist turned entrepreneurship leader who heads UCL's extracurricular entrepreneurship programmes. She helps aspiring founders test ideas, build ventures and develop the confidence to create impact. A firm believer in learning through experimentation, she's equally at home discussing brain science, business models or triathlon training plans." },
 
+    { name: "Suzanne Clements", role: "Head of R&D, Lumina", img: "/judges/suzanne-clements.webp", linkedin: "https://www.linkedin.com/in/suzanne-clements-5b45bb251/", bio: "Suzanne joined the specialist unit for Research and Development and Pharmaceuticals in Cambridge in 2006, at a time when HMRC was investing resource in R&D tax credits. There she helped to develop the R&D tax credits regime, training HMRC staff and the tax teams of large corporates and delivering customer outreach events. She piloted the Advance Assurance Scheme for small startups and created processes for the risk assessment of 'RDEC' claims under the then new legislation. For several years she was a presenter at HMRC's annual R&D Conference with high visibility to the community of tax specialists. As a Customer Relationship Manager within HMRC and a specialist advisor on R&D to the Large Business stream, her portfolio included some of the UK's largest companies in the banking, engineering, pharmaceutical and retail sectors. Her many years of experience within HMRC have given Suzanne exceptional insight into the history of R&D tax credits and HMRC's view of risk and approach to claims. Suzanne now leads Lumina's R&D division with a hands-on approach and deep understanding of both HMRC expectations and technical innovation across sectors." },
+
+    { name: "Alan Walsh", role: "Operating Partner, Haatch", img: "/judges/alan-walsh.webp", linkedin: "https://www.linkedin.com/in/alanwalsh1/", bio: "Alan Walsh is a financial services and fintech leader with 25 years' experience building businesses, partnerships and go-to-market strategies. His career spans Barclays, Santander and American Express, the founding team at open banking pioneer Bud, and senior roles at DueDil, Tarabut Gateway and Trade Ledger. His fintech journey includes successful strategic exits at both DueDil and Trade Ledger. Today, Alan is an Operating Partner at Haatch and works fractionally with high-growth companies including Bourn and Serene, advising founders on GTM, partnerships and commercial growth. He is also an early-stage investor and long-standing mentor with the Accenture FinTech Innovation Lab." },
+
+    { name: "Tom Simpson", role: "Managing Director & Chief Representative, China, China-Britain Business Council", img: "/judges/tom-simpson.webp", linkedin: "https://uk.linkedin.com/in/tom-simpson-17a2871a", bio: "Tom is Managing Director & Chief Representative, China at the China-Britain Business Council (CBBC) and President of the China-UK Trade Association, bringing close to two decades of experience working at the intersection of UK-China trade, investment and international business. Based in Beijing and fluent in Mandarin, Tom's work spans foreign direct investment, trade policy and UK-China relations, alongside extensive experience supporting British businesses operating and expanding within China. Since joining CBBC in 2013, Tom has held roles across Guangzhou and Beijing, including leading work within the creative industries and sports sectors before taking responsibility for CBBC's wider commercial portfolio in China. His career also includes leadership roles with the British Chambers of Commerce in Chongqing and Guangdong, giving him a deep understanding of how businesses, founders and institutions navigate international markets and build connections across borders. That perspective is particularly valuable to the Global Innovator Awards as we recognise people whose international experience has played a meaningful role in the businesses, ideas and impact they are building in the UK." },
+
 ]
 
 const judgeInitials = (name: string) => name.split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase()
@@ -771,7 +777,7 @@ export default function HomePage() {
 
 
 
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "repeat(4, 1fr)", gap: isSmall ? 12 : 28, alignItems: "stretch" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(5, 1fr)", gap: isSmall ? 12 : 20, alignItems: "stretch" }}>
 
                         {JUDGES.map((j, i) => (
 
@@ -880,12 +886,6 @@ export default function HomePage() {
                         ))}
 
                     </div>
-
-                    <p style={{ textAlign: "center", color: MUTED, fontSize: 13, marginTop: isSmall ? 32 : 44, fontFamily: BODY }}>
-
-                        More judges to be announced soon.
-
-                    </p>
 
                 </div>
 
