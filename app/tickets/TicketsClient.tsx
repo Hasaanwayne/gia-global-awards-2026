@@ -1,16 +1,15 @@
 "use client"
-import React, { useState } from "react"
+import React from "react"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
-import { subscribeToMailchimp, isMailchimpSuccess, cleanMailchimpMsg } from "../lib/mailchimp"
+import { ITINERARY, TICKET_URL } from "../lib/event"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
 const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
-const SHOW_TICKET_WIDGET = false // Hidden until the ticket platform (Ticket Tailor) is integrated
 
 const IconUsers = () => (
     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={Y} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -56,20 +55,6 @@ export default function TicketsPage() {
     const hPad     = isMobile ? "0 20px" : isTablet ? "0 32px" : "0 48px"
     const W_OBJ: React.CSSProperties = { maxWidth: 1100, margin: "0 auto", padding: hPad, boxSizing: "border-box" }
 
-    const [email, setEmail] = useState("")
-    const [notified, setNotified] = useState(false)
-    const [notifyError, setNotifyError] = useState("")
-    const handleNotify = (e: React.FormEvent) => {
-        e.preventDefault()
-        setNotifyError("")
-        subscribeToMailchimp(email)
-            .then((data) => {
-                if (isMailchimpSuccess(data)) setNotified(true)
-                else setNotifyError(cleanMailchimpMsg(data.msg))
-            })
-            .catch(() => setNotifyError("Something went wrong. Please try again."))
-    }
-
     return (
         <div style={{ fontFamily: BODY, background: BK, color: W, width: "100%", overflowX: "hidden" }}>
             <Nav />
@@ -81,13 +66,13 @@ export default function TicketsPage() {
                 <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: isSmall ? "80px 24px" : "100px 40px" }}>
                     <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 20, fontFamily: BODY }}>Gala Ceremony Passes</div>
                     <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(44px,10vw,100px)", lineHeight: 0.93, letterSpacing: "-0.015em", margin: "0 0 18px", textTransform: "uppercase" }}>Get Your Tickets</h1>
-                    <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 18 : 24, letterSpacing: "0.16em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>16 November 2026 &middot; London</div>
-                    <div style={{ display: "inline-block", border: `2px solid ${Y}`, color: Y, padding: "9px 28px", fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 13 : 16, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 28 }}>Tickets on sale soon - register below</div>
+                    <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 18 : 24, letterSpacing: "0.16em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>16 November 2026 &middot; The Dorchester, London</div>
+                    <div style={{ display: "inline-block", border: `2px solid ${Y}`, color: Y, padding: "9px 28px", fontFamily: HEAD, fontWeight: 700, fontSize: isSmall ? 13 : 16, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 28 }}>Tickets on sale now</div>
                     <p style={{ color: "rgba(255,255,255,0.75)", fontSize: isSmall ? 15 : 17, lineHeight: 1.75, maxWidth: 560, margin: "0 auto 36px", fontFamily: BODY }}>
                         This is the room you want to be in. Join 150+ founders, investors, judges and the people powering the ecosystem, for a celebration of UK innovation.
                     </p>
-                    <a href="#notify" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                        Notify Me When Tickets Open
+                    <a href="#tickets" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
+                        Buy Tickets
                     </a>
                 </div>
             </section>
@@ -112,36 +97,49 @@ export default function TicketsPage() {
                             </AnimateIn>
                         ))}
                     </div>
+
+                    {/* Guest-facing itinerary */}
+                    <AnimateIn>
+                        <div style={{ maxWidth: 560, margin: isSmall ? "48px auto 0" : "64px auto 0" }}>
+                            <div style={{ textAlign: "center", marginBottom: 24 }}>
+                                <div style={{ color: Y, fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", fontFamily: BODY }}>Run of the Night</div>
+                            </div>
+                            {ITINERARY.map((row, i) => (
+                                <div key={row.time} style={{ display: "flex", alignItems: "baseline", gap: isSmall ? 16 : 24, padding: "12px 0", borderBottom: i < ITINERARY.length - 1 ? `1px solid ${BORDER}` : "none" }}>
+                                    <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isSmall ? 16 : 18, color: Y, letterSpacing: "0.04em", minWidth: isSmall ? 68 : 82, flexShrink: 0 }}>{row.time}</span>
+                                    <span style={{ fontSize: isSmall ? 14 : 15, color: "rgba(255,255,255,0.80)", fontFamily: BODY, lineHeight: 1.5 }}>{row.moment}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </AnimateIn>
                 </div>
             </section>
 
-            {/* Notify form */}
-            <section id="notify" style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: isSmall ? "64px 20px" : "80px 48px", textAlign: "center" }}>
-                <div style={{ maxWidth: 600, margin: "0 auto" }}>
-                    <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 16, fontFamily: BODY }}>Stay Informed</div>
-                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(28px,6vw,46px)", textTransform: "uppercase", margin: "0 0 16px" }}>Get Notified When Tickets Open</h2>
-                    <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, marginBottom: 32, fontFamily: BODY, padding: hPad }}>Tickets go on sale soon. Register now for early bird sale tickets.</p>
-                    {notified ? (
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, color: Y, fontSize: 15, fontWeight: 600, fontFamily: BODY }}>
-                            <span>✓</span><span>You&apos;re on the early bird list!</span>
-                        </div>
-                    ) : (
-                        <>
-                            <form onSubmit={handleNotify} style={{ display: "flex", gap: 0, maxWidth: 440, margin: "0 auto", height: 50 }}>
-                                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your professional email" style={{ flex: 1, background: "#111", border: `1px solid rgba(255,255,255,0.14)`, borderRight: "none", color: W, padding: "0 16px", fontSize: 13, outline: "none", fontFamily: BODY, minWidth: 0 }} />
-                                <button type="submit" className="btn-primary" style={{ background: Y, color: BK, border: "none", padding: "0 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", flexShrink: 0 }}>Notify Me</button>
-                            </form>
-                            {notifyError && <p style={{ color: "#ff6b6b", fontSize: 12, marginTop: 12, fontFamily: BODY }}>{notifyError}</p>}
-                        </>
-                    )}
+            {/* Ticket Tailor box office */}
+            <section id="tickets" style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: isSmall ? "64px 20px" : "80px 48px", textAlign: "center" }}>
+                <div style={{ maxWidth: 860, margin: "0 auto" }}>
+                    <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 16, fontFamily: BODY }}>Book Your Place</div>
+                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(28px,6vw,46px)", textTransform: "uppercase", margin: "0 0 16px" }}>Get Your Tickets</h2>
+                    <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.75, marginBottom: 32, fontFamily: BODY, padding: hPad }}>
+                        Secure your seat at The Dorchester on 16 November 2026. Finalists receive a discounted ticket code directly from the events team.
+                    </p>
 
-                    {/* Ticket Tailor placeholder - hidden until the ticket platform is integrated */}
-                    {SHOW_TICKET_WIDGET && (
-                        <div style={{ marginTop: 48, padding: isSmall ? "28px 20px" : "36px", border: "1px dashed rgba(223,255,19,0.2)", background: "rgba(223,255,19,0.02)", textAlign: "center" }}>
-                            <div style={{ color: Y, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 10, fontFamily: BODY }}>Coming July 2026</div>
-                            <p style={{ color: MUTED, fontSize: 13, lineHeight: 1.7, margin: 0, fontFamily: BODY }}>Ticket Tailor purchase widget will be embedded here when tickets open in July. General admission tickets grant full access to the awards hall, panel sessions, networking banquet and drinks reception.</p>
-                        </div>
-                    )}
+                    <div style={{ background: W, border: `1px solid ${BORDER}`, overflow: "hidden" }}>
+                        <iframe
+                            src={TICKET_URL}
+                            title="Buy tickets for the Global Innovator Awards 2026"
+                            style={{ width: "100%", height: isSmall ? 760 : 900, border: "none", display: "block" }}
+                            loading="lazy"
+                        />
+                    </div>
+
+                    <p style={{ color: MUTED, fontSize: 13, marginTop: 20, fontFamily: BODY }}>
+                        Having trouble with the booking window?{" "}
+                        <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" style={{ color: Y, textDecoration: "underline" }}>
+                            Open the box office in a new tab
+                        </a>
+                        .
+                    </p>
                 </div>
             </section>
 

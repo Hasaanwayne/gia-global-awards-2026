@@ -5,7 +5,7 @@ import HomeClient from "./HomeClient"
 export const metadata = buildMetadata({
     title: "Global Innovator Awards | UK Innovation Awards",
     description:
-        "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa. Free to enter, nominations now open.",
+        "The UK's first awards for founders, innovators and exceptional talent who chose the UK on an innovation or talent visa. Finalists announced. Join us at The Dorchester in London, 16th November 2026.",
     path: "/",
 })
 

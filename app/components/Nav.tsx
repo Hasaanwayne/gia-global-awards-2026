@@ -12,6 +12,7 @@ const BODY  = "'General Sans','Inter',system-ui,sans-serif"
 
 const LINKS = [
     { label: "Home",       href: "/" },
+    { label: "Finalists",  href: "/finalists" },
     { label: "Categories", href: "/categories" },
     { label: "About",      href: "/about" },
     { label: "Tickets",    href: "/tickets" },

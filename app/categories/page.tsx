@@ -5,7 +5,7 @@ import CategoriesClient from "./CategoriesClient"
 
 const title = "Award Categories | Global Innovator Awards"
 const description =
-    "Ten competitive categories plus the honorary Pioneer Award, from Founder of the Year to Ecosystem Builder of the Year. See the judging criteria and nominate for free."
+    "Ten competitive categories plus the honorary Pioneer Award, from Founder of the Year to Ecosystem Builder of the Year. See the judging criteria and the 2026 finalists in each category."
 
 export const metadata = buildMetadata({ title, description, path: "/categories" })
 

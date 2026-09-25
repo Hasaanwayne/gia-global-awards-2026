@@ -5,10 +5,10 @@ import IntercomMessenger from "./components/IntercomMessenger";
 
 export const metadata: Metadata = {
     title: "Global Innovator Awards | UK Innovation Awards",
-    description: "The UK's first awards for founders, innovators and talent who came to the UK on an innovation or talent visa. Free to enter, nominations now open.",
+    description: "The UK's first awards for founders, innovators and exceptional talent who chose the UK on an innovation or talent visa. Finalists announced. Join us at The Dorchester in London, 16th November 2026.",
     openGraph: {
         title: "Global Innovator Awards",
-        description: "The UK's first awards for innovators who came under an innovation or talent visa route and built something significant.",
+        description: "Finalists announced. The UK's first awards for innovators who chose the UK on an innovation or talent visa. The Dorchester, London, 16th November 2026.",
         url: "https://globalinnovatorawards.com",
         siteName: "Global Innovator Awards",
         images: [{
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title: "Global Innovator Awards",
-        description: "The UK's first awards for innovators who came under an innovation or talent visa route.",
+        description: "Finalists announced. The UK's first awards for innovators who chose the UK on an innovation or talent visa.",
         images: ["https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80"],
     },
     metadataBase: new URL("https://globalinnovatorawards.com"),

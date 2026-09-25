@@ -67,8 +67,18 @@ export const eventSchema = {
         "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa. An evening of 150 innovators, investors and press, with ten winners announced.",
     location: {
         "@type": "Place",
-        name: "Central London",
-        address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
+        name: "The Dorchester",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "53 Park Lane",
+            addressLocality: "London",
+            addressCountry: "GB",
+        },
+    },
+    offers: {
+        "@type": "Offer",
+        url: "https://buytickets.at/nexus4/2408591",
+        availability: "https://schema.org/InStock",
     },
     organizer: {
         "@type": "Organization",

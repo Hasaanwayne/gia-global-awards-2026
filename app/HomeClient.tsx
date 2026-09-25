@@ -11,6 +11,7 @@ import Footer from "./components/Footer"
 import AnimateIn from "./components/AnimateIn"
 
 import { useBreakpoint } from "./hooks/useBreakpoint"
+import { ITINERARY } from "./lib/event"
 
 
 
@@ -185,8 +186,8 @@ const IconCheck = () => (
 const SHOW_JUDGES = true // First 4 confirmed judges live; more to be announced (targeting 10-12 total)
 
 const HERO_TICKER = [
-    "NOMINATIONS CLOSED. FINALISTS ANNOUNCED SOON.","•","JUDGING UNDERWAY","•","10 AWARD CATEGORIES","•","AWARDS GALA — 16 NOVEMBER 2026, CENTRAL LONDON","•",
-    "NOMINATIONS CLOSED. FINALISTS ANNOUNCED SOON.","•","JUDGING UNDERWAY","•","10 AWARD CATEGORIES","•","AWARDS GALA — 16 NOVEMBER 2026, CENTRAL LONDON","•",
+    "FINALISTS ANNOUNCED","•","10 AWARD CATEGORIES","•","AWARDS GALA — 16 NOVEMBER 2026, THE DORCHESTER, LONDON","•",
+    "FINALISTS ANNOUNCED","•","10 AWARD CATEGORIES","•","AWARDS GALA — 16 NOVEMBER 2026, THE DORCHESTER, LONDON","•",
 ]
 
 const JUDGES = [
@@ -411,7 +412,7 @@ export default function HomePage() {
 
                                 <span style={{ background: Y, color: BK, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", padding: "3px 10px", fontFamily: BODY }}>
 
-                                    NOMINATIONS CLOSED
+                                    FINALISTS ANNOUNCED
 
                                 </span>
 
@@ -421,15 +422,18 @@ export default function HomePage() {
 
                             {/* Status */}
                             <div style={{ padding: "44px 28px 40px", textAlign: "center" }}>
-                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>Nominations<br />Closed</div>
-                                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Judging is underway. Finalists announced soon.</p>
-                                <a href="/tickets" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 34px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>GET TICKETS <IconArrowRight /></a>
+                                <div style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(30px,4.5vw,44px)", lineHeight: 1.05, color: W, textTransform: "uppercase", marginBottom: 12 }}>The Finalists<br />Are In</div>
+                                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, fontFamily: BODY, margin: "0 auto 26px", maxWidth: 320 }}>Ten categories. 100 finalists. One night in London. See who made the shortlist.</p>
+                                <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+                                    <a href="/finalists" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 28px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>SEE THE FINALISTS <IconArrowRight /></a>
+                                    <a href="/tickets" className="btn-ghost" style={{ background: "transparent", color: W, border: "1px solid rgba(255,255,255,0.28)", padding: "14px 28px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY }}>GET TICKETS</a>
+                                </div>
                             </div>
 
                             {/* Card footer - ceremony */}
                             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "14px 24px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10 }}>
                                 <span style={{ fontSize: 8, color: "rgba(255,255,255,0.62)", letterSpacing: "0.24em", textTransform: "uppercase", fontFamily: BODY }}>Ceremony</span>
-                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 16, letterSpacing: "0.04em", color: Y }}>16 NOV 2026 · LONDON</span>
+                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: 16, letterSpacing: "0.04em", color: Y }}>16 NOV 2026 · THE DORCHESTER</span>
                             </div>
 
                         </div>
@@ -710,29 +714,29 @@ export default function HomePage() {
 
                         <div style={{ maxWidth: 680, position: "relative" }}>
 
-                            <span style={badge()}>10 DISCIPLINE CATEGORIES</span>
+                            <span style={badge()}>10 CATEGORIES · 100 FINALISTS</span>
 
                             <h2 style={{ ...h2Base, fontSize: "clamp(28px,4vw,50px)", marginBottom: 16 }}>
 
-                                EXPLORE THE AWARD CATEGORIES
+                                EXPLORE THE FINALISTS
 
                             </h2>
 
                             <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>
 
-                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders, find the category that fits and nominate yourself or someone who deserves to be in the room.
+                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders, meet the 100 finalists our independent panel selected across ten categories. Winners announced in London on 16th November.
 
                             </p>
 
                         </div>
 
-                        <a href="/categories"
+                        <a href="/finalists"
 
                             className="btn-primary"
 
                             style={{ background: Y, color: BK, padding: "16px 40px", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: BODY, flexShrink: 0, boxShadow: `0 4px 24px rgba(223,255,19,0.22)` }}>
 
-                            SEE ALL CATEGORIES <IconArrowRight />
+                            SEE THE FINALISTS <IconArrowRight />
 
                         </a>
 
@@ -949,15 +953,25 @@ export default function HomePage() {
 
                         <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 22, letterSpacing: "0.22em", color: Y, textTransform: "uppercase", marginBottom: 28 }}>
 
-                            16 NOVEMBER 2026 &middot; CENTRAL LONDON
+                            16 NOVEMBER 2026 &middot; THE DORCHESTER, LONDON
 
                         </div>
 
-                        <p style={{ maxWidth: 520, margin: "0 auto 40px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
+                        <p style={{ maxWidth: 520, margin: "0 auto 36px", fontSize: 16, lineHeight: 1.8, color: "rgba(255,255,255,0.80)", fontFamily: BODY }}>
 
                             150 innovators, investors and press. One night. Ten winners.
 
                         </p>
+
+                        {/* Guest-facing itinerary */}
+                        <div style={{ maxWidth: 460, margin: "0 auto 40px", textAlign: "left" }}>
+                            {ITINERARY.map((row, i) => (
+                                <div key={row.time} style={{ display: "flex", alignItems: "baseline", gap: isSmall ? 16 : 24, padding: "11px 0", borderBottom: i < ITINERARY.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+                                    <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isSmall ? 15 : 17, color: Y, letterSpacing: "0.04em", minWidth: isSmall ? 64 : 76, flexShrink: 0 }}>{row.time}</span>
+                                    <span style={{ fontSize: isSmall ? 14 : 15, color: "rgba(255,255,255,0.80)", fontFamily: BODY, lineHeight: 1.5 }}>{row.moment}</span>
+                                </div>
+                            ))}
+                        </div>
 
                         <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
 

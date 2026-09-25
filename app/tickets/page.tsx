@@ -4,7 +4,7 @@ import TicketsClient from "./TicketsClient"
 
 const title = "Tickets | Global Innovator Awards"
 const description =
-    "Join 150+ founders, investors, judges and press at the Global Innovator Awards evening in Central London on 16 November 2026. Tickets on sale September 2026, register now."
+    "Join 150+ founders, investors, judges and press at the Global Innovator Awards evening at The Dorchester, London on 16 November 2026. Tickets on sale now."
 
 export const metadata = buildMetadata({ title, description, path: "/tickets" })
 
