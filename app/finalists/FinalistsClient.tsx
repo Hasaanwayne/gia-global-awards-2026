@@ -102,6 +102,29 @@ export default function FinalistsPage() {
                 </a>
             </div>
 
+            {/* Partnership enquiries */}
+            <div style={{ background: BK, borderTop: `1px solid ${BORDER}`, padding: isSmall ? "56px 20px" : "72px 48px" }}>
+                <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
+                    <div style={{ display: "inline-block", background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", color: Y, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", padding: "4px 14px", marginBottom: 18, fontFamily: BODY }}>
+                        Sponsorship
+                    </div>
+                    <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(26px,5vw,42px)", textTransform: "uppercase", margin: "0 0 16px", lineHeight: 1.05 }}>
+                        Partner with the Global Innovator Awards
+                    </h2>
+                    <p style={{ color: MUTED, fontSize: isSmall ? 15 : 16, lineHeight: 1.8, margin: "0 auto 18px", maxWidth: 580, fontFamily: BODY }}>
+                        Interested in supporting the Global Innovator Awards and connecting with an international
+                        community of founders, innovators and ecosystem leaders?
+                    </p>
+                    <p style={{ color: MUTED, fontSize: isSmall ? 15 : 16, lineHeight: 1.8, margin: 0, fontFamily: BODY }}>
+                        For sponsorship and partnership enquiries, contact Anisa at{" "}
+                        <a href="mailto:anisa@cellardoornexus.co.uk" style={{ color: Y, textDecoration: "underline", fontWeight: 600 }}>
+                            anisa@cellardoornexus.co.uk
+                        </a>
+                        .
+                    </p>
+                </div>
+            </div>
+
             <Footer />
         </div>
     )
