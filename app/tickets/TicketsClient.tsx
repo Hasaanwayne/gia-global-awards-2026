@@ -71,7 +71,7 @@ export default function TicketsPage() {
                     <p style={{ color: "rgba(255,255,255,0.75)", fontSize: isSmall ? 15 : 17, lineHeight: 1.75, maxWidth: 560, margin: "0 auto 36px", fontFamily: BODY }}>
                         This is the room you want to be in. Join 150+ founders, investors, judges and the people powering the ecosystem, for a celebration of UK innovation.
                     </p>
-                    <a href="#tickets" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
+                    <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background: Y, color: BK, padding: "14px 36px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
                         Buy Tickets
                     </a>
                 </div>
@@ -124,21 +124,22 @@ export default function TicketsPage() {
                         Secure your seat at The Dorchester on 16 November 2026. Finalists receive a discounted ticket code directly from the events team.
                     </p>
 
-                    <div style={{ background: W, border: `1px solid ${BORDER}`, overflow: "hidden" }}>
-                        <iframe
-                            src={TICKET_URL}
-                            title="Buy tickets for the Global Innovator Awards 2026"
-                            style={{ width: "100%", height: isSmall ? 760 : 900, border: "none", display: "block" }}
-                            loading="lazy"
-                        />
-                    </div>
+                    <a
+                        href={TICKET_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary"
+                        style={{ background: Y, color: BK, padding: isSmall ? "16px 40px" : "18px 56px", fontFamily: BODY, fontWeight: 700, fontSize: isSmall ? 14 : 15, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 10 }}
+                    >
+                        Buy Tickets
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <path d="M15 3h6v6M10 14 21 3" />
+                        </svg>
+                    </a>
 
                     <p style={{ color: MUTED, fontSize: 13, marginTop: 20, fontFamily: BODY }}>
-                        Having trouble with the booking window?{" "}
-                        <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" style={{ color: Y, textDecoration: "underline" }}>
-                            Open the box office in a new tab
-                        </a>
-                        .
+                        Bookings are handled securely by Ticket Tailor and open in a new tab.
                     </p>
                 </div>
             </section>
