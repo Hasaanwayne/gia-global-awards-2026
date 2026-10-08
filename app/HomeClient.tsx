@@ -182,6 +182,50 @@ const IconCheck = () => (
 
 
 
+/* Partner tier label — display type flanked by rules, lime for the headline tier */
+
+const TierLabel = ({ children, accent = false, isSmall = false }: { children: React.ReactNode; accent?: boolean; isSmall?: boolean }) => {
+
+    const line = accent ? "rgba(223,255,19,0.32)" : "rgba(255,255,255,0.14)"
+
+    return (
+
+        <div style={{ display: "flex", alignItems: "center", gap: isSmall ? 14 : 22, marginBottom: isSmall ? 22 : 28 }}>
+
+            <span style={{ flex: 1, height: 1, background: `linear-gradient(to right, transparent, ${line})` }} />
+
+            <span style={{
+
+                fontFamily: HEAD, fontWeight: 900,
+
+                fontSize: accent ? (isSmall ? 22 : 30) : (isSmall ? 18 : 24),
+
+                letterSpacing: accent ? "0.16em" : "0.2em",
+
+                textTransform: "uppercase",
+
+                color: accent ? Y : W,
+
+                whiteSpace: "nowrap", lineHeight: 1,
+
+                textShadow: accent ? `0 0 28px rgba(223,255,19,0.35)` : "none",
+
+            }}>
+
+                {children}
+
+            </span>
+
+            <span style={{ flex: 1, height: 1, background: `linear-gradient(to left, transparent, ${line})` }} />
+
+        </div>
+
+    )
+
+}
+
+
+
 /* ── Data ── */
 
 const SHOW_JUDGES = true // First 4 confirmed judges live; more to be announced (targeting 10-12 total)
@@ -930,11 +974,7 @@ export default function HomePage() {
 
                         <div style={{ marginBottom: isSmall ? 44 : 64 }}>
 
-                            <div style={{ textAlign: "center", fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: Y, marginBottom: 20, fontFamily: BODY }}>
-
-                                Headline Partner
-
-                            </div>
+                            <TierLabel accent isSmall={isSmall}>Headline Partner</TierLabel>
 
                             <div style={{ display: "flex", justifyContent: "center" }}>
 
@@ -958,11 +998,7 @@ export default function HomePage() {
 
                             <div style={{ marginBottom: ti < PARTNER_TIERS.length - 1 ? (isSmall ? 36 : 52) : 0 }}>
 
-                                <div style={{ textAlign: "center", fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 18, fontFamily: BODY }}>
-
-                                    {tier.label}
-
-                                </div>
+                                <TierLabel isSmall={isSmall}>{tier.label}</TierLabel>
 
                                 <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(tier.partners.length, 3)}, 1fr)`, gap: isSmall ? 12 : 20 }}>
 
