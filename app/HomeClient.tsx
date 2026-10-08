@@ -198,7 +198,7 @@ const TierLabel = ({ children, accent = false, isSmall = false }: { children: Re
 
                 fontFamily: HEAD, fontWeight: 900,
 
-                fontSize: accent ? (isSmall ? 22 : 30) : (isSmall ? 18 : 24),
+                fontSize: accent ? (isSmall ? 17 : 22) : (isSmall ? 15 : 18),
 
                 letterSpacing: accent ? "0.16em" : "0.2em",
 
