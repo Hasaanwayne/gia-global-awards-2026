@@ -12,6 +12,7 @@ import AnimateIn from "./components/AnimateIn"
 
 import { useBreakpoint } from "./hooks/useBreakpoint"
 import { ITINERARY } from "./lib/event"
+import { PARTNER_TIERS, HEADLINE_PARTNER, PARTNERS_INTRO } from "./lib/partners"
 
 
 
@@ -896,6 +897,96 @@ export default function HomePage() {
             </section>
 
             )}
+
+            {/* ═══════════════════════════════════════
+
+                SECTION 5c — OUR PARTNERS
+
+            ═══════════════════════════════════════ */}
+
+            <section style={{ background: BK, borderTop: `1px solid ${BORDER}`, padding: isMobile ? "64px 0" : isTablet ? "80px 0" : "104px 0" }}>
+
+                <div style={W_OBJ}>
+
+                    <AnimateIn>
+
+                        <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto", marginBottom: isSmall ? 44 : 64 }}>
+
+                            <span style={badge()}>OUR PARTNERS</span>
+
+                            <p style={{ color: MUTED, fontSize: isSmall ? 15 : 16, lineHeight: 1.8, margin: 0, fontFamily: BODY }}>
+
+                                {PARTNERS_INTRO}
+
+                            </p>
+
+                        </div>
+
+                    </AnimateIn>
+
+                    {/* Headline partner — own row, larger */}
+
+                    <AnimateIn delay={80}>
+
+                        <div style={{ marginBottom: isSmall ? 44 : 64 }}>
+
+                            <div style={{ textAlign: "center", fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: Y, marginBottom: 20, fontFamily: BODY }}>
+
+                                Headline Partner
+
+                            </div>
+
+                            <div style={{ display: "flex", justifyContent: "center" }}>
+
+                                <div style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: isSmall ? "28px 32px" : "38px 64px", display: "flex", alignItems: "center", justifyContent: "center", minWidth: isSmall ? "auto" : 420 }}>
+
+                                    <img src={HEADLINE_PARTNER.logo} alt={HEADLINE_PARTNER.name} style={{ maxHeight: HEADLINE_PARTNER.maxH * (isMobile ? 0.7 : 1), maxWidth: "100%", width: "auto", objectFit: "contain", display: "block" }} />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </AnimateIn>
+
+                    {/* Remaining tiers */}
+
+                    {PARTNER_TIERS.map((tier, ti) => (
+
+                        <AnimateIn key={tier.label} delay={120 + ti * 80}>
+
+                            <div style={{ marginBottom: ti < PARTNER_TIERS.length - 1 ? (isSmall ? 36 : 52) : 0 }}>
+
+                                <div style={{ textAlign: "center", fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 18, fontFamily: BODY }}>
+
+                                    {tier.label}
+
+                                </div>
+
+                                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(tier.partners.length, 3)}, 1fr)`, gap: isSmall ? 12 : 20 }}>
+
+                                    {tier.partners.map((p) => (
+
+                                        <div key={p.name} style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: isSmall ? "24px 20px" : "30px 26px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: isSmall ? 96 : 120 }}>
+
+                                            <img src={p.logo} alt={p.name} style={{ maxHeight: p.maxH * (isMobile ? 0.78 : 1), maxWidth: "100%", width: "auto", objectFit: "contain", display: "block" }} />
+
+                                        </div>
+
+                                    ))}
+
+                                </div>
+
+                            </div>
+
+                        </AnimateIn>
+
+                    ))}
+
+                </div>
+
+            </section>
 
             {/* ═══════════════════════════════════════
 
