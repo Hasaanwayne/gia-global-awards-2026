@@ -948,15 +948,20 @@ export default function HomePage() {
 
             ═══════════════════════════════════════ */}
 
-            <section style={{ background: BK, borderTop: `1px solid ${BORDER}`, padding: isMobile ? "64px 0" : isTablet ? "80px 0" : "104px 0" }}>
+            <section style={{ position: "relative", background: BK, borderTop: `1px solid ${BORDER}`, padding: isMobile ? "72px 0 80px" : isTablet ? "88px 0 96px" : "116px 0 124px", overflow: "hidden" }}>
 
-                <div style={W_OBJ}>
+                {/* ambient glow */}
+                <div aria-hidden="true" style={{ position: "absolute", top: -140, left: "50%", transform: "translateX(-50%)", width: 900, height: 420, background: "radial-gradient(ellipse at center, rgba(223,255,19,0.07), transparent 68%)", pointerEvents: "none" }} />
+
+                <div style={{ ...W_OBJ, position: "relative" }}>
 
                     <AnimateIn>
 
-                        <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto", marginBottom: isSmall ? 44 : 64 }}>
+                        <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto", marginBottom: isSmall ? 48 : 72 }}>
 
-                            <span style={badge()}>OUR PARTNERS</span>
+                            <span style={badge()}>PARTNERSHIPS</span>
+
+                            <h2 style={{ ...h2Base, fontSize: "clamp(34px,5vw,60px)", marginBottom: 18 }}>OUR PARTNERS</h2>
 
                             <p style={{ color: MUTED, fontSize: isSmall ? 15 : 16, lineHeight: 1.8, margin: 0, fontFamily: BODY }}>
 
@@ -968,21 +973,53 @@ export default function HomePage() {
 
                     </AnimateIn>
 
-                    {/* Headline partner — own row, larger */}
+                    {/* ── Headline partner — hero panel ── */}
 
                     <AnimateIn delay={80}>
 
-                        <div style={{ marginBottom: isSmall ? 44 : 64 }}>
+                        <div className="headline-partner" style={{
 
-                            <TierLabel accent isSmall={isSmall}>Headline Partner</TierLabel>
+                            position: "relative",
+
+                            background: "linear-gradient(160deg, rgba(223,255,19,0.055) 0%, rgba(255,255,255,0.015) 42%, transparent 100%)",
+
+                            border: "1px solid rgba(223,255,19,0.20)",
+
+                            padding: isMobile ? "34px 24px 38px" : isTablet ? "42px 40px 46px" : "52px 64px 58px",
+
+                            textAlign: "center",
+
+                            marginBottom: isSmall ? 56 : 84,
+
+                            overflow: "hidden",
+
+                        }}>
+
+                            {/* corner accents */}
+                            <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 42, height: 1, background: Y }} />
+                            <span aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, width: 1, height: 42, background: Y }} />
+                            <span aria-hidden="true" style={{ position: "absolute", bottom: 0, right: 0, width: 42, height: 1, background: Y }} />
+                            <span aria-hidden="true" style={{ position: "absolute", bottom: 0, right: 0, width: 1, height: 42, background: Y }} />
+
+                            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: isSmall ? 26 : 34 }}>
+
+                                <span style={{ width: 5, height: 5, borderRadius: "50%", background: Y, boxShadow: `0 0 10px ${Y}` }} />
+
+                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isSmall ? 17 : 22, letterSpacing: "0.16em", textTransform: "uppercase", color: Y, lineHeight: 1 }}>
+
+                                    Headline Partner
+
+                                </span>
+
+                                <span style={{ width: 5, height: 5, borderRadius: "50%", background: Y, boxShadow: `0 0 10px ${Y}` }} />
+
+                            </div>
 
                             <div style={{ display: "flex", justifyContent: "center" }}>
 
-                                <div style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: isSmall ? "28px 32px" : "38px 64px", display: "flex", alignItems: "center", justifyContent: "center", minWidth: isSmall ? "auto" : 420 }}>
+                                <img className="partner-logo" src={HEADLINE_PARTNER.logo} alt={HEADLINE_PARTNER.name}
 
-                                    <img src={HEADLINE_PARTNER.logo} alt={HEADLINE_PARTNER.name} style={{ maxHeight: HEADLINE_PARTNER.maxH * (isMobile ? 0.7 : 1), maxWidth: "100%", width: "auto", objectFit: "contain", display: "block" }} />
-
-                                </div>
+                                    style={{ maxHeight: isMobile ? 46 : isTablet ? 60 : 74, maxWidth: "100%", width: "auto", objectFit: "contain", display: "block" }} />
 
                             </div>
 
@@ -990,23 +1027,63 @@ export default function HomePage() {
 
                     </AnimateIn>
 
-                    {/* Remaining tiers */}
+                    {/* ── Remaining tiers ── */}
 
                     {PARTNER_TIERS.map((tier, ti) => (
 
-                        <AnimateIn key={tier.label} delay={120 + ti * 80}>
+                        <AnimateIn key={tier.label} delay={120 + ti * 70}>
 
-                            <div style={{ marginBottom: ti < PARTNER_TIERS.length - 1 ? (isSmall ? 36 : 52) : 0 }}>
+                            <div style={{ marginBottom: ti < PARTNER_TIERS.length - 1 ? (isSmall ? 46 : 68) : 0 }}>
 
-                                <TierLabel isSmall={isSmall}>{tier.label}</TierLabel>
+                                {/* label, left aligned with a rule running right */}
 
-                                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(tier.partners.length, 3)}, 1fr)`, gap: isSmall ? 12 : 20 }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: isSmall ? 14 : 20, marginBottom: isSmall ? 22 : 30 }}>
+
+                                    <span style={{ width: 3, height: isSmall ? 16 : 20, background: Y, flexShrink: 0 }} />
+
+                                    <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: isSmall ? 15 : 18, letterSpacing: "0.2em", textTransform: "uppercase", color: W, whiteSpace: "nowrap", lineHeight: 1 }}>
+
+                                        {tier.label}
+
+                                    </span>
+
+                                    <span style={{ flex: 1, height: 1, background: "linear-gradient(to right, rgba(255,255,255,0.16), transparent)" }} />
+
+                                </div>
+
+                                {/* logo row — no boxes, divided by hairlines */}
+
+                                <div style={{
+
+                                    display: "grid",
+
+                                    gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(tier.partners.length, 3)}, 1fr)`,
+
+                                    borderTop: `1px solid ${BORDER}`,
+
+                                    borderLeft: isMobile ? "none" : `1px solid ${BORDER}`,
+
+                                }}>
 
                                     {tier.partners.map((p) => (
 
-                                        <div key={p.name} style={{ background: "#0a0a0a", border: `1px solid ${BORDER}`, padding: isSmall ? "24px 20px" : "30px 26px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: isSmall ? 96 : 120 }}>
+                                        <div key={p.name} className="partner-cell" style={{
 
-                                            <img src={p.logo} alt={p.name} style={{ maxHeight: p.maxH * (isMobile ? 0.78 : 1), maxWidth: "100%", width: "auto", objectFit: "contain", display: "block" }} />
+                                            borderRight: isMobile ? "none" : `1px solid ${BORDER}`,
+
+                                            borderBottom: `1px solid ${BORDER}`,
+
+                                            padding: isSmall ? "30px 22px" : "42px 32px",
+
+                                            display: "flex", alignItems: "center", justifyContent: "center",
+
+                                            minHeight: isSmall ? 110 : 148,
+
+                                        }}>
+
+                                            <img className="partner-logo" src={p.logo} alt={p.name}
+
+                                                style={{ maxHeight: p.maxH * (isMobile ? 0.82 : 1), maxWidth: "100%", width: "auto", objectFit: "contain", display: "block" }} />
 
                                         </div>
 
@@ -1023,6 +1100,7 @@ export default function HomePage() {
                 </div>
 
             </section>
+
 
             {/* ═══════════════════════════════════════
 
