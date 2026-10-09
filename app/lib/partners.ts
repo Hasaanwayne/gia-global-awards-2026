@@ -6,8 +6,6 @@ export type PartnerTier = { label: string; partners: Partner[] }
 /**
  * Partner tiers, in the order supplied by the client.
  * Logos are white/colour variants chosen to read on the dark section background.
- * NOTE: FounderX is pending a usable logo file; the supplied JPG lost its
- * "Founder" wordmark (black flattened onto black), leaving only the red X.
  */
 export const PARTNER_TIERS: PartnerTier[] = [
     {
@@ -15,7 +13,7 @@ export const PARTNER_TIERS: PartnerTier[] = [
         partners: [
             { name: "UK Research and Innovation", logo: "/partners/ukri.webp", maxH: 46 },
             { name: "Tech Nation", logo: "/partners/tech-nation.webp", maxH: 42 },
-            { name: "Fern Capital Group", logo: "/partners/fern-capital.webp", maxH: 68 },
+            { name: "Fern Capital Group", logo: "/partners/fern-capital.webp", maxH: 80 },
         ],
     },
     {
@@ -29,6 +27,7 @@ export const PARTNER_TIERS: PartnerTier[] = [
     {
         label: "Community Partners",
         partners: [
+            { name: "FounderX", logo: "/partners/founderx.webp", maxH: 32 },
             { name: "Pall Mall Investments International", logo: "/partners/pall-mall.webp", maxH: 56 },
             { name: "Michelle Hua", logo: "/partners/michelle-hua.webp", maxH: 26 },
         ],
