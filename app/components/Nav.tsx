@@ -15,10 +15,50 @@ const LINKS = [
     { label: "Finalists",  href: "/finalists" },
     { label: "Categories", href: "/categories" },
     { label: "About",      href: "/about" },
-    { label: "Tickets",    href: "/tickets" },
+    { label: "Partnerships", href: "/#partners" },
     { label: "FAQs",       href: "/faqs" },
     { label: "Contact",    href: "/contact" },
 ]
+
+/** Offset so an anchored section clears the sticky nav. */
+const ANCHOR_OFFSET = { mobile: 70, tablet: 80, desktop: 90 } as const
+
+/**
+ * Scroll the window to `targetY`, easing it ourselves on rAF.
+ *
+ * We drive this with plain (instant) scroll steps rather than
+ * `behavior: "smooth"` so the landing position is always exact, and we fall
+ * back to a direct jump for reduced-motion or if the frame loop never ticks
+ * (a backgrounded or non-painting tab), so the link can never silently fail.
+ */
+function animateScrollTo(targetY: number) {
+    const startY = window.scrollY
+    const distance = targetY - startY
+    if (Math.abs(distance) < 2) return
+
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    if (reduced || typeof requestAnimationFrame !== "function") {
+        window.scrollTo(0, targetY)
+        return
+    }
+
+    const duration = Math.min(900, Math.max(420, Math.abs(distance) * 0.22))
+    const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
+    let startTime: number | null = null
+    let ticked = false
+
+    const step = (now: number) => {
+        ticked = true
+        if (startTime === null) startTime = now
+        const p = Math.min((now - startTime) / duration, 1)
+        window.scrollTo(0, Math.round(startY + distance * ease(p)))
+        if (p < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+
+    // Watchdog: if no frame arrived, just go there.
+    window.setTimeout(() => { if (!ticked) window.scrollTo(0, targetY) }, 150)
+}
 
 export default function Nav() {
     const pathname  = usePathname()
@@ -27,6 +67,21 @@ export default function Nav() {
     const [open, setOpen] = useState(false)
 
     const hPad = bp === "mobile" ? "16px 20px" : bp === "tablet" ? "16px 32px" : "16px 48px"
+
+    /**
+     * Same-page anchors scroll here. From another route we let the href
+     * navigate and the browser resolves the fragment natively on arrival.
+     */
+    const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (!href.startsWith("/#")) return
+        if (pathname !== "/") return
+        const el = document.getElementById(href.slice(2))
+        if (!el) return
+        e.preventDefault()
+        const top = el.getBoundingClientRect().top + window.scrollY - ANCHOR_OFFSET[bp]
+        animateScrollTo(Math.max(0, top))
+        history.replaceState(null, "", href)
+    }
 
     return (
         <>
@@ -46,12 +101,12 @@ export default function Nav() {
 
                 {/* Desktop nav links */}
                 {!isMobile && (
-                    <ul style={{ display: "flex", gap: 36, listStyle: "none", margin: 0, padding: 0, alignItems: "center" }}>
+                    <ul style={{ display: "flex", gap: 24, listStyle: "none", margin: 0, padding: 0, alignItems: "center", flexShrink: 0 }}>
                         {LINKS.map((l) => {
                             const isActive = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href)
                             return (
                                 <li key={l.href}>
-                                    <a href={l.href} className={`nav-link${isActive ? " active" : ""}`} style={{
+                                    <a href={l.href} onClick={(e) => handleAnchor(e, l.href)} className={`nav-link${isActive ? " active" : ""}`} style={{
                                         color: isActive ? Y : W,
                                         textDecoration: "none", fontSize: 12, fontWeight: 600,
                                         letterSpacing: "0.1em", textTransform: "uppercase",
@@ -105,7 +160,7 @@ export default function Nav() {
                             <a
                                 key={l.href}
                                 href={l.href}
-                                onClick={() => setOpen(false)}
+                                onClick={(e) => { setOpen(false); handleAnchor(e, l.href) }}
                                 style={{
                                     display: "flex", justifyContent: "space-between", alignItems: "center",
                                     padding: "14px 0",

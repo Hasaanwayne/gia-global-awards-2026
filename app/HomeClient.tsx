@@ -948,7 +948,7 @@ export default function HomePage() {
 
             ═══════════════════════════════════════ */}
 
-            <section style={{ position: "relative", background: BK, borderTop: `1px solid ${BORDER}`, padding: isMobile ? "72px 0 80px" : isTablet ? "88px 0 96px" : "116px 0 124px", overflow: "hidden" }}>
+            <section id="partners" style={{ position: "relative", background: BK, borderTop: `1px solid ${BORDER}`, padding: isMobile ? "72px 0 80px" : isTablet ? "88px 0 96px" : "116px 0 124px", overflow: "hidden", scrollMarginTop: isMobile ? 70 : 90 }}>
 
                 {/* ambient glow */}
                 <div aria-hidden="true" style={{ position: "absolute", top: -140, left: "50%", transform: "translateX(-50%)", width: 900, height: 420, background: "radial-gradient(ellipse at center, rgba(223,255,19,0.07), transparent 68%)", pointerEvents: "none" }} />
