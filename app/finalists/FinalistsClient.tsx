@@ -5,6 +5,7 @@ import Footer from "../components/Footer"
 import AnimateIn from "../components/AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import { FINALISTS } from "./finalists-data"
+import { PARTNERSHIP_EMAIL } from "../lib/event"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const MUTED = "rgba(255,255,255,0.58)", BORDER = "rgba(255,255,255,0.08)"
@@ -116,9 +117,9 @@ export default function FinalistsPage() {
                         community of founders, innovators and ecosystem leaders?
                     </p>
                     <p style={{ color: MUTED, fontSize: isSmall ? 15 : 16, lineHeight: 1.8, margin: 0, fontFamily: BODY }}>
-                        For sponsorship and partnership enquiries, contact Anisa at{" "}
-                        <a href="mailto:anisa@cellardoornexus.co.uk" style={{ color: Y, textDecoration: "underline", fontWeight: 600 }}>
-                            anisa@cellardoornexus.co.uk
+                        For sponsorship and partnership enquiries, contact us at{" "}
+                        <a href={`mailto:${PARTNERSHIP_EMAIL}`} style={{ color: Y, textDecoration: "underline", fontWeight: 600 }}>
+                            {PARTNERSHIP_EMAIL}
                         </a>
                         .
                     </p>
