@@ -4,7 +4,7 @@ import ContactClient from "./ContactClient"
 
 const title = "Contact Us | Global Innovator Awards"
 const description =
-    "Get in touch about sponsorship opportunities, partnerships, media and press enquiries, or group and table bookings for the Global Innovator Awards 2026."
+    "Get in touch about sponsorship opportunities, partnerships, media and press enquiries, or the Global Innovator Awards 2027."
 
 export const metadata = buildMetadata({ title, description, path: "/contact" })
 

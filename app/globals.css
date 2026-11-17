@@ -281,3 +281,11 @@ button { font-family: inherit; }
   .video-poster img, .video-poster .video-play, .gallery-tile img { transition: none; }
   .video-poster:hover img, .video-poster:hover .video-play, .gallery-tile:hover img { transform: none; }
 }
+
+/* Gallery holding panel: a slow, gentle pulse, never a flash */
+@keyframes holdingPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(223,255,19,0.22); }
+  50%      { box-shadow: 0 0 0 10px rgba(223,255,19,0); }
+}
+.holding-pulse { animation: holdingPulse 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .holding-pulse { animation: none; } }

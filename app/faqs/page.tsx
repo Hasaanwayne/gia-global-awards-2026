@@ -5,7 +5,7 @@ import FaqsClient from "./FaqsClient"
 
 const title = "FAQs | Global Innovator Awards"
 const description =
-    "Answers on eligibility and qualifying visa routes, the two-stage entry process, judging, key dates, tickets, and what finalists and winners receive."
+    "Answers on eligibility and qualifying visa routes, the two-stage entry process, judging, what finalists and winners receive, and how to get involved in 2027."
 
 export const metadata = buildMetadata({ title, description, path: "/faqs" })
 

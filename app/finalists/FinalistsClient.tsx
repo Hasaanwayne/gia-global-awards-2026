@@ -36,7 +36,7 @@ export default function FinalistsPage() {
                 </h1>
                 <p style={{ color: MUTED, fontSize: isSmall ? 15 : 17, maxWidth: 720, margin: "22px auto 0", lineHeight: 1.75, fontFamily: BODY }}>
                     {TOTAL} founders, innovators and exceptional talent who chose the UK, selected by our independent
-                    judging panel across ten categories. Winners announced on 16th November at The Dorchester, London.
+                    judging panel across ten categories. Winners were announced on 16th November at The Dorchester, London.
                 </p>
 
                 {/* Stat strip */}
@@ -84,7 +84,7 @@ export default function FinalistsPage() {
                     </div>
 
                     <p style={{ textAlign: "center", color: MUTED, fontSize: 13, marginTop: isSmall ? 36 : 52, fontFamily: BODY, lineHeight: 1.8 }}>
-                        Finalists are listed alphabetically within each category. Winners are announced at the awards
+                        Finalists are listed alphabetically within each category. Winners were announced at the awards
                         evening on 16th November 2026.
                     </p>
                 </div>

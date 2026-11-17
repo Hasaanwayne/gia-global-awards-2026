@@ -765,7 +765,7 @@ export default function HomePage() {
 
                             <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, margin: 0, fontFamily: BODY }}>
 
-                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders, meet the 100 finalists our independent panel selected across ten categories. Winners announced in London on 16th November.
+                                From founders and co-founding teams to global talent, creative innovators and ecosystem builders, meet the 100 finalists our independent panel selected across ten categories. Winners were announced in London on 16th November.
 
                             </p>
 

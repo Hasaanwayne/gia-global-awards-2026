@@ -17,7 +17,7 @@ const REASONS = [
     "Sponsorship opportunities",
     "Partnerships and community collaborations",
     "Media and press enquiries",
-    "Group / Table Bookings",
+    "The 2027 awards",
     "Other",
 ]
 

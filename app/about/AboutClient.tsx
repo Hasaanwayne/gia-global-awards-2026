@@ -16,7 +16,7 @@ const sectionTitle: React.CSSProperties = { fontFamily: HEAD, fontWeight: 900, t
 const bodyText: React.CSSProperties = { color: MUTED, fontSize: 16, lineHeight: 1.82, marginBottom: 20, fontFamily: BODY }
 
 const steps = [
-    { num: "01", title: "Open Nominations",    body: "Nominations are now closed. Judging is underway." },
+    { num: "01", title: "Open Nominations",    body: "Nominations for 2026 closed on 28 August, followed by independent judging." },
     { num: "02", title: "Judging & Shortlist", body: "All nominations were reviewed by our independent judge panel. The finalists and winners have now been announced." },
     { num: "03", title: "Awards Evening",      body: "Winners were announced at the Global Innovator Awards evening at The Dorchester, London on 16 November 2026." },
     { num: "04", title: "Media & Recognition", body: "Winners and finalists receive coverage across our media partner network. Your story reaches the investors, partners and press that matter." },
