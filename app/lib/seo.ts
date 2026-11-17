@@ -61,7 +61,7 @@ export const eventSchema = {
     startDate: "2026-11-16",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
-    url: `${SITE_URL}/tickets`,
+    url: `${SITE_URL}/winners2026`,
     image: `${SITE_URL}/gia-logo.webp`,
     description:
         "The UK's first awards for founders, innovators and exceptional talent who came to the UK on an innovation or talent visa. An evening of 150 innovators, investors and press, with ten winners announced.",
@@ -74,11 +74,6 @@ export const eventSchema = {
             addressLocality: "London",
             addressCountry: "GB",
         },
-    },
-    offers: {
-        "@type": "Offer",
-        url: "https://buytickets.at/nexus4/2408591",
-        availability: "https://schema.org/InStock",
     },
     organizer: {
         "@type": "Organization",

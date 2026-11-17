@@ -256,3 +256,28 @@ button { font-family: inherit; }
 }
 .headline-partner:hover .partner-logo { opacity: 1; transform: scale(1.03); }
 
+
+/* ── Winners ── */
+.winner-card {
+  transition: transform 0.25s cubic-bezier(0.34,1.4,0.64,1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.winner-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(223,255,19,0.38) !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.55), 0 0 40px rgba(223,255,19,0.06);
+}
+@media (prefers-reduced-motion: reduce) {
+  .winner-card, .winner-card:hover { transition: none; transform: none; }
+}
+
+/* ── Highlights ── */
+.video-poster img { transition: opacity 0.3s ease, transform 0.5s ease; }
+.video-poster:hover img { opacity: 0.92 !important; transform: scale(1.02); }
+.video-poster .video-play { transition: transform 0.25s cubic-bezier(0.34,1.4,0.64,1); }
+.video-poster:hover .video-play { transform: scale(1.08); }
+.gallery-tile img { transition: transform 0.45s ease, opacity 0.3s ease; opacity: 0.9; }
+.gallery-tile:hover img { transform: scale(1.05); opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .video-poster img, .video-poster .video-play, .gallery-tile img { transition: none; }
+  .video-poster:hover img, .video-poster:hover .video-play, .gallery-tile:hover img { transform: none; }
+}

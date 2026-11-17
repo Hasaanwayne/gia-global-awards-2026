@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 import React from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
+import { handleHashLink } from "../lib/scroll"
 
 const Y     = "#DFFF13"
 const BK    = "#000000"
@@ -12,7 +13,7 @@ const BODY  = "'General Sans','Inter',system-ui,sans-serif"
 
 const LINKS = [
     { label: "Home",       href: "/" },
-    { label: "Finalists",  href: "/finalists" },
+    { label: "Winners",    href: "/winners2026" },
     { label: "Categories", href: "/categories" },
     { label: "About",      href: "/about" },
     { label: "Partnerships", href: "/#partners" },
@@ -20,45 +21,8 @@ const LINKS = [
     { label: "Contact",    href: "/contact" },
 ]
 
-/** Offset so an anchored section clears the sticky nav. */
-const ANCHOR_OFFSET = { mobile: 70, tablet: 80, desktop: 90 } as const
-
-/**
- * Scroll the window to `targetY`, easing it ourselves on rAF.
- *
- * We drive this with plain (instant) scroll steps rather than
- * `behavior: "smooth"` so the landing position is always exact, and we fall
- * back to a direct jump for reduced-motion or if the frame loop never ticks
- * (a backgrounded or non-painting tab), so the link can never silently fail.
- */
-function animateScrollTo(targetY: number) {
-    const startY = window.scrollY
-    const distance = targetY - startY
-    if (Math.abs(distance) < 2) return
-
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
-    if (reduced || typeof requestAnimationFrame !== "function") {
-        window.scrollTo(0, targetY)
-        return
-    }
-
-    const duration = Math.min(900, Math.max(420, Math.abs(distance) * 0.22))
-    const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
-    let startTime: number | null = null
-    let ticked = false
-
-    const step = (now: number) => {
-        ticked = true
-        if (startTime === null) startTime = now
-        const p = Math.min((now - startTime) / duration, 1)
-        window.scrollTo(0, Math.round(startY + distance * ease(p)))
-        if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-
-    // Watchdog: if no frame arrived, just go there.
-    window.setTimeout(() => { if (!ticked) window.scrollTo(0, targetY) }, 150)
-}
+/** Header CTA: anchors to the 2027 registration section on the home page. */
+const CTA = { label: "REGISTER FOR 2027", href: "/#register" }
 
 export default function Nav() {
     const pathname  = usePathname()
@@ -68,20 +32,8 @@ export default function Nav() {
 
     const hPad = bp === "mobile" ? "16px 20px" : bp === "tablet" ? "16px 32px" : "16px 48px"
 
-    /**
-     * Same-page anchors scroll here. From another route we let the href
-     * navigate and the browser resolves the fragment natively on arrival.
-     */
-    const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        if (!href.startsWith("/#")) return
-        if (pathname !== "/") return
-        const el = document.getElementById(href.slice(2))
-        if (!el) return
-        e.preventDefault()
-        const top = el.getBoundingClientRect().top + window.scrollY - ANCHOR_OFFSET[bp]
-        animateScrollTo(Math.max(0, top))
-        history.replaceState(null, "", href)
-    }
+    const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>, href: string) =>
+        handleHashLink(e, href, pathname, bp)
 
     return (
         <>
@@ -121,10 +73,11 @@ export default function Nav() {
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     {/* CTA — desktop only */}
                     {!isMobile && (
-                        <a href="/tickets"
+                        <a href={CTA.href}
+                            onClick={(e) => handleAnchor(e, CTA.href)}
                             className="btn-primary"
-                            style={{ background: Y, color: BK, padding: "11px 28px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                            GET TICKETS
+                            style={{ background: Y, color: BK, padding: "11px 24px", fontFamily: BODY, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block", whiteSpace: "nowrap" }}>
+                            {CTA.label}
                         </a>
                     )}
 
@@ -176,8 +129,8 @@ export default function Nav() {
                         )
                     })}
                     <a
-                        href="/tickets"
-                        onClick={() => setOpen(false)}
+                        href={CTA.href}
+                        onClick={(e) => { setOpen(false); handleAnchor(e, CTA.href) }}
                         style={{
                             display: "block", marginTop: 20,
                             background: Y, color: BK,
@@ -187,7 +140,7 @@ export default function Nav() {
                             textTransform: "uppercase", textDecoration: "none",
                         }}
                     >
-                        GET TICKETS
+                        {CTA.label}
                     </a>
                 </div>
             )}

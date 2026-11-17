@@ -7,7 +7,7 @@ const TOTAL = FINALISTS.reduce((n, g) => n + g.names.length, 0)
 
 const title = "The 2026 Finalists | Global Innovator Awards"
 const description =
-    `The ${TOTAL} finalists of the Global Innovator Awards 2026, selected by our independent judging panel across ten categories. Winners announced 16th November at The Dorchester, London.`
+    `The ${TOTAL} finalists of the Global Innovator Awards 2026, selected by our independent judging panel across ten categories. The winners were announced on 16 November at The Dorchester, London.`
 
 export const metadata = buildMetadata({ title, description, path: "/finalists" })
 

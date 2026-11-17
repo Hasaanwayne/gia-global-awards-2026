@@ -29,6 +29,12 @@ const longCache = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // Tickets page was repurposed after the 2026 event.
+      { source: "/tickets", destination: "/get-involved", permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

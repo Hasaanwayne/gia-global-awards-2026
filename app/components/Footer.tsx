@@ -35,7 +35,7 @@ const socialLinks = [
 ]
 
 const navLinks = [
-    ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Tickets", "/tickets"], ["FAQs", "/faqs"], ["Contact", "/contact"],
+    ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Get Involved", "/get-involved"], ["FAQs", "/faqs"], ["Contact", "/contact"],
 ]
 
 const legalLinks: [string, string][] = [
@@ -107,11 +107,11 @@ export default function Footer() {
                         ))}
                     </div>
 
-                    {/* Mailchimp Newsletter Signup */}
-                    <div>
+                    {/* Mailchimp Newsletter Signup (also the 2027 "register your interest" fallback target) */}
+                    <div id="newsletter" style={{ scrollMarginTop: 96 }}>
                         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", color: WHITE, textTransform: "uppercase", marginBottom: 12 }}>Stay Updated</div>
                         <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.65, marginBottom: 20 }}>
-                            Get the finalist shortlist, ticket release and event updates direct to your inbox.
+                            Be first to know when 2027 nominations open, plus highlights and news.
                         </p>
                         {submitted ? (
                             <div style={{ display: "flex", alignItems: "center", gap: 10, color: YELLOW, fontSize: 14, fontWeight: 600, letterSpacing: "0.06em" }}>

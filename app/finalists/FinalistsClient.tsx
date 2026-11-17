@@ -92,13 +92,13 @@ export default function FinalistsPage() {
 
             {/* CTA */}
             <div style={{ background: "#050505", borderTop: `1px solid ${BORDER}`, padding: isSmall ? "64px 20px" : "80px 48px", textAlign: "center" }}>
-                <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(32px,6vw,52px)", textTransform: "uppercase", margin: "0 0 16px" }}>Be in the Room</h2>
+                <h2 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(32px,6vw,52px)", textTransform: "uppercase", margin: "0 0 16px" }}>Meet the Winners</h2>
                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, maxWidth: 520, margin: "0 auto 32px", fontFamily: BODY }}>
-                    Awards Gala &ndash; 16th November 2026 &middot; The Dorchester, London
+                    Celebrated at The Dorchester, London &middot; 16th November 2026
                 </p>
-                <a href="/tickets" className="btn-primary"
+                <a href="/winners2026" className="btn-primary"
                     style={{ background: Y, color: BK, padding: "14px 40px", fontFamily: BODY, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", display: "inline-block" }}>
-                    Get Tickets
+                    See the Winners
                 </a>
             </div>
 
