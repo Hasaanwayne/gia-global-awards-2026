@@ -8,6 +8,8 @@ export type Award = {
     line: string
     /** Headshot in /public/winners; initials are shown until it exists. */
     img?: string
+    /** Several people sharing one award: shown as an overlapping pair. */
+    imgs?: { src: string; alt: string }[]
     highlyCommended: string[]
     featured?: boolean
 }
@@ -20,6 +22,7 @@ export const AWARDS: Award[] = [
         winner: "Ravneet Kaur",
         org: "National Grid",
         line: "Supported more than 250 renewable energy start-ups at the Offshore Renewable Energy Catapult and led more than £25m in successful R&D bids.",
+        img: "/winners/ravneet-kaur.webp",
         highlyCommended: ["Lyubov Guk", "Paige Zeigler"],
     },
     {
@@ -28,6 +31,7 @@ export const AWARDS: Award[] = [
         winner: "Chandni Dangson",
         org: "WWE",
         line: "Director, Digital & Social at WWE, leading strategy across the UK and India; WWE UK’s channels have gained 8.4 million followers and 8 billion impressions since 2024.",
+        img: "/winners/chandni-dangson.webp",
         highlyCommended: ["Yuxin He", "Tiffany Chiu"],
     },
     {
@@ -35,6 +39,7 @@ export const AWARDS: Award[] = [
         award: "Ecosystem Builder of the Year Award",
         winner: "Cansu Deniz Bayrak",
         line: "Ran the UK’s first IoT accelerator, raised more than £30m to invest in underserved founders, and now helps researchers turn their work into companies.",
+        img: "/winners/cansu-deniz-bayrak.webp",
         highlyCommended: ["Lyubov Guk", "Michelle Hua"],
     },
     {
@@ -43,6 +48,7 @@ export const AWARDS: Award[] = [
         winner: "Artem Sokolov",
         org: "Humanoid",
         line: "Founder & CEO of AI and robotics company Humanoid, building safe and reliable humanoid robots for industry, with partners including Schaeffler, Bosch and NVIDIA.",
+        img: "/winners/artem-sokolov.webp",
         highlyCommended: ["Ahmed Adnan Elsharkawy", "Danyi Chen"],
     },
     {
@@ -51,6 +57,7 @@ export const AWARDS: Award[] = [
         winner: "David Sikharulidze",
         org: "Mavis Technologies",
         line: "Builds AI smart glasses for blind and partially sighted people, designed and made in Northampton, with two products launched in 2026 and a granted UK patent.",
+        img: "/winners/david-sikharulidze.webp",
         highlyCommended: ["Cheng Li", "Dr Mae Mansoubi, Prof Helen Dawes, Prof Sallie Lamb & Dr Kourosh Norouzi"],
     },
     {
@@ -59,6 +66,7 @@ export const AWARDS: Award[] = [
         winner: "Mary-Brenda Akoda",
         org: "GenScan AI",
         line: "Turned her Imperial College research into GenMRI, AI software that makes MRI scans up to 90% faster on the scanners hospitals already own.",
+        img: "/winners/mary-brenda-akoda.webp",
         highlyCommended: ["Aswath Ganesan Indra", "Maria Sergeeva"],
     },
     {
@@ -67,6 +75,10 @@ export const AWARDS: Award[] = [
         winner: "Edmund Moyo & Dalumuzi ‘Muzi’ Dube",
         org: "Sentian Aerospace",
         line: "Engineering partners for more than a decade, they design a family of long-endurance drones for defence, security and infrastructure missions.",
+        imgs: [
+            { src: "/winners/edmund-moyo.webp", alt: "Edmund Moyo" },
+            { src: "/winners/muzi-dube.webp", alt: "Dalumuzi ‘Muzi’ Dube" },
+        ],
         highlyCommended: ["Sonakshi Senthil & Dr Nikhit Anilbhai", "Maya Adina Mehrara & Agnese Enricha Picchio"],
     },
     {
@@ -75,6 +87,7 @@ export const AWARDS: Award[] = [
         winner: "Sanzhar Taizhan",
         org: "Taisan",
         line: "Building safer, lighter sodium-ion batteries for e-bikes, scooters, drones and light electric vehicles, from Coventry.",
+        img: "/winners/sanzhar-taizhan.webp",
         highlyCommended: ["Danyi Chen", "Mary-Brenda Akoda"],
     },
     {
@@ -83,6 +96,7 @@ export const AWARDS: Award[] = [
         winner: "Mustafa Khanwala",
         org: "MishiPay",
         line: "Founded MishiPay at the University of Manchester; its self-checkout technology now runs in more than 2,000 stores for 35 brands across North America, Europe and the Middle East.",
+        img: "/winners/mustafa-khanwala.webp",
         highlyCommended: ["Tiffany Chiu", "Sonakshi Senthil & Dr Nikhit Anilbhai"],
     },
     {
@@ -91,6 +105,7 @@ export const AWARDS: Award[] = [
         winner: "Artem Sokolov",
         org: "Humanoid",
         line: "Founder & CEO of AI and robotics company Humanoid, building safe and reliable humanoid robots for industry, with partners including Schaeffler, Bosch and NVIDIA.",
+        img: "/winners/artem-sokolov.webp",
         highlyCommended: ["Cheng Li", "Balamurugan Balasubramanian"],
     },
     {
@@ -99,6 +114,7 @@ export const AWARDS: Award[] = [
         winner: "Kelu ‘Eric’ Liu",
         org: "HungryPanda",
         line: "Founder and CEO of HungryPanda, the global delivery platform connecting overseas Asian communities with authentic food and groceries; since 2017 he has raised over $275m and scaled it to more than six million users across ten countries.",
+        img: "/winners/kelu-eric-liu.webp",
         highlyCommended: [],
         featured: true,
     },

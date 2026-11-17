@@ -15,6 +15,19 @@ const MAXW = 1280
 const label: React.CSSProperties = { fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", fontFamily: BODY }
 
 function Headshot({ a, size }: { a: Award; size: number }) {
+    // Joint winners: two overlapping circles, each slightly smaller.
+    if (a.imgs && a.imgs.length > 1) {
+        const s = Math.round(size * 0.86)
+        return (
+            <div style={{ display: "flex", flexShrink: 0 }} role="img" aria-label={a.winner}>
+                {a.imgs.map((p, i) => (
+                    <div key={p.src} style={{ width: s, height: s, borderRadius: "50%", overflow: "hidden", border: `2px solid ${Y}`, background: "#0a0a0a", marginLeft: i ? -Math.round(s * 0.3) : 0, position: "relative", zIndex: i, boxShadow: i ? "-4px 0 0 #070707" : "0 0 0 6px rgba(223,255,19,0.06)" }}>
+                        <img src={p.src} alt={p.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                    </div>
+                ))}
+            </div>
+        )
+    }
     return (
         <div style={{ width: size, height: size, borderRadius: "50%", flexShrink: 0, overflow: "hidden", border: `2px solid ${Y}`, background: "rgba(223,255,19,0.07)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 0 6px rgba(223,255,19,0.06)" }}>
             {a.img
