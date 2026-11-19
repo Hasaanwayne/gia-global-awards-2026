@@ -6,6 +6,9 @@ export function minutesOf(p: Photo): number | null {
     return m ? Number(m[1]) * 60 + Number(m[2]) : null
 }
 
+/** Photo description without the trailing capture time ("…, 6:30pm"). */
+export const altWithoutTime = (p: Photo) => p.alt.replace(/,\s*\d{1,2}:\d{2}(am|pm)$/i, "")
+
 export function timeLabel(p: Photo): string {
     const mins = minutesOf(p)
     if (mins === null) return ""

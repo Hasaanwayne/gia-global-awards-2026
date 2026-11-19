@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import AnimateIn from "./AnimateIn"
 import type { Photo } from "../lib/gallery-data"
-import { timeLabel } from "../lib/gallery-meta"
+import { timeLabel, altWithoutTime } from "../lib/gallery-meta"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
@@ -80,7 +80,7 @@ export function Lightbox({ photos, index, onClose, onNav, showTime = true }: { p
             </div>
             <div style={{ position: "relative", flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: isMobile ? "0 8px 16px" : "0 88px 28px" }}>
                 <button type="button" aria-label="Previous photo" onClick={(e) => { e.stopPropagation(); prev() }} style={{ ...navBtn, left: isMobile ? 8 : 24 }}><IconArrow dir="left" /></button>
-                <img key={p.large} src={p.large} alt={p.alt} onClick={(e) => e.stopPropagation()}
+                <img key={p.large} src={p.large} alt={showTime ? p.alt : altWithoutTime(p)} onClick={(e) => e.stopPropagation()}
                     style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", boxShadow: "0 30px 90px rgba(0,0,0,0.6)" }} />
                 <button type="button" aria-label="Next photo" onClick={(e) => { e.stopPropagation(); next() }} style={{ ...navBtn, right: isMobile ? 8 : 24 }}><IconArrow dir="right" /></button>
             </div>

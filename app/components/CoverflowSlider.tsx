@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import type { Photo } from "../lib/gallery-data"
+import { altWithoutTime } from "../lib/gallery-meta"
 import { Lightbox, IconArrow, IconExpand } from "./PhotoGallery"
 
 const Y = "#DFFF13", W = "#FFFFFF"
@@ -104,7 +105,7 @@ export default function CoverflowSlider({ photos, interval = 4500 }: { photos: P
                             type="button"
                             tabIndex={isActive ? 0 : -1}
                             aria-hidden={hidden || undefined}
-                            aria-label={isActive ? `View ${ph.alt} full size` : `Show ${ph.alt}`}
+                            aria-label={isActive ? `View ${altWithoutTime(ph)} full size` : `Show ${altWithoutTime(ph)}`}
                             onClick={() => { if (drag.current?.moved) return; isActive ? setOpen(i) : go(i) }}
                             className={isActive ? "cf-slide cf-active" : "cf-slide"}
                             style={{
