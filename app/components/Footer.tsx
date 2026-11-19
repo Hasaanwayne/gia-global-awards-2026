@@ -35,7 +35,7 @@ const socialLinks = [
 ]
 
 const navLinks = [
-    ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Get Involved", "/get-involved"], ["FAQs", "/faqs"], ["Contact", "/contact"],
+    ["Home", "/"], ["Categories", "/categories"], ["About", "/about"], ["Gallery", "/gallery"], ["Get Involved", "/get-involved"], ["FAQs", "/faqs"], ["Contact", "/contact"],
 ]
 
 const legalLinks: [string, string][] = [

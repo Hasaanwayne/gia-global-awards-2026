@@ -2,14 +2,16 @@
 import React, { useState } from "react"
 import AnimateIn from "./AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
-import { HIGHLIGHTS_YOUTUBE_ID, GALLERY, GALLERY_HOLDING } from "../lib/event"
+import { HIGHLIGHTS_YOUTUBE_ID, GALLERY_HOLDING } from "../lib/event"
+import { PHOTOS, HOME_PREVIEW_IDS } from "../lib/gallery-data"
+import PhotoGallery from "./PhotoGallery"
 
 const Y = "#DFFF13", BK = "#000000"
 const BORDER = "rgba(255,255,255,0.08)"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
 
 export const HAS_VIDEO = Boolean(HIGHLIGHTS_YOUTUBE_ID)
-export const HAS_GALLERY = GALLERY.length > 0
+export const HAS_GALLERY = PHOTOS.length > 0
 /** Holding panel shows in the gallery slot until the photos land. */
 export const SHOW_GALLERY_HOLDING = !HAS_GALLERY && GALLERY_HOLDING
 
@@ -44,19 +46,20 @@ function Video({ id }: { id: string }) {
     )
 }
 
+/** Home-page selection; the full set lives on /gallery. */
 function Gallery() {
     const bp = useBreakpoint()
-    const cols = bp === "mobile" ? 2 : bp === "tablet" ? 3 : 4
+    const preview = HOME_PREVIEW_IDS.map((id) => PHOTOS.find((p) => p.id === id)).filter((p): p is (typeof PHOTOS)[number] => Boolean(p))
     return (
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: bp === "mobile" ? 8 : 12 }}>
-            {GALLERY.map((g, i) => (
-                <a key={g.src} href={g.src} target="_blank" rel="noopener noreferrer" className="gallery-tile"
-                    style={{ display: "block", aspectRatio: "4 / 3", overflow: "hidden", background: "#0a0a0a", border: `1px solid ${BORDER}` }}
-                    aria-label={`Open photo ${i + 1}: ${g.alt}`}>
-                    <img src={g.src} alt={g.alt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <>
+            <PhotoGallery photos={preview} all={PHOTOS} />
+            <div style={{ textAlign: "center", marginTop: bp === "mobile" ? 24 : 36 }}>
+                <a href="/gallery" className="btn-primary"
+                    style={{ background: Y, color: BK, padding: "15px 36px", fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block", fontFamily: BODY }}>
+                    View the Full Gallery ({PHOTOS.length} Photos)
                 </a>
-            ))}
-        </div>
+            </div>
+        </>
     )
 }
 

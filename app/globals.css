@@ -289,3 +289,17 @@ button { font-family: inherit; }
 }
 .holding-pulse { animation: holdingPulse 2.6s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .holding-pulse { animation: none; } }
+
+/* ── Photo gallery ── */
+.photo-tile img { transition: transform 0.45s ease, opacity 0.3s ease; opacity: 0.94; }
+.photo-tile:hover img { transform: scale(1.03); opacity: 1; }
+.photo-dl { opacity: 0; transform: translateY(4px); transition: opacity 0.2s ease, transform 0.2s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.45); }
+.photo-tile:hover .photo-dl, .photo-dl:focus-visible { opacity: 1; transform: none; }
+@media (hover: none) { .photo-dl { opacity: 1; transform: none; } }
+@keyframes lightboxIn { from { opacity: 0; } to { opacity: 1; } }
+.lightbox-in { animation: lightboxIn 0.18s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .photo-tile img, .photo-dl { transition: none; }
+  .photo-tile:hover img { transform: none; }
+  .lightbox-in { animation: none; }
+}

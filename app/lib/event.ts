@@ -9,12 +9,10 @@ export const EVENT_DATE = "16 November 2026"
 /** YouTube ID of the 30-second highlights film (the part after `v=`). */
 export const HIGHLIGHTS_YOUTUBE_ID = ""
 
-/** Event photos, in display order. Files live in /public/gallery. */
-export const GALLERY: { src: string; alt: string }[] = []
+/* Event photos live in app/lib/gallery-data.ts (generated from the photographer's set). */
 
 /**
- * While GALLERY is empty, show the "pictures are on their way" panel instead.
- * Photography lands 11:00 GMT Thursday 19 November 2026.
+ * While there are no photos, show the "pictures are on their way" panel instead.
  */
 export const GALLERY_HOLDING = true
 
