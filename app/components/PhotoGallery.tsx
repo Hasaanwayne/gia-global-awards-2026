@@ -27,7 +27,7 @@ export const IconArrow = ({ dir, size = 22 }: { dir: "left" | "right"; size?: nu
 
 /**
  * Full-screen viewer with previous/next, keyboard control and a download button.
- * Sits above the cookie banner (9999) and the Ask Fin launcher (2147483000).
+ * Sits above the cookie banner (9999) and, when enabled, the Ask Fin launcher (2147483000).
  */
 export function Lightbox({ photos, index, onClose, onNav, showTime = true }: { photos: Photo[]; index: number; onClose: () => void; onNav: (i: number) => void; showTime?: boolean }) {
     const p = photos[index]

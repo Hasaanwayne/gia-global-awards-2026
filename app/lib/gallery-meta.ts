@@ -16,12 +16,12 @@ export function timeLabel(p: Photo): string {
     return `${h % 12 || 12}:${mm}${h >= 12 ? "pm" : "am"}`
 }
 
-/** Parts of the evening, following the run of the night (doors 6:30pm, dinner 7:30pm, celebration 10:30pm). */
+/** Parts of the evening: drinks reception from 6:30pm, then dinner and awards from 7:30pm (the
+ *  late celebration photos are folded into Dinner & Awards, at the client's request). */
 export const CHAPTERS = [
     { key: "all", label: "All" },
     { key: "reception", label: "Drinks Reception", from: 0, to: 19 * 60 + 30 },
-    { key: "dinner", label: "Dinner & Awards", from: 19 * 60 + 30, to: 22 * 60 + 30 },
-    { key: "celebration", label: "Celebration", from: 22 * 60 + 30, to: 24 * 60 },
+    { key: "dinner", label: "Dinner & Awards", from: 19 * 60 + 30, to: 24 * 60 },
 ] as const
 
 export type ChapterKey = (typeof CHAPTERS)[number]["key"]

@@ -32,7 +32,7 @@ export default function FAQsPage() {
                     {isMobile ? <>Frequently Asked<br />Questions</> : "Frequently Asked Questions"}
                 </h1>
                 <p style={{ color: MUTED, fontSize: isSmall ? 14 : 16, maxWidth: 620, margin: "20px auto 0", lineHeight: 1.7, fontFamily: BODY }}>
-                    Can&apos;t find your answer here? Use the live chat on this page to speak to our team directly, we aim to respond within 24 hours.
+                    Can&apos;t find your answer here? Use our <a href="/contact" style={{ color: Y, textDecoration: "underline" }}>contact form</a> to get in touch with the team, we aim to respond within 24 hours.
                 </p>
             </div>
 

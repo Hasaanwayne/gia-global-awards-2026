@@ -3,6 +3,9 @@ import "./globals.css";
 import CookieBanner from "./components/CookieBanner";
 import IntercomMessenger from "./components/IntercomMessenger";
 
+/** Fin (Intercom) chat. Off at the client's request; set to true to bring it back. */
+const SHOW_FIN_CHAT = false;
+
 export const metadata: Metadata = {
     title: "Global Innovator Awards | UK Innovation Awards",
     description: "The UK's first awards for founders, innovators and exceptional talent who chose the UK on an innovation or talent visa. Meet the 2026 winners, celebrated at The Dorchester, London.",
@@ -77,7 +80,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </div>
                 <main>{children}</main>
                 <CookieBanner />
-                <IntercomMessenger />
+                {SHOW_FIN_CHAT && <IntercomMessenger />}
             </body>
         </html>
     );
