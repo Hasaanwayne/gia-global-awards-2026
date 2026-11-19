@@ -19,7 +19,6 @@ export default function GalleryPage() {
     const hPad = isMobile ? "0 14px" : bp === "tablet" ? "0 32px" : "0 48px"
     const [chapter, setChapter] = useState<ChapterKey>("all")
 
-    const counts = useMemo(() => Object.fromEntries(CHAPTERS.map((c) => [c.key, PHOTOS.filter((p) => inChapter(p, c.key)).length])), [])
     const shown = useMemo(() => PHOTOS.filter((p) => inChapter(p, chapter)), [chapter])
 
     return (
@@ -49,9 +48,8 @@ export default function GalleryPage() {
                             const on = chapter === c.key
                             return (
                                 <button key={c.key} type="button" role="tab" aria-selected={on} onClick={() => setChapter(c.key)} className="chip"
-                                    style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: isMobile ? "8px 12px" : "10px 18px", borderRadius: 999, border: `1px solid ${on ? Y : "rgba(255,255,255,0.18)"}`, background: on ? Y : "transparent", color: on ? BK : W, fontFamily: BODY, fontWeight: 700, fontSize: isMobile ? 11 : 12, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer" }}>
+                                    style={{ display: "inline-flex", alignItems: "center", padding: isMobile ? "8px 12px" : "10px 18px", borderRadius: 999, border: `1px solid ${on ? Y : "rgba(255,255,255,0.18)"}`, background: on ? Y : "transparent", color: on ? BK : W, fontFamily: BODY, fontWeight: 700, fontSize: isMobile ? 11 : 12, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer" }}>
                                     {c.label}
-                                    <span style={{ fontSize: 10, fontWeight: 700, opacity: on ? 0.7 : 0.5 }}>{counts[c.key]}</span>
                                 </button>
                             )
                         })}
