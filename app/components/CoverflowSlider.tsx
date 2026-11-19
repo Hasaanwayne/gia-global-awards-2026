@@ -2,7 +2,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import type { Photo } from "../lib/gallery-data"
-import { timeLabel } from "../lib/gallery-meta"
 import { Lightbox, IconArrow, IconExpand } from "./PhotoGallery"
 
 const Y = "#DFFF13", W = "#FFFFFF"
@@ -13,6 +12,7 @@ const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
  * 3D coverflow: the active photo faces the viewer, neighbours swing back on the
  * Y axis and dim. Auto-advances gently (paused on hover, focus, hidden tab and
  * for reduced motion), swipes on touch, and the centre photo opens the viewer.
+ * No capture times are shown here (the full gallery has them).
  */
 export default function CoverflowSlider({ photos, interval = 4500 }: { photos: Photo[]; interval?: number }) {
     const bp = useBreakpoint()
@@ -72,7 +72,6 @@ export default function CoverflowSlider({ photos, interval = 4500 }: { photos: P
         window.setTimeout(() => { drag.current = null }, 0)
     }
 
-    const p = photos[active]
 
     return (
         <div
@@ -153,7 +152,6 @@ export default function CoverflowSlider({ photos, interval = 4500 }: { photos: P
                     <div aria-hidden="true" style={{ height: 2, background: "rgba(255,255,255,0.12)", marginTop: 10, overflow: "hidden" }}>
                         <div style={{ height: "100%", width: `${((active + 1) / n) * 100}%`, background: Y, transition: reduced ? "none" : "width 0.6s ease" }} />
                     </div>
-                    {timeLabel(p) && <div style={{ fontFamily: BODY, fontSize: 10, letterSpacing: "0.26em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginTop: 8 }}>{timeLabel(p)}</div>}
                 </div>
 
                 <button type="button" onClick={next} aria-label="Next photo" className="cf-btn"
@@ -166,7 +164,7 @@ export default function CoverflowSlider({ photos, interval = 4500 }: { photos: P
                 Photo {active + 1} of {n}
             </span>
 
-            {open !== null && <Lightbox photos={photos} index={open} onClose={() => setOpen(null)} onNav={(i) => { setOpen(i); go(i) }} />}
+            {open !== null && <Lightbox photos={photos} index={open} showTime={false} onClose={() => setOpen(null)} onNav={(i) => { setOpen(i); go(i) }} />}
         </div>
     )
 }

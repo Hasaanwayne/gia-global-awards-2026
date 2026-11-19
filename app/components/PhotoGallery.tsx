@@ -29,7 +29,7 @@ export const IconArrow = ({ dir, size = 22 }: { dir: "left" | "right"; size?: nu
  * Full-screen viewer with previous/next, keyboard control and a download button.
  * Sits above the cookie banner (9999) and the Ask Fin launcher (2147483000).
  */
-export function Lightbox({ photos, index, onClose, onNav }: { photos: Photo[]; index: number; onClose: () => void; onNav: (i: number) => void }) {
+export function Lightbox({ photos, index, onClose, onNav, showTime = true }: { photos: Photo[]; index: number; onClose: () => void; onNav: (i: number) => void; showTime?: boolean }) {
     const p = photos[index]
     const bp = useBreakpoint()
     const isMobile = bp === "mobile"
@@ -65,7 +65,7 @@ export function Lightbox({ photos, index, onClose, onNav }: { photos: Photo[]; i
             style={{ position: "fixed", inset: 0, zIndex: 2147483600, background: "rgba(0,0,0,0.95)", display: "flex", flexDirection: "column" }}>
             <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: isMobile ? "12px 14px" : "16px 24px", fontFamily: BODY }}>
                 <span style={{ fontSize: 12, letterSpacing: "0.2em", color: "rgba(255,255,255,0.6)", fontWeight: 700 }}>
-                    {index + 1} / {photos.length}{timeLabel(p) ? <span style={{ color: Y, marginLeft: 14 }}>{timeLabel(p)}</span> : null}
+                    {index + 1} / {photos.length}{showTime && timeLabel(p) ? <span style={{ color: Y, marginLeft: 14 }}>{timeLabel(p)}</span> : null}
                 </span>
                 <div style={{ display: "flex", gap: 10 }}>
                     <a href={p.full} download={p.fileName} className="btn-primary"
