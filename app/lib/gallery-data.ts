@@ -1029,5 +1029,3 @@ export const PHOTOS: Photo[] = [
     }
 ]
 
-/** Home-page selection: venue, room, detail, stage, fireside, trophies, winners, guests. */
-export const HOME_PREVIEW_IDS = ["100","037","017","043","063","075","092","029"]

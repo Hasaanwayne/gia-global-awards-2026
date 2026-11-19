@@ -3,8 +3,9 @@ import React, { useState } from "react"
 import AnimateIn from "./AnimateIn"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import { HIGHLIGHTS_YOUTUBE_ID, GALLERY_HOLDING } from "../lib/event"
-import { PHOTOS, HOME_PREVIEW_IDS } from "../lib/gallery-data"
-import PhotoGallery from "./PhotoGallery"
+import { PHOTOS } from "../lib/gallery-data"
+import { FEATURED_IDS } from "../lib/gallery-meta"
+import CoverflowSlider from "./CoverflowSlider"
 
 const Y = "#DFFF13", BK = "#000000"
 const BORDER = "rgba(255,255,255,0.08)"
@@ -46,17 +47,17 @@ function Video({ id }: { id: string }) {
     )
 }
 
-/** Home-page selection; the full set lives on /gallery. */
+/** Home-page 3D slider of featured photos; the full set lives on /gallery. */
 function Gallery() {
     const bp = useBreakpoint()
-    const preview = HOME_PREVIEW_IDS.map((id) => PHOTOS.find((p) => p.id === id)).filter((p): p is (typeof PHOTOS)[number] => Boolean(p))
+    const featured = FEATURED_IDS.map((id) => PHOTOS.find((p) => p.id === id)).filter((p): p is (typeof PHOTOS)[number] => Boolean(p))
     return (
         <>
-            <PhotoGallery photos={preview} all={PHOTOS} />
-            <div style={{ textAlign: "center", marginTop: bp === "mobile" ? 24 : 36 }}>
+            <CoverflowSlider photos={featured} />
+            <div style={{ textAlign: "center", marginTop: bp === "mobile" ? 28 : 40 }}>
                 <a href="/gallery" className="btn-primary"
                     style={{ background: Y, color: BK, padding: "15px 36px", fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", display: "inline-block", fontFamily: BODY }}>
-                    View the Full Gallery ({PHOTOS.length} Photos)
+                    View the Full Gallery
                 </a>
             </div>
         </>

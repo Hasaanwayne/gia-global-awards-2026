@@ -77,7 +77,7 @@ export default function WinnersPage() {
             <section style={{ position: "relative", padding: isSmall ? "76px 20px 56px" : "100px 48px 76px", textAlign: "center", borderBottom: `1px solid ${BORDER}`, overflow: "hidden" }}>
                 <div aria-hidden="true" style={{ position: "absolute", top: -160, left: "50%", transform: "translateX(-50%)", width: 980, height: 460, background: "radial-gradient(ellipse at center, rgba(223,255,19,0.09), transparent 68%)", pointerEvents: "none" }} />
                 <div style={{ position: "relative" }}>
-                    <div style={{ ...label, display: "inline-block", color: Y, background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", padding: "5px 14px", marginBottom: 22 }}>
+                    <div style={{ ...label, display: "inline-block", color: Y, background: "rgba(223,255,19,0.08)", border: "1px solid rgba(223,255,19,0.22)", padding: "5px 14px", marginBottom: 22, whiteSpace: "nowrap", ...(isMobile ? { letterSpacing: "0.14em" } : {}) }}>
                         16 November 2026 &middot; The Dorchester
                     </div>
                     <h1 style={{ fontFamily: HEAD, fontWeight: 900, fontSize: "clamp(44px,9vw,96px)", lineHeight: 0.92, letterSpacing: "-0.01em", margin: 0, textTransform: "uppercase" }}>
