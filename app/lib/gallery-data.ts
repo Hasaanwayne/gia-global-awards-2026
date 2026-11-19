@@ -25,7 +25,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1830-Mickey-LF-Lee-MX206123.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:30pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "002",
@@ -35,7 +35,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1836-Mickey-LF-Lee-MX206139.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:36pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "003",
@@ -45,7 +45,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1838-Mickey-LF-Lee-MX105729.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:38pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "004",
@@ -55,7 +55,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1838-Mickey-LF-Lee-MX105738.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:38pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "005",
@@ -65,7 +65,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1840-Mickey-LF-Lee-MX105768.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:40pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "006",
@@ -75,7 +75,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1841-Mickey-LF-Lee-MX105774.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:41pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "007",
@@ -85,7 +85,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1842-Mickey-LF-Lee-MX105788.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:42pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "008",
@@ -95,7 +95,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1844-Mickey-LF-Lee-MX105800.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:44pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "009",
@@ -105,7 +105,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1845-Mickey-LF-Lee-MX105806.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:45pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "010",
@@ -115,7 +115,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1845-Mickey-LF-Lee-MX105811.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:45pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "011",
@@ -125,7 +125,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1847-Mickey-LF-Lee-MX105824.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:47pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "012",
@@ -135,7 +135,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1850-Mickey-LF-Lee-MX206151.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:50pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "013",
@@ -145,7 +145,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1853-Mickey-LF-Lee-MX105831.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:53pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "014",
@@ -155,7 +155,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1856-Mickey-LF-Lee-MX105839.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:56pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "015",
@@ -165,7 +165,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1856-Mickey-LF-Lee-MX105840.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:56pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "016",
@@ -175,7 +175,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1857-Mickey-LF-Lee-MX206156.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:57pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "017",
@@ -185,7 +185,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1858-Mickey-LF-Lee-MX206167.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:58pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "018",
@@ -195,7 +195,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1859-Mickey-LF-Lee-MX105852.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 6:59pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "019",
@@ -205,7 +205,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1900-Mickey-LF-Lee-MX105858.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:00pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "020",
@@ -215,7 +215,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1900-Mickey-LF-Lee-MX105863.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:00pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "021",
@@ -225,7 +225,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1901-Mickey-LF-Lee-MX105877.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:01pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "022",
@@ -235,7 +235,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1901-Mickey-LF-Lee-MX105881.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:01pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "023",
@@ -245,7 +245,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1903-Mickey-LF-Lee-MX105889.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:03pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "024",
@@ -255,7 +255,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1904-Mickey-LF-Lee-MX105897.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:04pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "025",
@@ -265,7 +265,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1905-Mickey-LF-Lee-MX105902.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:05pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "026",
@@ -275,7 +275,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1907-Mickey-LF-Lee-MX105911.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:07pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "027",
@@ -285,7 +285,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1908-Mickey-LF-Lee-MX105915.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:08pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "028",
@@ -295,7 +295,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1911-Mickey-LF-Lee-MX206198.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:11pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "029",
@@ -305,7 +305,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1911-Mickey-LF-Lee-MX206203.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:11pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "030",
@@ -315,7 +315,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1913-Mickey-LF-Lee-MX105927.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:13pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "031",
@@ -325,7 +325,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1913-Mickey-LF-Lee-MX105934.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:13pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "032",
@@ -335,7 +335,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1914-Mickey-LF-Lee-MX105946.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:14pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "033",
@@ -345,7 +345,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1926-Mickey-LF-Lee-MX105989.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:26pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "034",
@@ -355,7 +355,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1926-Mickey-LF-Lee-MX206224.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:26pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "035",
@@ -365,7 +365,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1927-Mickey-LF-Lee-MX105997.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:27pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "036",
@@ -375,7 +375,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1942-Mickey-LF-Lee-MX106085.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:42pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "037",
@@ -385,7 +385,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1945-Mickey-LF-Lee-MX106109.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:45pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "038",
@@ -395,7 +395,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1949-Mickey-LF-Lee-MX106158.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:49pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "039",
@@ -405,7 +405,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1951-Mickey-LF-Lee-MX106204.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:51pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "040",
@@ -415,7 +415,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1954-Mickey-LF-Lee-MX106213.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:54pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "041",
@@ -425,7 +425,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-1959-Mickey-LF-Lee-MX106226.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 7:59pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "042",
@@ -435,7 +435,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2003-Mickey-LF-Lee-MX106249.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:03pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "043",
@@ -445,7 +445,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2004-Mickey-LF-Lee-MX106254.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:04pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "044",
@@ -455,7 +455,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2005-Mickey-LF-Lee-MX106295.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:05pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "045",
@@ -465,7 +465,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2006-Mickey-LF-Lee-MX106298.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:06pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "046",
@@ -475,7 +475,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2007-Mickey-LF-Lee-MX106310.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:07pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "047",
@@ -485,7 +485,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2020-Mickey-LF-Lee-MX106365.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:20pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "048",
@@ -495,7 +495,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2021-Mickey-LF-Lee-MX106387.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:21pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "049",
@@ -505,7 +505,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2027-Mickey-LF-Lee-MX106462.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:27pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "050",
@@ -515,7 +515,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2027-Mickey-LF-Lee-MX206252.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:27pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "051",
@@ -525,7 +525,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2031-Mickey-LF-Lee-MX106478.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:31pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "052",
@@ -535,7 +535,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2035-Mickey-LF-Lee-MX106504.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:35pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "053",
@@ -545,7 +545,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2041-Mickey-LF-Lee-MX106519.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:41pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "054",
@@ -555,7 +555,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2044-Mickey-LF-Lee-MX106546.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 8:44pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "055",
@@ -565,7 +565,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2100-Mickey-LF-Lee-MX206328.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:00pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "056",
@@ -575,7 +575,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2102-Mickey-LF-Lee-MX206368.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:02pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "057",
@@ -585,7 +585,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2104-Mickey-LF-Lee-MX206400.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:04pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "058",
@@ -595,7 +595,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2112-Mickey-LF-Lee-MX206444.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:12pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "059",
@@ -605,7 +605,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2112-Mickey-LF-Lee-MX206454.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:12pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "060",
@@ -615,7 +615,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2114-Mickey-LF-Lee-MX206459.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:14pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "061",
@@ -625,7 +625,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2128-Mickey-LF-Lee-MX206590.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:28pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "062",
@@ -635,7 +635,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2130-Mickey-LF-Lee-MX106808.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:30pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "063",
@@ -645,7 +645,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2131-Mickey-LF-Lee-MX106811.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:31pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "064",
@@ -655,7 +655,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2132-Mickey-LF-Lee-MX206612.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:32pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "065",
@@ -665,7 +665,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2132-Mickey-LF-Lee-MX206625.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:32pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "066",
@@ -675,7 +675,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2135-Mickey-LF-Lee-MX206664.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:35pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "067",
@@ -685,7 +685,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2136-Mickey-LF-Lee-MX206669.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:36pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "068",
@@ -695,7 +695,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2141-Mickey-LF-Lee-MX206686.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:41pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "069",
@@ -705,7 +705,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2146-Mickey-LF-Lee-MX106852.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:46pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "070",
@@ -715,7 +715,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2146-Mickey-LF-Lee-MX206714.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:46pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "071",
@@ -725,7 +725,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2151-Mickey-LF-Lee-MX206752.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:51pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "072",
@@ -735,7 +735,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2157-Mickey-LF-Lee-MX206809.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:57pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "073",
@@ -745,7 +745,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2157-Mickey-LF-Lee-MX206822.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:57pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "074",
@@ -755,7 +755,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2158-Mickey-LF-Lee-MX106864.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:58pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "075",
@@ -765,7 +765,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2159-Mickey-LF-Lee-MX106870.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 9:59pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "076",
@@ -775,7 +775,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2203-Mickey-LF-Lee-MX206858.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:03pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "077",
@@ -785,7 +785,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2205-Mickey-LF-Lee-MX106904.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:05pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "078",
@@ -795,7 +795,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2206-Mickey-LF-Lee-MX106929.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:06pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "079",
@@ -805,7 +805,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2206-Mickey-LF-Lee-MX106931.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:06pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "080",
@@ -815,7 +815,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2212-Mickey-LF-Lee-MX106944.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:12pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "081",
@@ -825,7 +825,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2214-Mickey-LF-Lee-MX206918.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:14pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "082",
@@ -835,7 +835,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2219-Mickey-LF-Lee-MX106964.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:19pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "083",
@@ -845,7 +845,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2221-Mickey-LF-Lee-MX206992.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:21pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "084",
@@ -855,7 +855,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2223-Mickey-LF-Lee-MX106980.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:23pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "085",
@@ -865,7 +865,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2223-Mickey-LF-Lee-MX106984.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:23pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "086",
@@ -875,7 +875,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2224-Mickey-LF-Lee-MX106992.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:24pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "087",
@@ -885,7 +885,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2225-Mickey-LF-Lee-MX106998.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:25pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "088",
@@ -895,7 +895,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2225-Mickey-LF-Lee-MX107005.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:25pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "089",
@@ -905,7 +905,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2225-Mickey-LF-Lee-MX107013.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:25pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "090",
@@ -915,7 +915,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2227-Mickey-LF-Lee-MX107024.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:27pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "091",
@@ -925,7 +925,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2228-Mickey-LF-Lee-MX107029.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:28pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "092",
@@ -935,7 +935,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2230-Mickey-LF-Lee-MX107053.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:30pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "093",
@@ -945,7 +945,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2231-Mickey-LF-Lee-MX107059.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:31pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "094",
@@ -955,7 +955,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2232-Mickey-LF-Lee-MX107064.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:32pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "095",
@@ -965,7 +965,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2233-Mickey-LF-Lee-MX107074.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:33pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "096",
@@ -975,7 +975,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2240-Mickey-LF-Lee-MX107080.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:40pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "097",
@@ -985,7 +985,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2241-Mickey-LF-Lee-MX107096.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:41pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "098",
@@ -995,7 +995,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2243-Mickey-LF-Lee-MX107103.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:43pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "099",
@@ -1005,7 +1005,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2243-Mickey-LF-Lee-MX107109.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:43pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "100",
@@ -1015,7 +1015,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2249-Mickey-LF-Lee-MX107125.jpg",
         w: 720,
         h: 480,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:49pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     },
     {
         id: "101",
@@ -1025,7 +1025,7 @@ export const PHOTOS: Photo[] = [
         fileName: "2026-11-16-2253-Mickey-LF-Lee-MX107151.jpg",
         w: 720,
         h: 1081,
-        alt: "Global Innovator Awards 2026 at The Dorchester, 10:53pm"
+        alt: "Global Innovator Awards 2026 at The Dorchester"
     }
 ]
 

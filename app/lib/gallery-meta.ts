@@ -6,16 +6,6 @@ export function minutesOf(p: Photo): number | null {
     return m ? Number(m[1]) * 60 + Number(m[2]) : null
 }
 
-/** Photo description without the trailing capture time ("…, 6:30pm"). */
-export const altWithoutTime = (p: Photo) => p.alt.replace(/,\s*\d{1,2}:\d{2}(am|pm)$/i, "")
-
-export function timeLabel(p: Photo): string {
-    const mins = minutesOf(p)
-    if (mins === null) return ""
-    const h = Math.floor(mins / 60), mm = String(mins % 60).padStart(2, "0")
-    return `${h % 12 || 12}:${mm}${h >= 12 ? "pm" : "am"}`
-}
-
 /** Parts of the evening: drinks reception from 6:30pm, then dinner and awards from 7:30pm (the
  *  late celebration photos are folded into Dinner & Awards, at the client's request). */
 export const CHAPTERS = [

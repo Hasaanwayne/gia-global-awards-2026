@@ -2,7 +2,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import type { Photo } from "../lib/gallery-data"
-import { altWithoutTime } from "../lib/gallery-meta"
 import { Lightbox, IconArrow, IconExpand } from "./PhotoGallery"
 
 const Y = "#DFFF13", W = "#FFFFFF"
@@ -13,7 +12,6 @@ const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
  * 3D coverflow: the active photo faces the viewer, neighbours swing back on the
  * Y axis and dim. Auto-advances gently (paused on hover, focus, hidden tab and
  * for reduced motion), swipes on touch, and the centre photo opens the viewer.
- * No capture times are shown here (the full gallery has them).
  */
 export default function CoverflowSlider({ photos, interval = 4500 }: { photos: Photo[]; interval?: number }) {
     const bp = useBreakpoint()
@@ -105,7 +103,7 @@ export default function CoverflowSlider({ photos, interval = 4500 }: { photos: P
                             type="button"
                             tabIndex={isActive ? 0 : -1}
                             aria-hidden={hidden || undefined}
-                            aria-label={isActive ? `View ${altWithoutTime(ph)} full size` : `Show ${altWithoutTime(ph)}`}
+                            aria-label={isActive ? `View ${ph.alt} full size` : `Show ${ph.alt}`}
                             onClick={() => { if (drag.current?.moved) return; isActive ? setOpen(i) : go(i) }}
                             className={isActive ? "cf-slide cf-active" : "cf-slide"}
                             style={{
@@ -165,7 +163,7 @@ export default function CoverflowSlider({ photos, interval = 4500 }: { photos: P
                 Photo {active + 1} of {n}
             </span>
 
-            {open !== null && <Lightbox photos={photos} index={open} showTime={false} onClose={() => setOpen(null)} onNav={(i) => { setOpen(i); go(i) }} />}
+            {open !== null && <Lightbox photos={photos} index={open} onClose={() => setOpen(null)} onNav={(i) => { setOpen(i); go(i) }} />}
         </div>
     )
 }

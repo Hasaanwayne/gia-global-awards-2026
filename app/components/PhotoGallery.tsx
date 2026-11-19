@@ -1,13 +1,14 @@
 "use client"
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { useBreakpoint } from "../hooks/useBreakpoint"
 import AnimateIn from "./AnimateIn"
 import type { Photo } from "../lib/gallery-data"
-import { timeLabel, altWithoutTime } from "../lib/gallery-meta"
 
 const Y = "#DFFF13", BK = "#000000", W = "#FFFFFF"
 const BODY = "'General Sans','Inter',system-ui,sans-serif"
-const HEAD = "'Barlow Condensed','Anton',Impact,sans-serif"
+
+/** Lightboxes currently mounted; lets a remount (e.g. React Strict Mode) keep the same history entry. */
+let openLightboxes = 0
 
 export const IconDownload = ({ size = 16 }: { size?: number }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -29,8 +30,35 @@ export const IconArrow = ({ dir, size = 22 }: { dir: "left" | "right"; size?: nu
  * Full-screen viewer with previous/next, keyboard control and a download button.
  * Sits above the cookie banner (9999) and, when enabled, the Ask Fin launcher (2147483000).
  */
-export function Lightbox({ photos, index, onClose, onNav, showTime = true }: { photos: Photo[]; index: number; onClose: () => void; onNav: (i: number) => void; showTime?: boolean }) {
+export function Lightbox({ photos, index, onClose, onNav }: { photos: Photo[]; index: number; onClose: () => void; onNav: (i: number) => void }) {
     const p = photos[index]
+    const closeRef = useRef(onClose)
+    closeRef.current = onClose
+
+    /*
+     * Back gesture closes the viewer, not the page. Opening adds one history
+     * entry; the iOS edge swipe, Android back button or browser Back pop it,
+     * which closes the viewer and leaves you on the gallery. Closing any other
+     * way (×, Esc, tapping outside) removes that entry again so history stays
+     * clean. Next.js supports native pushState without a reload.
+     */
+    useEffect(() => {
+        openLightboxes++
+        if (!window.history.state?.giaLightbox) {
+            window.history.pushState({ ...(window.history.state ?? {}), giaLightbox: true }, "")
+        }
+        let poppedByUser = false
+        const onPop = () => { poppedByUser = true; closeRef.current() }
+        window.addEventListener("popstate", onPop)
+        return () => {
+            window.removeEventListener("popstate", onPop)
+            openLightboxes--
+            if (poppedByUser) return
+            window.setTimeout(() => {
+                if (openLightboxes === 0 && window.history.state?.giaLightbox) window.history.back()
+            }, 0)
+        }
+    }, [])
     const bp = useBreakpoint()
     const isMobile = bp === "mobile"
     const prev = useCallback(() => onNav((index - 1 + photos.length) % photos.length), [index, photos.length, onNav])
@@ -65,7 +93,7 @@ export function Lightbox({ photos, index, onClose, onNav, showTime = true }: { p
             style={{ position: "fixed", inset: 0, zIndex: 2147483600, background: "rgba(0,0,0,0.95)", display: "flex", flexDirection: "column" }}>
             <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: isMobile ? "12px 14px" : "16px 24px", fontFamily: BODY }}>
                 <span style={{ fontSize: 12, letterSpacing: "0.2em", color: "rgba(255,255,255,0.6)", fontWeight: 700 }}>
-                    {index + 1} / {photos.length}{showTime && timeLabel(p) ? <span style={{ color: Y, marginLeft: 14 }}>{timeLabel(p)}</span> : null}
+                    {index + 1} / {photos.length}
                 </span>
                 <div style={{ display: "flex", gap: 10 }}>
                     <a href={p.full} download={p.fileName} className="btn-primary"
@@ -80,7 +108,7 @@ export function Lightbox({ photos, index, onClose, onNav, showTime = true }: { p
             </div>
             <div style={{ position: "relative", flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: isMobile ? "0 8px 16px" : "0 88px 28px" }}>
                 <button type="button" aria-label="Previous photo" onClick={(e) => { e.stopPropagation(); prev() }} style={{ ...navBtn, left: isMobile ? 8 : 24 }}><IconArrow dir="left" /></button>
-                <img key={p.large} src={p.large} alt={showTime ? p.alt : altWithoutTime(p)} onClick={(e) => e.stopPropagation()}
+                <img key={p.large} src={p.large} alt={p.alt} onClick={(e) => e.stopPropagation()}
                     style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", boxShadow: "0 30px 90px rgba(0,0,0,0.6)" }} />
                 <button type="button" aria-label="Next photo" onClick={(e) => { e.stopPropagation(); next() }} style={{ ...navBtn, right: isMobile ? 8 : 24 }}><IconArrow dir="right" /></button>
             </div>
@@ -111,8 +139,7 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
                                     {...(i < cols ? { fetchPriority: "high" as const } : {})}
                                     style={{ width: "100%", height: "auto", aspectRatio: `${p.w} / ${p.h}`, display: "block" }} />
                             </button>
-                            <figcaption className="photo-overlay" style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: bp === "mobile" ? "26px 8px 8px" : "40px 14px 12px", display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 8, background: "linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0))", pointerEvents: "none" }}>
-                                <span style={{ fontFamily: HEAD, fontWeight: 900, fontSize: bp === "mobile" ? 13 : 16, letterSpacing: "0.06em", color: W, textTransform: "uppercase" }}>{timeLabel(p)}</span>
+                            <figcaption className="photo-overlay" style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: bp === "mobile" ? "26px 8px 8px" : "40px 14px 12px", display: "flex", alignItems: "flex-end", justifyContent: "flex-end", gap: 8, background: "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0))", pointerEvents: "none" }}>
                                 <span style={{ display: "flex", gap: 6, pointerEvents: "auto" }}>
                                     {bp !== "mobile" && (
                                         <button type="button" onClick={() => setOpen(i)} aria-label={`View ${p.alt} full size`} className="tile-action"

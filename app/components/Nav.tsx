@@ -14,6 +14,7 @@ const BODY  = "'General Sans','Inter',system-ui,sans-serif"
 const LINKS = [
     { label: "Home",       href: "/" },
     { label: "Winners",    href: "/winners2026" },
+    { label: "Gallery",    href: "/gallery" },
     { label: "Categories", href: "/categories" },
     { label: "About",      href: "/about" },
     { label: "Partnerships", href: "/#partners" },
@@ -53,7 +54,7 @@ export default function Nav() {
 
                 {/* Desktop nav links */}
                 {!isMobile && (
-                    <ul style={{ display: "flex", gap: 24, listStyle: "none", margin: 0, padding: 0, alignItems: "center", flexShrink: 0 }}>
+                    <ul style={{ display: "flex", gap: 20, listStyle: "none", margin: 0, padding: 0, alignItems: "center", flexShrink: 0 }}>
                         {LINKS.map((l) => {
                             const isActive = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href)
                             return (
